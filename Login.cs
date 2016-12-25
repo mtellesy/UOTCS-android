@@ -18,7 +18,7 @@ using Android.Support.V4.View;
 using Android.Views.InputMethods;
 
 // CScore 
-
+using CScore;
 
 namespace UOTCS_android
 {
