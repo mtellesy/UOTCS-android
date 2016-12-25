@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <group android:checkableBehavior="single"
+        
+         >
+    <item
+        android:id="@+id/nav_announcements"
+        android:icon="@drawable/ic_announcementmenu"
+        android:title="Announcements"
+        />
+    <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_messages"
+        android:title="Messages"
+        />
+    <item
+        android:id="@+id/nav_myCourses"
+        android:icon="@drawable/ic_coursesmenu"
+        android:title="My Courses"
+        />
+    <item
+        android:id="@+id/nav_schedule"
+        android:icon="@drawable/ic_schedulemenu"
+        android:title="Schedule"
+        />
+    <item
+        android:id="@+id/nav_timetable"
+        android:icon="@drawable/ic_timetablemenu"
+        android:title="Timetable"
+        />
+
+  </group>
+
+  <item >
+    <menu>
+      <item
+          android:icon="@drawable/ic_settings_menu"
+          android:title="Settings"
+          />
+      <item
+          android:icon="@drawable/ic_logout_menu"
+          android:title="Logout"
+          />
+    </menu>
+  </item>
+
+</menu>
