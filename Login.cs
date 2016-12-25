@@ -17,6 +17,9 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Views.InputMethods;
 
+// CScore 
+
+
 namespace UOTCS_android
 {
     [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
@@ -47,6 +50,7 @@ namespace UOTCS_android
 
         void login_click(object sender,EventArgs e)
         {
+
             Intent intent = new Intent(this, typeof(MainActivity));
             this.StartActivity(intent);
         }
