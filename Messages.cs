@@ -18,16 +18,17 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "MyCourses",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
-    public class MyCourses : MainActivity
+    [Activity(Label = "Messages",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    public class Messages : MainActivity
     {
 
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
+       
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.MyCourses);
+            SetContentView(Resource.Layout.Messages);
 
 
             findViews();
@@ -59,7 +60,7 @@ namespace UOTCS_android
 
         public  int getCurrentActvity()
         {
-            return Resource.Id.nav_myCourses;
+            return Resource.Id.nav_messages;
         }
 
 

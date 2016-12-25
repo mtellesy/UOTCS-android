@@ -18,8 +18,8 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "MyCourses",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
-    public class MyCourses : MainActivity
+    [Activity(Label = "Timetable",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    public class Timetable : MainActivity
     {
 
         protected override void OnCreate(Bundle bundle)
@@ -27,7 +27,7 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.MyCourses);
+            SetContentView(Resource.Layout.Timetable);
 
 
             findViews();
@@ -56,11 +56,11 @@ namespace UOTCS_android
             bool x =base.OnOptionsItemSelected(item);
             return x;
         }
-
         public  int getCurrentActvity()
         {
-            return Resource.Id.nav_myCourses;
+            return Resource.Id.nav_timetable;
         }
+
 
 
     }

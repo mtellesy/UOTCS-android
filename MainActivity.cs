@@ -19,10 +19,11 @@ using Android.Support.V4.View;
 namespace UOTCS_android
 {
     [Activity(Label = "UOTCS_android", Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
-    public class MainActivity : AppCompatActivity
+    public  class MainActivity : AppCompatActivity
     {
         public DrawerLayout mDrawerLayout;
-
+      
+    
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -58,6 +59,41 @@ namespace UOTCS_android
             {
                 SetUpDrawerContent(navigationView);
             }
+           
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+          
+
+        }
+
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            if (e.MenuItem.ItemId != getCurrentActvity())
+                SwitchActivties(e.MenuItem.ItemId);
+
+            mDrawerLayout.CloseDrawers();
+        }
+
+        private void SwitchActivties(int itemId)
+        {
+            switch (itemId)
+            {
+                case Resource.Id.nav_announcements:
+                    Intent intent = new Intent(this, typeof(Announcements));
+                    this.StartActivity(intent); break;
+
+                case Resource.Id.nav_messages:
+                    Intent intent2 = new Intent(this, typeof(Messages));
+                    this.StartActivity(intent2); break;
+                case Resource.Id.nav_myCourses:
+                    Intent intent3 = new Intent(this, typeof(MyCourses));
+                    this.StartActivity(intent3); break;
+                case Resource.Id.nav_schedule:
+                    Intent intent4 = new Intent(this, typeof(Schedule));
+                    this.StartActivity(intent4); break;
+                case Resource.Id.nav_timetable:
+                    Intent intent5 = new Intent(this, typeof(Timetable));
+                    this.StartActivity(intent5); break;
+            }
         }
 
         public void handleEvents()
@@ -65,6 +101,9 @@ namespace UOTCS_android
 
         }
 
+
+
+       
         public void SetUpDrawerContent(NavigationView navigationView)
         {
        
@@ -86,13 +125,20 @@ namespace UOTCS_android
                     mDrawerLayout.OpenDrawer((int)GravityFlags.Left);
                     return true;
 
+               
                 default:
                     return base.OnOptionsItemSelected(item);
             }
         }
 
-      
+        public  int getCurrentActvity() {
+            return 0;
+        }
 
+        public override void OnBackPressed()
+        {
+            MoveTaskToBack(true);
+        }
     }
 }
 
