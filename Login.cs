@@ -47,7 +47,7 @@ namespace UOTCS_android
 
         void login_click(object sender,EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(MainActivity));
+            Intent intent = new Intent(this, typeof(Profile));
             this.StartActivity(intent);
         }
     } 

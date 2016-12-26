@@ -18,7 +18,7 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "UOTCS_android", Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "UOTCS_android", Icon = "@drawable/icon", Theme = "@style-le/Theme.Lecturer")]
     public  class MainActivity : AppCompatActivity
     {
         public DrawerLayout mDrawerLayout;
@@ -28,11 +28,12 @@ namespace UOTCS_android
         {
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
+
+
+         //  SetTheme(Resource.Style.ThemeOverlay_AppCompat_Dark);
+
             SetContentView(Resource.Layout.Main);
 
-          
-        
-          
 
 
             findViews();
@@ -137,7 +138,8 @@ namespace UOTCS_android
 
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
         }
     }
 }

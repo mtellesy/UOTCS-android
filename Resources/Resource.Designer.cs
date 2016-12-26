@@ -2725,22 +2725,25 @@ namespace UOTCS_android
 			public const int notification_template_part_time = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int Schedule = 2130903094;
+			public const int Profile = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int select_dialog_item_material = 2130903095;
+			public const int Schedule = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int select_dialog_multichoice_material = 2130903096;
+			public const int select_dialog_item_material = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int select_dialog_singlechoice_material = 2130903097;
+			public const int select_dialog_multichoice_material = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int support_simple_spinner_dropdown_item = 2130903098;
+			public const int select_dialog_singlechoice_material = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int Timetable = 2130903099;
+			public const int support_simple_spinner_dropdown_item = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int Timetable = 2130903100;
 			
 			static Layout()
 			{
@@ -3108,8 +3111,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f080002
 			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131230722;
 			
+			// aapt resource value: 0x7f08016d
+			public const int Base_Theme_DesignDemo = 2131231085;
+			
 			// aapt resource value: 0x7f080167
-			public const int Base_Theme_DesignDemo = 2131231079;
+			public const int Base_Theme_Lecturer = 2131231079;
 			
 			// aapt resource value: 0x7f08009f
 			public const int Base_ThemeOverlay_AppCompat = 2131230879;
@@ -3705,17 +3711,29 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f08015c
 			public const int Theme_Design_NoActionBar = 2131231068;
 			
+			// aapt resource value: 0x7f08016c
+			public const int Theme_DesignDemo = 2131231084;
+			
+			// aapt resource value: 0x7f08016e
+			public const int Theme_DesignDemo_AppBarOverlay = 2131231086;
+			
+			// aapt resource value: 0x7f08016f
+			public const int Theme_DesignDemo_PopupOverlay = 2131231087;
+			
+			// aapt resource value: 0x7f08016b
+			public const int Theme_DesignDemo2 = 2131231083;
+			
 			// aapt resource value: 0x7f080165
-			public const int Theme_DesignDemo = 2131231077;
+			public const int Theme_Lecturer = 2131231077;
 			
 			// aapt resource value: 0x7f080169
-			public const int Theme_DesignDemo_AppBarOverlay = 2131231081;
+			public const int Theme_Lecturer_AppBarOverlay = 2131231081;
 			
 			// aapt resource value: 0x7f08016a
-			public const int Theme_DesignDemo_PopupOverlay = 2131231082;
+			public const int Theme_Lecturer_PopupOverlay = 2131231082;
 			
 			// aapt resource value: 0x7f080166
-			public const int Theme_DesignDemo2 = 2131231078;
+			public const int Theme_Lecturer2 = 2131231078;
 			
 			// aapt resource value: 0x7f0800fc
 			public const int ThemeOverlay_AppCompat = 2131230972;

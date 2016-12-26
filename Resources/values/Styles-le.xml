@@ -1,0 +1,26 @@
+﻿<resources>
+
+  <style name="Theme.Lecturer" parent="@style/Base.Theme.Lecturer">
+  </style>
+
+  <style name="Theme.Lecturer2" parent="@style/Base.Theme.Lecturer">
+  </style>
+
+  <style name="Base.Theme.Lecturer" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">#79302a</item>
+    <item name="colorPrimaryDark">#662621</item>
+    <item name="colorAccent">#1abc9c</item>
+  </style>
+
+  <style name="Widget.CardContent" parent="android:Widget">
+    <item name="android:paddingLeft">16dp</item>
+    <item name="android:paddingRight">16dp</item>
+    <item name="android:paddingTop">24dp</item>
+    <item name="android:paddingBottom">24dp</item>
+    <item name="android:orientation">vertical</item>
+  </style>
+
+  <style name="Theme.Lecturer.AppBarOverlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="Theme.Lecturer.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
+</resources>
