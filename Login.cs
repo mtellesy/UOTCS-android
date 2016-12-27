@@ -18,7 +18,7 @@ using Android.Support.V4.View;
 using Android.Views.InputMethods;
 
 // CScore 
-using CScore.BCL;
+
 
 namespace UOTCS_android
 {
@@ -50,12 +50,9 @@ namespace UOTCS_android
 
         void login_click(object sender,EventArgs e)
         {
-<<<<<<< HEAD
-            
-            Intent intent = new Intent(this, typeof(MainActivity));
-=======
+
             Intent intent = new Intent(this, typeof(Profile));
->>>>>>> refs/remotes/origin/master
+
             this.StartActivity(intent);
         }
 
