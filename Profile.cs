@@ -15,17 +15,17 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
+using UOTCS_android.Fragments;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Messages",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Messages : MainActivity
+    [Activity(Label = "Profile",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    public class Profile : MainActivity
     {
 
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
-       
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
@@ -33,8 +33,11 @@ namespace UOTCS_android
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
 
-            SetContentView(Resource.Layout.Messages);
+            SetContentView(Resource.Layout.Profile);
 
+            var trans = SupportFragmentManager.BeginTransaction();
+            trans.Add(Resource.Id.FragmentContainer, new Username(),"Username");
+            trans.Commit();
 
             findViews();
             handleEvents();
@@ -65,9 +68,13 @@ namespace UOTCS_android
 
         public  int getCurrentActvity()
         {
-            return Resource.Id.nav_messages;
+            return Resource.Id.nav_announcements;
         }
 
+        public override void OnBackPressed()
+        {
+            MoveTaskToBack(true);
+        }
 
     }
 }

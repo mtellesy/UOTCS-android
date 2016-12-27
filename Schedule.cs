@@ -18,7 +18,7 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Schedule",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "Schedule",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Schedule : MainActivity
     {
 
@@ -27,6 +27,11 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
+            if (use_typeID > 0)
+            {
+                SetTheme(Resource.Style.Theme_Lecturer);
+            }
+
             SetContentView(Resource.Layout.Schedule);
 
 
