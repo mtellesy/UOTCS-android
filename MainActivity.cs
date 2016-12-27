@@ -18,19 +18,21 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "UOTCS_android", Icon = "@drawable/icon", Theme = "@style-le/Theme.Lecturer")]
+    [Activity(Label = "UOTCS_android", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public  class MainActivity : AppCompatActivity
     {
         public DrawerLayout mDrawerLayout;
-      
+        public static int use_typeID = 1;
     
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
 
-
-         //  SetTheme(Resource.Style.ThemeOverlay_AppCompat_Dark);
+            if (use_typeID>0)
+            {
+                SetTheme(Resource.Style.Theme_Lecturer);
+            }
 
             SetContentView(Resource.Layout.Main);
 

@@ -18,7 +18,7 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "MyCourses",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "MyCourses",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class MyCourses : MainActivity
     {
 
@@ -27,8 +27,12 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.MyCourses);
+            if (use_typeID > 0)
+            {
+                SetTheme(Resource.Style.Theme_Lecturer);
+            }
 
+            SetContentView(Resource.Layout.MyCourses);
 
             findViews();
             handleEvents();

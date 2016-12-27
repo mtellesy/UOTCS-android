@@ -1,18 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <resources>
-  <style name="Theme.DesignDemo" parent="@style/Base.Theme.DesignDemo">
+  <style name="Theme.Student" parent="@style/Base.Theme.Student">
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:background">#eaeded</item>
+  </style>
+
+  <style name="Theme.Student2" parent="@style/Base.Theme.Student">
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowBackground">@color/background</item>
+    <item name="colorPrimary">#34495e</item>
+    <item name="colorPrimaryDark">@android:color/transparent</item>
+    <item name="colorAccent">#ef717a</item>
+   
+  </style>
+
+
+  <style name="Theme.Lecturer2" parent="@style/Base.Theme.Lecturer">
     <item name="android:statusBarColor">@android:color/transparent</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     <item name="android:windowTranslucentStatus">true</item>
   </style>
 
-  <style name="Theme.DesignDemo2" parent="@style/Base.Theme.DesignDemo">
+  <style name="Theme.Lecturer2" parent="@style/Base.Theme.Lecturer">
     <item name="android:statusBarColor">@android:color/transparent</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     <item name="android:windowTranslucentStatus">true</item>
-    <item name="colorPrimary">#34495e</item>
+    <item name="android:windowBackground">@color/background</item>
+    <item name="colorPrimary">#79302a</item>
     <item name="colorPrimaryDark">@android:color/transparent</item>
-    <item name="colorAccent">#ef717a</item>
+    <item name="colorAccent">#1abc9c</item>
+    
   </style>
 </resources>

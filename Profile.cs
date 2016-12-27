@@ -15,10 +15,11 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
+using UOTCS_android.Fragments;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Profile",Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo2")]
+    [Activity(Label = "Profile",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Profile : MainActivity
     {
 
@@ -27,8 +28,16 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
+            if (use_typeID > 0)
+            {
+                SetTheme(Resource.Style.Theme_Lecturer);
+            }
+
             SetContentView(Resource.Layout.Profile);
 
+            var trans = SupportFragmentManager.BeginTransaction();
+            trans.Add(Resource.Id.FragmentContainer, new Username(),"Username");
+            trans.Commit();
 
             findViews();
             handleEvents();
