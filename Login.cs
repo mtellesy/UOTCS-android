@@ -22,7 +22,7 @@ using CScore.BCL;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Login : AppCompatActivity
     {
         private Button login;
@@ -50,8 +50,12 @@ namespace UOTCS_android
 
         void login_click(object sender,EventArgs e)
         {
+<<<<<<< HEAD
             
             Intent intent = new Intent(this, typeof(MainActivity));
+=======
+            Intent intent = new Intent(this, typeof(Profile));
+>>>>>>> refs/remotes/origin/master
             this.StartActivity(intent);
         }
 

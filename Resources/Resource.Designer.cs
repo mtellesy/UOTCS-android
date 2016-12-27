@@ -920,6 +920,9 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f010056
 			public const int textAppearanceSmallPopupMenu = 2130772054;
 			
+			// aapt resource value: 0x7f01013b
+			public const int textColor = 2130772283;
+			
 			// aapt resource value: 0x7f01008e
 			public const int textColorAlertDialogListItem = 2130772110;
 			
@@ -1081,35 +1084,35 @@ namespace UOTCS_android
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a0045
-			public const int abc_background_cache_hint_selector_material_dark = 2131361861;
-			
 			// aapt resource value: 0x7f0a0046
-			public const int abc_background_cache_hint_selector_material_light = 2131361862;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361862;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int abc_btn_colored_borderless_text_material = 2131361863;
+			public const int abc_background_cache_hint_selector_material_light = 2131361863;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int abc_color_highlight_material = 2131361864;
+			public const int abc_btn_colored_borderless_text_material = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int abc_color_highlight_material = 2131361865;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_input_method_navigation_guard = 2131361792;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int abc_primary_text_disable_only_material_dark = 2131361865;
-			
 			// aapt resource value: 0x7f0a004a
-			public const int abc_primary_text_disable_only_material_light = 2131361866;
+			public const int abc_primary_text_disable_only_material_dark = 2131361866;
 			
 			// aapt resource value: 0x7f0a004b
-			public const int abc_primary_text_material_dark = 2131361867;
+			public const int abc_primary_text_disable_only_material_light = 2131361867;
 			
 			// aapt resource value: 0x7f0a004c
-			public const int abc_primary_text_material_light = 2131361868;
+			public const int abc_primary_text_material_dark = 2131361868;
 			
 			// aapt resource value: 0x7f0a004d
-			public const int abc_search_url_text = 2131361869;
+			public const int abc_primary_text_material_light = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int abc_search_url_text = 2131361870;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_search_url_text_normal = 2131361793;
@@ -1120,38 +1123,41 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0a0003
 			public const int abc_search_url_text_selected = 2131361795;
 			
-			// aapt resource value: 0x7f0a004e
-			public const int abc_secondary_text_material_dark = 2131361870;
-			
 			// aapt resource value: 0x7f0a004f
-			public const int abc_secondary_text_material_light = 2131361871;
+			public const int abc_secondary_text_material_dark = 2131361871;
 			
 			// aapt resource value: 0x7f0a0050
-			public const int abc_tint_btn_checkable = 2131361872;
+			public const int abc_secondary_text_material_light = 2131361872;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int abc_tint_default = 2131361873;
+			public const int abc_tint_btn_checkable = 2131361873;
 			
 			// aapt resource value: 0x7f0a0052
-			public const int abc_tint_edittext = 2131361874;
+			public const int abc_tint_default = 2131361874;
 			
 			// aapt resource value: 0x7f0a0053
-			public const int abc_tint_seek_thumb = 2131361875;
+			public const int abc_tint_edittext = 2131361875;
 			
 			// aapt resource value: 0x7f0a0054
-			public const int abc_tint_spinner = 2131361876;
+			public const int abc_tint_seek_thumb = 2131361876;
 			
 			// aapt resource value: 0x7f0a0055
-			public const int abc_tint_switch_thumb = 2131361877;
+			public const int abc_tint_spinner = 2131361877;
 			
 			// aapt resource value: 0x7f0a0056
-			public const int abc_tint_switch_track = 2131361878;
+			public const int abc_tint_switch_thumb = 2131361878;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int abc_tint_switch_track = 2131361879;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int accent_material_dark = 2131361796;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int accent_material_light = 2131361797;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int background = 2131361861;
 			
 			// aapt resource value: 0x7f0a0006
 			public const int background_floating_material_dark = 2131361798;
@@ -1189,8 +1195,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0a0011
 			public const int button_material_light = 2131361809;
 			
-			// aapt resource value: 0x7f0a0057
-			public const int design_error = 2131361879;
+			// aapt resource value: 0x7f0a0058
+			public const int design_error = 2131361880;
 			
 			// aapt resource value: 0x7f0a003a
 			public const int design_fab_shadow_end_color = 2131361850;
@@ -1222,8 +1228,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0a0043
 			public const int design_textinput_error_color_light = 2131361859;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int design_tint_password_toggle = 2131361880;
+			// aapt resource value: 0x7f0a0059
+			public const int design_tint_password_toggle = 2131361881;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int dim_foreground_disabled_material_dark = 2131361810;
@@ -1339,11 +1345,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_disabled_material_light = 2131361847;
 			
-			// aapt resource value: 0x7f0a0059
-			public const int switch_thumb_material_dark = 2131361881;
-			
 			// aapt resource value: 0x7f0a005a
-			public const int switch_thumb_material_light = 2131361882;
+			public const int switch_thumb_material_dark = 2131361882;
+			
+			// aapt resource value: 0x7f0a005b
+			public const int switch_thumb_material_light = 2131361883;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_normal_material_dark = 2131361848;
@@ -2071,6 +2077,9 @@ namespace UOTCS_android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f06008f
+			public const int FragmentContainer = 2131099791;
+			
 			// aapt resource value: 0x7f060082
 			public const int action0 = 2131099778;
 			
@@ -2305,20 +2314,20 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060016
 			public const int multiply = 2131099670;
 			
-			// aapt resource value: 0x7f06008f
-			public const int nav_announcements = 2131099791;
-			
 			// aapt resource value: 0x7f060090
-			public const int nav_messages = 2131099792;
+			public const int nav_announcements = 2131099792;
 			
 			// aapt resource value: 0x7f060091
-			public const int nav_myCourses = 2131099793;
+			public const int nav_messages = 2131099793;
 			
 			// aapt resource value: 0x7f060092
-			public const int nav_schedule = 2131099794;
+			public const int nav_myCourses = 2131099794;
 			
 			// aapt resource value: 0x7f060093
-			public const int nav_timetable = 2131099795;
+			public const int nav_schedule = 2131099795;
+			
+			// aapt resource value: 0x7f060094
+			public const int nav_timetable = 2131099796;
 			
 			// aapt resource value: 0x7f06006e
 			public const int nav_view = 2131099758;
@@ -2725,22 +2734,28 @@ namespace UOTCS_android
 			public const int notification_template_part_time = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int Schedule = 2130903094;
+			public const int Profile = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int select_dialog_item_material = 2130903095;
+			public const int Schedule = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int select_dialog_multichoice_material = 2130903096;
+			public const int select_dialog_item_material = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int select_dialog_singlechoice_material = 2130903097;
+			public const int select_dialog_multichoice_material = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int support_simple_spinner_dropdown_item = 2130903098;
+			public const int select_dialog_singlechoice_material = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int Timetable = 2130903099;
+			public const int support_simple_spinner_dropdown_item = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int Timetable = 2130903100;
+			
+			// aapt resource value: 0x7f03003d
+			public const int usernameF = 2130903101;
 			
 			static Layout()
 			{
@@ -3108,8 +3123,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f080002
 			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131230722;
 			
+			// aapt resource value: 0x7f08016d
+			public const int Base_Theme_Lecturer = 2131231085;
+			
 			// aapt resource value: 0x7f080167
-			public const int Base_Theme_DesignDemo = 2131231079;
+			public const int Base_Theme_Student = 2131231079;
 			
 			// aapt resource value: 0x7f08009f
 			public const int Base_ThemeOverlay_AppCompat = 2131230879;
@@ -3705,17 +3723,29 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f08015c
 			public const int Theme_Design_NoActionBar = 2131231068;
 			
+			// aapt resource value: 0x7f08016b
+			public const int Theme_Lecturer = 2131231083;
+			
+			// aapt resource value: 0x7f08016e
+			public const int Theme_Lecturer_AppBarOverlay = 2131231086;
+			
+			// aapt resource value: 0x7f08016f
+			public const int Theme_Lecturer_PopupOverlay = 2131231087;
+			
+			// aapt resource value: 0x7f08016c
+			public const int Theme_Lecturer2 = 2131231084;
+			
 			// aapt resource value: 0x7f080165
-			public const int Theme_DesignDemo = 2131231077;
+			public const int Theme_Student = 2131231077;
 			
 			// aapt resource value: 0x7f080169
-			public const int Theme_DesignDemo_AppBarOverlay = 2131231081;
+			public const int Theme_Student_AppBarOverlay = 2131231081;
 			
 			// aapt resource value: 0x7f08016a
-			public const int Theme_DesignDemo_PopupOverlay = 2131231082;
+			public const int Theme_Student_PopupOverlay = 2131231082;
 			
 			// aapt resource value: 0x7f080166
-			public const int Theme_DesignDemo2 = 2131231078;
+			public const int Theme_Student2 = 2131231078;
 			
 			// aapt resource value: 0x7f0800fc
 			public const int ThemeOverlay_AppCompat = 2131230972;
