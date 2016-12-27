@@ -26,6 +26,10 @@ namespace UOTCS_android
 		
 		public static void UpdateIdValues()
 		{
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::UOTCS_android.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::UOTCS_android.Resource.String.Hello;
+			global::SQLite.Net.Platform.XamarinAndroidN.Resource.String.ApplicationName = global::UOTCS_android.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroidN.Resource.String.Hello = global::UOTCS_android.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -2500,11 +2504,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06006f
 			public const int touch_outside = 2131099759;
 			
-			// aapt resource value: 0x7f06007e
-			public const int txtInputLayoutPassword = 2131099774;
-			
 			// aapt resource value: 0x7f06007f
 			public const int txtPassword = 2131099775;
+			
+			// aapt resource value: 0x7f06007e
+			public const int txtUsername = 2131099774;
 			
 			// aapt resource value: 0x7f060009
 			public const int up = 2131099657;
