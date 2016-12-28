@@ -52,7 +52,7 @@ namespace UOTCS_android
             base.OnCreate(savedInstanceState);
 
             // domain 
-            CScore.SAL.AuthenticatorS.domain = "http://10.10.20.41/CStestAPIs";
+            CScore.SAL.AuthenticatorS.domain = "http://192.168.1.2/CStestAPIs";
             SetContentView(Resource.Layout.Login);
             // Create your application here
             userIDEditText = FindViewById<EditText>(Resource.Id.txtUsername);
@@ -116,7 +116,7 @@ namespace UOTCS_android
 
                     string x = CScore.BCL.User.use_type;
                     this.buildDB(x);
-                    // this.StartActivity(intent);
+                    this.StartActivity(intent);
 
 
                     login.Enabled = true;

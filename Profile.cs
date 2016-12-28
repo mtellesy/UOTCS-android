@@ -22,16 +22,27 @@ namespace UOTCS_android
     [Activity(Label = "Profile",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Profile : MainActivity
     {
-
+       
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
+
+            // start the service for notifications 
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            this.StartService(intent);
+
+
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
+            else
+            {
+                //start the enrollment status checker
+            }
+
 
             SetContentView(Resource.Layout.Profile);
 
@@ -48,6 +59,7 @@ namespace UOTCS_android
         private void findViews()
         {
             base.findViews();
+           
         }
 
         private void handleEvents()

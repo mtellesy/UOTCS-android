@@ -126,12 +126,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotificationsRepo.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
     <Compile Include="MyCourses.cs" />
