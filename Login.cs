@@ -52,7 +52,7 @@ namespace UOTCS_android
             base.OnCreate(savedInstanceState);
 
             // domain 
-            CScore.SAL.AuthenticatorS.domain = "http://192.168.1.2/CStestAPIs";
+            CScore.SAL.AuthenticatorS.domain = "http://192.168.1.6/CStestAPIs";
             SetContentView(Resource.Layout.Login);
             // Create your application here
             userIDEditText = FindViewById<EditText>(Resource.Id.txtUsername);
