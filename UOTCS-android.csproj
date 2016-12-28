@@ -178,7 +178,7 @@
     <AndroidResource Include="Resources\layout\usernameF.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Fragments\ScheduleFragment.axml">
+    <AndroidResource Include="Resources\layout\ScheduleFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -398,7 +398,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_timetablemenu.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\layout\Fragments\" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\TrollFace.png" />
   </ItemGroup>

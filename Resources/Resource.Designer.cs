@@ -2765,22 +2765,25 @@ namespace UOTCS_android
 			public const int Schedule = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int select_dialog_item_material = 2130903096;
+			public const int ScheduleFragment = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int select_dialog_multichoice_material = 2130903097;
+			public const int select_dialog_item_material = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int select_dialog_singlechoice_material = 2130903098;
+			public const int select_dialog_multichoice_material = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int support_simple_spinner_dropdown_item = 2130903099;
+			public const int select_dialog_singlechoice_material = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int Timetable = 2130903100;
+			public const int support_simple_spinner_dropdown_item = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int usernameF = 2130903101;
+			public const int Timetable = 2130903101;
+			
+			// aapt resource value: 0x7f03003e
+			public const int usernameF = 2130903102;
 			
 			static Layout()
 			{
