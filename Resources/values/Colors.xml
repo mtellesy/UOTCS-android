@@ -1,6 +1,8 @@
 ﻿<resources>
   <color name="window_background">#FFF5F5F5</color>
   <attr name="textColor" format="reference|color" />
-  <color name="background">#f2f2f2</color> 
+  <color name="background">#f2f2f2</color>
+  <color name="text">#2c3e50</color>
+  <color name="hintText">#bdc3c7</color>
 
 </resources>
