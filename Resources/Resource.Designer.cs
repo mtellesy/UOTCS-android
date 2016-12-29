@@ -2339,20 +2339,20 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060016
 			public const int multiply = 2131099670;
 			
+			// aapt resource value: 0x7f06009a
+			public const int nav_announcements = 2131099802;
+			
+			// aapt resource value: 0x7f06009b
+			public const int nav_messages = 2131099803;
+			
 			// aapt resource value: 0x7f06009c
-			public const int nav_announcements = 2131099804;
+			public const int nav_myCourses = 2131099804;
 			
 			// aapt resource value: 0x7f06009d
-			public const int nav_messages = 2131099805;
+			public const int nav_schedule = 2131099805;
 			
 			// aapt resource value: 0x7f06009e
-			public const int nav_myCourses = 2131099806;
-			
-			// aapt resource value: 0x7f06009f
-			public const int nav_schedule = 2131099807;
-			
-			// aapt resource value: 0x7f0600a0
-			public const int nav_timetable = 2131099808;
+			public const int nav_timetable = 2131099806;
 			
 			// aapt resource value: 0x7f06006e
 			public const int nav_view = 2131099758;
@@ -2497,12 +2497,6 @@ namespace UOTCS_android
 			
 			// aapt resource value: 0x7f060095
 			public const int tableRow1 = 2131099797;
-			
-			// aapt resource value: 0x7f06009a
-			public const int tableRow3 = 2131099802;
-			
-			// aapt resource value: 0x7f06009b
-			public const int tableRow4 = 2131099803;
 			
 			// aapt resource value: 0x7f060096
 			public const int tableRowSAT = 2131099798;
