@@ -2093,14 +2093,23 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060093
 			public const int FragmentContainer = 2131099795;
 			
-			// aapt resource value: 0x7f060097
-			public const int SA1 = 2131099799;
-			
 			// aapt resource value: 0x7f060098
-			public const int SA2 = 2131099800;
+			public const int SA1 = 2131099800;
 			
 			// aapt resource value: 0x7f060099
-			public const int SA3 = 2131099801;
+			public const int SA2 = 2131099801;
+			
+			// aapt resource value: 0x7f06009a
+			public const int SA3 = 2131099802;
+			
+			// aapt resource value: 0x7f06009b
+			public const int SA4 = 2131099803;
+			
+			// aapt resource value: 0x7f06009c
+			public const int SA5 = 2131099804;
+			
+			// aapt resource value: 0x7f060094
+			public const int SchdeuleFrag = 2131099796;
 			
 			// aapt resource value: 0x7f060086
 			public const int action0 = 2131099782;
@@ -2339,20 +2348,20 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060016
 			public const int multiply = 2131099670;
 			
-			// aapt resource value: 0x7f06009a
-			public const int nav_announcements = 2131099802;
-			
-			// aapt resource value: 0x7f06009b
-			public const int nav_messages = 2131099803;
-			
-			// aapt resource value: 0x7f06009c
-			public const int nav_myCourses = 2131099804;
-			
 			// aapt resource value: 0x7f06009d
-			public const int nav_schedule = 2131099805;
+			public const int nav_announcements = 2131099805;
 			
 			// aapt resource value: 0x7f06009e
-			public const int nav_timetable = 2131099806;
+			public const int nav_messages = 2131099806;
+			
+			// aapt resource value: 0x7f06009f
+			public const int nav_myCourses = 2131099807;
+			
+			// aapt resource value: 0x7f0600a0
+			public const int nav_schedule = 2131099808;
+			
+			// aapt resource value: 0x7f0600a1
+			public const int nav_timetable = 2131099809;
 			
 			// aapt resource value: 0x7f06006e
 			public const int nav_view = 2131099758;
@@ -2492,14 +2501,14 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06000d
 			public const int tabMode = 2131099661;
 			
-			// aapt resource value: 0x7f060094
-			public const int tabla_cuerpo = 2131099796;
-			
 			// aapt resource value: 0x7f060095
-			public const int tableRow1 = 2131099797;
+			public const int tabla_cuerpo = 2131099797;
 			
 			// aapt resource value: 0x7f060096
-			public const int tableRowSAT = 2131099798;
+			public const int tableRow1 = 2131099798;
+			
+			// aapt resource value: 0x7f060097
+			public const int tableRowSAT = 2131099799;
 			
 			// aapt resource value: 0x7f060090
 			public const int text = 2131099792;
