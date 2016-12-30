@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/border">
+            <!--Hours-->
                 <TableRow
                     android:id="@+id/tableRow1"
                     android:layout_width="match_parent"
@@ -33,6 +34,16 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="D\\H"
+                        android:background="@drawable/border"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="8:30"
                         android:textColor="@color/TableHeader"
                         android:textStyle="bold"
                         android:background="@drawable/border"
@@ -42,15 +53,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="8:30"
-                        android:background="@drawable/border"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
                         android:text="9:30"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -59,6 +64,8 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="11:00"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -67,6 +74,8 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="12:30"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -75,6 +84,8 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="2:00"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -83,6 +94,8 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="3:30"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
@@ -95,7 +108,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="SAT"
+                        android:text="MON"
                         android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -104,7 +117,61 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="ITSE322"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="ITSE322"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="NA"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="ITSE322"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="ITSE322"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRowMON"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="MON"
                         android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="ITSE322"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA2"
