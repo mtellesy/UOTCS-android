@@ -16,6 +16,8 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 
+using CScore.BCL;
+
 namespace UOTCS_android
 {
     [Activity(Label = "Announcements",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
