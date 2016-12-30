@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="300dp"
+    android:layout_gravity="center">
     <ScrollView
         android:id="@+id/layout"
         android:layout_height="match_parent"
@@ -22,18 +22,20 @@
                 android:id="@+id/tabla_cuerpo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                 android:layout_gravity="center">
+                android:background="@drawable/border">
                 <TableRow
                     android:id="@+id/tableRow1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="D\H"
+                        android:text="D\\H"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -41,6 +43,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="8:30"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -48,6 +51,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="9:30"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -55,6 +59,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="11:00"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -62,6 +67,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="12:30"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -69,6 +75,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="2:00"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/textView1"
@@ -76,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="3:30"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
                 <TableRow
@@ -84,49 +92,51 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="SAT"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
+                        android:background="@drawable/border"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="ITSE322"
+                        android:text="NA"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA5"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text="ITSE322"
