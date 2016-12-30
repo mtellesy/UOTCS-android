@@ -26,6 +26,7 @@ namespace UOTCS_android
         {
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
+         //   requestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
             {
@@ -33,6 +34,9 @@ namespace UOTCS_android
             }
 
             SetContentView(Resource.Layout.Schedule);
+            var tran = SupportFragmentManager.BeginTransaction();
+            tran.Add(Resource.Id.ScheduleFrame,new UOTCS_android.Fragments.ScheduleFragment(),"newFragment");
+            tran.Commit();
 
 
             findViews();
