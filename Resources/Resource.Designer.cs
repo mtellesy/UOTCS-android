@@ -2153,8 +2153,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600a8
 			public const int SU6 = 2131099816;
 			
+			// aapt resource value: 0x7f060096
+			public const int ScheduleFrame = 2131099798;
+			
 			// aapt resource value: 0x7f060095
-			public const int ScheduleFrame = 2131099797;
+			public const int ScheduleText = 2131099797;
 			
 			// aapt resource value: 0x7f0600bf
 			public const int TH1 = 2131099839;
@@ -2665,9 +2668,6 @@ namespace UOTCS_android
 			
 			// aapt resource value: 0x7f06004a
 			public const int topPanel = 2131099722;
-			
-			// aapt resource value: 0x7f060096
-			public const int topRL = 2131099798;
 			
 			// aapt resource value: 0x7f06006f
 			public const int touch_outside = 2131099759;
