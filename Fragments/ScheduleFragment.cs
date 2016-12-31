@@ -90,118 +90,274 @@ namespace UOTCS_android.Fragments
                 int timeID = sch.ClassTimeID;
                 switch (dayID)
                 {
+ // ---------------------------> saturday <--------------------------------
                     case 1: // saturday
                         switch (timeID)
                         {
                             case 1: 
-                                if(SA1.Text != "" || SA1.Text != null)
-                                {
-                                    SA1.Text += "\n";
-                                }
+
                                 SA1.Text += courseID;
+
                                 break;
 
                             case 2:
-                                if (SA2.Text != "" || SA2.Text != null)
-                                {
-                                    SA2.Text += "\n";
-                                }
+
                                 SA2.Text += courseID;
+
                                 break;
 
                             case 3:
-                                if (SA3.Text != "" || SA3.Text != null)
-                                {
-                                    SA3.Text += "\n";
-                                }
+
                                 SA3.Text += courseID;
+
                                 break;
 
                             case 4:
-                                if (SA4.Text != "" || SA4.Text != null)
-                                {
-                                    SA4.Text += "\n";
-                                }
+
                                 SA4.Text += courseID;
+
                                 break;
 
                             case 5:
-                                if (SA5.Text != "" || SA5.Text != null)
-                                {
-                                    SA5.Text += "\n";
-                                }
+
                                 SA5.Text += courseID;
+
                                 break;
 
                             case 6:
-                                if (SA6.Text != "" || SA6.Text != null)
-                                {
-                                    SA6.Text += "\n";
-                                }
+
                                 SA6.Text += courseID;
+
                                 break;
 
                             default:
                                 break;
                         }
                         break;
-
-                    case 2: // saturday
+   // ---------------------------> sunday <--------------------------------
+                    case 2: // sunday
                         switch (timeID)
                         {
                             case 1:
-                                if (SU1.Text != "" || SU1.Text != null)
-                                {
-                    //                SU1.Text += "\n";
-                                }
-                                SU1.Text += courseID;
+
+                                SU1.Text = courseID;
+
                                 break;
 
                             case 2:
-                                if (SU2.Text != "" || SU2.Text != null)
-                                {
-                                    SU2.Text += "\n";
-                                }
+
                                 SU2.Text += courseID;
+
                                 break;
 
                             case 3:
-                                if (SU3.Text != "" || SU3.Text != null)
-                                {
-                                    SU3.Text += "\n";
-                                }
+
                                 SU3.Text += courseID;
+
                                 break;
 
                             case 4:
-                                if (SU4.Text != "" || SU4.Text != null)
-                                {
-                                    SU4.Text += "\n";
-                                }
+   
                                 SU4.Text += courseID;
+
                                 break;
 
                             case 5:
-                                if (SU5.Text != "" || SU5.Text != null)
-                                {
-                                    SU5.Text += "\n";
-                                }
+
                                 SU5.Text += courseID;
+
                                 break;
 
                             case 6:
-                                if (SU6.Text != "" || SU6.Text != null)
-                                {
-                                    SU6.Text += "\n";
-                                }
+
                                 SU6.Text += courseID;
+
                                 break;
 
                             default:
                                 break;
                         }
                         break;
+ // ---------------------------> monday <--------------------------------
+                    case 3: // monday
+                        switch (timeID)
+                        {
+                            case 1:
 
+                                MO1.Text = courseID;
+
+                                break;
+
+                            case 2:
+
+                                MO2.Text += courseID;
+
+                                break;
+
+                            case 3:
+
+                                MO3.Text += courseID;
+
+                                break;
+
+                            case 4:
+
+                                MO4.Text += courseID;
+
+                                break;
+
+                            case 5:
+
+                                MO5.Text += courseID;
+
+                                break;
+
+                            case 6:
+
+                                MO6.Text += courseID;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+                        break;
+// ---------------------------> tuesday <--------------------------------
+                    case 4: // tuesday
+                        switch (timeID)
+                        {
+                            case 1:
+
+                                TU1.Text = courseID;
+
+                                break;
+
+                            case 2:
+
+                                TU2.Text += courseID;
+
+                                break;
+
+                            case 3:
+
+                                TU3.Text += courseID;
+
+                                break;
+
+                            case 4:
+
+                                TU4.Text += courseID;
+
+                                break;
+
+                            case 5:
+
+                                TU5.Text += courseID;
+
+                                break;
+
+                            case 6:
+
+                                TU6.Text += courseID;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        break;
+// ---------------------------> wednesday <--------------------------------
+                    case 5: // wednesday
+                        switch (timeID)
+                        {
+                            case 1:
+
+                                WE1.Text = courseID;
+
+                                break;
+
+                            case 2:
+
+                                WE2.Text += courseID;
+
+                                break;
+
+                            case 3:
+
+                                WE3.Text += courseID;
+
+                                break;
+
+                            case 4:
+
+                                WE4.Text += courseID;
+
+                                break;
+
+                            case 5:
+
+                                WE5.Text += courseID;
+
+                                break;
+
+                            case 6:
+
+                                WE6.Text += courseID;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        break;
+
+                    // ---------------------------> thursday <--------------------------------
+                    case 6: // thursday
+                        switch (timeID)
+                        {
+                            case 1:
+
+                                TH1.Text = courseID;
+
+                                break;
+
+                            case 2:
+
+                                TH2.Text += courseID;
+
+                                break;
+
+                            case 3:
+
+                                TH3.Text += courseID;
+
+                                break;
+
+                            case 4:
+
+                                TH4.Text += courseID;
+
+                                break;
+
+                            case 5:
+
+                                TH5.Text += courseID;
+
+                                break;
+
+                            case 6:
+
+                                TH6.Text += courseID;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        break;
                     default:
                         break;
                 }

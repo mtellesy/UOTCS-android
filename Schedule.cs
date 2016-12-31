@@ -32,7 +32,8 @@ namespace UOTCS_android
 
             //dont forget to update the current term
             CScore.BCL.Semester.current_term = 3;
-         //   requestWindowFeature(Window.FEATURE_NO_TITLE);
+          
+         //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
             {
