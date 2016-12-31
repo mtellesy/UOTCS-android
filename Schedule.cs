@@ -29,6 +29,9 @@ namespace UOTCS_android
         {
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
+
+            //dont forget to update the current term
+            CScore.BCL.Semester.current_term = 3;
          //   requestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
@@ -42,8 +45,7 @@ namespace UOTCS_android
             tran.Commit();
 
             List<CScore.BCL.Course> userCourses = new List<CScore.BCL.Course>();
-           int id = CScore.BCL.User.use_id;
-            id = id;
+         
             StatusWithObject<List<CScore.BCL.Course>> returndValue = await CScore.BCL.Course.getUserCoursesSchedule();
             if(returndValue.status.status)
             {
