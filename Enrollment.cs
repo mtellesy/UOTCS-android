@@ -19,7 +19,7 @@ using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Timetable",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    [Activity(Label = "Enrollment",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Enrollment : MainActivity
     {
 
@@ -34,13 +34,13 @@ namespace UOTCS_android
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
 
-            SetContentView(Resource.Layout.Timetable);
+            SetContentView(Resource.Layout.Enrollment);
 
 
             //add Enrollment Item Fragments
             UOTCS_android.Fragments.EnrollmentItemFragment EnrollmentItem = new UOTCS_android.Fragments.EnrollmentItemFragment();
             var tran = SupportFragmentManager.BeginTransaction();
-            tran.Add(Resource.Layout.EnrollmentItemView, EnrollmentItem , "EnrollmentItemFragmentNo");
+            tran.Add(Resource.Id.EnrollmentFrame, EnrollmentItem , "EnrollmentItemFragmentNo");
             tran.Commit();
             CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
                 await CScore.BCL.Enrollment.getEnrollableCourses();

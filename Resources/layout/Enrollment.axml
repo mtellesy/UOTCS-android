@@ -29,7 +29,7 @@
                 android:gravity="center"
                 android:layout_above="@id/ScheduleText">
                 <FrameLayout
-                    android:id="@+id/ScheduleFrame"
+                    android:id="@+id/EnrollmentFrame"
                     android:layout_width="match_parent"
                     android:layout_height="230dp" />
             </RelativeLayout>

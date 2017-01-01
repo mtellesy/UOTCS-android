@@ -189,6 +189,7 @@
     <AndroidResource Include="Resources\layout\EnrollmentItemView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Enrollment.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

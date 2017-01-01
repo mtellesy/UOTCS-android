@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace UOTCS_android.Fragments
 {
-    public class EnrollmentItemFragment : Android.Support.V4.App.Fragment
+    public class EnrollmentItemFragment : Android.Support.V4.App.Fragment 
     {
 
         public String courseCode;
@@ -40,6 +40,7 @@ namespace UOTCS_android.Fragments
             enrollButton = view.FindViewById<Button>(Resource.Id.enrollButton);
           //  view = this.getViews(view);
             return view;
+          //  enrollButton.SetOnClickListener()
         }
         
         public void addEnrollmentItem(CScore.BCL.Course course)
@@ -58,6 +59,8 @@ namespace UOTCS_android.Fragments
             groupSpinner.Adapter = adapter;
             groupSpinner.SetSelection(0);
         }
+        
+       
 
     }
 }
