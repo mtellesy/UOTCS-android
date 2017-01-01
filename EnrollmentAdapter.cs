@@ -18,6 +18,7 @@ namespace UOTCS_android
     {
         List<CourseItem> CoursesItemsList;
         Activity _activity;
+        int current_posstion = 0;
 
         public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses)
         {
@@ -85,10 +86,31 @@ namespace UOTCS_android
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
-          
+            EnrollButton.Click += (sender, e) => { this.showMessage(CoursesItemsList[position].CourseID); };
+ 
+
+           //  current_posstion = position;
 
            
             return view;
+        }
+
+        private void EnrollButton_Click(object sender, EventArgs e)
+        {
+            this.showMessage(CoursesItemsList[current_posstion].CourseID);
+        }
+        private void showMessage(String message)
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+           new Android.Support.V7.App.AlertDialog.Builder(_activity);
+            alert.SetTitle("Login Status");
+            alert.SetMessage(message);
+            //alert.SetPositiveButton("OK", (senderAlert, args) => {
+            //    Toast.MakeText(this, "", ToastLength.Short).Show();
+            //});
+
+            Dialog x = alert.Create();
+            x.Show();
         }
     }
 }
