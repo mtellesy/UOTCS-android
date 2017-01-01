@@ -2471,6 +2471,9 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600c8
 			public const int nav_announcements = 2131099848;
 			
+			// aapt resource value: 0x7f0600cd
+			public const int nav_enrollment = 2131099853;
+			
 			// aapt resource value: 0x7f0600c9
 			public const int nav_messages = 2131099849;
 			
@@ -2879,7 +2882,7 @@ namespace UOTCS_android
 			public const int design_text_input_password_icon = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int EnrollmentCoursesBox = 2130903080;
+			public const int EnrollmentItemView = 2130903080;
 			
 			// aapt resource value: 0x7f030029
 			public const int includeListViewPager = 2130903081;

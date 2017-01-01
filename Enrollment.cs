@@ -17,55 +17,41 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 
-using CScore.BCL;
-
 namespace UOTCS_android
 {
-    [Activity(Label = "Schedule",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Schedule : MainActivity
+    [Activity(Label = "Timetable",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    public class Enrollment : MainActivity
     {
 
-        protected override async void OnCreate(Bundle bundle)
+        protected async override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
-
-            //dont forget to update the current term
-            CScore.BCL.Semester.current_term = 3;
-          
-         //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
+
             if (use_typeID > 0)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
 
-            
-           
-            SetContentView(Resource.Layout.Schedule);
+            SetContentView(Resource.Layout.Timetable);
 
-            //add Schedule Fragment
-            UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
+
+            //add Enrollment Item Fragments
+            UOTCS_android.Fragments.EnrollmentItemFragment EnrollmentItem = new UOTCS_android.Fragments.EnrollmentItemFragment();
             var tran = SupportFragmentManager.BeginTransaction();
-            tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
+            tran.Add(Resource.Layout.EnrollmentItemView, EnrollmentItem , "EnrollmentItemFragmentNo");
             tran.Commit();
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                await CScore.BCL.Enrollment.getEnrollableCourses();
+            EnrollmentItem.addEnrollmentItem(Courses.statusObject[0]);
 
-            List<CScore.BCL.Course> userCourses = new List<CScore.BCL.Course>();
-         
-            StatusWithObject<List<CScore.BCL.Course>> returndValue = await CScore.BCL.Course.getUserCoursesSchedule();
-            if(returndValue.status.status)
-            {
-                userCourses = returndValue.statusObject;
-                if(userCourses != null)
-                foreach(CScore.BCL.Course c in userCourses)
-                {
-                    if(c != null)
-                    myFragment.setCourseDayAndTime(c);
-                }
-                
-            }
-            
 
+            ////add Schedule Fragment
+            //UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
+            //var tran = SupportFragmentManager.BeginTransaction();
+            //tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
+            //tran.Commit();
 
             findViews();
             handleEvents();
@@ -93,11 +79,11 @@ namespace UOTCS_android
             bool x =base.OnOptionsItemSelected(item);
             return x;
         }
-
         public  int getCurrentActvity()
         {
-            return Resource.Id.nav_schedule;
+            return Resource.Id.nav_timetable;
         }
+
 
 
     }

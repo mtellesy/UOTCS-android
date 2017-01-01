@@ -30,6 +30,12 @@
         android:title="Timetable"
         />
 
+    <item
+      android:id="@+id/nav_enrollment"
+      android:icon="@drawable/ic_announcementmenu"
+      android:title="Enrollment"
+        />
+
   </group>
 
   <item >

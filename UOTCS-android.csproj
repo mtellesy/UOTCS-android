@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fragments\EnrollmentItemFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Services\StatusChecker.cs" />
+    <Compile Include="Enrollment.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
     <Compile Include="MyCourses.cs" />
@@ -184,7 +186,7 @@
     <AndroidResource Include="Resources\drawable\border.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\EnrollmentCoursesBox.axml">
+    <AndroidResource Include="Resources\layout\EnrollmentItemView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
