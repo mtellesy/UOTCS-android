@@ -86,7 +86,7 @@ namespace UOTCS_android
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
 
-
+           
             return view;
         }
     }
