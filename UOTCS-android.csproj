@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnrollmentAdapter.cs" />
     <Compile Include="Fragments\EnrollmentItemFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
     <Compile Include="NotificationsRepo.cs" />
@@ -189,7 +190,9 @@
     <AndroidResource Include="Resources\layout\EnrollmentItemView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Enrollment.axml" />
+    <AndroidResource Include="Resources\layout\Enrollment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

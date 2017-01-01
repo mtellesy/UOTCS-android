@@ -36,15 +36,23 @@ namespace UOTCS_android
 
             SetContentView(Resource.Layout.Enrollment);
 
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+             await CScore.BCL.Enrollment.getEnrollableCourses();
+
+            var enrollmentAdapter = new EnrollmentAdapter(this,Courses.statusObject);
+            var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
+            contactsListView.Adapter = enrollmentAdapter;
 
             //add Enrollment Item Fragments
-            UOTCS_android.Fragments.EnrollmentItemFragment EnrollmentItem = new UOTCS_android.Fragments.EnrollmentItemFragment();
-            var tran = SupportFragmentManager.BeginTransaction();
-            tran.Add(Resource.Id.EnrollmentFrame, EnrollmentItem , "EnrollmentItemFragmentNo");
-            tran.Commit();
-            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-                await CScore.BCL.Enrollment.getEnrollableCourses();
-            EnrollmentItem.addEnrollmentItem(Courses.statusObject[0]);
+            //UOTCS_android.Fragments.EnrollmentItemFragment EnrollmentItem = new UOTCS_android.Fragments.EnrollmentItemFragment();
+            //var tran = SupportFragmentManager.BeginTransaction();
+            //tran.Add(Resource.Id.EnrollmentFrame, EnrollmentItem , "EnrollmentItemFragmentNo");
+            //tran.Commit();
+            //CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+            //    await CScore.BCL.Enrollment.getEnrollableCourses();
+            //EnrollmentItem.addEnrollmentItem(Courses.statusObject[0]);
+
+
 
 
             ////add Schedule Fragment
