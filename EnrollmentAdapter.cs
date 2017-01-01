@@ -85,6 +85,7 @@ namespace UOTCS_android
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
+          
 
            
             return view;
