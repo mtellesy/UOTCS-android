@@ -11,7 +11,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
+    android:paddingTop="65dp"
     android:minWidth="25px"
     android:minHeight="25px">
   <LinearLayout
@@ -23,27 +23,28 @@
     android:minHeight="25px"
     android:padding="40dp">
     <FrameLayout
-      android:id="@+id/FragmentContainer"
+      android:id="@+id/UsernameFragmentContainer"
       android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        
+        android:layout_height="0dp"        
         android:layout_weight="1"
-        android:background="#fff"
+        android:background="@color/cards"
         android:layout_marginBottom="20dp"
-        android:padding="40dp">">
+        android:padding="10dp">">
       
     </FrameLayout>
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/UserInformationFragmentContainer"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/relativeLayout1"
         android:layout_weight="1"
-        android:background="#fff"
-        android:layout_marginTop="20dp" />
+        android:background="@color/cards"
+        android:padding="10dp">
+        android:layout_marginTop="20dp" >
+    </FrameLayout>     
 </LinearLayout>
         </LinearLayout>
    

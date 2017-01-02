@@ -1,8 +1,28 @@
 ﻿<resources>
-  <color name="window_background">#FFF5F5F5</color>
+<!-- Theme accent colot based text color-->
   <attr name="textColor" format="reference|color" />
-  <color name="background">#f2f2f2</color>
-  <color name="text">#2c3e50</color>
-  <color name="hintText">#bdc3c7</color>
+<!-- Theme student-->
+  <color name="primaryS">#3F51B5</color>
+  <color name="primary_darkS">#303F9F</color>
+  <color name="primary_lightS">#C5CAE9</color>
+  <color name="accentS">#FF5252</color>
+
+  <!--Theme Lecturer-->
+  <color name="primaryL">#009688</color>
+  <color name="primary_darkL">#00796B</color>
+  <color name="primary_lightL">#B2DFDB</color>
+  <color name="accentL">#FF5722</color>
+
+ <!-- Text Colors-->
+  <color name="primary_text">#212121</color>
+  <color name="secondary_text">#757575</color>
+  <color name="hint_text">#9e9e9e</color>
+  <color name="icons">#FFFFFF</color>
+  <color name="divider">#BDBDBD</color>
+  
+  <!-- background-->
+  <color name="background">#FAFAFA</color>
+  <color name="cards">#FFFFFF</color>
+  <color name="text_background">#F5F5F5</color>
 
 </resources>

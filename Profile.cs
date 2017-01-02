@@ -16,6 +16,7 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using UOTCS_android.Fragments;
+using Android.Graphics;
 
 namespace UOTCS_android
 {
@@ -33,8 +34,10 @@ namespace UOTCS_android
 
 
             base.OnCreate(bundle);
+
+           
             // Set our view from the "main" layout resource
-            if (use_typeID > 0)
+            if (Values.Use_typeID > 1)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
@@ -43,13 +46,27 @@ namespace UOTCS_android
                 //start the enrollment status checker
             }
 
-
             SetContentView(Resource.Layout.Profile);
 
             var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.FragmentContainer, new Username(),"Username");
+            trans.Add(Resource.Id.UsernameFragmentContainer, new Username(), "Username");
             trans.Commit();
+            var trans2 = SupportFragmentManager.BeginTransaction();
+            trans2.Add(Resource.Id.UserInformationFragmentContainer, new UserInformationFragment(), "User_information");
+            trans2.Commit();
 
+
+            Button butt = FindViewById<Button>(Resource.Id.button1);
+        /*    if (Values.Use_typeID > 1)
+            {
+                butt.SetBackgroundColor(Color.ParseColor("#1abc9c"));
+
+            }
+            else
+            {
+                butt.SetBackgroundColor(Color.ParseColor("#ef717a"));
+
+            }*/
             findViews();
             handleEvents();
         }
