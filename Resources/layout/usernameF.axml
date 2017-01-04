@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="100dp"
-    android:layout_height="50dp"
-    android:background="#fff"
-                          
-  >
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Username"
-      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-      android:textColor="?textColor"
-      android:layout_gravity="center|center" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout1"
+    android:padding="10dp">
+    <TextView
+        android:text="user name in english"
+        android:textColor="?textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:translationY="25dp" />
+    <TextView
+        android:text="user name Arabic"
+        android:textColor="?textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginTop="35dp"
+        android:translationY="-15dp" />
+    <refractored.controls.CircleImageView
+        android:id="@+id/profile_image2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/student_pic"
+        android:paddingTop="16dp"
+        app:civ_border_width="1dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        app:civ_border_color="?textColor" />
 </RelativeLayout>

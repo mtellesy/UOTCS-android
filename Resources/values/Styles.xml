@@ -1,5 +1,8 @@
 ﻿<resources>
 
+  
+ 
+  
   <style name="Theme.Student" parent="@style/Base.Theme.Student">
   </style>
 
@@ -7,11 +10,12 @@
   </style>
 
   <style name="Base.Theme.Student" parent="@style/Theme.AppCompat.Light.NoActionBar">
-    <item name="colorPrimary">#34495e</item>
-    <item name="colorPrimaryDark">#2c3e50</item>
-    <item name="colorAccent">#ef717a</item>
-    <item name="textColor">#ef717a</item>
-    <item name="android:windowBackground">@color/background</item>
+    <item name="colorPrimary">@color/primaryS</item>
+    <item name="colorPrimaryDark">@color/primary_darkS</item>
+    <item name="colorAccent">@color/accentS</item>
+    <item name="textColor">@color/accentS</item>
+    <item name="buttonStyle">@style/Theme.Student.Button</item>
+   
   </style>
   
 
@@ -26,8 +30,14 @@
   <style name="Theme.Student.AppBarOverlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
   <style name="Theme.Student.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
-
-
+ 
+ <style name="Theme.Student.Button" parent="Widget.AppCompat.Button.Colored">
+    <item name="android:colorButtonNormal">@color/accentS</item>
+    <item name="android:textColorPrimary">@color/primary_text</item>
+  </style>
+ 
+  
+ 
   <style name="Theme.Lecturer" parent="@style/Base.Theme.Lecturer">
   </style>
 
@@ -35,11 +45,12 @@
   </style>
 
   <style name="Base.Theme.Lecturer" parent="@style/Theme.AppCompat.Light.NoActionBar">
-    <item name="colorPrimary">#79302a</item>
-    <item name="colorPrimaryDark">#662621</item>
-    <item name="colorAccent">#1abc9c</item>
-    <item name="textColor">#1abc9c</item>
-    <item name="android:windowBackground">@color/background</item>
+    <item name="colorPrimary">@color/primaryL</item>
+    <item name="colorPrimaryDark">@color/primary_darkL</item>
+    <item name="colorAccent">@color/accentL</item>    
+    <item name="textColor">@color/accentL</item>
+     <item name="buttonStyle">@style/Theme.Lecturer.Button</item>
+
 
   </style>
 
@@ -54,4 +65,11 @@
   <style name="Theme.Lecturer.AppBarOverlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
   <style name="Theme.Lecturer.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
+
+   <style name="Theme.Lecturer.Button" parent="Widget.AppCompat.Button.Colored">
+    <item name="android:colorButtonNormal">@color/accentL</item>
+    <item name="android:textColorPrimary">@color/primary_text</item>
+  </style>
+ 
+ 
 </resources>

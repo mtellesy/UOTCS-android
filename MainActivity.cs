@@ -22,14 +22,14 @@ namespace UOTCS_android
     public  class MainActivity : AppCompatActivity
     {
         public DrawerLayout mDrawerLayout;
-        public static int use_typeID = 1;
+      //  public static int use_typeID = 1;// 1 is for student .. 2 for teacher
     
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-
-            if (use_typeID>0)
+           
+            if (Values.Use_typeID>1)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
@@ -52,6 +52,8 @@ namespace UOTCS_android
             SupportActionBar ab = SupportActionBar;
             ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
             ab.SetDisplayHomeAsUpEnabled(true);
+
+            
 
             mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
