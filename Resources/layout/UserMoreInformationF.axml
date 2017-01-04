@@ -15,28 +15,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
-        android:layout_weight="2"
-        android:weightSum="2">
+        android:layout_weight="1"
+        android:weightSum="4">
         <TextView
-            android:text="Email address"
+            android:text="Units completed"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/emailTV"
-            android:layout_weight="1" />
+            android:id="@+id/unitsTV"
+            android:layout_weight="3" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/textBackground"
-            android:text="email@email.com"
+            android:text="000"
             android:textColor="@color/primary_text"
-            android:id="@+id/emailTVB"
+            android:id="@+id/unitsTVB"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:translationY="10dp" />
+            android:translationY="10dp"
+            android:layout_gravity="right" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -46,27 +47,28 @@
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
         android:layout_weight="1"
-        android:weightSum="2">
+        android:weightSum="4"
+        android:gravity="right">
         <TextView
-            android:text="Phone number"
+            android:text="GPA"
             android:textColor="@color/secondary_text"
+            android:id="@+id/GPATV"
+            android:layout_weight="3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/phoneTV" />
+            android:layout_height="match_parent" />
         <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/textBackground"
-            android:text="09********"
+            android:text="00"
             android:textColor="@color/primary_text"
-            android:id="@+id/phoneTVB"
+            android:id="@+id/GPATVB"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:translationY="10dp" />
+            android:translationY="10dp"
+            android:layout_width="0dp" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -76,27 +78,26 @@
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
         android:layout_weight="1"
-        android:weightSum="2">
+        android:weightSum="4">
         <TextView
-            android:text="Department"
+            android:text="Number of notices"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/statusTV"
-             />
+            android:layout_weight="3"
+            android:id="@+id/noticesTV" />
         <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/textBackground"
-            android:text="department name"
+            android:text="0"
             android:textColor="@color/primary_text"
-            android:id="@+id/phoneTVB"
+            android:id="@+id/noticesTVB"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:translationY="10dp" />
+            android:translationY="10dp"
+            android:layout_width="wrap_content" />
     </LinearLayout>
 </LinearLayout>
