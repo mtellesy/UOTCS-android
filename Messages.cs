@@ -16,20 +16,21 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using UOTCS_android.Fragments;
+using Android.Graphics;
 
 namespace UOTCS_android
 {
     [Activity(Label = "Messages",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Messages : MainActivity
     {
-
+        Color tabsBackground;
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
        
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            if (Values.Use_typeID > 0)
+            if (Values.Use_typeID > 1)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
@@ -53,7 +54,15 @@ namespace UOTCS_android
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
 
             SetUpViewPager(viewPager);
-
+           
+            if (Values.Use_typeID > 1)
+            {
+                tabsBackground = new Color(0, 150, 136);
+            }else
+            {
+                tabsBackground = new Color(63, 81, 181);
+            }
+            tabs.SetBackgroundColor(tabsBackground);
             tabs.SetupWithViewPager(viewPager);
         }
 

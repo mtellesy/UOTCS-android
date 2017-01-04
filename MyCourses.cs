@@ -27,7 +27,7 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            if (Values.Use_typeID > 0)
+            if (Values.Use_typeID > 1)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
