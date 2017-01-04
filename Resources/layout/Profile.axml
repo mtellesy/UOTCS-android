@@ -7,47 +7,50 @@
     android:fitsSystemWindows="true">
     <include
         layout="@layout/includeListViewpager" />
-  <LinearLayout 
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="65dp"
-    android:minWidth="25px"
-    android:minHeight="25px">
-  <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="2"
-    android:minWidth="25px"
-    android:minHeight="25px"
-    android:padding="40dp">
-    <FrameLayout
-      android:id="@+id/UsernameFragmentContainer"
-      android:minWidth="25px"
-        android:minHeight="25px"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"        
-        android:layout_weight="1"
-        android:background="@color/cards"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp">">
-      
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/UserInformationFragmentContainer"
+        android:layout_height="match_parent"
+        android:paddingTop="65dp"
         android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/cards"
-        android:padding="10dp">
-        android:layout_marginTop="20dp" >
-    </FrameLayout>     
-</LinearLayout>
+        android:minHeight="25px">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="11"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:padding="40dp">
+            <FrameLayout
+                android:id="@+id/UsernameFragmentContainer"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:background="@color/cards"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp" />
+            <FrameLayout
+                android:id="@+id/UserInformationFragmentContainer"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:background="@color/cards"
+                android:padding="10dp" />
+            <Button
+                android:text="STATUS"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/status_btn"
+                android:layout_gravity="center" />
         </LinearLayout>
-   
+    </LinearLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"

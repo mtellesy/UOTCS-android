@@ -53,6 +53,8 @@ namespace UOTCS_android
             ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
             ab.SetDisplayHomeAsUpEnabled(true);
 
+            
+
             mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);

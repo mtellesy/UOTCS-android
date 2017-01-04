@@ -126,8 +126,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fragments\RecievedMessagesFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
+    <Compile Include="Fragments\SentMessagesFragment.cs" />
     <Compile Include="Fragments\UserInformationFragment.cs" />
+    <Compile Include="Fragments\UserMoreInfomationFragment.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Services\StatusChecker.cs" />
+    <Compile Include="TabAdapter.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
     <Compile Include="MyCourses.cs" />
@@ -150,9 +154,6 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\includeListViewPager.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\nav_header.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -184,6 +185,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\UserInfomationsF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UserMoreInformationF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SentMessagesF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecievedMessagesF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\includeListViewpager.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -415,12 +428,6 @@
     <AndroidResource Include="Resources\drawable\uni_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\lecturer_pic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\student_pic.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_it_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +444,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\buttonBackground.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\FadeIn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\FadeOut.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lecturer_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\student_pic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

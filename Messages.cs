@@ -15,6 +15,7 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
+using UOTCS_android.Fragments;
 
 namespace UOTCS_android
 {
@@ -36,6 +37,8 @@ namespace UOTCS_android
             SetContentView(Resource.Layout.Messages);
 
 
+
+
             findViews();
             handleEvents();
         }
@@ -44,7 +47,23 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            base.findViews();
+          base.findViews();
+           
+            TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
+            ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
+
+            SetUpViewPager(viewPager);
+
+            tabs.SetupWithViewPager(viewPager);
+        }
+
+        private void SetUpViewPager(ViewPager viewPager)
+        {
+            TabAdapter adapter = new TabAdapter(SupportFragmentManager);
+            adapter.AddFragment(new RecievedMessagesFragment(), "Rescieved");
+            adapter.AddFragment(new SentMessagesFragment(), "Sent");
+
+            viewPager.Adapter = adapter;
         }
 
         private void handleEvents()
