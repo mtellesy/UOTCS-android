@@ -24,17 +24,14 @@ namespace UOTCS_android
     public class Messages : MainActivity
     {
         Color tabsBackground;
+        FloatingActionButton fab;
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
        
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            if (Values.Use_typeID > 1)
-            {
-                SetTheme(Resource.Style.Theme_Lecturer);
-            }
-
+            Values.changeTheme(this);
             SetContentView(Resource.Layout.Messages);
 
 
@@ -55,15 +52,13 @@ namespace UOTCS_android
 
             SetUpViewPager(viewPager);
            
-            if (Values.Use_typeID > 1)
-            {
-                tabsBackground = new Color(0, 150, 136);
-            }else
-            {
-                tabsBackground = new Color(63, 81, 181);
-            }
+           
+            Values.Use_Color = new Color();
+            tabsBackground = Values.Use_Color;
             tabs.SetBackgroundColor(tabsBackground);
             tabs.SetupWithViewPager(viewPager);
+            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.Show();
         }
 
         private void SetUpViewPager(ViewPager viewPager)
@@ -77,7 +72,13 @@ namespace UOTCS_android
 
         private void handleEvents()
         {
+            fab.Click += Fab_Click;
+        }
 
+        private void Fab_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(SendMessage));
+            this.StartActivity(intent);
         }
 
         private  void SetUpDrawerContent(NavigationView navigationView)

@@ -43,6 +43,10 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Android.Ui.TextDrawable, Version=1.0.1.1, Culture=en-us, processorArchitecture=MSIL">
+      <HintPath>packages\Android.Ui.TextDrawable.1.0.3\lib\Android.Ui.TextDrawable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CScore">
       <HintPath>E:\CompanionSystem\CScore\bin\Debug\CScore.dll</HintPath>
     </Reference>
@@ -132,12 +136,14 @@
     <Compile Include="Fragments\UserInformationFragment.cs" />
     <Compile Include="Fragments\UserMoreInfomationFragment.cs" />
     <Compile Include="NotificationsRepo.cs" />
+    <Compile Include="RecyclerViewAdapter.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="SendMessage.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="TabAdapter.cs" />
     <Compile Include="Timetable.cs" />
@@ -197,6 +203,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\includeListViewpager.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\sendMessage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\List_row_messages.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\borderSet.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
