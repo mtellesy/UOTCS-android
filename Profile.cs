@@ -83,7 +83,7 @@ namespace UOTCS_android
              userInformation = new UserInformationFragment();
 
              userMoreInformation = new UserMoreInfomationFragment();
-            var trans = SupportFragmentManager.BeginTransaction();
+            var trans =SupportFragmentManager.BeginTransaction();
          //   var trans2 = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
             trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");

@@ -10,12 +10,14 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Fragment = Android.Support.V4.App.Fragment;
+using SupportFragment = Android.Support.V4.App.Fragment;
+
 using Android.Support.V7.Widget;
+using UOTCS_android.Helpers;
 
 namespace UOTCS_android.Fragments
 {
-    public class RecievedMessagesFragment : Fragment
+    public class RecievedMessagesFragment : SupportFragment
     {
         RecyclerView recyclerView;
         public override void OnCreate(Bundle savedInstanceState)
@@ -31,16 +33,8 @@ namespace UOTCS_android.Fragments
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
              recyclerView = inflater.Inflate(Resource.Layout.RecievedMessagesF, container, false) as RecyclerView;
-            String[] x = { "fuck", "me", "hard", "mother", "fucking", "bastard", "i", "hate", "my", "life" };
-            List<string> y = new List<string>(x);
-           
-            var values = y;
-            //           var values = GetRandomSubList(y, x.Length);
 
-            recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
-            recyclerView.SetAdapter(new RecyclerViewAdapter( values));
-
-            //    SetUpRecyclerView(recyclerView);
+                SetUpRecyclerView(recyclerView);
             return recyclerView;
         }
 
@@ -48,27 +42,33 @@ namespace UOTCS_android.Fragments
         {
             String[] x = { "fuck", "me", "hard", "mother", "fucking", "bastard", "i", "hate", "my", "life" };
             List<string> y = new List<string>(x);
-            for(int i = 0; i > x.Length; i++)
-            {
-                y.Add(x[i]);
-            }
+    
             var values = y;
  //           var values = GetRandomSubList(y, x.Length);
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             recyclerView.SetAdapter(new RecyclerViewAdapter( values));
 
-           /* recyclerView.SetItemClickListener((rv, position, view) =>
+            recyclerView.SetItemClickListener((rv, position, view) =>
             {
                 //An item has been clicked
                 Context context = view.Context;
-                Intent intent = new Intent(context, typeof(CheeseDetailActivity));
-                intent.PutExtra(CheeseDetailActivity.EXTRA_NAME, values[position]);
+                       String mes_id = "stuped";
+                       Intent intent = new Intent(context, typeof(MessageDetailsActivity));
+                       intent.PutExtra(mes_id, values[position]);
 
-                context.StartActivity(intent);
-            });*/
+                       context.StartActivity(intent);
+
+        /*        MessageDetailsFragment nextFrag = new MessageDetailsFragment();
+                this.FragmentManager.BeginTransaction()
+                .Replace(Resource.Id.Fragment_messageContainer, nextFrag, null)
+                .AddToBackStack(null)
+                .Hide(this)
+                .Commit();*/
+            });
         }
 
+     
         private List<string> GetRandomSubList(List<string> items, int amount)
         {
             List<string> list = new List<string>();

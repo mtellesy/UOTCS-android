@@ -135,6 +135,8 @@
     <Compile Include="Fragments\SentMessagesFragment.cs" />
     <Compile Include="Fragments\UserInformationFragment.cs" />
     <Compile Include="Fragments\UserMoreInfomationFragment.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="MessageDetailsActivity.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="RecyclerViewAdapter.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
@@ -214,6 +216,12 @@
     <AndroidResource Include="Resources\drawable\borderSet.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\IncludeListViewPagerWithTabs.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MessageDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -235,7 +243,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Dimens.xml" />
+    <AndroidResource Include="Resources\values\Dimens.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml">
@@ -471,6 +481,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\student_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-ar\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
