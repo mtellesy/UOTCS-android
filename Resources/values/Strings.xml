@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!--dawe strings-->
+  <!--drawer strings-->
   <string name="profile">Profile</string>
   <string name="messages">Messages</string>
   <string name="announcements">Announcements</string>

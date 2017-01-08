@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:text="Email address"
+            android:text="@string/email_profile"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:text="Phone number"
+            android:text="@string/phone_profile"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,19 +78,18 @@
         android:layout_weight="1"
         android:weightSum="2">
         <TextView
-            android:text="Department"
+            android:text="@string/department_profile"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/statusTV"
-             />
+            android:id="@+id/statusTV" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/textBackground"
-            android:text="department name"
+            android:text="@string/department_profile"
             android:textColor="@color/primary_text"
             android:id="@+id/phoneTVB"
             android:paddingLeft="15dp"

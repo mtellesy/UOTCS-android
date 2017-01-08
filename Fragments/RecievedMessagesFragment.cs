@@ -14,10 +14,11 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 
 using Android.Support.V7.Widget;
 using UOTCS_android.Helpers;
+using CScore.BCL;
 
 namespace UOTCS_android.Fragments
 {
-    public class RecievedMessagesFragment : SupportFragment
+    public  class RecievedMessagesFragment : SupportFragment
     {
         RecyclerView recyclerView;
         public override void OnCreate(Bundle savedInstanceState)
@@ -69,16 +70,14 @@ namespace UOTCS_android.Fragments
         }
 
      
-        private List<string> GetRandomSubList(List<string> items, int amount)
+        private async List<CScore.BCL.Messages> getRecievedMessages()
         {
-            List<string> list = new List<string>();
-            Random random = new Random();
-            while (list.Count < amount)
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> results = new StatusWithObject<List<CScore.BCL.Messages>>();
+            results =  CScore.BCL.Messages.getMessages(10,1,null).Result;
+            if (results.status.status== true)
             {
-                list.Add(items[random.Next(items.Count)]);
+                return results.statusObject;
             }
-
-            return list;
         }
     }
 }
