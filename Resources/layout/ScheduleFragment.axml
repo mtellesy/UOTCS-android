@@ -2,118 +2,503 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
-        android:id="@+id/tabla_cuerpo"
+    android:layout_height="230dp"
+    android:layout_gravity="center">
+    <ScrollView
+        android:id="@+id/layout"
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal|vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="D\H"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="8:30"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="9:30"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="11:00"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="12:30"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="2:00"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="3:30"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRowSAT"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="SAT"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            <TextView
-                android:id="@+id/SA5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="ITSE322"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-    </TableLayout>
+        android:layout_marginTop="5dip"
+        android:scrollbarStyle="outsideInset"
+        android:fillViewport="true">
+    
+        <HorizontalScrollView
+            android:id="@+id/horizontalView"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dip">
+            <TableLayout
+                android:id="@+id/tabla_cuerpo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+            <!--Hours-->
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="D\\H"
+                        android:gravity="center"
+                        android:background="@drawable/border"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="8:30"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="9:30"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="11:00"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="12:30"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="2:00"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="3:30"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                      Days                             -->
+            <!--                      Saturday                          -->
+                <TableRow
+                    android:id="@+id/tableRowSAT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="SAT"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SA6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                        Sunday                        -->
+                <TableRow
+                    android:id="@+id/tableRowSUN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="SUN"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/SU6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                        Monday                           -->
+                <TableRow
+                    android:id="@+id/tableRowMON"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="MON"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/MO6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                        Tuesday                          -->
+                <TableRow
+                    android:id="@+id/tableRowTUE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="TUE"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TU6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                      Wednesday                    -->
+                <TableRow
+                    android:id="@+id/tableRowWED"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="WED"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/WE6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            <!--                      Thursday                   -->
+                <TableRow
+                    android:id="@+id/tableRowTHU"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="THU"
+                        android:gravity="center"
+                        android:textColor="@color/TableHeader"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH4"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH5"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/TH6"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 </LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/background">
+    <Button
+        android:text="Enroll"
+        android:textSize="15dp"
+        android:textColor="@color/text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/enrollButton"
+        android:gravity="center" />
+    <Spinner
+        android:id="@+id/enrollGroupsList"
+        android:layout_toRightOf="@id/enrollButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/text"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginRight="50dp"
+        android:layout_centerInParent="true"
+        android:gravity="center" />
+    <TextView
+        android:id="@+id/enrollCourseText"
+        android:layout_toRightOf="@id/enrollGroupsList"
+        android:layout_marginRight="20dp"
+        android:text="ITXXXXX"
+        android:textColor="@color/text"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</RelativeLayout>
