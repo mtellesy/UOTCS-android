@@ -54,7 +54,7 @@
             android:layout_height="75dp"
             android:id="@+id/linearLayout1"
             android:padding="15dp">
-          <de.hdodenhof.circleimageview.CircleImageView
+          <Refractored.Controls.CircleImageView
               android:id="@+id/profile_pic_messageDetails"
               android:layout_width="match_parent"
               android:layout_height="match_parent" />

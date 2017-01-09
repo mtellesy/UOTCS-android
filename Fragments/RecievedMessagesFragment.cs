@@ -15,6 +15,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Support.V7.Widget;
 using UOTCS_android.Helpers;
 using CScore.BCL;
+using System.Threading.Tasks;
 
 namespace UOTCS_android.Fragments
 {
@@ -28,12 +29,14 @@ namespace UOTCS_android.Fragments
             // Create your fragment here
         }
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override  View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
              recyclerView = inflater.Inflate(Resource.Layout.RecievedMessagesF, container, false) as RecyclerView;
+
+
 
                 SetUpRecyclerView(recyclerView);
             return recyclerView;
@@ -41,12 +44,13 @@ namespace UOTCS_android.Fragments
 
         private void SetUpRecyclerView(RecyclerView recyclerView)
         {
-            String[] x = { "fuck", "me", "hard", "mother", "fucking", "bastard", "i", "hate", "my", "life" };
+            String[] x = { "i ", "am", "amira", "and", "this", "should", "work", "well", "plz", ":(" };
             List<string> y = new List<string>(x);
     
             var values = y;
- //           var values = GetRandomSubList(y, x.Length);
-
+            //           var values = GetRandomSubList(y, x.Length);
+            var task = Task.Run(async () => { await this.getRecievedMessages(); });
+            task.Wait();
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             recyclerView.SetAdapter(new RecyclerViewAdapter( values));
 
@@ -54,7 +58,7 @@ namespace UOTCS_android.Fragments
             {
                 //An item has been clicked
                 Context context = view.Context;
-                       String mes_id = "stuped";
+                       String mes_id = "stupid";
                        Intent intent = new Intent(context, typeof(MessageDetailsActivity));
                        intent.PutExtra(mes_id, values[position]);
 
@@ -68,16 +72,17 @@ namespace UOTCS_android.Fragments
                 .Commit();*/
             });
         }
-
+        
      
-        private async List<CScore.BCL.Messages> getRecievedMessages()
+        private async Task<List<CScore.BCL.Messages>> getRecievedMessages()
         {
             CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> results = new StatusWithObject<List<CScore.BCL.Messages>>();
-            results =  CScore.BCL.Messages.getMessages(10,1,null).Result;
+            results = await CScore.BCL.Messages.getMessages(10,1,null);
             if (results.status.status== true)
             {
                 return results.statusObject;
             }
+            return results;
         }
     }
 }

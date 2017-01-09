@@ -11,11 +11,14 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Fragment = Android.Support.V4.App.Fragment;
+using Android.Support.V7.Widget;
+using UOTCS_android.Helpers;
 
 namespace UOTCS_android.Fragments
 {
     public class SentMessagesFragment : Fragment
     {
+        RecyclerView recyclerView;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,8 +31,52 @@ namespace UOTCS_android.Fragments
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
-            View view = inflater.Inflate(Resource.Layout.SentMessagesF, container, false);
-            return view;
+            recyclerView = inflater.Inflate(Resource.Layout.RecievedMessagesF, container, false) as RecyclerView;
+
+            SetUpRecyclerView(recyclerView);
+            return recyclerView;
         }
+
+        private void SetUpRecyclerView(RecyclerView recyclerView)
+        {
+            String[] x = { "i ", "am", "amira", "and", "this", "should", "work", "well", "plz", ":(" };
+            List<string> y = new List<string>(x);
+
+            var values = y;
+            //           var values = GetRandomSubList(y, x.Length);
+
+            recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
+            recyclerView.SetAdapter(new RecyclerViewAdapter(values));
+
+            recyclerView.SetItemClickListener((rv, position, view) =>
+            {
+                //An item has been clicked
+                Context context = view.Context;
+                String mes_id = "stuped";
+                Intent intent = new Intent(context, typeof(MessageDetailsActivity));
+                intent.PutExtra(mes_id, values[position]);
+
+                context.StartActivity(intent);
+
+                /*        MessageDetailsFragment nextFrag = new MessageDetailsFragment();
+                        this.FragmentManager.BeginTransaction()
+                        .Replace(Resource.Id.Fragment_messageContainer, nextFrag, null)
+                        .AddToBackStack(null)
+                        .Hide(this)
+                        .Commit();*/
+            });
+        }
+        /*
+     
+        private async List<CScore.BCL.Messages> getRecievedMessages()
+        {
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> results = new StatusWithObject<List<CScore.BCL.Messages>>();
+            results =  CScore.BCL.Messages.getMessages(10,1,null).Result;
+            if (results.status.status== true)
+            {
+                return results.statusObject;
+            }
+            return results;
+        }*/
     }
 }

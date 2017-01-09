@@ -130,6 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="Fragments\RecievedMessagesFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
     <Compile Include="Fragments\SentMessagesFragment.cs" />

@@ -12,7 +12,8 @@ using Android.Widget;
 using Android.Support.Design.Widget;
 using Android.Support.V7;
 using Android.Support.V4.App;
-
+using Android.Graphics;
+using Refractored.Controls;
 namespace UOTCS_android
 {
     [Activity(Label = "Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
@@ -37,9 +38,17 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            Random rnd = new Random();
+            Color color = new Color(Color.Argb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256)));
+            CircleImageView image = FindViewById<CircleImageView>(Resource.Id.profile_pic_messageDetails);
+            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60)
+                .EndConfig().BuildRound("x", color);
 
 
+            image.SetImageDrawable(drawable);
         }
+
+    
 
         private void handleEvents()
         {
