@@ -60,7 +60,6 @@ namespace UOTCS_android
             {
                 SetUpDrawerContent(navigationView);
             }
-           
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
           
 
@@ -94,6 +93,12 @@ namespace UOTCS_android
                 case Resource.Id.nav_timetable:
                     Intent intent5 = new Intent(this, typeof(Timetable));
                     this.StartActivity(intent5); break;
+                case Resource.Id.nav_enrollment:
+                    Intent intent6 = new Intent(this, typeof(Enrollment));
+                    this.StartActivity(intent6); break;
+                case Resource.Id.nav_major:
+                    Intent intent7 = new Intent(this, typeof(Major));
+                    this.StartActivity(intent7); break;
             }
         }
 

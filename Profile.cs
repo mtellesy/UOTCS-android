@@ -1,5 +1,5 @@
 using System;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -34,15 +34,23 @@ namespace UOTCS_android
         protected override void OnCreate(Bundle bundle)
         {
             DrawerLayout mdrawerLayout;
-         
-            // start the service for notifications 
+
+
+            var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            task.Wait();
+
+
+            // start the service for notifications
             Intent intent = new Intent(this, typeof(Services.StatusChecker));
             this.StartService(intent);
 
 
+            // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            //  task.Wait();
+
             base.OnCreate(bundle);
 
-           
+
             // Set our view from the "main" layout resource
             if (Values.Use_typeID > 1)
             {
@@ -55,8 +63,8 @@ namespace UOTCS_android
 
             SetContentView(Resource.Layout.Profile);
 
-            
-           
+
+
         /*    if (Values.Use_typeID > 1)
             {
                 butt.SetBackgroundColor(Color.ParseColor("#1abc9c"));
@@ -76,7 +84,7 @@ namespace UOTCS_android
         private void findViews()
         {
             base.findViews();
-            
+
 
             // initiating fragments
             username = new Username();
@@ -87,7 +95,7 @@ namespace UOTCS_android
          //   var trans2 = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
             trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
-            trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information");            
+            trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information");
             trans.Hide(userMoreInformation);
             mCurrentFragment = userInformation;
           //ce.Animation.FadeIn, Resource.Animation.FadeOut,Resource.Animation.FadeIn, Resource.Animation.FadeOut);
@@ -122,7 +130,7 @@ namespace UOTCS_android
 
         private void handleEvents()
         {
-            
+
         }
 
         private void hide_Click(object sender, EventArgs e)
@@ -141,7 +149,7 @@ namespace UOTCS_android
             trans.Commit();
         }
 
-      
+
         private  void SetUpDrawerContent(NavigationView navigationView)
         {
             base.SetUpDrawerContent(navigationView);
@@ -153,7 +161,7 @@ namespace UOTCS_android
             return x;
         }
 
-        public  int getCurrentActvity()
+        public int getCurrentActvity()
         {
             return Resource.Id.nav_announcements;
         }
@@ -162,8 +170,8 @@ namespace UOTCS_android
         {
             MoveTaskToBack(true);
         }
-      
-    
+
+
         public  void switchFragments()
         {
             if(mCurrentFragment== userInformation)

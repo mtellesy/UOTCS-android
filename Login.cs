@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using SQLite.Net;
+using System.Threading.Tasks;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -115,7 +116,7 @@ namespace UOTCS_android
                     StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
                     string x = CScore.BCL.User.use_type;
-                    this.buildDB(x);
+                  await this.buildDB(x);
                     this.StartActivity(intent);
 
 
@@ -132,7 +133,7 @@ namespace UOTCS_android
             login.Enabled = true;
         }
 
-        private async void buildDB(String userType)
+        private async Task buildDB(String userType)
         {
             // DBname 
             string dbname = "BCLV88.db";
