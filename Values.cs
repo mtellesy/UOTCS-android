@@ -59,6 +59,19 @@ namespace UOTCS_android
                myActivity.SetTheme(Resource.Style.Theme_Lecturer);
             }
         }
-
+        public static void startAnnouncement(Context myActivity)
+        {
+            Intent intent;
+            if (Values.Use_typeID > 1)
+            {
+                 intent = new Intent(myActivity, typeof(AnnouncementsLecturer));
+                myActivity.StartActivity(intent);
+            }
+            else
+            {
+                intent = new Intent(myActivity, typeof(Announcements));
+                myActivity.StartActivity(intent);
+            }
+        }
     }
 }

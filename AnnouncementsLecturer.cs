@@ -32,7 +32,7 @@ namespace UOTCS_android
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.Messages);
+            SetContentView(Resource.Layout.AnnouncementsLecturer);
 
 
 
@@ -47,7 +47,7 @@ namespace UOTCS_android
         private void findViews()
         {
             //   base.findViews();
-            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
+            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBarWT);
             SetSupportActionBar(toolBar);
             
             

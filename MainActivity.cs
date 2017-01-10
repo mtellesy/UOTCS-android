@@ -78,9 +78,8 @@ namespace UOTCS_android
             switch (itemId)
             {
                 case Resource.Id.nav_announcements:
-                    Intent intent = new Intent(this, typeof(Announcements));
-                    this.StartActivity(intent); break;
-
+                    Values.startAnnouncement(this);
+                    break;
                 case Resource.Id.nav_messages:
                     Intent intent2 = new Intent(this, typeof(Messages));
                     this.StartActivity(intent2); break;

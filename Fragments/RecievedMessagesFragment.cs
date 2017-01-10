@@ -49,8 +49,8 @@ namespace UOTCS_android.Fragments
     
             var values = y;
             //           var values = GetRandomSubList(y, x.Length);
-            var task = Task.Run(async () => { await this.getRecievedMessages(); });
-            task.Wait();
+          //  var task = Task.Run(async () => { await this.getRecievedMessages(); });
+        //    task.Wait();
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             recyclerView.SetAdapter(new RecyclerViewAdapter( values));
 
@@ -74,13 +74,13 @@ namespace UOTCS_android.Fragments
         }
         
      
-        private async Task<List<CScore.BCL.Messages>> getRecievedMessages()
+        private async Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>>> getRecievedMessages()
         {
             CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> results = new StatusWithObject<List<CScore.BCL.Messages>>();
             results = await CScore.BCL.Messages.getMessages(10,1,null);
             if (results.status.status== true)
             {
-                return results.statusObject;
+                return results;
             }
             return results;
         }
