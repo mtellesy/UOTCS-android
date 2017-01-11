@@ -136,7 +136,7 @@ namespace UOTCS_android
 
         private void Fab_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(SendMessage));
+            Intent intent = new Intent(this, typeof(SendAnnouncement));
             this.StartActivity(intent);
         }
 

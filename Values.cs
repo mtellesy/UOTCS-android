@@ -58,6 +58,10 @@ namespace UOTCS_android
             {
                myActivity.SetTheme(Resource.Style.Theme_Lecturer);
             }
+            else if (Values.use_typeID == 1)
+            {
+                myActivity.SetTheme(Resource.Style.Theme_Student);
+            }
         }
         public static void startAnnouncement(Context myActivity)
         {
@@ -72,6 +76,44 @@ namespace UOTCS_android
                 intent = new Intent(myActivity, typeof(Announcements));
                 myActivity.StartActivity(intent);
             }
+
         }
+
+        public static void switchActivitiesStudent(Context myActivity, int itemId)
+        {
+            Intent intent;
+            switch (itemId)
+            {
+                case Resource.Id.nav_announcements:
+                    Values.startAnnouncement(myActivity);
+                    break;
+                case Resource.Id.nav_messages:
+                    intent = new Intent(myActivity, typeof(Messages));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_myCourses:
+                    intent = new Intent(myActivity, typeof(MyCourses));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_schedule:
+                    intent = new Intent(myActivity, typeof(Schedule));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_timetable:
+                    intent = new Intent(myActivity, typeof(Timetable));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_enrollment:
+                    intent = new Intent(myActivity, typeof(Enrollment));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_major:
+                    intent = new Intent(myActivity, typeof(Major));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_result:
+                    intent = new Intent(myActivity, typeof(Result));
+                    myActivity.StartActivity(intent); break;
+            }
+        }
+        public static void switchActivitiesLecturer(Context myActivity, int itemId)
+        {
+
+        }
+
     }
 }

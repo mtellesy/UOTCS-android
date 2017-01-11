@@ -27,4 +27,8 @@
   <string name="username_login">Username</string>
   <string name="password_login">Password</string>
 
+  <!--send message annoucement strings-->
+  <string name="compose_announcement_hint">Compose announcement</string>
+  <string name="compose_message_hint">Compose message</string>
+
 </resources>

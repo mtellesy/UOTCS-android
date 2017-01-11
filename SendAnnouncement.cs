@@ -15,10 +15,10 @@ using Android.Support.V4.App;
 using UOTCS_android.Fragments;
 namespace UOTCS_android
 {
-    [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
-    public class SendMessage : MainActivity
+    [Activity(Label = "Send Announcement", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
+    public class SendAnnouncement: MainActivity
     {
-        SendMessageAnnouncementFragment sendMessage;
+        SendMessageAnnouncementFragment sendAnnouncement;
         internal bool fabShouldBeShown;
         FloatingActionButton fab;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -46,10 +46,10 @@ namespace UOTCS_android
 
             methodWhereFabIsHidden();
 
-            sendMessage = new SendMessageAnnouncementFragment("Message");
+            sendAnnouncement = new SendMessageAnnouncementFragment("Announcement");
 
             var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
+            trans.Add(Resource.Id.send_message_fragment_container, sendAnnouncement, "sendAnnouncement");
             trans.Commit();
         }
 

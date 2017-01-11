@@ -134,6 +134,7 @@
     <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
     <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="MajorAdapter.cs" />
     <Compile Include="Major.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="SendAnnouncement.cs" />
     <Compile Include="SendMessage.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Enrollment.cs" />
@@ -261,6 +263,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SendAnnouncement.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\drawer_view - Copy.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
