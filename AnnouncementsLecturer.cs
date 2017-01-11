@@ -121,8 +121,8 @@ namespace UOTCS_android
         private void SetUpViewPager(ViewPager viewPager)
         {
             TabAdapter adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(new RecievedMessagesFragment(), "Rescieved");
-            adapter.AddFragment(new SentMessagesFragment(), "Sent");
+            adapter.AddFragment(new RecievedAnnouncementsFragment(), "Rescieved");
+            adapter.AddFragment(new SentAnnouncementsFragment(), "Sent");
 
             viewPager.Adapter = adapter;
         }

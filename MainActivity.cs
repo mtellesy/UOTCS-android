@@ -98,6 +98,9 @@ namespace UOTCS_android
                 case Resource.Id.nav_major:
                     Intent intent7 = new Intent(this, typeof(Major));
                     this.StartActivity(intent7); break;
+                case Resource.Id.nav_result:
+                    Intent intent8 = new Intent(this, typeof(Result));
+                    this.StartActivity(intent8); break;
             }
         }
 

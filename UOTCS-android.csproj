@@ -117,6 +117,10 @@
       <HintPath>packages\Xamarin.Android.Support.v7.AppCompat.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Android.Support.v7.CardView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Xamarin.Android.Support.v7.RecyclerView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
       <Private>True</Private>
@@ -128,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnnouncementsLecturer.cs" />
+    <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
+    <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="MajorAdapter.cs" />
     <Compile Include="Major.cs" />
     <Compile Include="EnrollmentAdapter.cs" />
@@ -142,8 +149,10 @@
     <Compile Include="MessageDetailsActivity.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="RecyclerViewAdapter.cs" />
+    <Compile Include="RecyclerViewAdapterAnnouncements.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
@@ -234,6 +243,24 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AnnouncementsLecturer.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\Card_row_announcements.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AnnouncementsF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Results.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ResultF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SendMessageAnnouncementF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SendAnnouncement.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -459,9 +486,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_timetablemenu.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\layout\Fragments\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\TrollFace.png" />
   </ItemGroup>
