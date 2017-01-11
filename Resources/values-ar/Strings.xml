@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--dawe strings-->
+  <string name="profile">الصفحة الشخصية</string>
+  <string name="messages">الرسائل</string>
+  <string name="announcements">الاعلانات</string>
+  <string name="schedule">الجدول الدراسي</string>
+  <string name="timetable">الجدول الزمني</string>
+  <string name="logout">تسجيل الخروج</string>
+  <string name="login">تسجيل الدخول</string>
+  <string name="settings">الإعدادات</string>
+  <string name="username">اسم المستخدم</string>
+
+  <!-- profile strings-->
+  <string name="email_profile">Email address</string>
+  <string name="phone_profile">رقم الهاتف</string>
+  <string name="department_profile">القسم</string>
+  <string name="gpa_profile">المعدل العام</string>
+  <string name="notices_profile">عدد الانذارات</string>
+  <string name="units_profile">عدد الوحدات المنجزة</string>
+  <string name="status_profile">الحالة</string>
+  <string name="back_profile">عودة</string>
+  
+  <!--login strings-->
+  <string name="welcome_login">مرحباً بك في نظام المساعد</string>
+  <string name="hint_login">يمكنك تسجيل الدخول</string>
+  <string name="username_login">رقم القيد</string>
+  <string name="password_login">كلمة السر</string>
+  
+  
+
+</resources>

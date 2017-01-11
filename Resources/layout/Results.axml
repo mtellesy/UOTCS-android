@@ -22,8 +22,8 @@
         android:minWidth="25px"
         android:minHeight="25px"
             >
-      <android.support.v7.widget.CardView
-            android:id="@+id/UsernameFragmentContainer"
+       <android.support.v7.widget.CardView
+            android:id="@+id/ResultFragmentContainerResult"
             android:layout_width="match_parent"
             android:layout_height="175dp"       
             android:layout_margin="@dimen/card_margin"
@@ -32,7 +32,7 @@
             />
 
       <android.support.v7.widget.CardView
-          android:id="@+id/UserInformationFragmentContainer"
+          android:id="@+id/UserInformationFragmentContainerResult"
             android:minWidth="25px"
             android:minHeight="25px"            
             android:layout_margin="@dimen/card_margin"    
@@ -41,13 +41,6 @@
             app:contentPadding="@dimen/card_padding"
             app:cardCornerRadius="@dimen/card_corner_raduis"
              />
-      <Button
-          android:text="STATUS"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"          
-          android:gravity="center"
-          android:id="@+id/status_btn"
-          android:layout_gravity="center" />
     </LinearLayout>
   </ScrollView>
     <android.support.design.widget.NavigationView

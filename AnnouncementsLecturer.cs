@@ -1,40 +1,38 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using SupportActionBar = Android.Support.V7.App.ActionBar;
-
-using Android.Support.V4.Widget;
-using SupportFragment = Android.Support.V4.App.Fragment;
-using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
-
-using Android.Support.V7.App;
+using Android.Graphics;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
 using Android.Support.V4.View;
 using UOTCS_android.Fragments;
-using Android.Graphics;
-using Android.Support.V4.App;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Messages",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Messages : MainActivity
+    [Activity(Label = "AnnouncementsLecturer")]
+    public class AnnouncementsLecturer : MainActivity
     {
-        SupportActionBar ab;
+        Android.Support.V7.App.ActionBar ab;
         Color tabsBackground;
         FloatingActionButton fab;
+        DrawerLayout mdrawerLayout;
+
         protected override void OnCreate(Bundle bundle)
         {
-            DrawerLayout mdrawerLayout;
-       
+
+
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.Messages);
+            SetContentView(Resource.Layout.AnnouncementsLecturer);
 
 
 
@@ -46,17 +44,18 @@ namespace UOTCS_android
 
 
 
-        private  void findViews()
+        private void findViews()
         {
             //   base.findViews();
-            SupportToolbar toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBarWT);
+            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBarWT);
             SetSupportActionBar(toolBar);
-
-             ab = SupportActionBar;
+            
+            
+            ab = SupportActionBar;
             //
 
             ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
-  //          SupportActionBar.SetHomeButtonEnabled(true);
+            //          SupportActionBar.SetHomeButtonEnabled(true);
 
             ab.SetDisplayHomeAsUpEnabled(true);
 
@@ -78,8 +77,8 @@ namespace UOTCS_android
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
 
             SetUpViewPager(viewPager);
-           
-           
+
+
             Values.Use_Color = new Color();
             tabsBackground = Values.Use_Color;
             tabs.SetBackgroundColor(tabsBackground);
@@ -122,8 +121,8 @@ namespace UOTCS_android
         private void SetUpViewPager(ViewPager viewPager)
         {
             TabAdapter adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(new RecievedMessagesFragment(), "Rescieved");
-            adapter.AddFragment(new SentMessagesFragment(), "Sent");
+            adapter.AddFragment(new RecievedAnnouncementsFragment(), "Rescieved");
+            adapter.AddFragment(new SentAnnouncementsFragment(), "Sent");
 
             viewPager.Adapter = adapter;
         }
@@ -137,24 +136,24 @@ namespace UOTCS_android
 
         private void Fab_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(SendMessage));
+            Intent intent = new Intent(this, typeof(SendAnnouncement));
             this.StartActivity(intent);
         }
 
-        private  void SetUpDrawerContent(NavigationView navigationView)
+        private void SetUpDrawerContent(NavigationView navigationView)
         {
             base.SetUpDrawerContent(navigationView);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            bool x =base.OnOptionsItemSelected(item);
-          
+            bool x = base.OnOptionsItemSelected(item);
+
 
             return x;
         }
 
-        public  int getCurrentActvity()
+        public int getCurrentActvity()
         {
             return Resource.Id.nav_messages;
         }
