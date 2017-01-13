@@ -7,13 +7,10 @@
     android:fitsSystemWindows="true">
     <include
         layout="@layout/includeListViewPagerWithTabs" />
-  <FrameLayout
-    android:id="@+id/Fragment_messageContainer"
-    android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-    >
-    
-  </FrameLayout>
+    <FrameLayout
+        android:id="@+id/Fragment_messageContainer"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_viewWT"
         android:layout_height="match_parent"
@@ -21,6 +18,5 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:itemTextColor="?textColor"
         app:menu="@menu/drawer_view" />
 </android.support.v4.widget.DrawerLayout>

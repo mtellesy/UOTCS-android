@@ -13,23 +13,36 @@ using Android.Support.Design.Widget;
 using Android.Support.V7;
 using Android.Support.V4.App;
 using UOTCS_android.Fragments;
+using Android.Support.V4.Widget;
+using Android.Support.V7.App;
+
 namespace UOTCS_android
 {
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
-    public class SendMessage : MainActivity
+    public class SendMessage : AppCompatActivity
     {
+        private Button status;
+        private Android.Support.V7.Widget.Toolbar toolBar;
+        private Android.Support.V7.App.ActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
         SendMessageAnnouncementFragment sendMessage;
         internal bool fabShouldBeShown;
         FloatingActionButton fab;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            
+
             base.OnCreate(savedInstanceState);
 
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
 
             findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
+
+            initiateFragments();
             handleEvents();
         }
 
@@ -37,93 +50,80 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
-            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.SetVisibility(ViewStates.Visible);
+            toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            methodWhereFabIsHidden();
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             sendMessage = new SendMessageAnnouncementFragment("Message");
+
+
+        }
+
+        private void initiateFragments()
+        {
 
             var trans = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
             trans.Commit();
         }
 
-        internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();
 
-        private class OnVisibilityChangedListenerAnonymousInnerClass : FloatingActionButton.OnVisibilityChangedListener
+        private void setUpActionBar(Android.Support.V7.App.ActionBar actionBar)
         {
-            internal bool fabShouldBeShown;
-            public OnVisibilityChangedListenerAnonymousInnerClass()
+            actionBar.SetHomeButtonEnabled(true);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            navigationView.ItemIconTintList = null;
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
             {
-            }
-
-            public override void OnShown(FloatingActionButton fab)
-            {
-                base.OnShown(fab);
-                if (!fabShouldBeShown)
-                {
-                    fab.Hide();
-                }
-            }
-            public override void OnHidden(FloatingActionButton fab)
-            {
-                base.OnHidden(fab);
-                if (fabShouldBeShown)
-                {
-                    fab.Show();
-                }
+                SetUpDrawerContent(navigationView);
             }
         }
-        public  void methodWhereFabIsHidden()
+        private void SetUpDrawerContent(NavigationView navigationView)
         {
-            fabShouldBeShown = false;
-            fab.Hide(fabListener);
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
         }
-        public  void methodWhereFabIsShown()
-        {
-            fabShouldBeShown = true;
-            fab.Show(fabListener);
-        }
-    
-            
-
-
 
         private void handleEvents()
         {
-
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
         }
-
-        private void SetUpDrawerContent(NavigationView navigationView)
+        public int getCurrentActvity()
         {
-            base.SetUpDrawerContent(navigationView);
+            return Resource.Id.nav_messages;
         }
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            base.OnOptionsItemSelected(item);
-          if(item.ItemId == Android.Resource.Id.Home)
-           {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
                 NavUtils.NavigateUpFromSameTask(this);
                 return true;
             }
-
             return base.OnOptionsItemSelected(item);
 
         }
-
-        public int getCurrentActvity()
+        public override void OnBackPressed()
         {
-            return Resource.Id.nav_announcements;
+            MoveTaskToBack(true);
         }
 
 
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            if (e.MenuItem.ItemId != getCurrentActvity())
+            {
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
+            drawerLayout.CloseDrawers();
 
+        }
     }
 }
+
+
 

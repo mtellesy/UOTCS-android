@@ -14,30 +14,36 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V4.View;
 using UOTCS_android.Fragments;
+using Android.Support.V7.App;
+using Android.Support.V4.App;
 
 namespace UOTCS_android
 {
     [Activity(Label = "AnnouncementsLecturer")]
-    public class AnnouncementsLecturer : MainActivity
+    public class AnnouncementsLecturer : AppCompatActivity
     {
-        Android.Support.V7.App.ActionBar ab;
-        Color tabsBackground;
-        FloatingActionButton fab;
-        DrawerLayout mdrawerLayout;
+        private SendMessageAnnouncementFragment sendAnnouncement;
+        private FloatingActionButton fab;
+        private Android.Support.V7.Widget.Toolbar toolBar;
+        private Android.Support.V7.App.ActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private TabLayout tabs;
+        private ViewPager viewPager;
+        private TabAdapter adapter;
+        private RecievedAnnouncementsFragment recievedAnnouncement;
+        private SentAnnouncementsFragment sentAnnouncement;
 
         protected override void OnCreate(Bundle bundle)
         {
-
-
             base.OnCreate(bundle);
-            // Set our view from the "main" layout resource
             Values.changeTheme(this);
             SetContentView(Resource.Layout.AnnouncementsLecturer);
-
-
-
-
             findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
+            SetUpViewPager(viewPager);
             handleEvents();
 
         }
@@ -46,118 +52,102 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            //   base.findViews();
-            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBarWT);
+            toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBarWT);
             SetSupportActionBar(toolBar);
-            
-            
-            ab = SupportActionBar;
-            //
-
-            ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
-            //          SupportActionBar.SetHomeButtonEnabled(true);
-
-            ab.SetDisplayHomeAsUpEnabled(true);
-
-
-
-            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
-
-            NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
-            navigationView.ItemIconTintList = null;
-
-            if (navigationView != null)
-            {
-                SetUpDrawerContent(navigationView);
-            }
-
-            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
-
-            TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
-            ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
-
-            SetUpViewPager(viewPager);
-
-
-            Values.Use_Color = new Color();
-            tabsBackground = Values.Use_Color;
-            tabs.SetBackgroundColor(tabsBackground);
-            tabs.SetupWithViewPager(viewPager);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
+            sendAnnouncement = new SendMessageAnnouncementFragment("Announcement");
+            tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
+            viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
+            adapter = new TabAdapter(SupportFragmentManager);
+            recievedAnnouncement = new RecievedAnnouncementsFragment();
+            sentAnnouncement = new SentAnnouncementsFragment();
             fab = FindViewById<FloatingActionButton>(Resource.Id.fabWT);
             fab.Show();
         }
 
-        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
-        {
-            if (e.MenuItem.ItemId != getCurrentActvity())
-                SwitchActivties(e.MenuItem.ItemId);
 
-            mDrawerLayout.CloseDrawers();
+
+        private void handleEvents()
+        {
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            fab.Click += Fab_Click;
         }
 
-        private void SwitchActivties(int itemId)
+        private void SetUpDrawerContent(NavigationView navigationView)
         {
-            switch (itemId)
-            {
-                case Resource.Id.nav_announcements:
-                    Intent intent = new Intent(this, typeof(Announcements));
-                    this.StartActivity(intent); break;
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
+        }
 
-                case Resource.Id.nav_messages:
-                    Intent intent2 = new Intent(this, typeof(Messages));
-                    this.StartActivity(intent2); break;
-                case Resource.Id.nav_myCourses:
-                    Intent intent3 = new Intent(this, typeof(MyCourses));
-                    this.StartActivity(intent3); break;
-                case Resource.Id.nav_schedule:
-                    Intent intent4 = new Intent(this, typeof(Schedule));
-                    this.StartActivity(intent4); break;
-                case Resource.Id.nav_timetable:
-                    Intent intent5 = new Intent(this, typeof(Timetable));
-                    this.StartActivity(intent5); break;
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    return true;
+
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
+        public int getCurrentActvity()
+        {
+            return Resource.Id.nav_announcements;
+        }
+
+
+        private void setUpActionBar(Android.Support.V7.App.ActionBar actionBar)
+        {
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            navigationView.ItemIconTintList = null;
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
             }
         }
 
         private void SetUpViewPager(ViewPager viewPager)
         {
-            TabAdapter adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(new RecievedAnnouncementsFragment(), "Rescieved");
-            adapter.AddFragment(new SentAnnouncementsFragment(), "Sent");
+
+            adapter.AddFragment(recievedAnnouncement, "Rescieved");
+            adapter.AddFragment(sentAnnouncement, "Sent");
 
             viewPager.Adapter = adapter;
         }
 
-        private void handleEvents()
+        public override void OnBackPressed()
         {
-            fab.Click += Fab_Click;
-
-
+            MoveTaskToBack(true);
         }
 
+
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            if (e.MenuItem.ItemId != getCurrentActvity())
+            {
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
+            drawerLayout.CloseDrawers();
+
+        }
         private void Fab_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(SendAnnouncement));
             this.StartActivity(intent);
         }
 
-        private void SetUpDrawerContent(NavigationView navigationView)
-        {
-            base.SetUpDrawerContent(navigationView);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            bool x = base.OnOptionsItemSelected(item);
-
-
-            return x;
-        }
-
-        public int getCurrentActvity()
-        {
-            return Resource.Id.nav_messages;
-        }
-
-
     }
 }
+
+
+
+
