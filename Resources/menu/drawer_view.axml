@@ -6,7 +6,7 @@
          >
     <item
         android:id="@+id/nav_announcements"
-        android:icon="@drawable/ic_announcementmenu"
+        android:icon="@drawable/ic_announcement"
         android:title="Announcements"
         />
     <item
@@ -16,35 +16,35 @@
         />
     <item
         android:id="@+id/nav_myCourses"
-        android:icon="@drawable/ic_coursesmenu"
+        android:icon="@drawable/ic_mycourses"
         android:title="My Courses"
         />
     <item
         android:id="@+id/nav_schedule"
-        android:icon="@drawable/ic_schedulemenu"
+        android:icon="@drawable/ic_schedule"
         android:title="Schedule"
         />
     <item
         android:id="@+id/nav_timetable"
-        android:icon="@drawable/ic_timetablemenu"
+        android:icon="@drawable/ic_timetable"
         android:title="Timetable"
         />
 
     <item
       android:id="@+id/nav_enrollment"
-      android:icon="@drawable/ic_announcementmenu"
+      android:icon="@drawable/ic_enroll"
       android:title="Enrollment"
         />
 
     <item
      android:id="@+id/nav_major"
-     android:icon="@drawable/ic_announcementmenu"
+     android:icon="@drawable/ic_major"
      android:title="Major"
         />
     
     <item
      android:id="@+id/nav_result"
-     android:icon="@drawable/ic_announcementmenu"
+     android:icon="@drawable/ic_result"
      android:title="Result"
         />
 
@@ -53,11 +53,11 @@
   <item >
     <menu>
       <item
-          android:icon="@drawable/ic_settings_menu"
+          android:icon="@drawable/ic_settings"
           android:title="Settings"
           />
       <item
-          android:icon="@drawable/ic_logout_menu"
+          android:icon="@drawable/ic_logout"
           android:title="Logout"
           />
     </menu>
