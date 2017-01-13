@@ -16,6 +16,7 @@ using Android.Support.V4.View;
 using UOTCS_android.Fragments;
 using Android.Support.V7.App;
 using Android.Support.V4.App;
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
@@ -33,6 +34,8 @@ namespace UOTCS_android
         private TabAdapter adapter;
         private RecievedAnnouncementsFragment recievedAnnouncement;
         private SentAnnouncementsFragment sentAnnouncement;
+        private View view;
+        private CircleImageView profileImage;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -65,6 +68,9 @@ namespace UOTCS_android
             sentAnnouncement = new SentAnnouncementsFragment();
             fab = FindViewById<FloatingActionButton>(Resource.Id.fabWT);
             fab.Show();
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+
         }
 
 
@@ -73,6 +79,8 @@ namespace UOTCS_android
         {
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             fab.Click += Fab_Click;
+            profileImage.Click += ProfileImage_Click;
+
         }
 
         private void SetUpDrawerContent(NavigationView navigationView)
@@ -107,12 +115,12 @@ namespace UOTCS_android
         }
         private void setUpNavigationView(NavigationView navigationView)
         {
-            navigationView.ItemIconTintList = null;
             Values.changeNavigationItems(navigationView, this);
             if (navigationView != null)
             {
                 SetUpDrawerContent(navigationView);
             }
+            navigationView.SetCheckedItem(Resource.Id.nav_announcements);
         }
 
         private void SetUpViewPager(ViewPager viewPager)
@@ -132,17 +140,25 @@ namespace UOTCS_android
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
+            drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId);
             }
-            drawerLayout.CloseDrawers();
+    
 
         }
         private void Fab_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(SendAnnouncement));
             this.StartActivity(intent);
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
         }
 
     }

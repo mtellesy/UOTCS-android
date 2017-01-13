@@ -163,13 +163,13 @@ namespace UOTCS_android
             View hView = nav_view.GetHeaderView(0);
             ImageView navHeaderBackgrpound = (ImageView)hView.FindViewById(Resource.Id.nav_header_image);
             ImageView navProfile = (ImageView)hView.FindViewById(Resource.Id.nav_profile);
-            Values.Use_Color_accent = new Color();
+            Values.Use_Color = new Color();
 
             if (Values.Use_typeID > 1)
             {
                 nav_view.InflateMenu(Resource.Menu.drawer_view_lecturer);
                 navHeaderBackgrpound.SetImageDrawable(myActivity.Resources.GetDrawable(Resource.Drawable.nav_header_lecturer));
-                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color_accent)
+                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color)
                 .EndConfig().BuildRound("x", new Color(250, 250, 250));
                 navProfile.SetImageDrawable(drawable);
             }
@@ -177,7 +177,7 @@ namespace UOTCS_android
             {
                 nav_view.InflateMenu(Resource.Menu.drawer_view);
                 navHeaderBackgrpound.SetImageDrawable(myActivity.Resources.GetDrawable(Resource.Drawable.nav_header_student));
-                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(40).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color_accent)
+                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(40).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color)
                .EndConfig().BuildRound("x", new Color(250, 250, 250));
                 navProfile.SetImageDrawable(drawable);
             }

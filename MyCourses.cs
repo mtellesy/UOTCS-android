@@ -15,6 +15,7 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
@@ -25,6 +26,9 @@ namespace UOTCS_android
         private SupportActionBar actionbar;
         private DrawerLayout drawerLayout;
         private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -50,6 +54,8 @@ namespace UOTCS_android
             actionbar = SupportActionBar;
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
         }
         private void initiateFragments()
@@ -65,12 +71,13 @@ namespace UOTCS_android
         }
         private void setUpNavigationView(NavigationView navigationView)
         {
-            navigationView.ItemIconTintList = null;
             Values.changeNavigationItems(navigationView, this);
             if (navigationView != null)
             {
                 SetUpDrawerContent(navigationView);
             }
+            navigationView.SetCheckedItem(Resource.Id.nav_myCourses);
+
         }
         private void SetUpDrawerContent(NavigationView navigationView)
         {
@@ -81,6 +88,8 @@ namespace UOTCS_android
         {
 
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
+
         }
         public int getCurrentActvity()
         {
@@ -106,9 +115,17 @@ namespace UOTCS_android
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
+            drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
             drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
         }
 
     }

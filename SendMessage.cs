@@ -15,6 +15,7 @@ using Android.Support.V4.App;
 using UOTCS_android.Fragments;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
@@ -29,6 +30,9 @@ namespace UOTCS_android
         SendMessageAnnouncementFragment sendMessage;
         internal bool fabShouldBeShown;
         FloatingActionButton fab;
+        private View view;
+        private CircleImageView profileImage;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -57,6 +61,8 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             sendMessage = new SendMessageAnnouncementFragment("Message");
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
 
         }
@@ -77,12 +83,12 @@ namespace UOTCS_android
         }
         private void setUpNavigationView(NavigationView navigationView)
         {
-            navigationView.ItemIconTintList = null;
             Values.changeNavigationItems(navigationView, this);
             if (navigationView != null)
             {
                 SetUpDrawerContent(navigationView);
             }
+            navigationView.SetCheckedItem(Resource.Id.nav_messages);
         }
         private void SetUpDrawerContent(NavigationView navigationView)
         {
@@ -92,6 +98,8 @@ namespace UOTCS_android
         private void handleEvents()
         {
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
+
         }
         public int getCurrentActvity()
         {
@@ -115,12 +123,19 @@ namespace UOTCS_android
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
+            drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId);
             }
-            drawerLayout.CloseDrawers();
 
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
         }
     }
 }
