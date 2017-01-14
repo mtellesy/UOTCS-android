@@ -113,10 +113,19 @@ namespace UOTCS_android
                 Intent intent = new Intent(this, typeof(Profile));
                 if (LoginStatus.status)
                 {
-                    StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
+                    try
+                    {
+         //               StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
-                    string x = CScore.BCL.User.use_type;
-                  await this.buildDB(x);
+                        string x = CScore.BCL.User.use_type;
+
+
+                        await this.buildDB(x);
+                    }catch(Exception ex)
+                    {
+
+                    }
+                    
                     this.StartActivity(intent);
 
 

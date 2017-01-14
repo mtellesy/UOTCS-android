@@ -22,14 +22,10 @@ namespace UOTCS_android
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
     public class SendMessage : AppCompatActivity
     {
-        private Button status;
         private Android.Support.V7.Widget.Toolbar toolBar;
         private Android.Support.V7.App.ActionBar actionbar;
         private DrawerLayout drawerLayout;
         private NavigationView navigationView;
-        SendMessageAnnouncementFragment sendMessage;
-        internal bool fabShouldBeShown;
-        FloatingActionButton fab;
         private View view;
         private CircleImageView profileImage;
 
@@ -41,16 +37,184 @@ namespace UOTCS_android
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
 
-            findViews();
+    /*        findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
 
-            initiateFragments();
-            handleEvents();
+            handleEvents();*/
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
 
         private void findViews()
         {
@@ -60,21 +224,12 @@ namespace UOTCS_android
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
-            sendMessage = new SendMessageAnnouncementFragment("Message");
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
 
         }
-
-        private void initiateFragments()
-        {
-
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
-            trans.Commit();
-        }
-
+        
 
         private void setUpActionBar(Android.Support.V7.App.ActionBar actionBar)
         {
@@ -137,6 +292,7 @@ namespace UOTCS_android
             this.StartActivity(intent);
             Finish();
         }
+        */
     }
 }
 

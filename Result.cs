@@ -76,7 +76,7 @@ namespace UOTCS_android
 
         private void setUpActionBar(Android.Support.V7.App.ActionBar actionBar)
         {
-            actionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
             actionBar.SetDisplayHomeAsUpEnabled(true);
         }
         private void setUpNavigationView(NavigationView navigationView)

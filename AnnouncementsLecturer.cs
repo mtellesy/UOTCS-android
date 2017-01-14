@@ -23,7 +23,6 @@ namespace UOTCS_android
     [Activity(Label = "AnnouncementsLecturer")]
     public class AnnouncementsLecturer : AppCompatActivity
     {
-        private SendMessageAnnouncementFragment sendAnnouncement;
         private FloatingActionButton fab;
         private Android.Support.V7.Widget.Toolbar toolBar;
         private Android.Support.V7.App.ActionBar actionbar;
@@ -60,7 +59,6 @@ namespace UOTCS_android
             actionbar = SupportActionBar;
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
-            sendAnnouncement = new SendMessageAnnouncementFragment("Announcement");
             tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
             viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
             adapter = new TabAdapter(SupportFragmentManager);
@@ -110,7 +108,7 @@ namespace UOTCS_android
 
         private void setUpActionBar(Android.Support.V7.App.ActionBar actionBar)
         {
-            actionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
             actionBar.SetDisplayHomeAsUpEnabled(true);
         }
         private void setUpNavigationView(NavigationView navigationView)
