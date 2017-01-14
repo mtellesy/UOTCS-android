@@ -5,20 +5,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
-    <include
-        layout="@layout/includeListViewpager" />
-  <FrameLayout
-    android:id="@+id/send_message_fragment_container"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-    ></FrameLayout>
+  <include
+      layout="@layout/includeListViewpager" >
+<!--hello hottie  :D-->
+  </include>
+    
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
-        android:layout_width="225dp"
+        android:layout_width="@dimen/nav_width"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:itemTextColor="?textColor"
         app:menu="@menu/drawer_view" />
 </android.support.v4.widget.DrawerLayout>

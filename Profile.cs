@@ -19,63 +19,40 @@ using Android.Support.V4.View;
 using UOTCS_android.Fragments;
 using Android.Graphics;
 using Fragment = Android.Support.V4.App.Fragment;
+using Refractored.Controls;
+
 namespace UOTCS_android
 {
-    [Activity(Label = "Profile",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Profile : MainActivity
+    [Activity(Label = "Profile", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    public class Profile : AppCompatActivity
     {
         //       private Button view;
         //     private Button hide;
-        public Fragment mCurrentFragment;
+        private Fragment mCurrentFragment;
         private Username username;
-        public UserInformationFragment userInformation;
-        public UserMoreInfomationFragment userMoreInformation;
-        Button status;
+        private UserInformationFragment userInformation;
+        private UserMoreInfomationFragment userMoreInformation;
+        private Button status;
+        private SupportToolbar toolBar;
+        private SupportActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
+
         protected override void OnCreate(Bundle bundle)
         {
-            DrawerLayout mdrawerLayout;
-
-
-     //       var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
-       //     task.Wait();
-
-
-            // start the service for notifications
-      //      Intent intent = new Intent(this, typeof(Services.StatusChecker));
-        //    this.StartService(intent);
-
-
-            // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
-            //  task.Wait();
-
             base.OnCreate(bundle);
-
-
-            // Set our view from the "main" layout resource
-            if (Values.Use_typeID > 1)
-            {
-                SetTheme(Resource.Style.Theme_Lecturer);
-            }
-            else
-            {
-                //start the enrollment status checker
-            }
-
+            //start the enrollment status checker           
+            Values.changeTheme(this);
             SetContentView(Resource.Layout.Profile);
 
-
-
-        /*    if (Values.Use_typeID > 1)
-            {
-                butt.SetBackgroundColor(Color.ParseColor("#1abc9c"));
-
-            }
-            else
-            {
-                butt.SetBackgroundColor(Color.ParseColor("#ef717a"));
-
-            }*/
             findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
+
+            initiateFragments();
             handleEvents();
         }
 
@@ -83,26 +60,79 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            base.findViews();
 
-
-            // initiating fragments
             username = new Username();
-             userInformation = new UserInformationFragment();
+            userInformation = new UserInformationFragment();
+            userMoreInformation = new UserMoreInfomationFragment();
+            status = FindViewById<Button>(Resource.Id.status_btn);
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
-             userMoreInformation = new UserMoreInfomationFragment();
-            var trans =SupportFragmentManager.BeginTransaction();
-         //   var trans2 = SupportFragmentManager.BeginTransaction();
+        }
+        private void initiateFragments()
+        {
+
+            var trans = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
             trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
             trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information");
             trans.Hide(userMoreInformation);
             mCurrentFragment = userInformation;
-          //ce.Animation.FadeIn, Resource.Animation.FadeOut,Resource.Animation.FadeIn, Resource.Animation.FadeOut);
             trans.Commit();
+        }
 
-        status = FindViewById<Button>(Resource.Id.status_btn);
-           status.Click += status_btn_Click;
+        private void setUpActionBar(SupportActionBar actionBar)
+        {
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            navigationView.ItemIconTintList = null;
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
+            }
+        }
+        private void SetUpDrawerContent(NavigationView navigationView)
+        {
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
+        }
+
+        private void handleEvents()
+        {
+            status.Click += status_btn_Click;
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
+
+        }
+        public int getCurrentActvity()
+        {
+            return Resource.Id.nav_profile;
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    return true;
+
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+        public override void OnBackPressed()
+        {
+            MoveTaskToBack(true);
         }
 
         private void status_btn_Click(object sender, EventArgs e)
@@ -117,7 +147,7 @@ namespace UOTCS_android
                 trans.Commit();
                 status.Text = "BACK";
             }
-            else if(mCurrentFragment == userMoreInformation)
+            else if (mCurrentFragment == userMoreInformation)
             {
                 trans.Hide(userMoreInformation);
                 trans.Show(userInformation);
@@ -127,57 +157,17 @@ namespace UOTCS_android
 
             }
         }
-
-        private void handleEvents()
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-
-        }
-
-        private void hide_Click(object sender, EventArgs e)
-        {
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Hide(userMoreInformation);
-            trans.Show(userInformation);
-            trans.Commit();
-        }
-
-        private void view_Click(object sender, EventArgs e)
-        {
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Hide(userInformation);
-            trans.Show(userMoreInformation);
-            trans.Commit();
-        }
-
-
-        private  void SetUpDrawerContent(NavigationView navigationView)
-        {
-            base.SetUpDrawerContent(navigationView);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            bool x =base.OnOptionsItemSelected(item);
-            return x;
-        }
-
-        public int getCurrentActvity()
-        {
-            return Resource.Id.nav_announcements;
-        }
-
-        public override void OnBackPressed()
-        {
-            MoveTaskToBack(true);
-        }
-
-
-        public  void switchFragments()
-        {
-            if(mCurrentFragment== userInformation)
+            drawerLayout.CloseDrawers();
+            if (e.MenuItem.ItemId != getCurrentActvity())
             {
-
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
             }
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
         }
     }
 }
