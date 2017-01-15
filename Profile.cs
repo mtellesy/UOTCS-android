@@ -42,6 +42,21 @@ namespace UOTCS_android
 
         protected override void OnCreate(Bundle bundle)
         {
+
+            DrawerLayout mdrawerLayout;
+
+
+            var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            task.Wait();
+
+
+            // start the service for notifications
+            //      Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            //    this.StartService(intent);
+
+
+            // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            //  task.Wait();
             base.OnCreate(bundle);
             //start the enrollment status checker           
             Values.changeTheme(this);

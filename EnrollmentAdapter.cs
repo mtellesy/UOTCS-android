@@ -67,7 +67,7 @@ namespace UOTCS_android
                 await CScore.BCL.Course.getStudentCourses();
             var coursesWithSchedule = await CScore.BCL.Course.getUserCoursesSchedule();
 
-            if (courses.status.status)
+            if (courses.status.status && courses.statusObject !=null)
             {
                 foreach(CScore.BCL.Course c in courses.statusObject)
                 {
@@ -605,7 +605,7 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(_activity);
-            alert.SetTitle("Login Status");
+            alert.SetTitle(CScore.FixdStrings.Enrollment.CourseStatus());
             alert.SetMessage(message);
             //alert.SetPositiveButton("OK", (senderAlert, args) => {
             //    Toast.MakeText(this, "", ToastLength.Short).Show();

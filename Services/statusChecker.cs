@@ -88,7 +88,7 @@ namespace Services
             {
                 if (!UOTCS_android.NotificationsRepo.isMajorNotified)
                 {
-                    UOTCS_android.NotificationsRepo.enrollmentNotification(this);
+                    UOTCS_android.NotificationsRepo.majorNotification(this);
                     UOTCS_android.NotificationsRepo.isMajorNotified = true;
                 }
 

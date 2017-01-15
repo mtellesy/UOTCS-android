@@ -32,19 +32,19 @@
 
     <item
       android:id="@+id/nav_enrollment"
-      android:icon="@drawable/ic_enroll"
+      android:icon="@drawable/ic_announcement"
       android:title="Enrollment"
         />
 
     <item
      android:id="@+id/nav_major"
-     android:icon="@drawable/ic_major"
+     android:icon="@drawable/ic_announcement"
      android:title="Major"
         />
     
     <item
      android:id="@+id/nav_result"
-     android:icon="@drawable/ic_result"
+     android:icon="@drawable/ic_announcement"
      android:title="Result"
         />
 
@@ -53,10 +53,12 @@
   <item >
     <menu>
       <item
+        android:id="@+id/nav_settings"
           android:icon="@drawable/ic_settings"
           android:title="Settings"
           />
       <item
+          android:id="@+id/nav_logout"
           android:icon="@drawable/ic_logout"
           android:title="Logout"
           />

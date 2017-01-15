@@ -32,14 +32,18 @@ namespace UOTCS_android
 
         public static void enrollmentNotification(Context x)
         {
-            
+            Intent intent = new Intent(x, typeof(Enrollment));
+            PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
+
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
-            .SetContentTitle("Enrollment Status")
+            .SetContentTitle(CScore.FixdStrings.Enrollment.EnrollmentStatusNotification())
             .SetSmallIcon(Resource.Drawable.Icon)
-            .SetContentText("Enrollment is Available");
-
+            .SetContentText(CScore.FixdStrings.Enrollment.EnrollmentIsAvailable())
+            .SetContentIntent(contentIntent);
+           
+            
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 
             notificationManager.Notify(EnrollmentStatusNotificationID, builder.Build());
@@ -48,13 +52,16 @@ namespace UOTCS_android
 
         public static void majorNotification(Context x)
         {
-
+            Intent intent = new Intent(x, typeof(Major));
+            
+            PendingIntent contentIntent = PendingIntent.GetActivity(x,0,intent, PendingIntentFlags.UpdateCurrent);
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
-            .SetContentTitle("Major Status")
+            .SetContentTitle(CScore.FixdStrings.Major.MajorStatus())
             .SetSmallIcon(Resource.Drawable.Icon)
-            .SetContentText("Major is Available");
+            .SetContentText(CScore.FixdStrings.Major.MajormentIsAvailable())
+            .SetContentIntent(contentIntent);
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 

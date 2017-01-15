@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -134,6 +134,7 @@
     <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
     <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="MajorAdapter.cs" />
     <Compile Include="Major.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="SendMessage.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Enrollment.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TabAdapter.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
@@ -228,6 +230,9 @@
     <AndroidResource Include="Resources\layout\MajorItemView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Settings.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\sendMessage.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -264,9 +269,13 @@
     <AndroidResource Include="Resources\layout\SendAnnouncement.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml">
+    <AndroidResource Include="Resources\layout\dropDownList_style.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\sendToolBar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -308,8 +317,21 @@
     <AndroidResource Include="Resources\drawable\ic_done.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_announcement.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_messages.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_messages.png" />
+  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\uni_logo.png" />
   </ItemGroup>
@@ -609,7 +631,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
      Other similar extension points exist, see Microsoft.Common.targets.
 		<Target Name="BeforeBuild">
 		</Target>

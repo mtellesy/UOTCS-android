@@ -83,18 +83,19 @@ namespace UOTCS_android.Fragments
 
         public void setCourseDayAndTime(CScore.BCL.Course courseWithSchedule)
         {
-           String courseID = courseWithSchedule.Cou_id;
+            String courseID = courseWithSchedule.Cou_id;
             foreach(CScore.BCL.Schedule sch in courseWithSchedule.Schedule)
             {
                 int dayID = sch.DayID;
                 int timeID = sch.ClassTimeID;
+                courseID += String.Format("\n({0})\n", sch.Gro_NameEN);
                 switch (dayID)
                 {
  // ---------------------------> saturday <--------------------------------
                     case 1: // saturday
                         switch (timeID)
                         {
-                            case 1: 
+                            case 1:
 
                                 SA1.Text += courseID;
 
@@ -140,7 +141,7 @@ namespace UOTCS_android.Fragments
                         {
                             case 1:
 
-                                SU1.Text = courseID;
+                                SU1.Text += courseID;
 
                                 break;
 
@@ -184,7 +185,7 @@ namespace UOTCS_android.Fragments
                         {
                             case 1:
 
-                                MO1.Text = courseID;
+                                MO1.Text += courseID;
 
                                 break;
 
@@ -228,7 +229,7 @@ namespace UOTCS_android.Fragments
                         {
                             case 1:
 
-                                TU1.Text = courseID;
+                                TU1.Text += courseID;
 
                                 break;
 
@@ -273,7 +274,7 @@ namespace UOTCS_android.Fragments
                         {
                             case 1:
 
-                                WE1.Text = courseID;
+                                WE1.Text += courseID;
 
                                 break;
 
@@ -319,7 +320,7 @@ namespace UOTCS_android.Fragments
                         {
                             case 1:
 
-                                TH1.Text = courseID;
+                                TH1.Text += courseID;
 
                                 break;
 
