@@ -206,13 +206,14 @@ namespace UOTCS_android
             new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
             alert.SetMessage(CScore.FixdStrings.Major.YouHaveBeenSuccessfullyMajored());
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 Intent intent = new Intent(this, typeof(Profile));
                 StartActivity(intent);
                 this.Finish();
             });
 
             Dialog x = alert.Create();
+            x.SetCancelable(false);
             x.Show();
         }
     }

@@ -112,7 +112,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="SAT"
                         android:gravity="center"
@@ -126,7 +126,8 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:layout_gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
                         android:id="@+id/SA2"
                         android:layout_width="80dp"
@@ -134,6 +135,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA3"
@@ -142,6 +144,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA4"
@@ -150,6 +153,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA5"
@@ -158,6 +162,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA6"
@@ -166,6 +171,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             <!--                        Sunday                        -->
@@ -173,12 +179,12 @@
                     android:id="@+id/tableRowSUN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"                    
+                    android:minHeight="@dimen/row_min_height"
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="SUN"
                         android:gravity="center"
@@ -192,6 +198,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SU2"
@@ -200,6 +207,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SU3"
@@ -208,6 +216,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SU4"
@@ -216,6 +225,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SU5"
@@ -224,6 +234,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SU6"
@@ -232,6 +243,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             <!--                        Monday                           -->
@@ -244,7 +256,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="MON"
                         android:gravity="center"
@@ -258,6 +270,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/MO2"
@@ -266,6 +279,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/MO3"
@@ -274,6 +288,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/MO4"
@@ -282,6 +297,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/MO5"
@@ -290,6 +306,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/MO6"
@@ -298,6 +315,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             <!--                        Tuesday                          -->
@@ -310,7 +328,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="TUE"
                         android:gravity="center"
@@ -324,6 +342,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU2"
@@ -332,6 +351,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU3"
@@ -340,6 +360,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU4"
@@ -348,6 +369,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU5"
@@ -356,6 +378,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU6"
@@ -364,6 +387,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             <!--                      Wednesday                    -->
@@ -376,7 +400,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="WED"
                         android:gravity="center"
@@ -390,6 +414,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE2"
@@ -398,6 +423,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE3"
@@ -406,6 +432,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE4"
@@ -414,6 +441,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE5"
@@ -422,6 +450,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE6"
@@ -430,6 +459,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             <!--                      Thursday                   -->
@@ -440,9 +470,9 @@
                     android:minHeight="@dimen/row_min_height"
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/THText"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text="THU"
                         android:gravity="center"
@@ -456,6 +486,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH2"
@@ -464,6 +495,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH3"
@@ -472,6 +504,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH4"
@@ -480,6 +513,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH5"
@@ -488,6 +522,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH6"
@@ -496,6 +531,7 @@
                         android:padding="2dp"
                         android:text=""
                         android:gravity="center"
+                        android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
             </TableLayout>
