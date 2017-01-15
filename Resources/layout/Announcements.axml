@@ -7,10 +7,11 @@
     android:fitsSystemWindows="true">
     <include
         layout="@layout/includeListViewpager" />
-  <FrameLayout
-    android:id="@+id/announcement_student_fragment_container"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent" />
+    <FrameLayout
+        android:id="@+id/announcement_student_fragment_container"
+        android:layout_marginTop="?attr/actionBarSize" 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
