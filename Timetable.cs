@@ -16,6 +16,9 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Refractored.Controls;
+using UOTCS_android.Fragments;
+using System.Collections.Generic;
+using CScore.BCL;
 
 namespace UOTCS_android
 {
@@ -29,7 +32,8 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private List<TimetableAndMidmarkAndroid> timetableList;
+        private TimetableAndMidmarkFragment timetableFrament;
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -42,7 +46,7 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-
+            bindData();
             initiateFragments();
             handleEvents();
         }
@@ -59,13 +63,43 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-
+            timetableList = new List<TimetableAndMidmarkAndroid>();
+            timetableFrament = new TimetableAndMidmarkFragment();
         }
         private void initiateFragments()
         {
+            var trans = SupportFragmentManager.BeginTransaction();
+            timetableFrament.data = timetableList;
+            trans.Add(Resource.Id.TimetableFragmentContainer, timetableFrament, "result");
+            trans.Commit();
 
         }
-
+        private void bindData()
+        {
+            Semester temp = new Semester();
+            temp.Year = 1969.ToString();
+            temp.Ter_start = "12/12/12";
+            temp.Ter_nameEN = "what a year";
+            temp.Ter_nameAR = "fuck off";
+            temp.Ter_lastStudyDate = "12/23/4555";
+            temp.Ter_id = 3;
+            temp.Ter_enrollment = "17/1/2098";
+            temp.Ter_end = "123456";
+            temp.Ter_dropCourses = "144/12/1223";
+            temp.Exam = new List<Exams>();         
+            for (int i = 0; i < 10; i++)
+            {
+                Exams x = new Exams();
+                x.StartDate = "date" + i;
+                x.ExamTypeEN = "type" + i;
+                x.ExamTypeAR = "date" + i;
+                x.EndDate = "type" + i;
+                x.Duration = 12;
+                temp.Exam.Add(x);
+            }
+            
+            timetableList = Values.timetableMaker(temp);
+        }
         private void setUpActionBar(SupportActionBar actionBar)
         {
             actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);

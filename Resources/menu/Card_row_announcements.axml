@@ -7,6 +7,10 @@
         android:layout_height="200dp"        
         app:contentPadding="@dimen/card_padding"
         app:cardCornerRadius="@dimen/card_corner_raduis"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+  android:layout_marginTop="5dp"
+android:layout_marginBottom="5dp"
         >
       <LinearLayout
         android:id="@+id/card_view"

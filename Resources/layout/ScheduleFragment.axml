@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center">
     <ScrollView
         android:id="@+id/layout"
@@ -14,22 +14,23 @@
         android:fillViewport="true">
         <HorizontalScrollView
             android:id="@+id/horizontalView"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="horizontal|vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_marginTop="5dip">
             <TableLayout
                 android:id="@+id/tabla_cuerpo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fff">
+                android:background="#fff"
+                android:weightSum="7">
             <!--Hours-->
                 <TableRow
                     android:id="@+id/tableRow1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/header"
-                    android:minHeight="@dimen/row_min_height">
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -107,8 +108,8 @@
                     android:id="@+id/tableRowSAT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -127,7 +128,7 @@
                         android:text=""
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA2"
                         android:layout_width="80dp"
@@ -180,7 +181,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -250,9 +252,9 @@
                 <TableRow
                     android:id="@+id/tableRowMON"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:layout_height="0dp"
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -324,7 +326,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -396,7 +399,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
@@ -468,7 +472,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:minHeight="@dimen/row_min_height"
-                    android:background="@drawable/borderSet">
+                    android:background="@drawable/borderSet"
+                    android:layout_weight="1">
                     <TextView
                         android:id="@+id/THText"
                         android:layout_width="80dp"

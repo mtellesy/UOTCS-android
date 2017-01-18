@@ -206,6 +206,31 @@ namespace UOTCS_android
                 drawerLayout.CloseDrawers();
             };
         }
+        public static List<TimetableAndMidmarkAndroid> timetableMaker(CScore.BCL.Semester semester)
+        {
+            List<TimetableAndMidmarkAndroid> result = new List<TimetableAndMidmarkAndroid>();
+            TimetableAndMidmarkAndroid temp;
+            temp = new TimetableAndMidmarkAndroid("Term name", semester.Ter_nameAR);
+            result.Add(temp);
+            temp = new TimetableAndMidmarkAndroid("Term name EN", semester.Ter_nameEN);
+            result.Add(temp);
+            temp = new TimetableAndMidmarkAndroid("year", semester.Year);
+            result.Add(temp);
+            temp = new TimetableAndMidmarkAndroid("Term start", semester.Ter_start);
+            result.Add(temp);
+            temp = new TimetableAndMidmarkAndroid("Term enrollment", semester.Ter_enrollment);
+            result.Add(temp);
+            temp = new TimetableAndMidmarkAndroid("Drop Courses", semester.Ter_dropCourses);
+            result.Add(temp); 
+            foreach(CScore.BCL.Exams x in semester.Exam)
+            {
+                temp = new TimetableAndMidmarkAndroid(x.ExamTypeEN, x.StartDate);
+                result.Add(temp);
+            }
+            temp = new TimetableAndMidmarkAndroid("last study date", semester.Ter_lastStudyDate);
+            result.Add(temp);
+            return result;
+        }
 
     }
 }

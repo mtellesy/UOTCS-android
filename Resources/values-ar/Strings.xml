@@ -20,13 +20,19 @@
   <string name="units_profile">عدد الوحدات المنجزة</string>
   <string name="status_profile">الحالة</string>
   <string name="back_profile">عودة</string>
-  
+
   <!--login strings-->
   <string name="welcome_login">مرحباً بك في نظام المساعد</string>
   <string name="hint_login">يمكنك تسجيل الدخول</string>
   <string name="username_login">رقم القيد</string>
   <string name="password_login">كلمة السر</string>
   
-  
+  <!--result strings-->
+  <string name="course_code">رمز المادة</string>
+  <string name="course_name">اسم المادة</string>
+  <string name="result">النتيجة</string>
+  <string name="semester_gpa">المعدل الفصلي</string>
+
+
 
 </resources>
