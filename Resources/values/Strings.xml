@@ -38,8 +38,9 @@
   <!--send message annoucement strings-->
   <string name="compose_announcement_hint">Compose announcement</string>
   <string name="compose_message_hint">Compose message</string>
-  
-  
+
+
   <string name="total_units">Total units</string>
+  <string name="total_credits">Total cerdit</string>
 
 </resources>

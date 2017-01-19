@@ -21,56 +21,22 @@
       android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/background_padding"
         android:weightSum="100"
         android:minWidth="25px"
         android:minHeight="25px">
+   
       <android.support.v7.widget.CardView
-          android:id="@+id/ResultHeader"
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:layout_weight="15"
-          android:layout_alignParentTop="true"
-          app:cardBackgroundColor="?header"
-          app:cardCornerRadius="@dimen/card_corner_raduis">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:padding="@dimen/card_padding"
-            android:layout_height="match_parent">
-          <TextView
-              android:text="@string/midexam_name"
-              android:layout_height="match_parent"
-              android:layout_width="0dp"
-              android:layout_weight="1"
-              android:gravity="center"
-              android:capitalize="characters"
-              android:textStyle="bold"
-              android:singleLine="true" />
-          <TextView
-              android:text="@string/result"
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:textStyle="bold"
-              android:gravity="center"
-              android:singleLine="true" />
-
-        </LinearLayout>
-      </android.support.v7.widget.CardView>
-
-      <android.support.v7.widget.CardView
-          android:id="@+id/ResultDetailsFragmentContainerResult"
-          android:layout_width="match_parent"
+          android:layout_marginTop="@dimen/background_padding"
+          android:id="@+id/MyCoursesFragmentContainer"
+          android:layout_width="fill_parent"
           android:layout_height="0dp"
           android:layout_centerInParent="true"
-          android:layout_weight="70"
+          android:layout_weight="85"
           app:contentPadding="@dimen/card_padding"
           app:cardCornerRadius="@dimen/card_corner_raduis" />
 
       <android.support.v7.widget.CardView
-          android:id="@+id/ResultHeader"
+          android:id="@+id/total_credit"
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="15"
@@ -84,15 +50,17 @@
             android:weightSum="4"
             android:layout_height="match_parent">
           <TextView
-              android:text="@string/total_units"
+              android:text="@string/total_credits"
               android:layout_height="wrap_content"
               android:layout_width="0dp"
               android:layout_weight="3"
+              android:id="@+id/total_units_txt"
               android:textColor="?textColor"
               android:capitalize="characters"
               android:singleLine="true" />
           <TextView
               android:text="00"
+              android:id="@+id/total_units_semester_txt"
               android:layout_width="0dp"
               android:paddingLeft="15dp"
               android:paddingRight="15dp"

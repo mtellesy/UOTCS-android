@@ -17,7 +17,7 @@ namespace UOTCS_android
         private String code;
         private String name;
         private float total;
-
+        private String group;
         public String Code
         {
             set
@@ -51,7 +51,17 @@ namespace UOTCS_android
                 return total;
             }
         }
-
+        public String Group
+        {
+            set
+            {
+                group = value;
+            }
+            get
+            {
+                return group;
+            }
+        }
         public ResultAndroid(CScore.BCL.Result result, string course_name)
         {
             code = result.Cou_id;
@@ -65,7 +75,14 @@ namespace UOTCS_android
             name = result.Cou_nameEN;
             this.total = result.Res_total;
         }
-
+        public ResultAndroid (CScore.BCL.Course course)
+        {
+            CScore.BCL.Schedule temp = new CScore.BCL.Schedule();
+            code = course.Cou_id;
+            name = course.Cou_nameEN;
+            temp = course.Schedule.First();
+            group = temp.Gro_NameEN;
+        }
         private float calculateTotal(CScore.BCL.Result result)
         {
             float total = 0;

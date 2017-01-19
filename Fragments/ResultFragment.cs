@@ -53,7 +53,15 @@ namespace UOTCS_android.Fragments
             {
                 view = inflater.Inflate(Resource.Layout.transcriptF, container, false);
                 NonScrollListView listView = view.FindViewById<NonScrollListView>(Resource.Id.ResultListView);
-                 adapter = new ListViewAdapterResults(results, Activity);
+                adapter = new ListViewAdapterResults(results, Activity);
+                listView.Adapter = adapter;
+
+            }
+            else if (activityName == "MyCourses")
+            {
+                view = inflater.Inflate(Resource.Layout.ResultF, container, false);
+                ListView listView = view.FindViewById<ListView>(Resource.Id.ResultListView);
+                adapter = new ListViewAdapterResults(results, Activity);
                 listView.Adapter = adapter;
 
             }

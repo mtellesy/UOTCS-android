@@ -18,11 +18,12 @@ namespace UOTCS_android
     {
         public List<ResultAndroid> results;
         Activity context;
-        public ListViewAdapterResults(List<ResultAndroid> results,Activity context):base()
+        public ListViewAdapterResults(List<ResultAndroid> results, Activity context) : base()
         {
             this.results = results;
             this.context = context;
         }
+        
         public override int Count
         {
             get { return results.Count; }
@@ -46,15 +47,25 @@ namespace UOTCS_android
             var rowTotal = view.FindViewById<TextView>(Resource.Id.list_row_results_result);
             rowCode.Text = results[position].Code;
             rowName.Text = results[position].Name;
-            rowTotal.Text = results[position].Result.ToString();
-            if(results[position].Result<50)
+            if (results[position].Group!=null)
             {
-                rowTotal.SetTextColor(Color.Red);
+                Values.Use_Color_accent = new Color();
+                rowTotal.Text = results[position].Group;
+                rowCode.SetTextColor(Values.Use_Color_accent);
             }
             else
             {
-                rowTotal.SetTextColor(Color.Black);
+                rowTotal.Text = results[position].Result.ToString();
+                if (results[position].Result < 50)
+                {
+                    rowTotal.SetTextColor(Color.Red);
+                }
+                else
+                {
+                    rowTotal.SetTextColor(Color.Black);
+                }
             }
+            
             
             return view;
         }
