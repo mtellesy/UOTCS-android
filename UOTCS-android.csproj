@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -136,6 +136,9 @@
     <Compile Include="Fragments\ResultFragment.cs" />
     <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
     <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
+    <Compile Include="Fragments\TimetableAndMidmarkFragment.cs" />
+    <Compile Include="ListViewAdapterTimetable.cs" />
+    <Compile Include="ListViewAdapterResults.cs" />
     <Compile Include="MajorAdapter.cs" />
     <Compile Include="Major.cs" />
     <Compile Include="EnrollmentAdapter.cs" />
@@ -148,12 +151,15 @@
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\MessagesConverter.cs" />
     <Compile Include="MessageDetailsActivity.cs" />
+    <Compile Include="NonScrollableListView.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="RecyclerViewAdapter.cs" />
     <Compile Include="RecyclerViewAdapterAnnouncements.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="ResultAndroid.cs" />
+    <Compile Include="ResultDetails.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
@@ -169,6 +175,8 @@
     <Compile Include="MyCourses.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimetableAndMidmarkAndroid.cs" />
+    <Compile Include="Transcript.cs" />
     <Compile Include="Values.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +284,24 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml" />
+    <AndroidResource Include="Resources\menu\List_row_results.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\transcript.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\transcriptF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ResultDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\List_row_timetable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TimetableAndMidExamF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -622,6 +648,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldrtl-hdpi\ic_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldrtl-mdpi\ic_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldrtl-xhdpi\ic_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldrtl-xxhdpi\ic_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldrtl-xxxhdpi\ic_send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

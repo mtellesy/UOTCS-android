@@ -20,6 +20,7 @@ using UOTCS_android.Fragments;
 using Android.Graphics;
 using Fragment = Android.Support.V4.App.Fragment;
 using Refractored.Controls;
+using Android.Support.V7.Widget;
 
 namespace UOTCS_android
 {
@@ -33,6 +34,7 @@ namespace UOTCS_android
         private UserInformationFragment userInformation;
         private UserMoreInfomationFragment userMoreInformation;
         private Button status;
+        private Button transcript;
         private SupportToolbar toolBar;
         private SupportActionBar actionbar;
         private DrawerLayout drawerLayout;
@@ -40,14 +42,16 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
 
-            DrawerLayout mdrawerLayout;
+           
+            base.OnCreate(bundle);
 
-
-            var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
-            task.Wait();
+            // var task = Task.Run(async () => {
+            await CScore.BCL.Semester.getCurrentSemester();
+        //});
+         //   task.Wait();
 
 
             // start the service for notifications
@@ -57,7 +61,7 @@ namespace UOTCS_android
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
             //  task.Wait();
-            base.OnCreate(bundle);
+          
             //start the enrollment status checker           
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Profile);
@@ -80,6 +84,7 @@ namespace UOTCS_android
             userInformation = new UserInformationFragment();
             userMoreInformation = new UserMoreInfomationFragment();
             status = FindViewById<Button>(Resource.Id.status_btn);
+            transcript = FindViewById<Button>(Resource.Id.transcript_btn);
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -87,7 +92,20 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+            CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
+       //     card.GenerateLayoutParams (new LinearLayout.LayoutParams(20, 20));
+            
+            if (Values.Use_typeID > 1)
+            {
+                status.Visibility = ViewStates.Gone;
+                transcript.Visibility = ViewStates.Gone;
+                //           CardView.LayoutParams layoutParams = (CardView.LayoutParams)
+                //    card.LayoutParameters;
+                //       layoutParams.Height = 300;
+         //       card.LayoutParameters = (new CardView.LayoutParams(
+     //CardView.LayoutParams.MatchParent, CardView.LayoutParams.MatchParent));
 
+            }
         }
         private void initiateFragments()
         {
@@ -126,8 +144,16 @@ namespace UOTCS_android
             status.Click += status_btn_Click;
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             profileImage.Click += ProfileImage_Click;
-
+            transcript.Click += Transcript_Click;
         }
+
+        private void Transcript_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Transcript));
+            this.StartActivity(intent);
+            
+        }
+
         public int getCurrentActvity()
         {
             return Resource.Id.nav_profile;

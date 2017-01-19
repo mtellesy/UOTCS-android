@@ -5,7 +5,6 @@
     <item name="android:statusBarColor">@android:color/transparent</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     <item name="android:windowTranslucentStatus">true</item>
-    <item name="android:background">#eaeded</item>
   </style>
 
   <style name="Theme.Student2" parent="@style/Base.Theme.Student">
