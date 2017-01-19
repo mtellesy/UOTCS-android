@@ -14,7 +14,7 @@ using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Refractored.Controls;
-
+using CScore.BCL;
 namespace UOTCS_android
 {
     [Activity(Label = "Result")]
@@ -22,14 +22,14 @@ namespace UOTCS_android
     {
 
         private ResultFragment result;
-        private UserMoreInfomationFragment userMoreInformation;
+   //     private UserMoreInfomationFragment userMoreInformation;
         private Android.Support.V7.Widget.Toolbar toolBar;
         private Android.Support.V7.App.ActionBar actionbar;
         private DrawerLayout drawerLayout;
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private List<ResultAndroid> resultshere;
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -42,19 +42,37 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-
+            bindData();
             initiateFragments();
             handleEvents();
-
         }
 
-
+        private void bindData()
+        {
+            List<CScore.BCL.AllResult> x = new List<AllResult>();
+            AllResult temp = new AllResult();
+            ResultAndroid temp2;
+            for(int i = 0; i < 10; i++)
+            {
+                temp = new AllResult();
+                temp.Cou_nameEN = "course name" + i;
+                temp.Cou_id = "ITGS10" + i;
+                temp.Res_total = i * 10;
+                x.Add(temp);
+            }
+            foreach (AllResult y in x)
+            {
+                temp2 = new ResultAndroid(y);
+                resultshere.Add(temp2); 
+            }
+            
+        }
 
         private void findViews()
         {
 
             result = new ResultFragment();
-            userMoreInformation = new UserMoreInfomationFragment();
+        //    userMoreInformation = new UserMoreInfomationFragment();
             toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -62,14 +80,16 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-
+            resultshere = new List<ResultAndroid>();
         }
 
         private void initiateFragments()
         {
             var trans = SupportFragmentManager.BeginTransaction();
+            result.results = resultshere;
             trans.Add(Resource.Id.ResultFragmentContainerResult, result, "result");
-            trans.Add(Resource.Id.UserInformationFragmentContainerResult, userMoreInformation, "User_more_information");
+            
+         //   trans.Add(Resource.Id.UserInformationFragmentContainerResult, userMoreInformation, "User_more_information");
             trans.Commit();
 
         }

@@ -16,6 +16,8 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Refractored.Controls;
+using System.Collections.Generic;
+using UOTCS_android.Fragments;
 
 namespace UOTCS_android
 {
@@ -28,7 +30,9 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private List<ResultAndroid> myCoursesList;
+        private List<ResultAndroid> myCourses;
+        private ResultFragment myCoursesfragment;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -40,7 +44,7 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-
+            bindData();
             initiateFragments();
             handleEvents();
         }
@@ -56,12 +60,38 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-
+            myCoursesList = new List<ResultAndroid>();
+            myCoursesfragment = new ResultFragment();
         }
         private void initiateFragments()
         {
             var trans = SupportFragmentManager.BeginTransaction();
+            myCoursesfragment.results = myCoursesList;
+            trans.Add(Resource.Id.MyCoursesFragmentContainer, myCoursesfragment, "result");
             trans.Commit();
+        }
+        private void bindData()
+        {
+            List<CScore.BCL.Course> x = new List<CScore.BCL.Course>();
+            CScore.BCL.Course  temp = new CScore.BCL.Course();
+            CScore.BCL.Schedule tempSchedule = new CScore.BCL.Schedule();
+            tempSchedule.Gro_NameEN = "A";
+            ResultAndroid temp2;
+            for (int i = 0; i < 10; i++)
+            {
+                temp =  new CScore.BCL.Course();
+                temp.Cou_nameEN = "course name" + i;
+                temp.Cou_id = "ITGS10" + i;
+                temp.Schedule = new List<CScore.BCL.Schedule>();
+                temp.Schedule.Add(tempSchedule);
+                x.Add(temp);
+            }
+            foreach (CScore.BCL.Course y in x)
+            {
+                temp2 = new ResultAndroid(y);
+                myCoursesList.Add(temp2);
+            }
+
         }
 
         private void setUpActionBar(SupportActionBar actionBar)

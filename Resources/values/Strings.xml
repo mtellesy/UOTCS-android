@@ -27,8 +27,20 @@
   <string name="username_login">Username</string>
   <string name="password_login">Password</string>
 
+    <!--result strings-->
+  <string name="course_code">Code</string>
+  <string name="course_name">Name</string>
+  <string name="result">Result</string>
+  <string name="semester_gpa">Semester GPA</string>
+  <string name="midexam_name">Exam name</string>
+  <string name="total">Total</string>
+
   <!--send message annoucement strings-->
   <string name="compose_announcement_hint">Compose announcement</string>
   <string name="compose_message_hint">Compose message</string>
+
+
+  <string name="total_units">Total units</string>
+  <string name="total_credits">Total cerdit</string>
 
 </resources>

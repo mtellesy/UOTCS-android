@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
+using Android.Support.V7.App;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportActionBar = Android.Support.V7.App.ActionBar;
 
@@ -12,18 +17,18 @@ using Android.Support.V4.Widget;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 
-using Android.Support.V7.App;
-using Android.Support.Design.Widget;
-using Android.Support.V4.View;
-using Refractored.Controls;
-using UOTCS_android.Fragments;
-using System.Collections.Generic;
 using CScore.BCL;
+using static Android.Views.View;
+using Refractored.Controls;
+using Android.Content;
+using Android.Support.Design.Widget;
+using Android.Support.V4.App;
+using UOTCS_android.Fragments;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Timetable", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Timetable : AppCompatActivity
+    [Activity(Label = "ResultDetails",ParentActivity = (typeof(Result)))]
+    public class ResultDetails : AppCompatActivity
     {
 
         private SupportToolbar toolBar;
@@ -32,15 +37,15 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-        private List<TimetableAndMidmarkAndroid> timetableList;
-        private TimetableAndMidmarkFragment timetableFrament;
-        protected override void OnCreate(Bundle bundle)
+        private List<TimetableAndMidmarkAndroid> resultDetailList;
+        private TimetableAndMidmarkFragment resultDetailsFrament;
+        protected override void OnCreate(Bundle savedInstanceState)
         {
 
-            base.OnCreate(bundle);
-
+            base.OnCreate(savedInstanceState);
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.Timetable);
+            SetContentView(Resource.Layout.ResultDetails);
+            this.findViews();
 
             findViews();
             SetSupportActionBar(toolBar);
@@ -48,14 +53,13 @@ namespace UOTCS_android
             setUpNavigationView(navigationView);
             bindData();
             initiateFragments();
-            handleEvents();
+            this.handleEvents();
         }
 
 
 
         private void findViews()
         {
-
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -63,46 +67,40 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            timetableList = new List<TimetableAndMidmarkAndroid>();
-            timetableFrament = new TimetableAndMidmarkFragment();
+            resultDetailList = new List<TimetableAndMidmarkAndroid>();
+            resultDetailsFrament = new TimetableAndMidmarkFragment();
         }
         private void initiateFragments()
         {
             var trans = SupportFragmentManager.BeginTransaction();
-            timetableFrament.data = timetableList;
-            trans.Add(Resource.Id.TimetableFragmentContainer, timetableFrament, "result");
+            resultDetailsFrament.data = resultDetailList;
+            trans.Add(Resource.Id.ResultDetailsFragmentContainerResult, resultDetailsFrament, "result");
             trans.Commit();
 
         }
-        private void bindData()
-        {
-            Semester temp = new Semester();
-            temp.Year = 1969.ToString();
-            temp.Ter_start = "12/12/12";
-            temp.Ter_nameEN = "what a year";
-            temp.Ter_nameAR = "fuck off";
-            temp.Ter_lastStudyDate = "12/23/4555";
-            temp.Ter_id = 3;
-            temp.Ter_enrollment = "17/1/2098";
-            temp.Ter_end = "123456";
-            temp.Ter_dropCourses = "144/12/1223";
-            temp.Exam = new List<Exams>();         
-            for (int i = 0; i < 10; i++)
-            {
-                Exams x = new Exams();
-                x.StartDate = "date" + i;
-                x.ExamTypeEN = "type" + i;
-                x.ExamTypeAR = "date" + i;
-                x.EndDate = "type" + i;
-                x.Duration = 12;
-                temp.Exam.Add(x);
-            }
-            
-            timetableList = Values.timetableMaker(temp);
-        }
+             private void bindData()
+             {
+                 List<CScore.BCL.MidMarkDistribution> x = new List<MidMarkDistribution>();
+                 MidMarkDistribution temp = new MidMarkDistribution();
+                 TimetableAndMidmarkAndroid temp2;
+                 for (int i = 0; i < 10; i++)
+                 {
+                     temp = new MidMarkDistribution();
+                     temp.Mid_nameEN = "exam name" + i;
+                     temp.Grade = i * 10;
+                     x.Add(temp);
+                 }
+                 foreach (MidMarkDistribution y in x)
+                 {
+                     temp2 = new TimetableAndMidmarkAndroid(y);
+                     resultDetailList.Add(temp2);
+                 }
+
+             }
+   
         private void setUpActionBar(SupportActionBar actionBar)
         {
-            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            actionBar.SetHomeButtonEnabled(true);
             actionBar.SetDisplayHomeAsUpEnabled(true);
         }
         private void setUpNavigationView(NavigationView navigationView)
@@ -112,7 +110,7 @@ namespace UOTCS_android
             {
                 SetUpDrawerContent(navigationView);
             }
-            navigationView.SetCheckedItem(Resource.Id.nav_timetable);
+            navigationView.SetCheckedItem(Resource.Id.nav_result);
         }
         private void SetUpDrawerContent(NavigationView navigationView)
         {
@@ -127,27 +125,14 @@ namespace UOTCS_android
         }
         public int getCurrentActvity()
         {
-            return Resource.Id.nav_timetable;
+            return Resource.Id.nav_result;
         }
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
-                    return true;
 
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
-        }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            NavUtils.NavigateUpFromSameTask(this);
+
         }
-
-
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();
@@ -164,5 +149,23 @@ namespace UOTCS_android
             this.StartActivity(intent);
             Finish();
         }
+
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            base.OnOptionsItemSelected(item);
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                NavUtils.NavigateUpFromSameTask(this);
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
+
+        }
+
+
+
+
     }
 }
