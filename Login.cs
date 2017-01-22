@@ -28,7 +28,8 @@ using Android.Views.InputMethods;
 
 // CScore 
 using CScore.BCL;
-
+using Android.Content.Res;
+using Java.Util;
 
 namespace UOTCS_android
 {
@@ -114,16 +115,11 @@ namespace UOTCS_android
                 if (LoginStatus.status)
                 {
                    
-       //     StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
+                        StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
                           string x = CScore.BCL.User.use_type;
-                 var DBTask = Task.Run(async () =>
-                   {
-                       await this.buildDB(x);
-                   });
-                    DBTask.Wait();
-                  CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.LanguageSetter.getLanguage());
-
+                          await this.buildDB(x);
+                    this.setLanguage();
                
                     this.StartActivity(intent);
 
@@ -144,7 +140,7 @@ namespace UOTCS_android
         private async Task buildDB(String userType)
         {
             // DBname 
-            string dbname = "BCLV2300.db";
+            string dbname = "BCLV9001.db";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Path.Combine(documentsPath, dbname);
             await CScore.DataLayer.DBuilder.InitializeAsync(path, new SQLitePlatformAndroid(), userType);
@@ -165,5 +161,28 @@ namespace UOTCS_android
             x.Show();
         }
 
+        private void setLanguage()
+        {
+
+            CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.LanguageSetter.getLanguage());
+            CScore.FixdStrings.Language current = CScore.FixdStrings.LanguageSetter.getLanguage();
+            Configuration configuration = this.Resources.Configuration;
+            switch (current)
+            {
+
+                case (CScore.FixdStrings.Language.EN):
+
+                    configuration.SetLayoutDirection(Locale.English);//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                    break;
+                case (CScore.FixdStrings.Language.AR):
+                default:
+
+                    configuration.SetLayoutDirection(new Locale("ar"));//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                    break;
+
+            }
+        }
     } 
 }

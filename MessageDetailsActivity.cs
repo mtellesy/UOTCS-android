@@ -30,12 +30,28 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
+        //for this activity 
+        private TextView messageSender;
+        private TextView messageTitle;
+        private TextView messageContent;
+        private String sender;
+        private String title;
+        private String content;
 
         protected override void OnCreate(Bundle bundle)
         {
+            
             base.OnCreate(bundle);
+            this.title = CScore.FixdStrings.Messages.MessagesLable();
+            Intent intent = this.Intent;
+            Bundle b = this.Intent.Extras;
+           
+            sender = b.GetString("sender");
+            title = b.GetString("title");
+            content = b.GetString("content");
+
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.MyCourses);
+            SetContentView(Resource.Layout.MessageDetails);
 
             findViews();
             SetSupportActionBar(toolBar);
@@ -59,6 +75,15 @@ namespace UOTCS_android
             var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60)
                 .EndConfig().BuildRound("x", color);
             image.SetImageDrawable(drawable);
+
+            messageSender = FindViewById<TextView>(Resource.Id.username_messageDetails);
+            messageTitle = FindViewById<TextView>(Resource.Id.title_messageDetails);
+            messageContent = FindViewById<TextView>(Resource.Id.content_messageDetails);
+
+            messageSender.Text = sender;
+            messageTitle.Text = title;
+            messageContent.Text = content;
+
 
         }
 

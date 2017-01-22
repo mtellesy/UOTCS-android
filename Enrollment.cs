@@ -20,6 +20,8 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Refractored.Controls;
+using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
 
 namespace UOTCS_android
 {
@@ -34,6 +36,8 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
         public static TextView total_credit;
+        private SupportFragmentManager scheduleMangage;
+        private UOTCS_android.Fragments.ScheduleDialogFragment scheduoleDialogFragment;
 
         protected override void OnPause()
         {
@@ -42,29 +46,35 @@ namespace UOTCS_android
 
         }
 
+       
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Enrollment);
 
-            
 
-            var enrollButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            // FindViewById<FloatingActionButton>(Resource.Id.fab);
+            var enrollButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
+            var scheduleButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+           
             enrollButton.Visibility = ViewStates.Visible;
+
+            this.Title = CScore.FixdStrings.Enrollment.EnrollmentLable();
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-
-                        var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
-                        allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
-                        var totalTitle = FindViewById<TextView>(Resource.Id.enrollmentTotalCreditsTitle);
-                        totalTitle.Text = CScore.FixdStrings.Enrollment.TotalCredits();
-                        CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-                        await CScore.BCL.Enrollment.getEnrollableCourses();
-                        var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
+                    scheduleButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_schedule_fab));
+                    scheduleButton.Visibility = ViewStates.Visible;
+                    var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
+                    allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
+                    var totalTitle = FindViewById<TextView>(Resource.Id.enrollmentTotalCreditsTitle);
+                    totalTitle.Text = CScore.FixdStrings.Enrollment.TotalCredits();
+                    CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                    await CScore.BCL.Enrollment.getEnrollableCourses();
+                    var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
       
                         total_credit = FindViewById<TextView>(Resource.Id.enrollmentCurrentTotalCredits);
                         availableCredit.Text = CScore.BCL.Enrollment.creditMax.ToString();
@@ -73,7 +83,7 @@ namespace UOTCS_android
                         var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                         contactsListView.Adapter = enrollmentAdapter;
 
-                    enrollButton.Click += async (sender, e) => {
+                        enrollButton.Click += async (sender, e) => {
 
                         // Droped Coures: message
                         String DropMessage = CScore.FixdStrings.Enrollment.dropedCourses();
@@ -108,6 +118,7 @@ namespace UOTCS_android
 
                     };
 
+                    scheduleButton.Click += ScheduleButton_Click;
 
                 }
                 else if (await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
@@ -198,7 +209,12 @@ namespace UOTCS_android
             handleEvents();
         }
 
-
+        private void ScheduleButton_Click(object sender, EventArgs e)
+        {
+            scheduoleDialogFragment.Courses = CScore.BCL.Enrollment.enrolledCourses;
+         
+            scheduoleDialogFragment.Show(scheduleMangage, "Schedule");
+        }
 
         private void findViews()
         {
@@ -210,6 +226,10 @@ namespace UOTCS_android
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
+            // added for Enrollment schedule
+            scheduleMangage = this.SupportFragmentManager;
+            scheduoleDialogFragment = new Fragments.ScheduleDialogFragment();
+            
         }
         private void setUpActionBar(SupportActionBar actionBar)
         {
@@ -241,7 +261,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
                 default:
                     return base.OnOptionsItemSelected(item);

@@ -45,6 +45,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(savedInstanceState);
+            this.Title = CScore.FixdStrings.Transcript.TranscriptLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.transcript);
             this.findViews();

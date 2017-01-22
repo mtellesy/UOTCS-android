@@ -22,6 +22,10 @@ namespace UOTCS_android.Fragments
     public  class RecievedMessagesFragment : SupportFragment
     {
         RecyclerView recyclerView;
+        int startFrom;
+        int NumberOfMessages;
+        int currentIndex;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,30 +50,39 @@ namespace UOTCS_android.Fragments
         {
             String[] x = { "i ", "am", "amira", "and", "this", "should", "work", "well", "plz", ":(" };
             List<string> y = new List<string>(x);
-    
+          
             var values = y;
-            //           var values = GetRandomSubList(y, x.Length);
-          //  var task = Task.Run(async () => { await this.getRecievedMessages(); });
-        //    task.Wait();
+
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> messages =
+                new StatusWithObject<List<CScore.BCL.Messages>>();
+
+            startFrom = 0;
+            NumberOfMessages = 100;
+            RecyclerViewAdapter.names = new List<string>();
+        var task = Task.Run(async () => { // await this.getRecievedMessages();
+                messages = await CScore.BCL.Messages.getMessages(NumberOfMessages, startFrom, "R");
+              
+                                });
+            task.Wait();
+            if (!messages.status.status)
+                messages.statusObject = new List<CScore.BCL.Messages>();
+
+            currentIndex = messages.statusObject.Count();
+
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
-            recyclerView.SetAdapter(new RecyclerViewAdapter( values));
+            recyclerView.SetAdapter(new RecyclerViewAdapter(messages.statusObject));
 
             recyclerView.SetItemClickListener((rv, position, view) =>
             {
                 //An item has been clicked
                 Context context = view.Context;
-                       String mes_id = "stupid";
-                       Intent intent = new Intent(context, typeof(MessageDetailsActivity));
-                       intent.PutExtra(mes_id, values[position]);
-
-                       context.StartActivity(intent);
-
-        /*        MessageDetailsFragment nextFrag = new MessageDetailsFragment();
-                this.FragmentManager.BeginTransaction()
-                .Replace(Resource.Id.Fragment_messageContainer, nextFrag, null)
-                .AddToBackStack(null)
-                .Hide(this)
-                .Commit();*/
+                      
+                Intent intent = new Intent(context, typeof(MessageDetailsActivity));
+                intent.PutExtra("sender", RecyclerViewAdapter.names[position]);
+                intent.PutExtra("title", messages.statusObject[position].Mes_subject);
+                intent.PutExtra("content", messages.statusObject[position].Mes_content);
+                
+                context.StartActivity(intent);
             });
         }
         

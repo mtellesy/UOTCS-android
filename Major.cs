@@ -44,8 +44,8 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-           
-          
+
+            this.Title = CScore.FixdStrings.Major.MajorTitle();
             SetContentView(Resource.Layout.Major);
             var MajorButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             MajorButton.Visibility = ViewStates.Visible;
@@ -140,7 +140,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
 

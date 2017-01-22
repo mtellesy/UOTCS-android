@@ -12,6 +12,6 @@
   <dimen name="nav_item_text">14sp</dimen>
   <dimen name="nav_width">280dp</dimen>
   <dimen name="row_padding">16dp</dimen>
-  <dimen name="row_min_height">30dp</dimen>
-
+  <dimen name="row_min_height">50dp</dimen>
+  <dimen name="schedule_row_height">40dp</dimen>
 </resources>
