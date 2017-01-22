@@ -19,6 +19,7 @@ using UOTCS_android.Fragments;
 using Android.Graphics;
 using Android.Support.V4.App;
 using Refractored.Controls;
+using Android.Support.V4.Content;
 
 namespace UOTCS_android
 {
@@ -41,6 +42,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(bundle);
+            this.Title = CScore.FixdStrings.Messages.MessagesLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Messages);
             findViews();
@@ -71,6 +73,7 @@ namespace UOTCS_android
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
             fab = FindViewById<FloatingActionButton>(Resource.Id.fabWT);
+            fab.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_create));
             fab.Show();
 
         }
@@ -129,7 +132,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
 

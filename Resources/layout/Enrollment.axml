@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/enrollayout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:keepScreenOn="true">
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="fill_parent"
@@ -13,38 +14,66 @@
             android:id="@+id/enrollayout_2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:weightSum="100"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="@dimen/background_padding">
+            <android.support.v7.widget.CardView
+                android:id="@+id/ResultHeader"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="15"
+                app:cardBackgroundColor="?header"
+                app:cardCornerRadius="@dimen/card_corner_raduis">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    android:padding="7dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Course"
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        
+                        android:capitalize="characters"
+                        android:textStyle="bold"
+                        android:singleLine="true" />
+                    <TextView
+                        android:text="Credits"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:singleLine="true" />
+                  <TextView
+                      android:text="Groups"
+                      android:layout_height="match_parent"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:capitalize="characters"
+                      android:textStyle="bold"
+                      android:singleLine="true" />
+                  <TextView
+                      android:text="Enroll"
+                      android:layout_height="match_parent"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:capitalize="characters"
+                      android:textStyle="bold"
+                      android:singleLine="true" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="Allowed Credits:"
-                    android:id="@+id/enrollmentAllowedCreditsTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="0"
-                    android:id="@+id/enrollmentAllowedCredits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="Total Credits:"
-                    android:id="@+id/enrollmentTotalCreditsTitle"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="0"
-                    android:id="@+id/enrollmentCurrentTotalCredits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="80"
                 android:gravity="center"
                 android:orientation="vertical">
                 <RelativeLayout
@@ -57,15 +86,39 @@
                         android:id="@+id/myEnrollmentListView"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_gravity="center" />
-                </RelativeLayout>
-                <Button
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Login"
-                    android:id="@+id/enrollmentSendButton" />
+                        android:layout_gravity="center"
+                         />
+                </RelativeLayout>                
             </LinearLayout>
+          <LinearLayout
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="0dp"
+              android:layout_weight="5"
+              android:layout_marginBottom="@dimen/abc_action_bar_subtitle_bottom_margin_material"
+                >
+            <TextView
+                android:text="Allowed Credits:"
+                android:id="@+id/enrollmentAllowedCreditsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="0"
+                android:id="@+id/enrollmentAllowedCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Total Credits:"
+                android:id="@+id/enrollmentTotalCreditsTitle"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="0"
+                android:id="@+id/enrollmentCurrentTotalCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+          </LinearLayout>
         </LinearLayout>
         <include
             layout="@layout/includeListViewpager" />

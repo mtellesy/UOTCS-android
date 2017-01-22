@@ -15,15 +15,17 @@ using Android.Util;
 
 using Refractored.Controls;
 using Android.Graphics;
+using System.Threading.Tasks;
+using CScore.BCL;
 
 namespace UOTCS_android
 {
     class RecyclerViewAdapterAnnouncements : RecyclerView.Adapter
     {
 
-        public List<string> mValues;
+        public List<CScore.BCL.Announcements> mValues;
 
-        public RecyclerViewAdapterAnnouncements(List<string> items)
+        public RecyclerViewAdapterAnnouncements(List<CScore.BCL.Announcements> items)
         {
             mValues = items;
             
@@ -50,11 +52,16 @@ namespace UOTCS_android
             AnnouncementViewHolder vh = holder as AnnouncementViewHolder;
 
             int x = position;
-            //     vh.Image.SetImageResource(mPhotoAlbum[position].PhotoID);
-            vh.content.Text = mValues[position];
+            //    vh.Image.SetImageResource(mPhotoAlbum[position].PhotoID);
+            vh.content.Text = mValues[position].Ano_content;
+            var Sender = new StatusWithObject<OtherUsers>();
+            var task = Task.Run( async () => {
 
-            vh.sender.Text = mValues[position];
-            vh.time.Text = mValues[position];
+                Sender = await CScore.BCL.OtherUsers.getOtherUser(mValues[position].Ano_sender);
+            });
+            if (Sender.statusObject != null)
+                vh.sender.Text = Sender.statusObject.use_nameEN;
+            vh.time.Text = mValues[position].Ano_time;
         }
 
     }

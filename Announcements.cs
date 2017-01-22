@@ -36,6 +36,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(bundle);
+            this.Title = CScore.FixdStrings.Announcements.AnnouncementsLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Announcements);
 
@@ -114,7 +115,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
 

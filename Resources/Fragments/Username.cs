@@ -16,7 +16,8 @@ namespace UOTCS_android.Fragments
 {
     public class Username : Android.Support.V4.App.Fragment
     {
-        
+        TextView userNameAR;
+        TextView userNameEN;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -39,7 +40,10 @@ namespace UOTCS_android.Fragments
             }
             CircleImageView imageView = view.FindViewById<CircleImageView>(Resource.Id.profile_image2);
             imageView.SetImageDrawable(x);
-    
+            userNameAR = view.FindViewById<TextView>(Resource.Id.usernameF_nameInAR_lable);
+            userNameAR.Text = CScore.BCL.User.use_nameAR;
+            userNameEN = view.FindViewById<TextView>(Resource.Id.usernameF_nameInEN_lable);
+            userNameEN.Text = CScore.BCL.User.use_nameEN;
             return view ;
         }
     }

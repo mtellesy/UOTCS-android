@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -134,6 +134,7 @@
     <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\ScheduleDialogFragment.cs" />
     <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
     <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="Fragments\TimetableAndMidmarkFragment.cs" />
@@ -284,6 +285,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml" />
+    <AndroidResource Include="Resources\layout\ScheduleDialogFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\menu\List_row_results.axml">
       <SubType>Designer</SubType>
     </AndroidResource>

@@ -138,7 +138,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    mDrawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    mDrawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
                

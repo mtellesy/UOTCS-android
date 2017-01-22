@@ -43,28 +43,16 @@ namespace UOTCS_android
             //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
             base.OnCreate(bundle);
-
+            this.Title = CScore.FixdStrings.Schedule.ScheduleLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Schedule);
-
             findViews();
+            initiateFragments();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
 
-            initiateFragments();
-            handleEvents();
-
-
-
-            //add Schedule Fragment
-           
-         
             
-            
-
-
-            findViews();
             handleEvents();
         }
 
@@ -132,7 +120,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
 
