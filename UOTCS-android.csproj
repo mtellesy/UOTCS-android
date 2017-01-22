@@ -132,6 +132,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnnouncementsLecturer.cs" />
+    <Compile Include="CourseDetails.cs" />
+    <Compile Include="Fragments\CourseNameFragment.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
     <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
@@ -300,6 +302,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\TimetableAndMidExamF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CourseDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CourseNameF.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
