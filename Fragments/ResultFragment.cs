@@ -72,6 +72,7 @@ namespace UOTCS_android.Fragments
         {
             var item = this.adapter.results[e.Position];
             Intent intent = new Intent(Activity, typeof(ResultDetails));
+            intent.PutExtra("course_id", results[e.Position].Code);
             this.StartActivity(intent);
         }
     }

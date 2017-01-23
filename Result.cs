@@ -15,12 +15,16 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Refractored.Controls;
 using CScore.BCL;
+using System.Threading.Tasks;
+
 namespace UOTCS_android
 {
     [Activity(Label = "Result")]
     public class Result : AppCompatActivity
     {
-
+        private TextView courseCodeLable;
+        private TextView courseNameLable;
+        private TextView resultLable;
         private ResultFragment result;
    //     private UserMoreInfomationFragment userMoreInformation;
         private Android.Support.V7.Widget.Toolbar toolBar;
@@ -37,7 +41,7 @@ namespace UOTCS_android
 
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Results);
-
+            this.Title = CScore.FixdStrings.Results.ResultsLable();
             findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
@@ -49,20 +53,48 @@ namespace UOTCS_android
 
         private void bindData()
         {
-            List<CScore.BCL.AllResult> x = new List<AllResult>();
-            AllResult temp = new AllResult();
+            List<CScore.BCL.Result> x = new List<CScore.BCL.Result>();
+           
             ResultAndroid temp2;
-            for(int i = 0; i < 10; i++)
+
+            StatusWithObject<List<CScore.BCL.Result >> result = new StatusWithObject<List<CScore.BCL.Result>>();
+            var task = Task.Run(async () =>
             {
-                temp = new AllResult();
-                temp.Cou_nameEN = "course name" + i;
-                temp.Cou_id = "ITGS10" + i;
-                temp.Res_total = i * 10;
-                x.Add(temp);
+                result = await CScore.BCL.Result.getSemesterResults();
             }
-            foreach (AllResult y in x)
+            );
+            task.Wait();
+
+            if (result.statusObject != null)
+            x = result.statusObject;
+
+            foreach (CScore.BCL.Result y in x)
             {
-                temp2 = new ResultAndroid(y);
+                var CourseInfo = new CScore.BCL.Course();
+                var statusOB = new StatusWithObject<List<CScore.BCL.Course>>();
+                String courseName;
+                var task2 = Task.Run(async () =>
+                {
+                    statusOB = await CScore.BCL.Course.getCourses(y.Cou_id);
+                });
+                task2.Wait();
+                if (statusOB.statusObject != null)
+                    CourseInfo = statusOB.statusObject[0];
+
+                var e = CScore.FixdStrings.LanguageSetter.getLanguage();
+                switch(e)
+                {
+                    case (CScore.FixdStrings.Language.AR):
+                        courseName = CourseInfo.Cou_nameAR;
+                        break;
+
+                    case (CScore.FixdStrings.Language.EN):
+                    default:
+                        courseName = CourseInfo.Cou_nameEN;
+                        break;
+                }
+               
+               temp2 = new ResultAndroid(y, courseName);
                 resultshere.Add(temp2); 
             }
             
@@ -71,6 +103,12 @@ namespace UOTCS_android
         private void findViews()
         {
 
+            courseCodeLable = FindViewById<TextView>(Resource.Id.course_code_resltsLayout);
+            courseNameLable = FindViewById<TextView>(Resource.Id.course_name_resltsLayout);
+            resultLable = FindViewById<TextView>(Resource.Id.course_result_resltsLayout);
+            courseCodeLable.Text = CScore.FixdStrings.Courses.CourseCode();
+            courseNameLable.Text = CScore.FixdStrings.Courses.CourseName();
+            resultLable.Text = CScore.FixdStrings.Results.Result();
             result = new ResultFragment();
         //    userMoreInformation = new UserMoreInfomationFragment();
             toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);

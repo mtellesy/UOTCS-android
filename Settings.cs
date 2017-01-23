@@ -21,13 +21,22 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Content.Res;
 using Java.Util;
+using Android.Support.V4.Content;
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
     
     [Activity(Label = "Settings", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = typeof(Profile))]
-    public class Settings : MainActivity
+    public class Settings : AppCompatActivity
     {
+        private SupportToolbar toolBar;
+        private SupportActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
+
         public static TextView total_credit;
 
         protected override void OnPause()
@@ -42,8 +51,13 @@ namespace UOTCS_android
 
             this.Title = CScore.FixdStrings.Settings.SettingsLable();
             SetContentView(Resource.Layout.Settings);
-            
+            findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
+
             var SaveSettingsButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            SaveSettingsButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_save));
             SaveSettingsButton.Visibility = ViewStates.Visible;
 
             var LanguageSpinner = FindViewById<Spinner>(Resource.Id.LanguageSpinner);
@@ -87,8 +101,9 @@ namespace UOTCS_android
                 this.showMessage();
                 
             };
+           
 
-            findViews();
+            
             handleEvents();
         }
 
@@ -96,27 +111,75 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            base.findViews();
-        }
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
-        private void handleEvents()
+        }
+        private void setUpActionBar(SupportActionBar actionBar)
         {
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
+            }
+            navigationView.SetCheckedItem(Resource.Id.nav_settings);
 
         }
-
         private void SetUpDrawerContent(NavigationView navigationView)
         {
-            base.SetUpDrawerContent(navigationView);
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
+        }
+        public int getCurrentActvity()
+        {
+            return Resource.Id.nav_settings;
+        }
+        private void handleEvents()
+        {
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            bool x = base.OnOptionsItemSelected(item);
-            return x;
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
+                    return true;
+
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
-        public int getCurrentActvity()
+        public override void OnBackPressed()
         {
-            return Resource.Id.nav_timetable;
+            MoveTaskToBack(true);
+        }
+
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            if (e.MenuItem.ItemId != getCurrentActvity())
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
         }
 
         private void showMessage()
@@ -136,6 +199,6 @@ namespace UOTCS_android
             x.Show();
         }
 
-      
+        
     }
 }
