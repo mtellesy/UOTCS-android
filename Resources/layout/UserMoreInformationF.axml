@@ -36,6 +36,7 @@
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
+            android:gravity="end"
             android:translationY="10dp"
             android:layout_gravity="right" />
     </LinearLayout>
@@ -67,6 +68,7 @@
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
+                        android:gravity="end"
             android:translationY="10dp"
             android:layout_width="0dp" />
     </LinearLayout>
@@ -98,6 +100,7 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:translationY="10dp"
+            android:gravity="end"
             android:layout_width="wrap_content" />
     </LinearLayout>
 </LinearLayout>

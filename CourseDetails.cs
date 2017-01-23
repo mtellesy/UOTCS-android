@@ -38,7 +38,7 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
         private CourseNameFragment courseNameFragment;
-
+        private Button sendMessage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -66,6 +66,7 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+            sendMessage = FindViewById<Button>(Resource.Id.send_message_btn);
             courseNameFragment = new CourseNameFragment();
         }
         private void initiateFragments()
@@ -97,7 +98,15 @@ namespace UOTCS_android
         {
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             profileImage.Click += ProfileImage_Click;
+            sendMessage.Click += SendMessage_Click;
         }
+
+        private void SendMessage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+        }
+
         public int getCurrentActvity()
         {
             return Resource.Id.nav_messages;

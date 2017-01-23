@@ -4,39 +4,121 @@
     android:id="@+id/enrollayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-  <android.support.v4.widget.DrawerLayout
-      android:id="@+id/drawer_layout"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:fitsSystemWindows="true">
-    <LinearLayout
-        android:id="@+id/settingLayout"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp">
-      <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/LanguageSpinner" />
-
-
-    </LinearLayout>
-    <include
-        layout="@layout/includeListViewpager" />
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_height="match_parent"
-        android:layout_width="225dp"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:itemTextColor="?textColor"
-        app:menu="@menu/drawer_view" />
-  </android.support.v4.widget.DrawerLayout>
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+        <LinearLayout
+            android:id="@+id/settingLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/background_padding"
+            android:orientation="vertical"
+            android:layout_marginTop="?attr/actionBarSize">
+            <android.support.v7.widget.CardView
+                android:id="@+id/UsernameFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                app:contentPadding="@dimen/card_padding"
+                app:cardCornerRadius="@dimen/card_corner_raduis">
+                <LinearLayout
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Theme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/announcement_sender_card"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/primary_text"
+                        android:layout_gravity="start"
+                        android:paddingBottom="8dp" />
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"                        
+                        android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/radio_arabic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Indigo"
+                            android:textColor="@color/secondary_text"
+                            android:onClick="onRadioButtonClickedTheme" />
+                        <RadioButton
+                            android:id="@+id/radio_english"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teal"
+                            android:textColor="@color/secondary_text"                           
+                            android:onClick="onRadioButtonClickedTheme" />
+                    </RadioGroup>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+               <android.support.v7.widget.CardView
+                android:id="@+id/UsernameFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                app:contentPadding="@dimen/card_padding"
+                app:cardCornerRadius="@dimen/card_corner_raduis">
+                <LinearLayout
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/announcement_sender_card"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/primary_text"
+                        android:layout_gravity="start"
+                        android:paddingBottom="8dp" />
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"                        
+                        android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/radio_arabic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arabic"
+                            android:textColor="@color/secondary_text"
+                            android:onClick="onRadioButtonClickedLanguage" />
+                        <RadioButton
+                            android:id="@+id/radio_english"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="English"
+                            android:textColor="@color/secondary_text"                           
+                            android:onClick="onRadioButtonClickedLanguage" />
+                    </RadioGroup>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+           
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LanguageSpinner" />
+        </LinearLayout>
+        <include
+            layout="@layout/includeListViewpager" />
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_height="match_parent"
+            android:layout_width="225dp"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header"
+            app:itemTextColor="?textColor"
+            app:menu="@menu/drawer_view" />
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
-
-
-
-   

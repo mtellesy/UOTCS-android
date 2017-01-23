@@ -20,7 +20,7 @@ namespace UOTCS_android
     {
         List<DepartmentItem> DepartmentItemList;
         List<CScore.BCL.Department> _departments;
-        List<Button> majorButtons;
+        List<ImageButton> majorButtons;
 
         //this is the department id that we are going to send
         public int FinalDepID;
@@ -44,7 +44,7 @@ namespace UOTCS_android
             _departments = departments;
             _activity = activity;
             FillContacts(departments);
-            majorButtons = new List<Button>();
+            majorButtons = new List<ImageButton>();
         }
 
     
@@ -105,7 +105,7 @@ namespace UOTCS_android
                 Resource.Layout.MajorItemView, parent, false);
             var DepartmentName = view.FindViewById<TextView>(Resource.Id.majorDepartment);
           
-            var MajorButton = view.FindViewById<Button>(Resource.Id.majorButton);
+            var MajorButton = view.FindViewById<ImageButton>(Resource.Id.majorButton);
             majorButtons.Add(MajorButton);
 
             // to know wither the button has been activated or not
@@ -124,14 +124,21 @@ namespace UOTCS_android
 
             majorButtons[position].Click += (object s, EventArgs e) => 
             {
-                if(!isClicked)
+                majorButtons[position].Selected=!majorButtons[position].Selected;
+
+                if (!isClicked)
                 {
                     //first turn off all the other buttons 
                     for (int i = 0; i < majorButtons.Count; i++)
+                    {
+           //             majorButtons[position].SetImageResource(Resource.Drawable.ic_content_add_circle);
                         majorButtons[i].Enabled = false;
+                    }
+                        
 
                     // turn this buttom again 
                     majorButtons[position].Enabled = true;
+           //         majorButtons[position].SetImageResource(Resource.Drawable.ic_content_remove_circle);
 
                     FinalDepID = DepartmentItemList[position].DepartmentID;
 
@@ -147,6 +154,7 @@ namespace UOTCS_android
                     //first turn on all the buttons 
                     for (int i = 0; i < majorButtons.Count; i++)
                         majorButtons[i].Enabled = true;
+           //         majorButtons[position].SetImageResource(Resource.Drawable.ic_content_add_circle);
 
                     //delete the finalDepID by making it equels -1 
                     //-1 means no depatment has been choosen

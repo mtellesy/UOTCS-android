@@ -13,8 +13,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:minWidth="25px"
-        android:minHeight="25px"
-        >
+        android:minHeight="25px">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -37,29 +36,28 @@
                 android:layout_height="200dp"
                 app:contentPadding="@dimen/card_padding"
                 app:cardCornerRadius="@dimen/card_corner_raduis" />
-          <RelativeLayout 
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:minWidth="25px"
-              android:minHeight="25px">
-            <Button
-                android:text="STATUS"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:id="@+id/status_btn"
-                android:layout_gravity="center"
-                android:layout_alignParentEnd="true" />
-            <Button
-                android:text="TRANSCRIPT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/transcript_btn"
-                android:layout_toStartOf="@id/status_btn"
-                 />
-          </RelativeLayout>
+                android:minWidth="25px"
+                android:minHeight="25px">
+                <Button
+                    android:text="STATUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:id="@+id/status_btn"
+                    android:layout_gravity="center"
+                    android:layout_alignParentEnd="true" />
+                <Button
+                    android:text="TRANSCRIPT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/transcript_btn"
+                    android:layout_toStartOf="@id/status_btn" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
     <android.support.design.widget.NavigationView
