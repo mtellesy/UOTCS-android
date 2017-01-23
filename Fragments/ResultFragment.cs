@@ -74,7 +74,7 @@ namespace UOTCS_android.Fragments
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var item = this.adapter.results[e.Position];
-           
+            
             if (IsAdded)
             {
                 activityName = Activity.Class.SimpleName;
@@ -92,10 +92,6 @@ namespace UOTCS_android.Fragments
                 this.StartActivity(intent);
 
             }
-
-            Intent intent = new Intent(Activity, typeof(ResultDetails));
-            intent.PutExtra("course_id", results[e.Position].Code);
-            this.StartActivity(intent);
         }
     }
 }

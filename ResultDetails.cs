@@ -24,7 +24,6 @@ using Android.Content;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using UOTCS_android.Fragments;
-using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
@@ -40,22 +39,12 @@ namespace UOTCS_android
         private CircleImageView profileImage;
         private List<TimetableAndMidmarkAndroid> resultDetailList;
         private TimetableAndMidmarkFragment resultDetailsFrament;
-        private TextView totalLable;
-        private TextView total;
-        private TextView midExamNameLable;
-        private TextView resultLable;
-        private string course_code;
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
             base.OnCreate(savedInstanceState);
             Values.changeTheme(this);
             SetContentView(Resource.Layout.ResultDetails);
-            Intent intent = this.Intent;
-            Bundle b = this.Intent.Extras;
-
-            course_code = b.GetString("course_id");
-            this.Title = course_code;
             this.findViews();
 
             findViews();
@@ -71,15 +60,6 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            total = FindViewById<TextView>(Resource.Id.total_resultDetailsLayout);
-            totalLable = FindViewById<TextView>(Resource.Id.totalLable_resultDetailsLayout);
-            resultLable = FindViewById<TextView>(Resource.Id.result_resultDetailsLayout);
-            midExamNameLable = FindViewById<TextView>(Resource.Id.midexamName_resultDetailsLayout);
-            totalLable.Text = CScore.FixdStrings.Results.Total();
-            resultLable.Text = CScore.FixdStrings.Results.Result();
-            midExamNameLable.Text = CScore.FixdStrings.General.Name();
-
-
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -100,33 +80,22 @@ namespace UOTCS_android
         }
              private void bindData()
              {
-                float totalInt = 0;
-                List<CScore.BCL.MidMarkDistribution> x = new List<MidMarkDistribution>();
+                 List<CScore.BCL.MidMarkDistribution> x = new List<MidMarkDistribution>();
+                 MidMarkDistribution temp = new MidMarkDistribution();
+                 TimetableAndMidmarkAndroid temp2;
+                 for (int i = 0; i < 10; i++)
+                 {
+                     temp = new MidMarkDistribution();
+                     temp.Mid_nameEN = "exam name" + i;
+                     temp.Grade = i * 10;
+                     x.Add(temp);
+                 }
+                 foreach (MidMarkDistribution y in x)
+                 {
+                     temp2 = new TimetableAndMidmarkAndroid(y);
+                     resultDetailList.Add(temp2);
+                 }
 
-                TimetableAndMidmarkAndroid temp2;
-
-
-                var statusOB = new StatusWithObject<List<CScore.BCL.Result>>();
-            
-                var task2 = Task.Run(async () =>
-                {
-                    statusOB = await CScore.BCL.Result.getSemesterResults();
-                });
-                task2.Wait();
-
-                if (statusOB.statusObject != null)
-                {
-                var course = statusOB.statusObject.Where(i => i.Cou_id.Equals(course_code)).First();
-                x = course.MidExams;
-                }
-
-                foreach (MidMarkDistribution y in x)
-                        {
-                            temp2 = new TimetableAndMidmarkAndroid(y);
-                            totalInt += y.Grade;
-                            resultDetailList.Add(temp2);
-                        }
-            total.Text = totalInt.ToString();
              }
    
         private void setUpActionBar(SupportActionBar actionBar)
