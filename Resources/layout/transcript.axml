@@ -41,7 +41,6 @@
             android:padding="@dimen/card_padding"
             android:layout_height="match_parent">
           <TextView
-              android:id="@+id/course_code_transcriptLayout"
               android:text="@string/course_code"
               android:layout_height="match_parent"
               android:layout_width="0dp"
@@ -51,7 +50,6 @@
               android:textStyle="bold"
               android:singleLine="true" />
           <TextView
-            android:id="@+id/course_name_transcriptLayout"
               android:text="@string/course_name"
               android:layout_width="0dp"
               android:layout_height="match_parent"
@@ -60,7 +58,6 @@
               android:gravity="center"
               android:singleLine="true" />
           <TextView
-              android:id="@+id/result_transcriptLayout"
               android:text="@string/result"
               android:layout_width="0dp"
               android:layout_height="match_parent"

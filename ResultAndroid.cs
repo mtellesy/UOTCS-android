@@ -72,35 +72,14 @@ namespace UOTCS_android
         public ResultAndroid(CScore.BCL.AllResult result)
         {
             code = result.Cou_id;
-            var e = CScore.FixdStrings.LanguageSetter.getLanguage();
-            switch (e)
-            {
-                case CScore.FixdStrings.Language.AR:
-                    name = result.Cou_nameAR;
-                    break;
-                case CScore.FixdStrings.Language.EN:
-                default:
-                    name = result.Cou_nameEN;
-                    break;
-            }
-           
+            name = result.Cou_nameEN;
             this.total = result.Res_total;
         }
         public ResultAndroid (CScore.BCL.Course course)
         {
             CScore.BCL.Schedule temp = new CScore.BCL.Schedule();
             code = course.Cou_id;
-            var e = CScore.FixdStrings.LanguageSetter.getLanguage();
-            switch(e)
-            {
-                case CScore.FixdStrings.Language.AR:
-                    name = course.Cou_nameAR;
-                    break;
-                case CScore.FixdStrings.Language.EN:
-                default:
-                    name = course.Cou_nameEN;
-                    break;
-            }
+            name = course.Cou_nameEN;
             temp = course.Schedule.First();
             group = temp.Gro_NameEN;
         }

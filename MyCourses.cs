@@ -63,6 +63,7 @@ namespace UOTCS_android
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
             myCoursesList = new List<ResultAndroid>();
             myCoursesfragment = new ResultFragment();
+
         }
         private void initiateFragments()
         {
@@ -87,6 +88,20 @@ namespace UOTCS_android
             task.Wait();
             if (coursesStatus.statusObject != null)
                 x = coursesStatus.statusObject;
+
+            //CScore.BCL.Course  temp = new CScore.BCL.Course();
+            //CScore.BCL.Schedule tempSchedule = new CScore.BCL.Schedule();
+            //tempSchedule.Gro_NameEN = "A";
+            //ResultAndroid temp2;
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    temp =  new CScore.BCL.Course();
+            //    temp.Cou_nameEN = "course name" + i;
+            //    temp.Cou_id = "ITGS10" + i;
+            //    temp.Schedule = new List<CScore.BCL.Schedule>();
+            //    temp.Schedule.Add(tempSchedule);
+            //    x.Add(temp);
+            //}
 
             //to remove any repeated courses
             var z = new List<CScore.BCL.Course>();

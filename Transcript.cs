@@ -25,7 +25,6 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using UOTCS_android.Fragments;
 using Java.Lang;
-using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
@@ -41,10 +40,6 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
         private List<ResultAndroid> resultshere;
-        private TextView courseCodeLable;
-        private TextView courseNameLable;
-        private TextView resultLable;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -68,14 +63,6 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            courseCodeLable = FindViewById<TextView>(Resource.Id.course_code_transcriptLayout);
-            courseNameLable = FindViewById<TextView>(Resource.Id.course_code_transcriptLayout);
-            resultLable = FindViewById<TextView>(Resource.Id.result_transcriptLayout);
-
-            courseCodeLable.Text = CScore.FixdStrings.Courses.CourseCode();
-            courseNameLable.Text = CScore.FixdStrings.Courses.CourseName();
-            resultLable.Text = CScore.FixdStrings.Results.Result();
-            
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -92,19 +79,16 @@ namespace UOTCS_android
         private void bindData()
         {
             List<CScore.BCL.AllResult> x = new List<AllResult>();
-        
-            var statusOB = new StatusWithObject<List<AllResult>>();
-
-            var task = Task.Run(async () =>
-            {
-                statusOB = await CScore.BCL.AllResult.getAllResults(0);
-            });
-            task.Wait();
-
+            AllResult temp = new AllResult();
             ResultAndroid temp2;
-            if (statusOB.statusObject != null)
-                x = statusOB.statusObject;
-
+            for (int i = 0; i < 10; i++)
+            {
+                temp = new AllResult();
+                temp.Cou_nameEN = "course name" + i;
+                temp.Cou_id = "ITGS10" + i;
+                temp.Res_total = i * 10;
+                x.Add(temp);
+            }
             foreach (AllResult y in x)
             {
                 temp2 = new ResultAndroid(y);
