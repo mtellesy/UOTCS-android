@@ -2221,49 +2221,52 @@ namespace UOTCS_android
 			public const int ic_result = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_schedule = 2130837608;
+			public const int ic_save = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_schedule_fab = 2130837609;
+			public const int ic_schedule = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_send = 2130837610;
+			public const int ic_schedule_fab = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_settings = 2130837611;
+			public const int ic_send = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_timetable = 2130837612;
+			public const int ic_settings = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int Icon = 2130837613;
+			public const int ic_timetable = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int imageButtonAdd = 2130837614;
+			public const int Icon = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int lecturer_pic = 2130837615;
+			public const int imageButtonAdd = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int nav_header_lecturer = 2130837616;
+			public const int lecturer_pic = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int nav_header_student = 2130837617;
+			public const int nav_header_lecturer = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int navigation_empty_icon = 2130837618;
-			
-			// aapt resource value: 0x7f020076
-			public const int notification_template_icon_bg = 2130837622;
+			public const int nav_header_student = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int student_pic = 2130837619;
+			public const int navigation_empty_icon = 2130837619;
+			
+			// aapt resource value: 0x7f020077
+			public const int notification_template_icon_bg = 2130837623;
 			
 			// aapt resource value: 0x7f020074
-			public const int textBackground = 2130837620;
+			public const int student_pic = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int uni_logo = 2130837621;
+			public const int textBackground = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int uni_logo = 2130837622;
 			
 			static Drawable()
 			{
@@ -2281,8 +2284,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060091
 			public const int CourseGroupText = 2131099793;
 			
-			// aapt resource value: 0x7f0600d8
-			public const int DandH = 2131099864;
+			// aapt resource value: 0x7f0600df
+			public const int DandH = 2131099871;
 			
 			// aapt resource value: 0x7f0600bd
 			public const int FacultyLogo = 2131099837;
@@ -2293,38 +2296,38 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600b5
 			public const int Fragment_messageContainer = 2131099829;
 			
-			// aapt resource value: 0x7f060120
-			public const int GPATV = 2131099936;
+			// aapt resource value: 0x7f06012c
+			public const int GPATV = 2131099948;
 			
-			// aapt resource value: 0x7f060121
-			public const int GPATVB = 2131099937;
+			// aapt resource value: 0x7f06012d
+			public const int GPATVB = 2131099949;
 			
-			// aapt resource value: 0x7f060115
-			public const int LanguageSpinner = 2131099925;
+			// aapt resource value: 0x7f06011c
+			public const int LanguageSpinner = 2131099932;
 			
-			// aapt resource value: 0x7f0600ec
-			public const int MO1 = 2131099884;
+			// aapt resource value: 0x7f0600f3
+			public const int MO1 = 2131099891;
 			
-			// aapt resource value: 0x7f0600ed
-			public const int MO2 = 2131099885;
+			// aapt resource value: 0x7f0600f4
+			public const int MO2 = 2131099892;
 			
-			// aapt resource value: 0x7f0600ee
-			public const int MO3 = 2131099886;
+			// aapt resource value: 0x7f0600f5
+			public const int MO3 = 2131099893;
 			
-			// aapt resource value: 0x7f0600ef
-			public const int MO4 = 2131099887;
+			// aapt resource value: 0x7f0600f6
+			public const int MO4 = 2131099894;
 			
-			// aapt resource value: 0x7f0600f0
-			public const int MO5 = 2131099888;
+			// aapt resource value: 0x7f0600f7
+			public const int MO5 = 2131099895;
 			
-			// aapt resource value: 0x7f0600f1
-			public const int MO6 = 2131099889;
+			// aapt resource value: 0x7f0600f8
+			public const int MO6 = 2131099896;
 			
 			// aapt resource value: 0x7f0600a8
 			public const int MajorTitle = 2131099816;
 			
-			// aapt resource value: 0x7f0600eb
-			public const int Mon_day = 2131099883;
+			// aapt resource value: 0x7f0600f2
+			public const int Mon_day = 2131099890;
 			
 			// aapt resource value: 0x7f060074
 			public const int MyCoursesDetailsFragmentContainer = 2131099764;
@@ -2332,107 +2335,107 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600b6
 			public const int MyCoursesFragmentContainer = 2131099830;
 			
-			// aapt resource value: 0x7f0600d0
-			public const int ResultDetailsFragmentContainerResult = 2131099856;
-			
 			// aapt resource value: 0x7f0600d2
-			public const int ResultFragmentContainerResult = 2131099858;
+			public const int ResultDetailsFragmentContainerResult = 2131099858;
+			
+			// aapt resource value: 0x7f0600d9
+			public const int ResultFragmentContainerResult = 2131099865;
 			
 			// aapt resource value: 0x7f06008a
 			public const int ResultHeader = 2131099786;
 			
-			// aapt resource value: 0x7f0600d1
-			public const int ResultListView = 2131099857;
-			
-			// aapt resource value: 0x7f0600dc
-			public const int SA1 = 2131099868;
-			
-			// aapt resource value: 0x7f0600dd
-			public const int SA2 = 2131099869;
-			
-			// aapt resource value: 0x7f0600de
-			public const int SA3 = 2131099870;
-			
-			// aapt resource value: 0x7f0600df
-			public const int SA4 = 2131099871;
-			
-			// aapt resource value: 0x7f0600e0
-			public const int SA5 = 2131099872;
-			
-			// aapt resource value: 0x7f0600e1
-			public const int SA6 = 2131099873;
-			
-			// aapt resource value: 0x7f0600e4
-			public const int SU1 = 2131099876;
-			
-			// aapt resource value: 0x7f0600e5
-			public const int SU2 = 2131099877;
-			
-			// aapt resource value: 0x7f0600e6
-			public const int SU3 = 2131099878;
-			
-			// aapt resource value: 0x7f0600e7
-			public const int SU4 = 2131099879;
-			
-			// aapt resource value: 0x7f0600e8
-			public const int SU5 = 2131099880;
-			
-			// aapt resource value: 0x7f0600e9
-			public const int SU6 = 2131099881;
-			
-			// aapt resource value: 0x7f0600db
-			public const int Sat_day = 2131099867;
-			
-			// aapt resource value: 0x7f0600d3
-			public const int ScheduleFrame = 2131099859;
+			// aapt resource value: 0x7f0600d5
+			public const int ResultListView = 2131099861;
 			
 			// aapt resource value: 0x7f0600e3
-			public const int Sun_day = 2131099875;
+			public const int SA1 = 2131099875;
 			
-			// aapt resource value: 0x7f060104
-			public const int TH1 = 2131099908;
+			// aapt resource value: 0x7f0600e4
+			public const int SA2 = 2131099876;
 			
-			// aapt resource value: 0x7f060105
-			public const int TH2 = 2131099909;
+			// aapt resource value: 0x7f0600e5
+			public const int SA3 = 2131099877;
 			
-			// aapt resource value: 0x7f060106
-			public const int TH3 = 2131099910;
+			// aapt resource value: 0x7f0600e6
+			public const int SA4 = 2131099878;
 			
-			// aapt resource value: 0x7f060107
-			public const int TH4 = 2131099911;
+			// aapt resource value: 0x7f0600e7
+			public const int SA5 = 2131099879;
 			
-			// aapt resource value: 0x7f060108
-			public const int TH5 = 2131099912;
+			// aapt resource value: 0x7f0600e8
+			public const int SA6 = 2131099880;
 			
-			// aapt resource value: 0x7f060109
-			public const int TH6 = 2131099913;
+			// aapt resource value: 0x7f0600eb
+			public const int SU1 = 2131099883;
 			
-			// aapt resource value: 0x7f0600f4
-			public const int TU1 = 2131099892;
+			// aapt resource value: 0x7f0600ec
+			public const int SU2 = 2131099884;
 			
-			// aapt resource value: 0x7f0600f5
-			public const int TU2 = 2131099893;
+			// aapt resource value: 0x7f0600ed
+			public const int SU3 = 2131099885;
 			
-			// aapt resource value: 0x7f0600f6
-			public const int TU3 = 2131099894;
+			// aapt resource value: 0x7f0600ee
+			public const int SU4 = 2131099886;
 			
-			// aapt resource value: 0x7f0600f7
-			public const int TU4 = 2131099895;
+			// aapt resource value: 0x7f0600ef
+			public const int SU5 = 2131099887;
 			
-			// aapt resource value: 0x7f0600f8
-			public const int TU5 = 2131099896;
+			// aapt resource value: 0x7f0600f0
+			public const int SU6 = 2131099888;
 			
-			// aapt resource value: 0x7f0600f9
-			public const int TU6 = 2131099897;
+			// aapt resource value: 0x7f0600e2
+			public const int Sat_day = 2131099874;
 			
-			// aapt resource value: 0x7f060103
-			public const int Thu_day = 2131099907;
+			// aapt resource value: 0x7f0600da
+			public const int ScheduleFrame = 2131099866;
 			
-			// aapt resource value: 0x7f060116
-			public const int TimetableFragmentContainer = 2131099926;
+			// aapt resource value: 0x7f0600ea
+			public const int Sun_day = 2131099882;
 			
-			// aapt resource value: 0x7f0600f3
-			public const int Tue_day = 2131099891;
+			// aapt resource value: 0x7f06010b
+			public const int TH1 = 2131099915;
+			
+			// aapt resource value: 0x7f06010c
+			public const int TH2 = 2131099916;
+			
+			// aapt resource value: 0x7f06010d
+			public const int TH3 = 2131099917;
+			
+			// aapt resource value: 0x7f06010e
+			public const int TH4 = 2131099918;
+			
+			// aapt resource value: 0x7f06010f
+			public const int TH5 = 2131099919;
+			
+			// aapt resource value: 0x7f060110
+			public const int TH6 = 2131099920;
+			
+			// aapt resource value: 0x7f0600fb
+			public const int TU1 = 2131099899;
+			
+			// aapt resource value: 0x7f0600fc
+			public const int TU2 = 2131099900;
+			
+			// aapt resource value: 0x7f0600fd
+			public const int TU3 = 2131099901;
+			
+			// aapt resource value: 0x7f0600fe
+			public const int TU4 = 2131099902;
+			
+			// aapt resource value: 0x7f0600ff
+			public const int TU5 = 2131099903;
+			
+			// aapt resource value: 0x7f060100
+			public const int TU6 = 2131099904;
+			
+			// aapt resource value: 0x7f06010a
+			public const int Thu_day = 2131099914;
+			
+			// aapt resource value: 0x7f06011f
+			public const int TimetableFragmentContainer = 2131099935;
+			
+			// aapt resource value: 0x7f0600fa
+			public const int Tue_day = 2131099898;
 			
 			// aapt resource value: 0x7f0600a0
 			public const int Uni_logo = 2131099808;
@@ -2443,26 +2446,26 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600ca
 			public const int UsernameFragmentContainer = 2131099850;
 			
-			// aapt resource value: 0x7f0600fc
-			public const int WE1 = 2131099900;
+			// aapt resource value: 0x7f060103
+			public const int WE1 = 2131099907;
 			
-			// aapt resource value: 0x7f0600fd
-			public const int WE2 = 2131099901;
+			// aapt resource value: 0x7f060104
+			public const int WE2 = 2131099908;
 			
-			// aapt resource value: 0x7f0600fe
-			public const int WE3 = 2131099902;
+			// aapt resource value: 0x7f060105
+			public const int WE3 = 2131099909;
 			
-			// aapt resource value: 0x7f0600ff
-			public const int WE4 = 2131099903;
+			// aapt resource value: 0x7f060106
+			public const int WE4 = 2131099910;
 			
-			// aapt resource value: 0x7f060100
-			public const int WE5 = 2131099904;
+			// aapt resource value: 0x7f060107
+			public const int WE5 = 2131099911;
 			
-			// aapt resource value: 0x7f060101
-			public const int WE6 = 2131099905;
+			// aapt resource value: 0x7f060108
+			public const int WE6 = 2131099912;
 			
-			// aapt resource value: 0x7f0600fb
-			public const int Wed_day = 2131099899;
+			// aapt resource value: 0x7f060102
+			public const int Wed_day = 2131099906;
 			
 			// aapt resource value: 0x7f0600be
 			public const int action0 = 2131099838;
@@ -2524,17 +2527,17 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06001f
 			public const int always = 2131099679;
 			
-			// aapt resource value: 0x7f060129
-			public const int announcement_content_card = 2131099945;
+			// aapt resource value: 0x7f060135
+			public const int announcement_content_card = 2131099957;
 			
-			// aapt resource value: 0x7f060112
-			public const int announcement_sender_card = 2131099922;
+			// aapt resource value: 0x7f060119
+			public const int announcement_sender_card = 2131099929;
 			
 			// aapt resource value: 0x7f06006e
 			public const int announcement_student_fragment_container = 2131099758;
 			
-			// aapt resource value: 0x7f060128
-			public const int announcement_time_card = 2131099944;
+			// aapt resource value: 0x7f060134
+			public const int announcement_time_card = 2131099956;
 			
 			// aapt resource value: 0x7f060070
 			public const int announcements_recyclerview = 2131099760;
@@ -2563,8 +2566,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600bf
 			public const int cancel_action = 2131099839;
 			
-			// aapt resource value: 0x7f060111
-			public const int card_view = 2131099921;
+			// aapt resource value: 0x7f060118
+			public const int card_view = 2131099928;
 			
 			// aapt resource value: 0x7f06002c
 			public const int center = 2131099692;
@@ -2599,14 +2602,29 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600b4
 			public const int content_messageDetails = 2131099828;
 			
-			// aapt resource value: 0x7f06010e
-			public const int content_message_announcement_fragment = 2131099918;
+			// aapt resource value: 0x7f060115
+			public const int content_message_announcement_fragment = 2131099925;
+			
+			// aapt resource value: 0x7f0600d6
+			public const int course_code_resltsLayout = 2131099862;
+			
+			// aapt resource value: 0x7f060121
+			public const int course_code_transcriptLayout = 2131099937;
 			
 			// aapt resource value: 0x7f060076
 			public const int course_name_en_text = 2131099766;
 			
 			// aapt resource value: 0x7f060077
 			public const int course_name_en_txt = 2131099767;
+			
+			// aapt resource value: 0x7f0600d7
+			public const int course_name_resltsLayout = 2131099863;
+			
+			// aapt resource value: 0x7f060122
+			public const int course_name_transcriptLayout = 2131099938;
+			
+			// aapt resource value: 0x7f0600d8
+			public const int course_result_resltsLayout = 2131099864;
 			
 			// aapt resource value: 0x7f060053
 			public const int custom = 2131099731;
@@ -2623,11 +2641,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060043
 			public const int default_activity_button = 2131099715;
 			
-			// aapt resource value: 0x7f06011c
-			public const int departmentTV = 2131099932;
+			// aapt resource value: 0x7f060128
+			public const int departmentTV = 2131099944;
 			
-			// aapt resource value: 0x7f06011d
-			public const int departmentTVB = 2131099933;
+			// aapt resource value: 0x7f060129
+			public const int departmentTVB = 2131099945;
 			
 			// aapt resource value: 0x7f06007e
 			public const int design_bottom_sheet = 2131099774;
@@ -2656,11 +2674,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060060
 			public const int edit_query = 2131099744;
 			
-			// aapt resource value: 0x7f060118
-			public const int emailTV = 2131099928;
+			// aapt resource value: 0x7f060124
+			public const int emailTV = 2131099940;
 			
-			// aapt resource value: 0x7f060119
-			public const int emailTVB = 2131099929;
+			// aapt resource value: 0x7f060125
+			public const int emailTVB = 2131099941;
 			
 			// aapt resource value: 0x7f06001d
 			public const int end = 2131099677;
@@ -2713,8 +2731,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060099
 			public const int fab = 2131099801;
 			
-			// aapt resource value: 0x7f06010f
-			public const int fab1 = 2131099919;
+			// aapt resource value: 0x7f060116
+			public const int fab1 = 2131099926;
 			
 			// aapt resource value: 0x7f06009e
 			public const int fabWT = 2131099806;
@@ -2728,11 +2746,14 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06002f
 			public const int fill_vertical = 2131099695;
 			
+			// aapt resource value: 0x7f06011d
+			public const int firstHeader = 2131099933;
+			
 			// aapt resource value: 0x7f06003b
 			public const int @fixed = 2131099707;
 			
-			// aapt resource value: 0x7f0600d4
-			public const int fragmentLayout = 2131099860;
+			// aapt resource value: 0x7f0600db
+			public const int fragmentLayout = 2131099867;
 			
 			// aapt resource value: 0x7f06009f
 			public const int frame = 2131099807;
@@ -2746,8 +2767,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06000f
 			public const int homeAsUp = 2131099663;
 			
-			// aapt resource value: 0x7f0600d5
-			public const int horizontalView = 2131099861;
+			// aapt resource value: 0x7f0600dc
+			public const int horizontalView = 2131099868;
 			
 			// aapt resource value: 0x7f060045
 			public const int icon = 2131099717;
@@ -2788,8 +2809,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600b0
 			public const int linearLayout2 = 2131099824;
 			
-			// aapt resource value: 0x7f06010a
-			public const int linearLayout3 = 2131099914;
+			// aapt resource value: 0x7f060111
+			public const int linearLayout3 = 2131099921;
 			
 			// aapt resource value: 0x7f0600b3
 			public const int linearLayout4 = 2131099827;
@@ -2800,23 +2821,23 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060044
 			public const int list_item = 2131099716;
 			
-			// aapt resource value: 0x7f060138
-			public const int list_row_results_background = 2131099960;
+			// aapt resource value: 0x7f060144
+			public const int list_row_results_background = 2131099972;
 			
-			// aapt resource value: 0x7f060139
-			public const int list_row_results_code = 2131099961;
+			// aapt resource value: 0x7f060145
+			public const int list_row_results_code = 2131099973;
 			
-			// aapt resource value: 0x7f06013a
-			public const int list_row_results_name = 2131099962;
+			// aapt resource value: 0x7f060146
+			public const int list_row_results_name = 2131099974;
 			
-			// aapt resource value: 0x7f06013b
-			public const int list_row_results_result = 2131099963;
+			// aapt resource value: 0x7f060147
+			public const int list_row_results_result = 2131099975;
 			
-			// aapt resource value: 0x7f06013c
-			public const int list_row_timetable_name = 2131099964;
+			// aapt resource value: 0x7f060148
+			public const int list_row_timetable_name = 2131099976;
 			
-			// aapt resource value: 0x7f06013d
-			public const int list_row_timetable_result = 2131099965;
+			// aapt resource value: 0x7f060149
+			public const int list_row_timetable_result = 2131099977;
 			
 			// aapt resource value: 0x7f0600a7
 			public const int llayout = 2131099815;
@@ -2830,14 +2851,17 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600c1
 			public const int media_actions = 2131099841;
 			
-			// aapt resource value: 0x7f060137
-			public const int message_conent_row = 2131099959;
+			// aapt resource value: 0x7f060143
+			public const int message_conent_row = 2131099971;
 			
-			// aapt resource value: 0x7f060136
-			public const int message_title_row = 2131099958;
+			// aapt resource value: 0x7f060142
+			public const int message_title_row = 2131099970;
 			
 			// aapt resource value: 0x7f06001e
 			public const int middle = 2131099678;
+			
+			// aapt resource value: 0x7f0600d0
+			public const int midexamName_resultDetailsLayout = 2131099856;
 			
 			// aapt resource value: 0x7f06003a
 			public const int mini = 2131099706;
@@ -2851,11 +2875,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600a9
 			public const int myMajorListView = 2131099817;
 			
-			// aapt resource value: 0x7f06012a
-			public const int nav_announcements = 2131099946;
+			// aapt resource value: 0x7f060136
+			public const int nav_announcements = 2131099958;
 			
-			// aapt resource value: 0x7f06012f
-			public const int nav_enrollment = 2131099951;
+			// aapt resource value: 0x7f06013b
+			public const int nav_enrollment = 2131099963;
 			
 			// aapt resource value: 0x7f0600ba
 			public const int nav_header = 2131099834;
@@ -2863,32 +2887,32 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600bb
 			public const int nav_header_image = 2131099835;
 			
-			// aapt resource value: 0x7f060133
-			public const int nav_logout = 2131099955;
+			// aapt resource value: 0x7f06013f
+			public const int nav_logout = 2131099967;
 			
-			// aapt resource value: 0x7f060130
-			public const int nav_major = 2131099952;
+			// aapt resource value: 0x7f06013c
+			public const int nav_major = 2131099964;
 			
-			// aapt resource value: 0x7f06012b
-			public const int nav_messages = 2131099947;
+			// aapt resource value: 0x7f060137
+			public const int nav_messages = 2131099959;
 			
-			// aapt resource value: 0x7f06012c
-			public const int nav_myCourses = 2131099948;
+			// aapt resource value: 0x7f060138
+			public const int nav_myCourses = 2131099960;
 			
 			// aapt resource value: 0x7f0600bc
 			public const int nav_profile = 2131099836;
 			
-			// aapt resource value: 0x7f060131
-			public const int nav_result = 2131099953;
+			// aapt resource value: 0x7f06013d
+			public const int nav_result = 2131099965;
 			
-			// aapt resource value: 0x7f06012d
-			public const int nav_schedule = 2131099949;
+			// aapt resource value: 0x7f060139
+			public const int nav_schedule = 2131099961;
 			
-			// aapt resource value: 0x7f060132
-			public const int nav_settings = 2131099954;
+			// aapt resource value: 0x7f06013e
+			public const int nav_settings = 2131099966;
 			
-			// aapt resource value: 0x7f06012e
-			public const int nav_timetable = 2131099950;
+			// aapt resource value: 0x7f06013a
+			public const int nav_timetable = 2131099962;
 			
 			// aapt resource value: 0x7f06006f
 			public const int nav_view = 2131099759;
@@ -2908,11 +2932,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06000c
 			public const int normal = 2131099660;
 			
-			// aapt resource value: 0x7f060122
-			public const int noticesTV = 2131099938;
+			// aapt resource value: 0x7f06012e
+			public const int noticesTV = 2131099950;
 			
-			// aapt resource value: 0x7f060123
-			public const int noticesTVB = 2131099939;
+			// aapt resource value: 0x7f06012f
+			public const int noticesTVB = 2131099951;
 			
 			// aapt resource value: 0x7f060033
 			public const int parallax = 2131099699;
@@ -2920,23 +2944,23 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060049
 			public const int parentPanel = 2131099721;
 			
-			// aapt resource value: 0x7f06011a
-			public const int phoneTV = 2131099930;
+			// aapt resource value: 0x7f060126
+			public const int phoneTV = 2131099942;
 			
-			// aapt resource value: 0x7f06011b
-			public const int phoneTVB = 2131099931;
+			// aapt resource value: 0x7f060127
+			public const int phoneTVB = 2131099943;
 			
 			// aapt resource value: 0x7f060034
 			public const int pin = 2131099700;
 			
-			// aapt resource value: 0x7f060127
-			public const int profile_image2 = 2131099943;
+			// aapt resource value: 0x7f060133
+			public const int profile_image2 = 2131099955;
 			
 			// aapt resource value: 0x7f0600af
 			public const int profile_pic_messageDetails = 2131099823;
 			
-			// aapt resource value: 0x7f060134
-			public const int profile_pic_row = 2131099956;
+			// aapt resource value: 0x7f060140
+			public const int profile_pic_row = 2131099968;
 			
 			// aapt resource value: 0x7f060006
 			public const int progress_circular = 2131099654;
@@ -2947,17 +2971,23 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060057
 			public const int radio = 2131099735;
 			
-			// aapt resource value: 0x7f060113
-			public const int radio_arabic = 2131099923;
+			// aapt resource value: 0x7f06011a
+			public const int radio_arabic = 2131099930;
 			
-			// aapt resource value: 0x7f060114
-			public const int radio_english = 2131099924;
+			// aapt resource value: 0x7f06011b
+			public const int radio_english = 2131099931;
 			
 			// aapt resource value: 0x7f0600ce
 			public const int recieved_messsages_recyclerview = 2131099854;
 			
-			// aapt resource value: 0x7f060124
-			public const int relativeLayout1 = 2131099940;
+			// aapt resource value: 0x7f060130
+			public const int relativeLayout1 = 2131099952;
+			
+			// aapt resource value: 0x7f0600d1
+			public const int result_resultDetailsLayout = 2131099857;
+			
+			// aapt resource value: 0x7f060123
+			public const int result_transcriptLayout = 2131099939;
 			
 			// aapt resource value: 0x7f060031
 			public const int right = 2131099697;
@@ -3013,6 +3043,9 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06006b
 			public const int search_voice_btn = 2131099755;
 			
+			// aapt resource value: 0x7f06011e
+			public const int secondHeader = 2131099934;
+			
 			// aapt resource value: 0x7f06006c
 			public const int select_dialog_listview = 2131099756;
 			
@@ -3022,11 +3055,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060075
 			public const int send_message_btn = 2131099765;
 			
-			// aapt resource value: 0x7f06010c
-			public const int send_to_message_announcement_fragment = 2131099916;
+			// aapt resource value: 0x7f060113
+			public const int send_to_message_announcement_fragment = 2131099923;
 			
-			// aapt resource value: 0x7f060110
-			public const int settingLayout = 2131099920;
+			// aapt resource value: 0x7f060117
+			public const int settingLayout = 2131099927;
 			
 			// aapt resource value: 0x7f060056
 			public const int shortcut = 2131099734;
@@ -3082,29 +3115,29 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06000d
 			public const int tabMode = 2131099661;
 			
-			// aapt resource value: 0x7f0600d6
-			public const int tabla_cuerpo = 2131099862;
+			// aapt resource value: 0x7f0600dd
+			public const int tabla_cuerpo = 2131099869;
 			
-			// aapt resource value: 0x7f0600d7
-			public const int tableRow1 = 2131099863;
+			// aapt resource value: 0x7f0600de
+			public const int tableRow1 = 2131099870;
 			
-			// aapt resource value: 0x7f0600ea
-			public const int tableRowMON = 2131099882;
+			// aapt resource value: 0x7f0600f1
+			public const int tableRowMON = 2131099889;
 			
-			// aapt resource value: 0x7f0600da
-			public const int tableRowSAT = 2131099866;
+			// aapt resource value: 0x7f0600e1
+			public const int tableRowSAT = 2131099873;
 			
-			// aapt resource value: 0x7f0600e2
-			public const int tableRowSUN = 2131099874;
+			// aapt resource value: 0x7f0600e9
+			public const int tableRowSUN = 2131099881;
 			
-			// aapt resource value: 0x7f060102
-			public const int tableRowTHU = 2131099906;
+			// aapt resource value: 0x7f060109
+			public const int tableRowTHU = 2131099913;
 			
-			// aapt resource value: 0x7f0600f2
-			public const int tableRowTUE = 2131099890;
+			// aapt resource value: 0x7f0600f9
+			public const int tableRowTUE = 2131099897;
 			
-			// aapt resource value: 0x7f0600fa
-			public const int tableRowWED = 2131099898;
+			// aapt resource value: 0x7f060101
+			public const int tableRowWED = 2131099905;
 			
 			// aapt resource value: 0x7f060097
 			public const int tabs = 2131099799;
@@ -3121,11 +3154,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060050
 			public const int textSpacerNoButtons = 2131099728;
 			
-			// aapt resource value: 0x7f0600d9
-			public const int textView1 = 2131099865;
+			// aapt resource value: 0x7f0600e0
+			public const int textView1 = 2131099872;
 			
-			// aapt resource value: 0x7f06010b
-			public const int textView3 = 2131099915;
+			// aapt resource value: 0x7f060112
+			public const int textView3 = 2131099922;
 			
 			// aapt resource value: 0x7f060086
 			public const int text_input_password_toggle = 2131099782;
@@ -3133,8 +3166,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600c4
 			public const int time = 2131099844;
 			
-			// aapt resource value: 0x7f060117
-			public const int timetableAndMidExamView = 2131099927;
+			// aapt resource value: 0x7f060120
+			public const int timetableAndMidExamView = 2131099936;
 			
 			// aapt resource value: 0x7f060046
 			public const int title = 2131099718;
@@ -3142,8 +3175,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600ae
 			public const int title_messageDetails = 2131099822;
 			
-			// aapt resource value: 0x7f06010d
-			public const int title_message_announcement_fragment = 2131099917;
+			// aapt resource value: 0x7f060114
+			public const int title_message_announcement_fragment = 2131099924;
 			
 			// aapt resource value: 0x7f06004b
 			public const int title_template = 2131099723;
@@ -3160,8 +3193,14 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06004a
 			public const int topPanel = 2131099722;
 			
+			// aapt resource value: 0x7f0600d3
+			public const int totalLable_resultDetailsLayout = 2131099859;
+			
 			// aapt resource value: 0x7f0600b7
 			public const int total_credit = 2131099831;
+			
+			// aapt resource value: 0x7f0600d4
+			public const int total_resultDetailsLayout = 2131099860;
 			
 			// aapt resource value: 0x7f0600b9
 			public const int total_units_semester_txt = 2131099833;
@@ -3190,11 +3229,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060079
 			public const int units = 2131099769;
 			
-			// aapt resource value: 0x7f06011e
-			public const int unitsTV = 2131099934;
+			// aapt resource value: 0x7f06012a
+			public const int unitsTV = 2131099946;
 			
-			// aapt resource value: 0x7f06011f
-			public const int unitsTVB = 2131099935;
+			// aapt resource value: 0x7f06012b
+			public const int unitsTVB = 2131099947;
 			
 			// aapt resource value: 0x7f06007a
 			public const int units_txt = 2131099770;
@@ -3205,14 +3244,14 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060014
 			public const int useLogo = 2131099668;
 			
-			// aapt resource value: 0x7f060135
-			public const int user_name_row = 2131099957;
+			// aapt resource value: 0x7f060141
+			public const int user_name_row = 2131099969;
 			
-			// aapt resource value: 0x7f060126
-			public const int usernameF_nameInAR_lable = 2131099942;
+			// aapt resource value: 0x7f060132
+			public const int usernameF_nameInAR_lable = 2131099954;
 			
-			// aapt resource value: 0x7f060125
-			public const int usernameF_nameInEN_lable = 2131099941;
+			// aapt resource value: 0x7f060131
+			public const int usernameF_nameInEN_lable = 2131099953;
 			
 			// aapt resource value: 0x7f0600b1
 			public const int username_messageDetails = 2131099825;

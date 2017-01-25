@@ -52,7 +52,7 @@ namespace UOTCS_android
             try
             { 
             if (Int32.Parse(CScore.BCL.User.dep_id) <= 1)
-            //    if (await CScore.BCL.Major.isMajorEnabled())
+                if (await CScore.BCL.Major.isMajorEnabled())
                 {
                     CScore.BCL.StatusWithObject<List<CScore.BCL.Department>> Deparments =
                     await CScore.BCL.Major.getAvailableDepartments();
@@ -77,10 +77,10 @@ namespace UOTCS_android
 
                     };
                 }
-              //  else
-             //   {
-               //     showMajorNoAvailable();
-             //   }
+                else
+                {
+                    showMajorNoAvailable();
+                }
             else showMajorNoAvailable();
 
             }
