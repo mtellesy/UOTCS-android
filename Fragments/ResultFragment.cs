@@ -80,9 +80,10 @@ namespace UOTCS_android.Fragments
                 activityName = Activity.Class.SimpleName;
             }
             if (activityName == "Result")
-            { 
+            {
 
                 Intent intent = new Intent(Activity, typeof(ResultDetails));
+                intent.PutExtra("course_id", results[e.Position].Code);
                 this.StartActivity(intent);
 
            }
