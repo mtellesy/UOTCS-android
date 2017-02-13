@@ -46,6 +46,8 @@ namespace UOTCS_android
         private TabLayout tabs;
         private ViewPager viewPager;
         private TabAdapter adapter;
+        private PersonalProfileFragment personal;
+        private AcademicProfileFragment academic;
         protected override async void OnCreate(Bundle bundle)
         {
 
@@ -73,12 +75,20 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-
-            initiateFragments();
+            SetUpViewPager(viewPager);
+            tabs.SetupWithViewPager(viewPager);
+          //  initiateFragments();
             handleEvents();
         }
 
+        private void SetUpViewPager(ViewPager viewPager)
+        {
+            adapter = new TabAdapter(SupportFragmentManager);
+            adapter.AddFragment(personal, "personal");
+            adapter.AddFragment(academic, "academic");
 
+            viewPager.Adapter = adapter;
+        }
 
         private void findViews()
         {
@@ -86,37 +96,34 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
             viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
             adapter = new TabAdapter(SupportFragmentManager);
-   //         recievedMessages = new RecievedMessagesFragment();
-     //       sentMessages = new SentMessagesFragment();
-
-            view = navigationView.GetHeaderView(0);
-            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+            personal = new  PersonalProfileFragment();
+            academic = new AcademicProfileFragment();
 
 //            username = new Username();
  //           userInformation = new UserInformationFragment();
    //         userMoreInformation = new UserMoreInfomationFragment();
-            status = FindViewById<Button>(Resource.Id.status_btn);
-            status.Text = CScore.FixdStrings.General.Status();
-            transcript = FindViewById<Button>(Resource.Id.transcript_btn);
-            transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
-            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
-            SetSupportActionBar(toolBar);
-            actionbar = SupportActionBar;
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            view = navigationView.GetHeaderView(0);
-            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
+    //        status = FindViewById<Button>(Resource.Id.status_btn);
+      //      status.Text = CScore.FixdStrings.General.Status();
+        //    transcript = FindViewById<Button>(Resource.Id.transcript_btn);
+          //  transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
+ //           toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+   //         SetSupportActionBar(toolBar);
+   //         actionbar = SupportActionBar;
+         //   drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+       //     navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+     //      view = navigationView.GetHeaderView(0);
+   //         profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+      //      CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
        //     card.GenerateLayoutParams (new LinearLayout.LayoutParams(20, 20));
             
             if (Values.Use_typeID > 1)
             {
-                status.Visibility = ViewStates.Gone;
-                transcript.Visibility = ViewStates.Gone;
+    //            status.Visibility = ViewStates.Gone;
+      //          transcript.Visibility = ViewStates.Gone;
                 //           CardView.LayoutParams layoutParams = (CardView.LayoutParams)
                 //    card.LayoutParameters;
                 //       layoutParams.Height = 300;
@@ -125,7 +132,7 @@ namespace UOTCS_android
 
             }
         }
-        private void initiateFragments()
+      /*  private void initiateFragments()
         {
 
             var trans = SupportFragmentManager.BeginTransaction();
@@ -136,7 +143,7 @@ namespace UOTCS_android
             mCurrentFragment = userInformation;
             trans.Commit();
         }
-
+        */
         private void setUpActionBar(SupportActionBar actionBar)
         {
             actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
@@ -145,7 +152,6 @@ namespace UOTCS_android
         }
         private void setUpNavigationView(NavigationView navigationView)
         {
-            navigationView.ItemIconTintList = null;
             Values.changeNavigationItems(navigationView, this);
             if (navigationView != null)
             {
@@ -159,10 +165,10 @@ namespace UOTCS_android
 
         private void handleEvents()
         {
-            status.Click += status_btn_Click;
+    //        status.Click += status_btn_Click;
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
-            profileImage.Click += ProfileImage_Click;
-            transcript.Click += Transcript_Click;
+    //       profileImage.Click += ProfileImage_Click;
+   //         transcript.Click += Transcript_Click;
         }
 
         private void Transcript_Click(object sender, EventArgs e)
@@ -194,7 +200,7 @@ namespace UOTCS_android
         {
             MoveTaskToBack(true);
         }
-
+        /*
         private void status_btn_Click(object sender, EventArgs e)
         {
             var trans = SupportFragmentManager.BeginTransaction();
@@ -216,7 +222,7 @@ namespace UOTCS_android
                 status.Text = CScore.FixdStrings.General.Status();
 
             }
-        }
+        }*/
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();

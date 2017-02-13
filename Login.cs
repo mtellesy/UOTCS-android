@@ -109,16 +109,19 @@ namespace UOTCS_android
 
             if(error == 0)
             {
-                LoginStatus = await CScore.BCL.User.login(userID, password);
+                LoginStatus = new Status();
+                var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
+                task.Wait();
                 //  this.showMessage(LoginStatus.message);
                 Intent intent = new Intent(this, typeof(Profile));
                 if (LoginStatus.status)
                 {
-                   
-                        StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
-                          string x = CScore.BCL.User.use_type;
-                          await this.buildDB(x);
+                    StatusWithObject<String> aut = new StatusWithObject<string>();
+                    var task2 = Task.Run(async () => { aut = await CScore.SAL.AuthenticatorS.authenticate(); });
+                    task2.Wait();
+                    string x = CScore.BCL.User.use_type;
+                    await this.buildDB(x);
                     this.setLanguage();
                
                     this.StartActivity(intent);
