@@ -43,7 +43,9 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private TabLayout tabs;
+        private ViewPager viewPager;
+        private TabAdapter adapter;
         protected override async void OnCreate(Bundle bundle)
         {
 
@@ -80,10 +82,23 @@ namespace UOTCS_android
 
         private void findViews()
         {
+             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBarWT);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
+            tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
+            viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
+            adapter = new TabAdapter(SupportFragmentManager);
+   //         recievedMessages = new RecievedMessagesFragment();
+     //       sentMessages = new SentMessagesFragment();
 
-            username = new Username();
-            userInformation = new UserInformationFragment();
-            userMoreInformation = new UserMoreInfomationFragment();
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+
+//            username = new Username();
+ //           userInformation = new UserInformationFragment();
+   //         userMoreInformation = new UserMoreInfomationFragment();
             status = FindViewById<Button>(Resource.Id.status_btn);
             status.Text = CScore.FixdStrings.General.Status();
             transcript = FindViewById<Button>(Resource.Id.transcript_btn);
@@ -167,6 +182,7 @@ namespace UOTCS_android
             {
                 case Android.Resource.Id.Home:
                     drawerLayout.OpenDrawer((int)GravityFlags.Start);
+
                     return true;
 
 
@@ -206,7 +222,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
         }
         private void ProfileImage_Click(object sender, EventArgs e)

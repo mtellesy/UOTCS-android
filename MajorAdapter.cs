@@ -131,14 +131,12 @@ namespace UOTCS_android
                     //first turn off all the other buttons 
                     for (int i = 0; i < majorButtons.Count; i++)
                     {
-           //             majorButtons[position].SetImageResource(Resource.Drawable.ic_content_add_circle);
                         majorButtons[i].Enabled = false;
                     }
                         
 
                     // turn this buttom again 
                     majorButtons[position].Enabled = true;
-           //         majorButtons[position].SetImageResource(Resource.Drawable.ic_content_remove_circle);
 
                     FinalDepID = DepartmentItemList[position].DepartmentID;
 
@@ -154,8 +152,6 @@ namespace UOTCS_android
                     //first turn on all the buttons 
                     for (int i = 0; i < majorButtons.Count; i++)
                         majorButtons[i].Enabled = true;
-           //         majorButtons[position].SetImageResource(Resource.Drawable.ic_content_add_circle);
-
                     //delete the finalDepID by making it equels -1 
                     //-1 means no depatment has been choosen
                     FinalDepID = -1;

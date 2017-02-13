@@ -182,10 +182,13 @@ namespace UOTCS_android
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();
+            
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
-            }            
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+            }
+
+            
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {

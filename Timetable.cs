@@ -134,6 +134,7 @@ namespace UOTCS_android
             {
                 case Android.Resource.Id.Home:
                     drawerLayout.OpenDrawer((int)GravityFlags.Start);
+                    
                     return true;
 
 
@@ -152,7 +153,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
 
         }

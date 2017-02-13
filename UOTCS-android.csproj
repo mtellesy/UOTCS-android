@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -48,6 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -133,7 +134,9 @@
   <ItemGroup>
     <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="CourseDetails.cs" />
+    <Compile Include="Fragments\AcademicProfileFragment.cs" />
     <Compile Include="Fragments\CourseNameFragment.cs" />
+    <Compile Include="Fragments\PersonalProfileFragment.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
     <Compile Include="Fragments\ScheduleDialogFragment.cs" />
@@ -314,6 +317,12 @@
     <AndroidResource Include="Resources\layout\CourseNameF.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\academicProfile.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\personalProfile.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -397,7 +406,9 @@
     <AndroidResource Include="Resources\drawable\textBackground.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values-ar\Strings.xml" />
+    <AndroidResource Include="Resources\values-ar\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompanionSystem\CScore\CScore.csproj">

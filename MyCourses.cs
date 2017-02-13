@@ -167,7 +167,7 @@ namespace UOTCS_android
         {
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)

@@ -146,7 +146,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
     
 
