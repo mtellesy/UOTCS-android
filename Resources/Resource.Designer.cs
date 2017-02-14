@@ -3544,76 +3544,79 @@ namespace UOTCS_android
 			public const int Profile = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int RecievedMessagesF = 2130903108;
+			public const int ProfileStudent = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int ResultDetails = 2130903109;
+			public const int RecievedMessagesF = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int ResultF = 2130903110;
+			public const int ResultDetails = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int Results = 2130903111;
+			public const int ResultF = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int Schedule = 2130903112;
+			public const int Results = 2130903112;
 			
 			// aapt resource value: 0x7f030049
-			public const int ScheduleDialogFragment = 2130903113;
+			public const int Schedule = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int ScheduleFragment = 2130903114;
+			public const int ScheduleDialogFragment = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int select_dialog_item_material = 2130903115;
+			public const int ScheduleFragment = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int select_dialog_multichoice_material = 2130903116;
+			public const int select_dialog_item_material = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int select_dialog_singlechoice_material = 2130903117;
+			public const int select_dialog_multichoice_material = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int SendAnnouncement = 2130903118;
+			public const int select_dialog_singlechoice_material = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int sendMessage = 2130903119;
+			public const int SendAnnouncement = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int SendMessageAnnouncementF = 2130903120;
+			public const int sendMessage = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int sendToolBar = 2130903121;
+			public const int SendMessageAnnouncementF = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int SentMessagesF = 2130903122;
+			public const int sendToolBar = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int Settings = 2130903123;
+			public const int SentMessagesF = 2130903123;
 			
 			// aapt resource value: 0x7f030054
-			public const int support_simple_spinner_dropdown_item = 2130903124;
+			public const int Settings = 2130903124;
 			
 			// aapt resource value: 0x7f030055
-			public const int Timetable = 2130903125;
+			public const int support_simple_spinner_dropdown_item = 2130903125;
 			
 			// aapt resource value: 0x7f030056
-			public const int TimetableAndMidExamF = 2130903126;
+			public const int Timetable = 2130903126;
 			
 			// aapt resource value: 0x7f030057
-			public const int transcript = 2130903127;
+			public const int TimetableAndMidExamF = 2130903127;
 			
 			// aapt resource value: 0x7f030058
-			public const int transcriptF = 2130903128;
+			public const int transcript = 2130903128;
 			
 			// aapt resource value: 0x7f030059
-			public const int UserInfomationsF = 2130903129;
+			public const int transcriptF = 2130903129;
 			
 			// aapt resource value: 0x7f03005a
-			public const int UserMoreInformationF = 2130903130;
+			public const int UserInfomationsF = 2130903130;
 			
 			// aapt resource value: 0x7f03005b
-			public const int usernameF = 2130903131;
+			public const int UserMoreInformationF = 2130903131;
+			
+			// aapt resource value: 0x7f03005c
+			public const int usernameF = 2130903132;
 			
 			static Layout()
 			{

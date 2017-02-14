@@ -159,6 +159,7 @@
     <Compile Include="MessageDetailsActivity.cs" />
     <Compile Include="NonScrollableListView.cs" />
     <Compile Include="NotificationsRepo.cs" />
+    <Compile Include="ProfileStudent.cs" />
     <Compile Include="RecyclerViewAdapter.cs" />
     <Compile Include="RecyclerViewAdapterAnnouncements.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
@@ -321,6 +322,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\personalProfile.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ProfileStudent.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
