@@ -6,166 +6,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linearLayout1"
-    android:padding="10dp"
+    android:padding="@dimen/background_padding"
     android:weightSum="6">
-    <LinearLayout
-        android:orientation="horizontal"
+  <RelativeLayout
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearLayout1"
+    android:paddingRight="@dimen/background_padding"
+        android:paddingTop="@dimen/background_padding"
+    android:paddingLeft="@dimen/background_padding"
+    android:layout_weight="1">
+    <TextView
+        android:text="Department"
+        android:textColor="@color/secondary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailTV"
+ />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+        android:background="@drawable/textBackground"
+        android:text="department"
+        android:textColor="@color/primary_text"
+        android:id="@+id/department_textview"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        />
+  </RelativeLayout>
+  <RelativeLayout
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/linearLayout1"
+      android:paddingRight="@dimen/background_padding"
+      android:paddingLeft="@dimen/background_padding"
+      android:layout_weight="1">
+    <TextView
+        android:text="Current semester"
+        android:textColor="@color/secondary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/phoneTV" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/textBackground"
+        android:text="9"
+        android:textColor="@color/primary_text"
+        android:id="@+id/current_semester_textview"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+         />
+  </RelativeLayout>
+  <RelativeLayout
+     android:minWidth="25px"
+     android:minHeight="25px"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/linearLayout1"
+     android:paddingRight="@dimen/background_padding"
+     android:paddingLeft="@dimen/background_padding"
+     android:layout_weight="1">
+    <TextView
+        android:text="Units completed"
+        android:textColor="@color/secondary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_weight="3"
+        android:id="@+id/departmentTV" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/textBackground"
+        android:text="130"
+        android:textColor="@color/primary_text"
+        android:id="@+id/units_completed_textview"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        
+ />
+  </RelativeLayout>
+  <RelativeLayout
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/linearLayout1"
+      android:paddingRight="@dimen/background_padding"
+      android:paddingLeft="@dimen/background_padding"
+      android:layout_weight="1">
+    <TextView
+        android:text="Warnings"
+        android:textColor="@color/secondary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/departmentTV" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/textBackground"
+        android:text="0"
+        android:textColor="@color/primary_text"
+        android:id="@+id/warnings_textview"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+      />
+  </RelativeLayout>
+    <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:weightSum="2">
-        <TextView
-            android:text="Department"
-            android:textColor="@color/secondary_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailTV"
-            android:layout_weight="1" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/textBackground"
-            android:text="department"
-            android:textColor="@color/primary_text"
-            android:id="@+id/emailTVB"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:translationY="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:weightSum="4">
-        <TextView
-            android:text="Current semester"
-            android:textColor="@color/secondary_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:id="@+id/phoneTV" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/textBackground"
-            android:text="1"
-            android:textColor="@color/primary_text"
-            android:id="@+id/phoneTVB"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:translationY="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:weightSum="4">
-        <TextView
-            android:text="Units completed"
-            android:textColor="@color/secondary_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:id="@+id/departmentTV" />
-        <TextView xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/textBackground"
-            android:text="@string/department_profile"
-            android:textColor="@color/primary_text"
-            android:id="@+id/departmentTVB"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:translationY="10dp"
-            tools:text="0" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:weightSum="4">
-        <TextView
-            android:text="Warnings"
-            android:textColor="@color/secondary_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:id="@+id/departmentTV" />
-        <TextView xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/textBackground"
-            android:text="@string/department_profile"
-            android:textColor="@color/primary_text"
-            android:id="@+id/departmentTVB"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:translationY="10dp"
-            tools:text="0" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1"
-        android:weightSum="4">
+        android:paddingRight="@dimen/background_padding"
+        android:paddingLeft="@dimen/background_padding"
+        android:layout_weight="1">
         <TextView
             android:text="GPA"
             android:textColor="@color/secondary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:id="@+id/departmentTV" />
+            android:id="@+id/departmentTV"
+            android:layout_alignParentStart="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@drawable/textBackground"
-            android:text="00"
+            android:text="87.62%"
             android:textColor="@color/primary_text"
-            android:id="@+id/departmentTVB"
+            android:id="@+id/gpa_textview"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:translationY="10dp" />
-    </LinearLayout>
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/background_padding"
+        android:paddingLeft="@dimen/background_padding"
+        android:paddingBottom="@dimen/background_padding"
         android:id="@+id/linearLayout1"
         android:layout_weight="1">
         <Button

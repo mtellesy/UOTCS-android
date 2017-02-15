@@ -85,8 +85,8 @@ namespace UOTCS_android
             usernameWrapper.ErrorEnabled = false;
 
             password = passwordWrapper.EditText.Text;
-
-            if(userIDEditText.Text == "" || userIDEditText.Text == null)
+            
+            if (userIDEditText.Text == "" || userIDEditText.Text == null)
             {
                 userID = 0;
             }
@@ -106,14 +106,14 @@ namespace UOTCS_android
                passwordWrapper.Error = "Please Enter You password";
                 error++;
             }
-
-            if(error == 0)
+            
+            if (error == 0)
             {
                 LoginStatus = new Status();
                 var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
                 task.Wait();
                 //  this.showMessage(LoginStatus.message);
-                Intent intent = new Intent(this, typeof(Profile));
+                Intent intent = new Intent(this, typeof(ProfileStudent));
                 if (LoginStatus.status)
                 {
 

@@ -58,6 +58,7 @@ namespace UOTCS_android
             else
             {
                 rowTotal.Text = results[position].Result.ToString();
+                float x = results[position].Result;
                 if (results[position].Result < 50)
                 {
                     rowTotal.SetTextColor(Color.Red);
@@ -65,6 +66,15 @@ namespace UOTCS_android
                 else
                 {
                     rowTotal.SetTextColor(Color.Black);
+                }
+                if (results[position].Result== -1)
+                {
+                    rowTotal.SetTextColor(Color.Black);
+                    rowTotal.Text = CScore.FixdStrings.Results.notSet();
+                }
+                else
+                {
+                    rowTotal.Text= results[position].Result.ToString();
                 }
             }
             

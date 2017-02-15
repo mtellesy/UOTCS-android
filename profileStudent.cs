@@ -29,8 +29,6 @@ namespace UOTCS_android
     [Activity(Label = "Profile", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class ProfileStudent : AppCompatActivity
     {
-        //       private Button view;
-        //     private Button hide;
 
         private Button transcript;
         private SupportToolbar toolBar;
@@ -51,21 +49,21 @@ namespace UOTCS_android
             base.OnCreate(bundle);
 
             // var task = Task.Run(async () => {
-            await CScore.BCL.Semester.getCurrentSemester();
+   //         await CScore.BCL.Semester.getCurrentSemester();
             //});
             //   task.Wait();
 
 
             // start the service for notifications
-            Intent intent = new Intent(this, typeof(Services.StatusChecker));
-            this.StartService(intent);
+     //       Intent intent = new Intent(this, typeof(Services.StatusChecker));
+       //     this.StartService(intent);
 
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
             //  task.Wait();
-            this.Title = CScore.FixdStrings.Profile.ProfileLable();
+     //       this.Title = CScore.FixdStrings.Profile.ProfileLable();
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.Profile);
+            SetContentView(Resource.Layout.ProfileStudent);
 
             findViews();
             SetSupportActionBar(toolBar);
@@ -73,7 +71,6 @@ namespace UOTCS_android
             setUpNavigationView(navigationView);
             SetUpViewPager(viewPager);
             tabs.SetupWithViewPager(viewPager);
-            //  initiateFragments();
             handleEvents();
         }
 
@@ -92,7 +89,7 @@ namespace UOTCS_android
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
             tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
             viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
             adapter = new TabAdapter(SupportFragmentManager);
@@ -111,12 +108,11 @@ namespace UOTCS_android
             //         actionbar = SupportActionBar;
             //   drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             //     navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            //      view = navigationView.GetHeaderView(0);
-            //         profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            //      CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
-            //     card.GenerateLayoutParams (new LinearLayout.LayoutParams(20, 20));
+                  view = navigationView.GetHeaderView(0);
+                     profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
-            if (Values.Use_typeID > 1)
+
+    //        if (Values.Use_typeID > 1)
             {
                 //            status.Visibility = ViewStates.Gone;
                 //          transcript.Visibility = ViewStates.Gone;

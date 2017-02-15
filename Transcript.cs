@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Transcript", ParentActivity = (typeof(Profile)))]
+    [Activity(Label = "Transcript", ParentActivity = (typeof(ProfileStudent)))]
     public class Transcript : AppCompatActivity
     {
         private ResultFragment result;

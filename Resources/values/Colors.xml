@@ -1,7 +1,9 @@
 ﻿<resources>
 <!-- Theme accent color based text color-->
   <attr name="textColor" format="reference|color" />
-<!-- Theme accent color based text color-->
+  <attr name="primaryColor" format="reference|color" />
+
+  <!-- Theme accent color based text color-->
   <attr name="header" format="reference|color" />
   <color name="text">#2c3e50</color>
   <color name="hintText">#bdc3c7</color>
