@@ -37,21 +37,33 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-        private CourseNameFragment courseNameFragment;
+        //    private CourseNameFragment courseNameFragment;
+        private AcademicProfileFragment coursedetails;
         private Button sendMessage;
+        private string course_id;
+        private Course course;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
             base.OnCreate(savedInstanceState);
+            Intent intents = Intent;
+            if (null != intents)
+            { //Null Checking
+                course_id = intents.GetStringExtra("course_id");
+            }
             Values.changeTheme(this);
             SetContentView(Resource.Layout.CourseDetails);
             this.findViews();
+            bindData();
             initiateFragments();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
             this.handleEvents();
-
+       //     course_id = savedInstanceState.GetString("id");
+          
+    
         }
 
 
@@ -66,13 +78,17 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            sendMessage = FindViewById<Button>(Resource.Id.send_message_btn);
-            courseNameFragment = new CourseNameFragment();
+     //       sendMessage = FindViewById<Button>(Resource.Id.send_message_btn);
+            //        courseNameFragment = new CourseNameFragment();
+            coursedetails = new AcademicProfileFragment();
+            
+            course = new Course();
         }
         private void initiateFragments()
         {
+            coursedetails.course = course;
             var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.MyCoursesDetailsFragmentContainer, courseNameFragment, "result");
+            trans.Add(Resource.Id.MyCoursesDetailsFragmentContainer, coursedetails, "course_)details");
             trans.Commit();
 
         }
@@ -98,18 +114,20 @@ namespace UOTCS_android
         {
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             profileImage.Click += ProfileImage_Click;
-            sendMessage.Click += SendMessage_Click;
+    //        sendMessage.Click += SendMessage_Click;
         }
 
         private void SendMessage_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Profile));
+            Intent intent = new Intent(this, typeof(SendMessage));
+            Bundle b = new Bundle();
+            b.PutInt("id",course.Tea_id);
             this.StartActivity(intent);
         }
 
         public int getCurrentActvity()
         {
-            return Resource.Id.nav_messages;
+            return Resource.Id.nav_myCourses;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -133,19 +151,44 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
+        private void bindData()
+        {
+            StatusWithObject<List<Course>> values = new StatusWithObject<List<Course>>();
+            try
+            {
+                var task = Task.Run(async () => { values = await this.getCourse(); });
+                task.Wait();
+            }
+            catch (AggregateException ex)
+            {
 
+            }
+            course = values.statusObject.First();
+        }
+        private async  Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Course>>> getCourse()
+        {
+            CScore.BCL.StatusWithObject<List<Course>> result = new StatusWithObject<List<Course>>();
+            try
+            {
+                result = await CScore.BCL.Course.getCourses(course_id);
+            }
+            catch(Exception ex)
+            {
+               
+            }
+            return result;
+        }
 
     }
 }

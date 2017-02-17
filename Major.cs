@@ -44,10 +44,11 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            this.Title = CScore.FixdStrings.Major.MajorTitle();
+            Values.changeTheme(this);
+                this.Title = CScore.FixdStrings.Major.MajorTitle();
             SetContentView(Resource.Layout.Major);
             var MajorButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            MajorButton.SetImageDrawable( Resources.GetDrawable( Resource.Drawable.ic_save));
             MajorButton.Visibility = ViewStates.Visible;
             try
             { 
@@ -158,15 +159,13 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
-
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

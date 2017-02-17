@@ -85,14 +85,14 @@ namespace UOTCS_android
             usernameWrapper.ErrorEnabled = false;
 
             password = passwordWrapper.EditText.Text;
-
-            if(userIDEditText.Text == "" || userIDEditText.Text == null)
+            
+            if (userIDEditText.Text == "" || userIDEditText.Text == null)
             {
                 userID = 0;
             }
             else 
             userID = Convert.ToInt32(userIDEditText.Text);
-            Values.Use_typeID = userID;
+          
             object IntObject = userID;
             int error = 0;
 
@@ -106,22 +106,35 @@ namespace UOTCS_android
                passwordWrapper.Error = "Please Enter You password";
                 error++;
             }
-
-            if(error == 0)
+            
+            if (error == 0)
             {
-                LoginStatus = await CScore.BCL.User.login(userID, password);
+                LoginStatus = new Status();
+                var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
+                task.Wait();
                 //  this.showMessage(LoginStatus.message);
-                Intent intent = new Intent(this, typeof(Profile));
+                //Intent intent = new Intent(this, typeof(ProfileStudent));
                 if (LoginStatus.status)
                 {
-                   
-                        StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
-                          string x = CScore.BCL.User.use_type;
-                          await this.buildDB(x);
+                    StatusWithObject<String> aut = new StatusWithObject<string>();
+                    var task2 = Task.Run(async () => { aut = await CScore.SAL.AuthenticatorS.authenticate(); });
+                    task2.Wait();
+                    string x = CScore.BCL.User.use_type;
+                    await this.buildDB(x);
                     this.setLanguage();
-               
-                    this.StartActivity(intent);
+
+                    //   this.StartActivity(intent);
+                    if (CScore.BCL.User.use_type=="S"|| CScore.BCL.User.use_type == "s")
+                    {
+                        Values.Use_typeID = 1;
+                    }
+                    else
+                    {
+                        Values.Use_typeID = 34;
+                    }
+
+                    Values.startProfile(this);
 
 
                     login.Enabled = true;
@@ -140,7 +153,7 @@ namespace UOTCS_android
         private async Task buildDB(String userType)
         {
             // DBname 
-            string dbname = "BCLV9001.db";
+            string dbname = "BCLV11003.db";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Path.Combine(documentsPath, dbname);
             await CScore.DataLayer.DBuilder.InitializeAsync(path, new SQLitePlatformAndroid(), userType);

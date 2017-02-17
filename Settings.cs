@@ -36,9 +36,14 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private RadioGroup radioLanguage;
+        private RadioButton radioArabic;
+        private RadioButton radioEnglish;
+        private RadioButton radioIndigo;
+        private RadioButton radioTeal;
         public static TextView total_credit;
-
+        private int LanguageId = 0;
+        private int ThemeId = 0;
         protected override void OnPause()
         {
             base.OnPause();
@@ -50,7 +55,9 @@ namespace UOTCS_android
             base.OnCreate(bundle);
 
             this.Title = CScore.FixdStrings.Settings.SettingsLable();
+            Values.changeTheme(this);
             SetContentView(Resource.Layout.Settings);
+
             findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
@@ -60,31 +67,43 @@ namespace UOTCS_android
             SaveSettingsButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_save));
             SaveSettingsButton.Visibility = ViewStates.Visible;
 
-            var LanguageSpinner = FindViewById<Spinner>(Resource.Id.LanguageSpinner);
-
-            List<String> languages = new List<String>();
-            languages.Add("«·⁄—»Ì…");
-            languages.Add("English");
-
-            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, languages);
-            LanguageSpinner.Adapter = adapter;
+           
             // set the spinner selected item to the current language setting
             var Currentlanuage = CScore.FixdStrings.LanguageSetter.getLanguage();
-            int id =0; // id of Language spinner
+           // id of Language spinner
             switch(Currentlanuage)
             {
                 case CScore.FixdStrings.Language.EN:
-                    id = 1;
+                    LanguageId = 1;
+                    radioEnglish.Checked = true;
+                    radioArabic.Checked = false;
                     break;
                 case CScore.FixdStrings.Language.AR:
-                    id = 0;
+                    LanguageId = 0;
+                    radioArabic.Checked = true;
+                    radioEnglish.Checked = false;
                     break;
-
             }
-            LanguageSpinner.SetSelection(id);
+            var currentTheme = CScore.FixdStrings.ThemeSetter.getTheme();
+            switch (currentTheme)
+            {
+                case CScore.FixdStrings.Theme.Indigo:
+                    ThemeId = 0;
+                    radioIndigo.Checked = true;
+                    radioTeal.Checked = false;
+                    break;
+                case CScore.FixdStrings.Theme.Teal:
+                    ThemeId = 0;
+                    radioTeal.Checked = true;
+                    radioIndigo.Checked = false;
+                    break;
+            }
+
+
+      
             SaveSettingsButton.Click += (sender, args) => 
             {
-                if(LanguageSpinner.SelectedItemPosition == 0)
+                if(LanguageId == 0)
                 {
                     CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);            
                     Configuration configuration = this.Resources.Configuration;
@@ -97,6 +116,14 @@ namespace UOTCS_android
                     Configuration configuration = this.Resources.Configuration;
                     configuration.SetLayoutDirection(Locale.English);//= LayoutDirection.Locale;
                     this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                }
+                if (ThemeId == 0)
+                {
+                    CScore.FixdStrings.ThemeSetter.setTheme(CScore.FixdStrings.Theme.Indigo);                    
+                }
+                else
+                {
+                    CScore.FixdStrings.ThemeSetter.setTheme(CScore.FixdStrings.Theme.Teal);
                 }
                 this.showMessage();
                 
@@ -118,8 +145,23 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-
-        }
+            radioArabic = FindViewById<RadioButton>(Resource.Id.radio_arabic);
+            radioEnglish = FindViewById<RadioButton>(Resource.Id.radio_english);
+            radioIndigo = FindViewById<RadioButton>(Resource.Id.radio_indigo);
+            radioTeal = FindViewById<RadioButton>(Resource.Id.radio_teal);
+            TextView langauge = FindViewById<TextView>(Resource.Id.language_label);
+            TextView theme = FindViewById<TextView>(Resource.Id.theme_label);
+            TextView aboutusLabel = FindViewById<TextView>(Resource.Id.aboutus_label);
+            TextView aboutusText = FindViewById<TextView>(Resource.Id.aboutus_text);
+            theme.Text = CScore.FixdStrings.Settings.ThemeLabel();
+            langauge.Text = CScore.FixdStrings.Settings.LanguageLabel();
+            radioArabic.Text = CScore.FixdStrings.Settings.LanguageLabelArabic();
+            radioEnglish.Text = CScore.FixdStrings.Settings.LanguageLabelEnglish();
+            radioIndigo.Text = CScore.FixdStrings.Settings.ThemeLabelIndigo();
+            radioTeal.Text = CScore.FixdStrings.Settings.ThemeLabelTeal();
+            aboutusLabel.Text = CScore.FixdStrings.Settings.aboutusLabel();
+            aboutusText.Text = CScore.FixdStrings.Settings.aboutusText();
+                }
         private void setUpActionBar(SupportActionBar actionBar)
         {
             actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
@@ -148,7 +190,32 @@ namespace UOTCS_android
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             profileImage.Click += ProfileImage_Click;
         }
-
+        [Java.Interop.Export("onRadioButtonClickedTheme")]
+        public void onRadioButtonClickedTheme(View v)
+        {
+            switch (v.Id)
+            {
+                case Resource.Id.radio_indigo:
+                    ThemeId = 0;
+                    break;
+                case Resource.Id.radio_teal:
+                    ThemeId = 1;
+                    break;
+            }
+        }
+        [Java.Interop.Export("onRadioButtonClickedLanguage")]
+        public void onRadioButtonClickedLanguage(View v)
+        {
+            switch (v.Id)
+            {
+                case Resource.Id.radio_arabic:
+                    LanguageId = 0; 
+                    break;
+                case Resource.Id.radio_english:
+                    LanguageId = 1;
+                    break;
+            }
+        }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
@@ -171,14 +238,13 @@ namespace UOTCS_android
         {
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -186,12 +252,10 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Settings.SettingsStatus());
             alert.SetMessage(CScore.FixdStrings.Settings.SettingsSaved());
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-            Intent intent = new Intent(this, typeof(Profile));
-            StartActivity(intent);
-            this.Finish();
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.OK(), (senderAlert, args) => {
+                Values.startProfile(this);
+                this.Finish();
             });
 
             Dialog x = alert.Create();

@@ -266,7 +266,7 @@ namespace UOTCS_android
 
                                     // case 0
                                     // give feed back and change the style of the buton
-                                    this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
+                                      this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
                                     // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
@@ -649,14 +649,17 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(_activity);
-            alert.SetTitle(CScore.FixdStrings.Enrollment.CourseStatus());
+  //          alert.SetTitle(CScore.FixdStrings.Enrollment.EnrollmentLable());
             alert.SetMessage(message);
-            //alert.SetPositiveButton("OK", (senderAlert, args) => {
-            //    Toast.MakeText(this, "", ToastLength.Short).Show();
-            //});
+            //
 
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.OK(), (senderAlert, args) => {
+            //    Toast.MakeText(this, "", ToastLength.Short).Show();
+            });
+           
             Dialog x = alert.Create();
             x.Show();
         }
+     
     }
 }

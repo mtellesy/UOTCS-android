@@ -28,7 +28,8 @@ namespace UOTCS_android.Fragments
         {
             View view = inflater.Inflate(Resource.Layout.usernameF, container, false);
             Android.Graphics.Drawables.Drawable x;
-            if (Values.Use_typeID > 1)
+            var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+            if (theme == CScore.FixdStrings.Theme.Teal)               
             {
                 //int id = Resources.GetIdentifier("lecturer_pic", "drawable", PackageName);
                x  = Resources.GetDrawable(Resource.Drawable.lecturer_pic);

@@ -25,6 +25,7 @@ using CScore.BCL;
 using static Android.Views.View;
 using Refractored.Controls;
 using Android.Content;
+using CScore.FixdStrings;
 
 namespace UOTCS_android
 {
@@ -43,14 +44,28 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private int lecturer_id;
+        private OtherUsers lecturer;
+        Language e;
         //the list of users in SendTo drop down list
         List<OtherUsers> users;
 
 
         protected override  void OnCreate(Bundle savedInstanceState)
         {
-            
+            Bundle b = Intent.Extras;
+
+            Intent intent2 = Intent;
+            if (null != intent2)
+            { //Null Checking
+              //lecturer_id = intent2.GetLongExtra("lecturer_id",-1);
+
+                lecturer_id = b.GetInt("lecturer_id");
+            }
+            if (lecturer_id != 0)
+            {
+                bindLecturerData((int)lecturer_id);
+            }
             base.OnCreate(savedInstanceState);
             this.Title = CScore.FixdStrings.Messages.SendMessageLable();
             Values.changeTheme(this);
@@ -82,7 +97,24 @@ namespace UOTCS_android
             sendButton.Visibility = ViewStates.Visible;
 
             SendTo = FindViewById<AutoCompleteTextView>(Resource.Id.send_to_message_announcement_fragment);
+           if (lecturer != null)
+            {
+                e = LanguageSetter.getLanguage();
 
+                switch (e)
+                {
+                    case (Language.AR):
+                        SendTo.Text = lecturer.use_nameAR;
+                        break;
+
+                    case (Language.EN):
+                    default:
+                        SendTo.Text = lecturer.use_nameEN;
+                        break;
+                }
+                SendTo.DismissDropDown();
+            }
+           
             messageSubject = FindViewById<EditText>(Resource.Id.title_message_announcement_fragment);
 
             messageContent = FindViewById<EditText>(Resource.Id.content_message_announcement_fragment);
@@ -143,15 +175,14 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -302,11 +333,38 @@ namespace UOTCS_android
             return 0;
         }
 
+        private void bindLecturerData(int lecturer_id)
+        {
+            StatusWithObject<OtherUsers> values = new StatusWithObject<OtherUsers>();
+            try
+            {
+                var task = Task.Run(async () => { values = await this.getLecturer(lecturer_id); });
+                task.Wait();
+            }
+            catch (AggregateException ex)
+            {
+
+            }
+            lecturer = values.statusObject;
+        }
+        private async Task<CScore.BCL.StatusWithObject<OtherUsers>> getLecturer(int lecturer_id)
+        {
+            CScore.BCL.StatusWithObject<OtherUsers> result = new StatusWithObject<OtherUsers>();
+            try
+            {
+                result = await CScore.BCL.OtherUsers.getOtherUser(lecturer_id);
+                var x = result;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
 
 
-       
 
-     
+
 
     }
 }

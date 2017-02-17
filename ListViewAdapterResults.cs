@@ -52,12 +52,13 @@ namespace UOTCS_android
                 Values.Use_Color_accent = new Color();
                 rowTotal.Text = results[position].Group;
                 rowCode.SetTextColor(Values.Use_Color_accent);
-                LinearLayout lin = view.FindViewById<LinearLayout>(Resource.Id.list_row_results_background);
+                RelativeLayout lin = view.FindViewById<RelativeLayout>(Resource.Id.list_row_results_background);
       //          lin.SetBackgroundColor(new Color(250, 250, 250));
             }
             else
             {
                 rowTotal.Text = results[position].Result.ToString();
+                float x = results[position].Result;
                 if (results[position].Result < 50)
                 {
                     rowTotal.SetTextColor(Color.Red);
@@ -65,6 +66,15 @@ namespace UOTCS_android
                 else
                 {
                     rowTotal.SetTextColor(Color.Black);
+                }
+                if (results[position].Result== -1)
+                {
+                    rowTotal.SetTextColor(Color.Black);
+                    rowTotal.Text = CScore.FixdStrings.Results.notSet();
+                }
+                else
+                {
+                    rowTotal.Text= results[position].Result.ToString();
                 }
             }
             

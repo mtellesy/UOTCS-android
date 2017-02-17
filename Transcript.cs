@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Transcript", ParentActivity = (typeof(Profile)))]
+    [Activity(Label = "Transcript", ParentActivity = (typeof(ProfileStudent)))]
     public class Transcript : AppCompatActivity
     {
         private ResultFragment result;
@@ -161,15 +161,14 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
    

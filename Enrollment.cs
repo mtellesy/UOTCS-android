@@ -90,7 +90,8 @@ namespace UOTCS_android
                         foreach (var drop in CScore.BCL.Enrollment.dropedCourses)
                         {
                             var dropResults = await CScore.BCL.Enrollment.dropCourse(drop, drop.TemGro_id);
-                            DropMessage += drop.Cou_id + " " + CScore.FixdStrings.General.Status() + ": " + dropResults.status.status.ToString() +
+                            DropMessage += "\t"+  drop.Cou_id+
+                                //+ " " + CScore.FixdStrings.General.Status() + ": " + dropResults.status.status.ToString() +
                             "\n";
                         }
 
@@ -100,12 +101,16 @@ namespace UOTCS_android
                         String Message = "";
                         if (results.status.status)
                         {
-                            Message += CScore.FixdStrings.Enrollment.enrollmentSucceededMessage();
+                            Message += CScore.FixdStrings.Enrollment.enrolledCourses() ;
                             var Cres = (List<CScore.BCL.Course>)results.statusObject;
                             foreach (var c in Cres)
                             {
-                                Message += CScore.FixdStrings.Courses.CourseCode() + ": " + c.Cou_id + " "+CScore.FixdStrings.General.Status() +" " +
-                                c.Flag + "\n";
+                                    Message += "\t"
+                                    //+ CScore.FixdStrings.Courses.CourseCode() + ": " 
+                                    + c.Cou_id +"\n"
+                                   //   +  " "+CScore.FixdStrings.General.Status() +" " +
+                                   // c.Flag + "\n"
+                                   ;
                             }
                         }
 
@@ -173,7 +178,8 @@ namespace UOTCS_android
                                 foreach (var drop in CScore.BCL.Enrollment.dropedCourses)
                                 {
                                     var dropResults = await CScore.BCL.Enrollment.dropCourse(drop, drop.TemGro_id);
-                                    DropMessage += drop.Cou_id + " " + CScore.FixdStrings.General.Status() + ": " + dropResults.status.status.ToString() +
+                                    DropMessage += drop.Cou_id + " " +
+                                    //+ CScore.FixdStrings.General.Status() + ": " + dropResults.status.status.ToString() +
                                     "\n";
                                 }
                                 this.showEnrollmentDoneMessage(CScore.FixdStrings.Enrollment.disenrollmentStatus(), DropMessage);
@@ -284,7 +290,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
 
         }
@@ -292,8 +298,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -310,7 +315,7 @@ namespace UOTCS_android
             //alert.SetPositiveButton("OK", (senderAlert, args) => {
             //    Toast.MakeText(this, "", ToastLength.Short).Show();
             //});
-
+        
             Dialog x = alert.Create();
             x.Show();
         }
@@ -321,9 +326,9 @@ namespace UOTCS_android
           new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(title);
             alert.SetMessage(message);
-            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+                Values.startProfile(this);
+                Finish();
             });
 
             Dialog x = alert.Create();
@@ -337,8 +342,7 @@ namespace UOTCS_android
             alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
             alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
+                Values.startProfile(this);
             });
 
             Dialog x = alert.Create();
