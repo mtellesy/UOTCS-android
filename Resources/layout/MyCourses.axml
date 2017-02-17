@@ -19,6 +19,7 @@
             android:layout_marginTop="@dimen/background_padding"
             android:layout_marginEnd="@dimen/background_padding"
             android:layout_marginStart="@dimen/background_padding"
+            app:contentPadding="@dimen/card_padding"
             android:id="@+id/MyCoursesFragmentContainer"
             android:layout_width="fill_parent"
             android:layout_height="0dp"

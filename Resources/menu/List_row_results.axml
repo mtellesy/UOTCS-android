@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="70dp"
@@ -11,24 +11,22 @@
       android:layout_width="50dp"
       android:layout_height="match_parent"
       android:id="@+id/list_row_results_code"
-      android:layout_weight="1"
-      android:gravity="start|center"
+      android:gravity="center"
       android:textColor="@color/primary_text"
-      android:layout_marginEnd="4dp" />
+      android:layout_alignParentStart="true" />
   <TextView
       android:text="Text"
       android:layout_width="150dp"
       android:layout_height="match_parent"
       android:id="@+id/list_row_results_name"
-      android:layout_weight="2"
-            android:textColor="@color/primary_text"
-      android:layout_marginStart="9dp"
-      android:gravity="start|center" />
+      android:textColor="@color/primary_text"
+      android:layout_centerHorizontal="true"
+      android:gravity="center" />
   <TextView
-      android:text="Text"
+        android:text="Text"
         android:gravity="center"
-      android:layout_width="50dp"
-      android:layout_height="match_parent"
-      android:id="@+id/list_row_results_result"
-      android:layout_weight="1" />
-</LinearLayout>
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:id="@+id/list_row_results_result"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>
