@@ -99,6 +99,31 @@ namespace Services
                 UOTCS_android.NotificationsRepo.isMajorNotified = false;
                 UOTCS_android.Values.majorVisible = false;
             }
+            var anoNot = await CScore.SAL.AnnouncementsS.getNotifications();
+            if (anoNot.status.status && anoNot.statusObject.Count > 0)
+            {
+                if(anoNot.statusObject.Count > 1)
+                {
+                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this, anoNot.statusObject.Count);
+                }
+                else
+                {
+                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this);
+                }
+            }
+
+            var messNot = await CScore.SAL.MessageS.getNotifications();
+            if (messNot.status.status && messNot.statusObject.Count > 0)
+            {
+                if (messNot.statusObject.Count > 1)
+                {
+                    UOTCS_android.NotificationsRepo.newMessagesNotification(this, messNot.statusObject.Count);
+                }
+                else
+                {
+                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this);
+                }
+            }
 
 
         }
