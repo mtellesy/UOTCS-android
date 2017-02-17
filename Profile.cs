@@ -43,13 +43,24 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-
+        private PersonalProfileFragment personal;
+        private CScore.BCL.OtherUsers lecturer;
+        private int lecturer_id;
         protected override async void OnCreate(Bundle bundle)
         {
 
            
             base.OnCreate(bundle);
+            Intent intent2 = Intent;
+            if (null != intent2)
+            { //Null Checking
+               lecturer_id = intent2.GetIntExtra("lecturer_id",0);
+            }
+            if (lecturer_id!= 0)
+            {
 
+            }
+            int ix = lecturer_id;
             // var task = Task.Run(async () => {
             await CScore.BCL.Semester.getCurrentSemester();
             //});
@@ -78,14 +89,14 @@ namespace UOTCS_android
 
         private void findViews()
         {
-             
+            personal = new PersonalProfileFragment();
             username = new Username();
             userInformation = new UserInformationFragment();
             userMoreInformation = new UserMoreInfomationFragment();
-            status = FindViewById<Button>(Resource.Id.status_btn);
-            status.Text = CScore.FixdStrings.General.Status();
-            transcript = FindViewById<Button>(Resource.Id.transcript_btn);
-            transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
+       //     status = FindViewById<Button>(Resource.Id.status_btn);
+     //       status.Text = CScore.FixdStrings.General.Status();
+         //   transcript = FindViewById<Button>(Resource.Id.transcript_btn);
+           // transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -93,7 +104,7 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
            view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
+     //       CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
  //           card.GenerateLayoutParams (new LinearLayout.LayoutParams(20, 20));
             
             if (Values.Use_typeID > 1)
@@ -112,11 +123,12 @@ namespace UOTCS_android
         {
 
             var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
-            trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
-            trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information");
-            trans.Hide(userMoreInformation);
-            mCurrentFragment = userInformation;
+            //      trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
+            //    trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
+            //  trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information"); 
+            //        trans.Hide(userMoreInformation);
+            trans.Add(Resource.Id.UsernameFragmentContainer, personal, "personal");
+      //      mCurrentFragment = userInformation;
             trans.Commit();
         }
         
@@ -141,10 +153,10 @@ namespace UOTCS_android
 
         private void handleEvents()
         {
-            status.Click += status_btn_Click;
+        //    status.Click += status_btn_Click;
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
            profileImage.Click += ProfileImage_Click;
-            transcript.Click += Transcript_Click;
+      //      transcript.Click += Transcript_Click;
         }
 
         private void Transcript_Click(object sender, EventArgs e)

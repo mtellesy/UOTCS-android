@@ -90,6 +90,7 @@ namespace UOTCS_android.Fragments
             else if (activityName == "MyCourses")
             {
                 Intent intent = new Intent(Activity, typeof(CourseDetails));
+                intent.PutExtra("course_id", results[e.Position].Code);
                 this.StartActivity(intent);
 
             }

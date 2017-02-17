@@ -298,8 +298,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -328,8 +327,8 @@ namespace UOTCS_android
             alert.SetTitle(title);
             alert.SetMessage(message);
             alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
+                Values.startProfile(this);
+                Finish();
             });
 
             Dialog x = alert.Create();
@@ -343,8 +342,7 @@ namespace UOTCS_android
             alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
             alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
+                Values.startProfile(this);
             });
 
             Dialog x = alert.Create();

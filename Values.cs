@@ -249,7 +249,21 @@ namespace UOTCS_android
                 drawerLayout.CloseDrawers();
             };
         }
-
+        public static void startProfile(Context myActivity)
+        {
+            Intent intent;
+            int x = Values.use_typeID;
+            if (Values.Use_typeID > 1)
+            {
+                intent = new Intent(myActivity, typeof(Profile));
+                
+            }
+            else
+            {
+                intent = new Intent(myActivity, typeof(ProfileStudent));
+            }
+            myActivity.StartActivity(intent);
+        }
         public static List<TimetableAndMidmarkAndroid> timetableMaker(CScore.BCL.Semester semester)
         {
             List<TimetableAndMidmarkAndroid> result = new List<TimetableAndMidmarkAndroid>();

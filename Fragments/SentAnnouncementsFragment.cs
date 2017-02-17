@@ -43,8 +43,15 @@ namespace UOTCS_android.Fragments
            
             var values = new CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>>();
             //           var values = GetRandomSubList(y, x.Length);
-            var task = Task.Run(async () => { values = await this.getRecievedAnnouncements(); });
-            task.Wait();
+            try
+            {
+                var task = Task.Run(async () => { values = await this.getRecievedAnnouncements(); });
+                task.Wait();
+            }
+            catch(Exception ex)
+            {
+
+            }
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             if (values.statusObject != null)
                 if (Values.Use_typeID > 1)
@@ -55,8 +62,15 @@ namespace UOTCS_android.Fragments
                 {
                     List<CScore.BCL.Announcements> final = new List<CScore.BCL.Announcements>();
                     StatusWithObject<List<Course>> lecturers = new StatusWithObject<List<Course>>();
-                    var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
-                    task.Wait();
+                    try
+                    {
+                        var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
+                        task2.Wait();
+                    }
+                   catch(Exception e)
+                    {
+
+                    }
                     if (lecturers.statusObject != null)
                     {
                         foreach (CScore.BCL.Announcements x in values.statusObject)

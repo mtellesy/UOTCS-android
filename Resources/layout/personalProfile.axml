@@ -31,24 +31,24 @@
                 android:layout_alignParentTop="true"
                 app:civ_border_color="@android:color/transparent"
                 android:layout_gravity="center" />
-          <TextView
+            <TextView
                 android:text="user name Arabic"
                 android:textColor="@color/primary_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/usernameF_nameInAR_lable"
                 android:layout_gravity="center"
-                android:textStyle="bold" />
-          <TextView
+                android:textStyle="bold"
+                android:paddingTop="@dimen/background_padding" />
+            <TextView
                 android:text="user name in english"
                 android:textColor="@color/primary_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/background_padding"
                 android:id="@+id/usernameF_nameInEN_lable"
                 android:layout_gravity="center"
-                android:textStyle="bold" />
-            
+                android:textStyle="bold"
+                android:paddingTop="@dimen/background_padding" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

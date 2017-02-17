@@ -30,7 +30,6 @@ namespace UOTCS_android
     public class ProfileStudent : AppCompatActivity
     {
 
-        private Button transcript;
         private SupportToolbar toolBar;
         private SupportActionBar actionbar;
         private DrawerLayout drawerLayout;
@@ -48,20 +47,21 @@ namespace UOTCS_android
 
             base.OnCreate(bundle);
 
+
             // var task = Task.Run(async () => {
-   //         await CScore.BCL.Semester.getCurrentSemester();
+            await CScore.BCL.Semester.getCurrentSemester();
             //});
             //   task.Wait();
 
 
             // start the service for notifications
-     //       Intent intent = new Intent(this, typeof(Services.StatusChecker));
-       //     this.StartService(intent);
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            this.StartService(intent);
 
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
             //  task.Wait();
-     //       this.Title = CScore.FixdStrings.Profile.ProfileLable();
+            this.Title = CScore.FixdStrings.Profile.ProfileLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.ProfileStudent);
 
@@ -77,8 +77,9 @@ namespace UOTCS_android
         private void SetUpViewPager(ViewPager viewPager)
         {
             adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(personal, "personal");
-            adapter.AddFragment(academic, "academic");
+            
+            adapter.AddFragment(personal, CScore.FixdStrings.Profile.personalTab());
+            adapter.AddFragment(academic, CScore.FixdStrings.Profile.academicTab());
 
             viewPager.Adapter = adapter;
         }
@@ -192,29 +193,7 @@ namespace UOTCS_android
         {
             MoveTaskToBack(true);
         }
-        /*
-        private void status_btn_Click(object sender, EventArgs e)
-        {
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.SetCustomAnimations(Resource.Animation.FadeIn, Resource.Animation.FadeOut, Resource.Animation.FadeIn, Resource.Animation.FadeOut);
-            if (mCurrentFragment == userInformation)
-            {
-                trans.Hide(userInformation);
-                trans.Show(userMoreInformation);
-                mCurrentFragment = userMoreInformation;
-                trans.Commit();
-                status.Text = CScore.FixdStrings.Buttons.BACK();
-            }
-            else if (mCurrentFragment == userMoreInformation)
-            {
-                trans.Hide(userMoreInformation);
-                trans.Show(userInformation);
-                mCurrentFragment = userInformation;
-                trans.Commit();
-                status.Text = CScore.FixdStrings.General.Status();
 
-            }
-        }*/
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();

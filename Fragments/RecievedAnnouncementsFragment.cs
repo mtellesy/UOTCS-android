@@ -43,8 +43,16 @@ namespace UOTCS_android.Fragments
         {
             
             var values = new CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>>();
-            var task = Task.Run(async () => {values = await this.getRecievedAnnouncements(); });
+            try
+            {
+                var task = Task.Run(async () => { values = await this.getRecievedAnnouncements(); });
                 task.Wait();
+            }
+            catch(AggregateException ex)
+            {
+           //     values.status.message = ex.ToString();
+            }
+
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             if(values.statusObject!=null)
                 if (Values.Use_typeID > 1)
@@ -55,8 +63,15 @@ namespace UOTCS_android.Fragments
                 {
                     List<CScore.BCL. Announcements> final = new List<CScore.BCL.Announcements>();
                     StatusWithObject< List<Course>> lecturers = new StatusWithObject<List<Course>>();
-                    var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
-                    task.Wait();
+                    try
+                    {
+                        var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
+                        task2.Wait();
+                    }
+                    catch(AggregateException ex)
+                    {
+
+                    }
                     if (lecturers.statusObject != null)
                     {
                         foreach(CScore.BCL.Announcements x in values.statusObject)
@@ -86,8 +101,16 @@ namespace UOTCS_android.Fragments
         private async Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>>> getRecievedAnnouncements()
         {
             CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>> results = new StatusWithObject<List<CScore.BCL.Announcements>>();
-            results = await CScore.BCL.Announcements.getAnnouncements(100, 1,"R",null);
-           
+            try
+            {
+                results = await CScore.BCL.Announcements.getAnnouncements(100, 1, "R", null);
+
+            }
+            catch (AggregateException ex)
+            {
+                results.status.status = false;
+                results.status.message = ex.ToString();
+            }
             return results;
         }
         

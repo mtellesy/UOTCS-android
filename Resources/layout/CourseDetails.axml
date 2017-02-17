@@ -12,37 +12,17 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="100"
         android:minWidth="25px"
         android:minHeight="25px">
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="@dimen/background_padding"
-            android:layout_marginEnd="@dimen/background_padding"
-            android:layout_marginStart="@dimen/background_padding"
+        <FrameLayout
+            
             android:id="@+id/MyCoursesDetailsFragmentContainer"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="85"
-            android:layout_centerInParent="true"
-            app:cardCornerRadius="@dimen/card_corner_raduis" />
-      <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_marginEnd="@dimen/background_padding"
-            android:layout_marginStart="@dimen/background_padding"
-        android:layout_height="0dp"
-        android:layout_weight="15"
-        android:minWidth="25px"
-        android:minHeight="25px">
-     <Button
-                    android:text="SEND MESSAGE"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/send_message_btn"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    />
-      </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+      
+
     </LinearLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

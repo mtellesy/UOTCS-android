@@ -154,8 +154,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 

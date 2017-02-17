@@ -92,7 +92,7 @@ namespace UOTCS_android
             }
             else 
             userID = Convert.ToInt32(userIDEditText.Text);
-            Values.Use_typeID = userID;
+          
             object IntObject = userID;
             int error = 0;
 
@@ -113,7 +113,7 @@ namespace UOTCS_android
                 var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
                 task.Wait();
                 //  this.showMessage(LoginStatus.message);
-                Intent intent = new Intent(this, typeof(ProfileStudent));
+                //Intent intent = new Intent(this, typeof(ProfileStudent));
                 if (LoginStatus.status)
                 {
 
@@ -123,8 +123,18 @@ namespace UOTCS_android
                     string x = CScore.BCL.User.use_type;
                     await this.buildDB(x);
                     this.setLanguage();
-               
-                    this.StartActivity(intent);
+
+                    //   this.StartActivity(intent);
+                    if (CScore.BCL.User.use_type=="S"|| CScore.BCL.User.use_type == "s")
+                    {
+                        Values.Use_typeID = 1;
+                    }
+                    else
+                    {
+                        Values.Use_typeID = 34;
+                    }
+
+                    Values.startProfile(this);
 
 
                     login.Enabled = true;

@@ -244,8 +244,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -255,9 +254,8 @@ namespace UOTCS_android
            new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetMessage(CScore.FixdStrings.Settings.SettingsSaved());
             alert.SetPositiveButton(CScore.FixdStrings.Buttons.OK(), (senderAlert, args) => {
-            Intent intent = new Intent(this, typeof(Profile));
-            StartActivity(intent);
-            this.Finish();
+                Values.startProfile(this);
+                this.Finish();
             });
 
             Dialog x = alert.Create();
