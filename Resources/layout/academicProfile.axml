@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/linearLayout1"
     android:padding="@dimen/background_padding"
-    android:weightSum="6">
+    android:weightSum="100">
     <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"
@@ -17,7 +17,7 @@
         android:paddingRight="@dimen/background_padding"
         android:paddingTop="@dimen/background_padding"
         android:paddingLeft="@dimen/background_padding"
-        android:layout_weight="1">
+        android:layout_weight="16">
         <TextView
             android:text="Department"
             android:textColor="@color/secondary_text"
@@ -45,7 +45,7 @@
         android:id="@+id/linearLayout1"
         android:paddingRight="@dimen/background_padding"
         android:paddingLeft="@dimen/background_padding"
-        android:layout_weight="1">
+        android:layout_weight="16">
         <TextView
             android:text="Current semester"
             android:textColor="@color/secondary_text"
@@ -74,7 +74,7 @@
         android:id="@+id/linearLayout1"
         android:paddingRight="@dimen/background_padding"
         android:paddingLeft="@dimen/background_padding"
-        android:layout_weight="1">
+        android:layout_weight="16">
         <TextView
             android:text="Units completed"
             android:textColor="@color/secondary_text"
@@ -104,7 +104,7 @@
         android:id="@+id/linearLayout1"
         android:paddingRight="@dimen/background_padding"
         android:paddingLeft="@dimen/background_padding"
-        android:layout_weight="1">
+        android:layout_weight="16">
         <TextView
             android:text="Warnings"
             android:textColor="@color/secondary_text"
@@ -133,7 +133,7 @@
         android:id="@+id/linearLayout1"
         android:paddingRight="@dimen/background_padding"
         android:paddingLeft="@dimen/background_padding"
-        android:layout_weight="1">
+        android:layout_weight="16">
         <TextView
             android:text="GPA"
             android:textColor="@color/secondary_text"
@@ -160,10 +160,9 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingRight="@dimen/background_padding"
-        android:paddingLeft="@dimen/background_padding"
         android:id="@+id/linearLayout1"
-        android:layout_weight="1">
+        android:layout_weight="16"
+        android:gravity="top">
         <Button
             android:text="TRANSCRIPT"
             android:layout_width="wrap_content"
@@ -172,7 +171,7 @@
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="false"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentTop="true" />
         <Button
             android:text="PROFILE"
             android:layout_width="wrap_content"
@@ -180,6 +179,6 @@
             android:id="@+id/profile_btn"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 </LinearLayout>

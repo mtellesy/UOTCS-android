@@ -32,7 +32,7 @@ namespace UOTCS_android.Fragments
         private TextView phone;
         private TextView nationality;
         private int user_id;
-
+        public OtherUsers lecturer;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -48,13 +48,7 @@ namespace UOTCS_android.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            if(savedInstanceState == null)
-            {
-                user_id = 0;
-            }else
-            {
-
-            }
+            
             View view = inflater.Inflate(Resource.Layout.personalProfile, container, false);
             address = view.FindViewById<TextView>(Resource.Id.address_textview);
             email = view.FindViewById<TextView>(Resource.Id.email_textview);
@@ -80,7 +74,7 @@ namespace UOTCS_android.Fragments
 
         private void bingData()
         {
-            if (user_id == 0)
+            if (lecturer ==null)
             {
                 usernamAR.Text = CScore.BCL.User.use_nameAR;
                 usernameEN.Text = CScore.BCL.User.use_nameEN;
@@ -88,9 +82,13 @@ namespace UOTCS_android.Fragments
                 phone.Text = CScore.BCL.User.use_phone.ToString();
                 email.Text = CScore.BCL.User.use_email;
             }
-            else
+            else 
             {
-                
+                usernamAR.Text = lecturer.use_nameAR;
+                usernameEN.Text = lecturer.use_nameEN;
+                address.Text = "tripoli,Libya";
+                phone.Text = lecturer.use_phone.ToString();
+                email.Text = lecturer.use_email;
             }
          }
     }
