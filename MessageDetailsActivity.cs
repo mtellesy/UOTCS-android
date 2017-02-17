@@ -72,8 +72,8 @@ namespace UOTCS_android
             Random rnd = new Random();
             Color color = new Color(Color.Argb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256)));
             CircleImageView image = FindViewById<CircleImageView>(Resource.Id.profile_pic_messageDetails);
-            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60)
-                .EndConfig().BuildRound("x", color);
+            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(30).ToUpperCase().Height(60).Width(60)
+                .EndConfig().BuildRound(sender[0].ToString(), color);
             image.SetImageDrawable(drawable);
 
             messageSender = FindViewById<TextView>(Resource.Id.username_messageDetails);
@@ -114,7 +114,7 @@ namespace UOTCS_android
         {
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
 
         }
 
@@ -149,8 +149,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }        
 

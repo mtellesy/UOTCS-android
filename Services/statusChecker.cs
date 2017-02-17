@@ -90,12 +90,14 @@ namespace Services
                 {
                     UOTCS_android.NotificationsRepo.majorNotification(this);
                     UOTCS_android.NotificationsRepo.isMajorNotified = true;
+                    UOTCS_android.Values.majorVisible = true;
                 }
 
             }
             else
             {
                 UOTCS_android.NotificationsRepo.isMajorNotified = false;
+                UOTCS_android.Values.majorVisible = false;
             }
 
 

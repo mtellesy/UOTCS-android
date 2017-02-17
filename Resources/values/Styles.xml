@@ -15,6 +15,7 @@
     <item name="colorAccent">@color/accentS</item>
     <item name="textColor">@color/accentS</item>
     <item name="header">@color/headerS</item>
+    <item name="primaryColor">@color/primaryS</item>
     <item name="buttonStyle">@style/Theme.Student.Button</item>
    
   </style>
@@ -51,7 +52,8 @@
     <item name="colorAccent">@color/accentL</item>    
     <item name="textColor">@color/accentL</item>
     <item name="header">@color/headerL</item>
-     <item name="buttonStyle">@style/Theme.Lecturer.Button</item>
+    <item name="primaryColor">@color/primaryL</item>
+    <item name="buttonStyle">@style/Theme.Lecturer.Button</item>
 
 
   </style>

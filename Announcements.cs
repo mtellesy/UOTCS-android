@@ -30,22 +30,28 @@ namespace UOTCS_android
         private SupportActionBar actionbar;
         private DrawerLayout drawerLayout;
         private NavigationView navigationView;
+        private TabLayout tabs;
+        private ViewPager viewPager;
+        private TabAdapter adapter;
         private View view;
         private CircleImageView profileImage;
+        private RecievedAnnouncementsFragment generalAnnouncement;
+        private SentAnnouncementsFragment specifecAnnouncement;
         protected override void OnCreate(Bundle bundle)
         {
 
             base.OnCreate(bundle);
             this.Title = CScore.FixdStrings.Announcements.AnnouncementsLable();
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.Announcements);
+            SetContentView(Resource.Layout.AnnouncementsLecturer);
 
             findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
+            SetUpViewPager(viewPager);
+            tabs.SetupWithViewPager(viewPager);
 
-            initiateFragments();
             handleEvents();
         }
 
@@ -53,24 +59,27 @@ namespace UOTCS_android
 
         private void findViews()
         {
-
-            RecievedAnnouncements = new RecievedAnnouncementsFragment();
-            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBarWT);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layoutWT);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_viewWT);
+            tabs = FindViewById<TabLayout>(Resource.Id.tabsWT);
+            viewPager = FindViewById<ViewPager>(Resource.Id.viewpagerWT);
+            adapter = new TabAdapter(SupportFragmentManager);
+            generalAnnouncement = new RecievedAnnouncementsFragment();
+            specifecAnnouncement = new SentAnnouncementsFragment();           
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-           
+
         }
 
-        private void initiateFragments()
-        {
 
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.announcement_student_fragment_container, RecievedAnnouncements, "RecievedAnnouncements");
-            trans.Commit();
+        private void SetUpViewPager(ViewPager viewPager)
+        {
+            adapter.AddFragment(generalAnnouncement, "General");
+            adapter.AddFragment(specifecAnnouncement, "specific");
+            viewPager.Adapter = adapter;
         }
 
         private void setUpActionBar(SupportActionBar actionBar)
@@ -101,8 +110,7 @@ namespace UOTCS_android
         private void ProfileImage_Click(object sender, EventArgs e)
         {
             drawerLayout.CloseDrawers();
-            Intent intent = new Intent(this, typeof(Profile));
-            this.StartActivity(intent);
+            Values.startProfile(this);
             Finish();
         }
 
@@ -133,7 +141,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
-                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
             }
         }
     }

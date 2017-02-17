@@ -56,6 +56,7 @@ namespace UOTCS_android
             SimpleViewHolder vh = holder as SimpleViewHolder;
             String username = null;
             int x = position;
+            Color color;
             //     vh.Image.SetImageResource(mPhotoAlbum[position].PhotoID);
             vh.messageTitle.Text = mValues[position].Mes_subject;
             // get sender name 
@@ -65,21 +66,26 @@ namespace UOTCS_android
                 );
             task.Wait();
 
-          
-            if (messageSender.statusObject!= null)
-              username =  messageSender.statusObject.use_nameEN;
+            Random rnd = new Random();
+            color = new Color(Color.Argb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256)));
+            if (messageSender.statusObject != null)
+            {
+                username = messageSender.statusObject.use_nameEN;
+                color = new Color(Color.Rgb(messageSender.statusObject.color_r, messageSender.statusObject.color_g, messageSender.statusObject.color_b));
+            }
 
             if (String.IsNullOrEmpty(username))
+            {
                 username = "User";
-            Random rnd = new Random();
-            Color color = new Color(Color.Argb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256)));
+               
+            }
             String firstChar;
             if (String.IsNullOrEmpty(username))//mValues[position].Mes_subject))
                 firstChar = "M";
             else
                 firstChar = username[0].ToString();// mValues[position].Mes_subject[0].ToString();
 
-            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60)
+            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(30).ToUpperCase().Height(60).Width(60)
                 .EndConfig().BuildRound(firstChar.ToString(), color);
 
             vh.messageSender.Text = username;

@@ -22,7 +22,7 @@
   <string name="back_profile">عودة</string>
 
   <!--login strings-->
-  <string name="welcome_login">مرحباً بك في نظام المساعد</string>
+  <string name="welcome_login">مرحباً بك في نظام الرفيق</string>
   <string name="hint_login">يمكنك تسجيل الدخول</string>
   <string name="username_login">رقم القيد</string>
   <string name="password_login">كلمة السر</string>

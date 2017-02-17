@@ -13,6 +13,7 @@ using Android.Graphics;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Support.V4.Widget;
+using Java.Lang;
 
 namespace UOTCS_android
 {
@@ -36,8 +37,8 @@ namespace UOTCS_android
         {
             set
             {
-
-                if(Values.use_typeID > 1)
+                var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+                if (theme == CScore.FixdStrings.Theme.Teal)
                 {
                     use_color = new Color(0, 150, 136);
                 }
@@ -57,8 +58,8 @@ namespace UOTCS_android
         {
             set
             {
-
-                if (Values.use_typeID > 1)
+                var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+                if (theme == CScore.FixdStrings.Theme.Teal)
                 {
                     use_color_accent = new Color(255, 110, 64);
                 }
@@ -73,15 +74,15 @@ namespace UOTCS_android
                 return use_color_accent;
             }
         }
-
-
+        public static bool majorVisible;
         public static void changeTheme(Context myActivity)
         {
-            if (Values.Use_typeID > 1)
+            var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+            if (theme == CScore.FixdStrings.Theme.Teal)
             {
                 myActivity.SetTheme(Resource.Style.Theme_Lecturer);
             }
-            else if (Values.use_typeID == 1)
+            else if (theme== CScore.FixdStrings.Theme.Indigo)
             {
                 myActivity.SetTheme(Resource.Style.Theme_Student);
             }
@@ -166,6 +167,7 @@ namespace UOTCS_android
                     myActivity.StartActivity(intent); break;
                 case Resource.Id.nav_logout:
                     logout(myActivity);
+                    
                     break;
             }
         }
@@ -176,31 +178,60 @@ namespace UOTCS_android
             ImageView navHeaderBackgrpound = (ImageView)hView.FindViewById(Resource.Id.nav_header_image);
             ImageView navProfile = (ImageView)hView.FindViewById(Resource.Id.nav_profile);
             Values.Use_Color = new Color();
-
-            if (Values.Use_typeID > 1)
+            var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+            if (theme == CScore.FixdStrings.Theme.Teal)
             {
-                nav_view.InflateMenu(Resource.Menu.drawer_view_lecturer);
-                navHeaderBackgrpound.SetImageDrawable(myActivity.Resources.GetDrawable(Resource.Drawable.nav_header_lecturer));
-                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(50).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color)
-                .EndConfig().BuildRound("x", new Color(250, 250, 250));
-                navProfile.SetImageDrawable(drawable);
+                navHeaderBackgrpound.SetImageDrawable(myActivity.Resources.GetDrawable(Resource.Drawable.nav_header_lecturer));              
             }
             else
             {
-                nav_view.InflateMenu(Resource.Menu.drawer_view);
                 navHeaderBackgrpound.SetImageDrawable(myActivity.Resources.GetDrawable(Resource.Drawable.nav_header_student));
-                var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(40).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color)
-               .EndConfig().BuildRound("x", new Color(250, 250, 250));
-                navProfile.SetImageDrawable(drawable);
+                
             }
+            var drawable = Android.Ui.TextDrawable.TextDrawable.TextDrwableBuilder.BeginConfig().UseFont(Typeface.Default).FontSize(35).ToUpperCase().Height(60).Width(60).TextColor(Values.Use_Color)
+               .EndConfig().BuildRound(CScore.BCL.User.use_nameEN[0].ToString(), new Color(250, 250, 250));
+            navProfile.SetImageDrawable(drawable);
+            if (Values.Use_typeID > 1)
+            {
+                nav_view.InflateMenu(Resource.Menu.drawer_view_lecturer);                
+            }
+            else
+            {
+                nav_view.InflateMenu(Resource.Menu.drawer_view);                
+            }
+            setUpMenu(nav_view);
+        }
+        public static void setUpMenu(NavigationView nav_view)
+        {
+            IMenu menu = nav_view.Menu;
+            IMenuItem item = menu.FindItem(Resource.Id.nav_announcements);
+            item.SetTitle(CScore.FixdStrings.Announcements.AnnouncementsLable());
+            item = menu.FindItem(Resource.Id.nav_messages).SetTitle(CScore.FixdStrings.Messages.MessagesLable());
+            item = menu.FindItem(Resource.Id.nav_myCourses).SetTitle(CScore.FixdStrings.Courses.MyCoursesLable());
+            item = menu.FindItem(Resource.Id.nav_schedule).SetTitle(CScore.FixdStrings.Schedule.ScheduleLable());
+            item = menu.FindItem(Resource.Id.nav_timetable).SetTitle(CScore.FixdStrings.Timetable.TimetableLable());
+            item = menu.FindItem(Resource.Id.nav_settings).SetTitle(CScore.FixdStrings.Settings.SettingsLable());
+            item = menu.FindItem(Resource.Id.nav_logout).SetTitle(CScore.FixdStrings.Logout.LogutLabel()).SetCheckable(false);
+            if (!(Values.Use_typeID >1))
+            {
+                item = menu.FindItem(Resource.Id.nav_enrollment).SetTitle(CScore.FixdStrings.Enrollment.EnrollmentLable());                        
+                item = menu.FindItem(Resource.Id.nav_major).SetTitle(CScore.FixdStrings.Major.MajorTitle()).SetVisible(majorVisible);
+                item = menu.FindItem(Resource.Id.nav_result).SetTitle(CScore.FixdStrings.Results.ResultsLable());
+            }
+       //     nav_view.Menu.GetItem(Resource.Id.nav_logout).SetCheckable(false);
         }
         public static void handleOnBackPressed(Context myActivity)
         {
             Intent intent = new Intent(myActivity, typeof(Profile));
             myActivity.StartActivity(intent);
         }
-        public static void handleSwitchActivities(Context myActivity, int itemId)
+        public static void handleSwitchActivities(Context myActivity, int itemId, NavigationView navigationView)
         {
+            if ( itemId == Resource.Id.nav_logout)
+            {
+                IMenu menu = navigationView.Menu;
+                menu.FindItem(Resource.Id.nav_logout).SetChecked(false);
+            }
             if (Values.Use_typeID > 1)
             {
                 Values.switchActivitiesLecturer(myActivity, itemId);
@@ -218,7 +249,21 @@ namespace UOTCS_android
                 drawerLayout.CloseDrawers();
             };
         }
-
+        public static void startProfile(Context myActivity)
+        {
+            Intent intent;
+            int x = Values.use_typeID;
+            if (Values.Use_typeID > 1)
+            {
+                intent = new Intent(myActivity, typeof(Profile));
+                
+            }
+            else
+            {
+                intent = new Intent(myActivity, typeof(ProfileStudent));
+            }
+            myActivity.StartActivity(intent);
+        }
         public static List<TimetableAndMidmarkAndroid> timetableMaker(CScore.BCL.Semester semester)
         {
             List<TimetableAndMidmarkAndroid> result = new List<TimetableAndMidmarkAndroid>();
