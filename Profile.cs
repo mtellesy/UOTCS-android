@@ -23,10 +23,12 @@ using Refractored.Controls;
 using Android.Content.Res;
 using Java.Util;
 using Android.Support.V7.Widget;
+using CScore.BCL;
+using Android.Support.V4.App;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Profile", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    [Activity(Label = "Profile", Icon = "@drawable/icon", Theme = "@style/Theme.Student",ParentActivity = (typeof(CourseDetails)))]
     public class Profile : AppCompatActivity
     {
         //       private Button view;
@@ -45,31 +47,37 @@ namespace UOTCS_android
         private CircleImageView profileImage;
         private PersonalProfileFragment personal;
         private CScore.BCL.OtherUsers lecturer;
-        private int lecturer_id;
+        private long lecturer_id;
         protected override async void OnCreate(Bundle bundle)
         {
-
+            Bundle b = Intent.Extras;
            
             base.OnCreate(bundle);
             Intent intent2 = Intent;
             if (null != intent2)
             { //Null Checking
-               lecturer_id = intent2.GetIntExtra("lecturer_id",0);
+              //lecturer_id = intent2.GetLongExtra("lecturer_id",-1);
+
+                lecturer_id = b.GetInt("lecturer_id");
             }
             if (lecturer_id!= 0)
             {
+                bindLecturerData((int)lecturer_id);
+            }
+            else
+            {
+                // var task = Task.Run(async () => {
+                await CScore.BCL.Semester.getCurrentSemester();
+                //});
+                //   task.Wait();
+
+
+                // start the service for notifications
+                Intent intent = new Intent(this, typeof(Services.StatusChecker));
+                this.StartService(intent);
 
             }
-            int ix = lecturer_id;
-            // var task = Task.Run(async () => {
-            await CScore.BCL.Semester.getCurrentSemester();
-            //});
-            //   task.Wait();
-
-
-            // start the service for notifications
-            Intent intent = new Intent(this, typeof(Services.StatusChecker));
-            this.StartService(intent);
+            
 
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
@@ -121,22 +129,38 @@ namespace UOTCS_android
         }
         private void initiateFragments()
         {
-
+            if (lecturer!= null)
+            {
+                personal.lecturer = this.lecturer;
+            }
             var trans = SupportFragmentManager.BeginTransaction();
             //      trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
             //    trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
             //  trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information"); 
             //        trans.Hide(userMoreInformation);
             trans.Add(Resource.Id.UsernameFragmentContainer, personal, "personal");
+            
       //      mCurrentFragment = userInformation;
             trans.Commit();
         }
         
         private void setUpActionBar(SupportActionBar actionBar)
         {
-            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            
+            if (lecturer != null)
+            {
+                actionBar.SetHomeButtonEnabled(true);
+
+            }
+            else
+            {
+                actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+
+            }
+
+
             actionBar.SetDisplayHomeAsUpEnabled(true);
+            
+            
         }
         private void setUpNavigationView(NavigationView navigationView)
         {
@@ -175,8 +199,14 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
-
+                    if (lecturer != null)
+                    {
+                        NavUtils.NavigateUpFromSameTask(this);
+                    }
+                    else
+                    {
+                        drawerLayout.OpenDrawer((int)GravityFlags.Start);
+                    }
                     return true;
 
 
@@ -223,5 +253,34 @@ namespace UOTCS_android
         {
             drawerLayout.CloseDrawers();
         }
+        private void bindLecturerData(int lecturer_id)
+        {
+            StatusWithObject<OtherUsers> values = new StatusWithObject<OtherUsers>();
+            try
+            {
+                var task = Task.Run(async () => { values = await this.getLecturer(lecturer_id); });
+                task.Wait();
+            }
+            catch (AggregateException ex)
+            {
+
+            }
+            lecturer = values.statusObject;
+        }
+        private async Task<CScore.BCL.StatusWithObject<OtherUsers>> getLecturer(int lecturer_id)
+        {
+            CScore.BCL.StatusWithObject<OtherUsers> result = new StatusWithObject<OtherUsers>();
+            try
+            {
+                result = await CScore.BCL.OtherUsers.getOtherUser(lecturer_id);
+                var x = result;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
     }
 }

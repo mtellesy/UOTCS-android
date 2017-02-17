@@ -104,7 +104,7 @@ namespace UOTCS_android.Fragments
             Intent intent = new Intent(Activity, typeof(Profile));
             Bundle b = new Bundle();
             //   b.PutInt("lecturer_id", course.Tea_id);
-            intent.PutExtra("lecturer_id", course.Tea_id);
+            intent.PutExtra("lecturer_id",lecturer.use_id);
             this.StartActivity(intent);
         }
 
@@ -150,7 +150,7 @@ namespace UOTCS_android.Fragments
             {
                 Intent intent = new Intent(Activity, typeof(SendMessage));
                 Bundle b = new Bundle();
-                b.PutInt("lecturer_id", course.Tea_id);
+                b.PutInt("lecturer_id",lecturer.use_id);
                 intent.PutExtras(b);
                 this.StartActivity(intent);
             }
