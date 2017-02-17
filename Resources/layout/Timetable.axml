@@ -42,6 +42,7 @@
             android:layout_height="match_parent">
           <TextView
               android:text="@string/midexam_name"
+              android:id="@+id/firstHeader"
               android:layout_height="match_parent"
               android:layout_width="0dp"
               android:layout_weight="1"
@@ -51,6 +52,7 @@
               android:singleLine="true" />
           <TextView
               android:text="@string/result"
+               android:id="@+id/secondHeader"
               android:layout_width="0dp"
               android:layout_height="match_parent"
               android:layout_weight="1"

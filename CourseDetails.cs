@@ -1,29 +1,35 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
+using SupportFragment = Android.Support.V4.App.Fragment;
+
+using Android.Support.V7.Widget;
+using UOTCS_android.Helpers;
+using CScore.BCL;
+using System.Threading.Tasks;
+using Android.Graphics;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportActionBar = Android.Support.V7.App.ActionBar;
 
 using Android.Support.V4.Widget;
-using SupportFragment = Android.Support.V4.App.Fragment;
-using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
-
-using Android.Support.V7.App;
 using Android.Support.Design.Widget;
-using Android.Support.V4.View;
 using Refractored.Controls;
-using System.Collections.Generic;
+using Android.Support.V4.App;
+using Android.Support.V7.App;
 using UOTCS_android.Fragments;
-using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "MyCourses", Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class MyCourses : AppCompatActivity
+    [Activity(Label = "CourseDetails", ParentActivity = (typeof(MyCourses)))]
+    public class CourseDetails : AppCompatActivity
     {
         private SupportToolbar toolBar;
         private SupportActionBar actionbar;
@@ -31,24 +37,23 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
-        private List<ResultAndroid> myCoursesList;
-        private List<ResultAndroid> myCourses;
-        private ResultFragment myCoursesfragment;
-        protected override void OnCreate(Bundle bundle)
+        private CourseNameFragment courseNameFragment;
+        private Button sendMessage;
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-            this.Title = CScore.FixdStrings.Courses.MyCoursesLable();           
-            Values.changeTheme(this);
-            SetContentView(Resource.Layout.MyCourses);
 
-            findViews();
+            base.OnCreate(savedInstanceState);
+            Values.changeTheme(this);
+            SetContentView(Resource.Layout.CourseDetails);
+            this.findViews();
+            initiateFragments();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-            bindData();
-            initiateFragments();
-            handleEvents();
+            this.handleEvents();
+
         }
+
 
 
 
@@ -61,62 +66,19 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-            myCoursesList = new List<ResultAndroid>();
-            myCoursesfragment = new ResultFragment();
+            sendMessage = FindViewById<Button>(Resource.Id.send_message_btn);
+            courseNameFragment = new CourseNameFragment();
         }
         private void initiateFragments()
         {
             var trans = SupportFragmentManager.BeginTransaction();
-            myCoursesfragment.results = myCoursesList;
-            trans.Add(Resource.Id.MyCoursesFragmentContainer, myCoursesfragment, "result");
+            trans.Add(Resource.Id.MyCoursesDetailsFragmentContainer, courseNameFragment, "result");
             trans.Commit();
-        }
-        private void bindData()
-        {
-            List<CScore.BCL.Course> x = new List<CScore.BCL.Course>();
-
-            var coursesStatus = new CScore.BCL.StatusWithObject<List<CScore.BCL.Course>>();
-
-            ResultAndroid temp2;
-
-            var task = Task.Run(async () =>
-            {
-                coursesStatus = await CScore.BCL.Course.getUserCoursesSchedule();
-            }
-                );
-            task.Wait();
-            if (coursesStatus.statusObject != null)
-                x = coursesStatus.statusObject;
-
-            //to remove any repeated courses
-            var z = new List<CScore.BCL.Course>();
-            foreach (CScore.BCL.Course y in x)
-            {
-                int r = 0;
-                if (z.Count != 0)
-                {
-                    foreach (var i in z)
-                    {
-
-                        if (y.Cou_id == i.Cou_id && y.Schedule[0].Gro_id == i.Schedule[0].Gro_id)
-                            r++;
-                    }
-                    if (r == 0) z.Add(y);
-                }
-                else z.Add(y);
-            }
-            x = z;
-            foreach (CScore.BCL.Course y in x)
-            {
-                temp2 = new ResultAndroid(y);
-                myCoursesList.Add(temp2);
-            }
 
         }
-
         private void setUpActionBar(SupportActionBar actionBar)
         {
-            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            actionBar.SetHomeButtonEnabled(true);
             actionBar.SetDisplayHomeAsUpEnabled(true);
         }
         private void setUpNavigationView(NavigationView navigationView)
@@ -127,47 +89,52 @@ namespace UOTCS_android
                 SetUpDrawerContent(navigationView);
             }
             navigationView.SetCheckedItem(Resource.Id.nav_myCourses);
-
         }
         private void SetUpDrawerContent(NavigationView navigationView)
         {
             Values.handleSetUpDrawerContent(navigationView, drawerLayout);
         }
-
         private void handleEvents()
         {
-
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
             profileImage.Click += ProfileImage_Click;
-
+            sendMessage.Click += SendMessage_Click;
         }
+
+        private void SendMessage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+        }
+
         public int getCurrentActvity()
         {
-            return Resource.Id.nav_myCourses;
+            return Resource.Id.nav_messages;
         }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
+            base.OnOptionsItemSelected(item);
+            if (item.ItemId == Android.Resource.Id.Home)
             {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
-                    return true;
-
-
-                default:
-                    return base.OnOptionsItemSelected(item);
+                NavUtils.NavigateUpFromSameTask(this);
+                return true;
             }
+
+            return base.OnOptionsItemSelected(item);
+
         }
         public override void OnBackPressed()
         {
             MoveTaskToBack(true);
         }
-
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
+            {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
 
         }
         private void ProfileImage_Click(object sender, EventArgs e)
@@ -178,5 +145,8 @@ namespace UOTCS_android
             Finish();
         }
 
+
+
     }
 }
+

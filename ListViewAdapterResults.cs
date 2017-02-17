@@ -52,6 +52,8 @@ namespace UOTCS_android
                 Values.Use_Color_accent = new Color();
                 rowTotal.Text = results[position].Group;
                 rowCode.SetTextColor(Values.Use_Color_accent);
+                LinearLayout lin = view.FindViewById<LinearLayout>(Resource.Id.list_row_results_background);
+      //          lin.SetBackgroundColor(new Color(250, 250, 250));
             }
             else
             {

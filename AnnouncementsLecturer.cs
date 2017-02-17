@@ -19,6 +19,7 @@ using UOTCS_android.Fragments;
 using Android.Graphics;
 using Android.Support.V4.App;
 using Refractored.Controls;
+using Android.Support.V4.Content;
 
 namespace UOTCS_android
 {
@@ -70,6 +71,7 @@ namespace UOTCS_android
             recievedAnnouncement = new RecievedAnnouncementsFragment();
             sentAnnouncement = new SentAnnouncementsFragment();
             fab = FindViewById<FloatingActionButton>(Resource.Id.fabWT);
+            fab.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_create));
             fab.Show();
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);

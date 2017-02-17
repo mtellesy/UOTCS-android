@@ -52,18 +52,18 @@ namespace UOTCS_android
 
             // var task = Task.Run(async () => {
             await CScore.BCL.Semester.getCurrentSemester();
-        //});
-         //   task.Wait();
+            //});
+            //   task.Wait();
 
 
             // start the service for notifications
-            //      Intent intent = new Intent(this, typeof(Services.StatusChecker));
-            //    this.StartService(intent);
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            this.StartService(intent);
 
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
             //  task.Wait();
-            //start the enrollment status checker           
+            this.Title = CScore.FixdStrings.Profile.ProfileLable();    
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Profile);
 
@@ -85,7 +85,9 @@ namespace UOTCS_android
             userInformation = new UserInformationFragment();
             userMoreInformation = new UserMoreInfomationFragment();
             status = FindViewById<Button>(Resource.Id.status_btn);
+            status.Text = CScore.FixdStrings.General.Status();
             transcript = FindViewById<Button>(Resource.Id.transcript_btn);
+            transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -152,7 +154,7 @@ namespace UOTCS_android
         {
             Intent intent = new Intent(this, typeof(Transcript));
             this.StartActivity(intent);
-            
+     
         }
 
         public int getCurrentActvity()
@@ -187,7 +189,7 @@ namespace UOTCS_android
                 trans.Show(userMoreInformation);
                 mCurrentFragment = userMoreInformation;
                 trans.Commit();
-                status.Text = "BACK";
+                status.Text = CScore.FixdStrings.Buttons.BACK();
             }
             else if (mCurrentFragment == userMoreInformation)
             {
@@ -195,7 +197,7 @@ namespace UOTCS_android
                 trans.Show(userInformation);
                 mCurrentFragment = userInformation;
                 trans.Commit();
-                status.Text = "STATUS";
+                status.Text = CScore.FixdStrings.General.Status();
 
             }
         }

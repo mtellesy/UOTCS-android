@@ -19,6 +19,7 @@ using Refractored.Controls;
 using UOTCS_android.Fragments;
 using System.Collections.Generic;
 using CScore.BCL;
+using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
@@ -34,14 +35,19 @@ namespace UOTCS_android
         private CircleImageView profileImage;
         private List<TimetableAndMidmarkAndroid> timetableList;
         private TimetableAndMidmarkFragment timetableFrament;
+        private TextView eventName;
+        private TextView date;
         protected override void OnCreate(Bundle bundle)
         {
 
             base.OnCreate(bundle);
-
+            this.Title = CScore.FixdStrings.Timetable.TimetableLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Timetable);
-
+            eventName = FindViewById<TextView>(Resource.Id.firstHeader);
+            date = FindViewById<TextView>(Resource.Id.secondHeader);
+            eventName.Text = CScore.FixdStrings.General.Name();
+            date.Text = CScore.FixdStrings.Timetable.Date();
             findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
@@ -77,28 +83,21 @@ namespace UOTCS_android
         private void bindData()
         {
             Semester temp = new Semester();
-            temp.Year = 1969.ToString();
-            temp.Ter_start = "12/12/12";
-            temp.Ter_nameEN = "what a year";
-            temp.Ter_nameAR = "fuck off";
-            temp.Ter_lastStudyDate = "12/23/4555";
-            temp.Ter_id = 3;
-            temp.Ter_enrollment = "17/1/2098";
-            temp.Ter_end = "123456";
-            temp.Ter_dropCourses = "144/12/1223";
-            temp.Exam = new List<Exams>();         
-            for (int i = 0; i < 10; i++)
+            StatusWithObject<Semester> semester = new StatusWithObject<Semester>();
+            var task = Task.Run(async () =>
             {
-                Exams x = new Exams();
-                x.StartDate = "date" + i;
-                x.ExamTypeEN = "type" + i;
-                x.ExamTypeAR = "date" + i;
-                x.EndDate = "type" + i;
-                x.Duration = 12;
-                temp.Exam.Add(x);
+                semester = await Semester.getCurrentSemester();
+            }
+                
+                );
+            task.Wait();
+            if(semester.statusObject != null)
+            {
+                temp = semester.statusObject;
+                timetableList = Values.timetableMaker(temp);
+                
             }
             
-            timetableList = Values.timetableMaker(temp);
         }
         private void setUpActionBar(SupportActionBar actionBar)
         {

@@ -322,13 +322,13 @@
                 <TableRow
                     android:id="@+id/tableRowTUE"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
+                    android:layout_height="80dp"
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/Tue_day"
                         android:layout_width="80dp"
-                        android:layout_height="@dimen/schedule_row_height"
+                         android:layout_height="wrap_content"
+                        android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="TUE"
                         android:gravity="center"
@@ -338,7 +338,7 @@
                     <TextView
                         android:id="@+id/TU1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -347,7 +347,7 @@
                     <TextView
                         android:id="@+id/TU2"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -355,8 +355,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU3"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                         android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -364,17 +364,17 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TU4"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                         android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
                         android:layout_gravity="center"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
                         android:id="@+id/TU5"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                         android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -383,7 +383,7 @@
                     <TextView
                         android:id="@+id/TU6"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -393,14 +393,14 @@
             <!--                      Wednesday                    -->
                 <TableRow
                     android:id="@+id/tableRowWED"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
+                     android:layout_width="match_parent"
+                    android:layout_height="80dp"  
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/Wed_day"
                         android:layout_width="80dp"
-                        android:layout_height="@dimen/schedule_row_height"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="WED"
                         android:gravity="center"
@@ -410,7 +410,7 @@
                     <TextView
                         android:id="@+id/WE1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -419,7 +419,7 @@
                     <TextView
                         android:id="@+id/WE2"
                         android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -427,8 +427,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE3"
-                        android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                       android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -437,7 +437,7 @@
                     <TextView
                         android:id="@+id/WE4"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -445,8 +445,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/WE5"
-                        android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                         android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -455,7 +455,7 @@
                     <TextView
                         android:id="@+id/WE6"
                         android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -466,13 +466,13 @@
                 <TableRow
                     android:id="@+id/tableRowTHU"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="@dimen/row_min_height"
+                    android:layout_height="80dp"
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/Thu_day"
                         android:layout_width="80dp"
-                        android:layout_height="@dimen/schedule_row_height"
+                        android:layout_height="wrap_content"
+                         android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="THU"
                         android:gravity="center"
@@ -482,7 +482,7 @@
                     <TextView
                         android:id="@+id/TH1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -490,8 +490,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH2"
-                        android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                       android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -500,7 +500,7 @@
                     <TextView
                         android:id="@+id/TH3"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -509,7 +509,7 @@
                     <TextView
                         android:id="@+id/TH4"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -517,8 +517,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/TH5"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                         android:layout_width="80dp"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -527,7 +527,7 @@
                     <TextView
                         android:id="@+id/TH6"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"

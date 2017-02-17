@@ -2,29 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="70dp"
     android:id="@+id/list_row_results_background"
     android:padding="@dimen/background_padding"
     android:background="@drawable/borderSet"              
     android:weightSum="4">
   <TextView
       android:text="Text"
-      android:layout_width="wrap_content"
+      android:layout_width="60dp"
       android:layout_height="match_parent"
       android:id="@+id/list_row_results_code"
       android:layout_weight="1"
-      android:gravity="center" />
+       android:gravity="start|center" 
+      android:layout_marginEnd="4dp"/>
   <TextView
       android:text="Text"
-      android:layout_width="wrap_content"
+      android:layout_width="150dp"
       android:layout_height="match_parent"
       android:id="@+id/list_row_results_name"
       android:layout_weight="2"
-      android:gravity="center" />
+      
+       android:layout_marginStart="9dp"
+       android:gravity="start|center" />
   <TextView
       android:text="Text"
-      android:gravity="center"
-      android:layout_width="wrap_content"
+       android:gravity="start|center"
+      android:layout_width="30dp"
       android:layout_height="match_parent"
       android:id="@+id/list_row_results_result"
       android:layout_weight="1" />
