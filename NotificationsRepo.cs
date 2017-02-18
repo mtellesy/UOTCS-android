@@ -69,6 +69,82 @@ namespace UOTCS_android
 
         }
 
+        public static void newMessagesNotification(Context x,int y)
+        {
+            Intent intent = new Intent(x, typeof(Major));
+
+            PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
+            Android.Support.V4.App.NotificationCompat.Builder builder =
+            new Android.Support.V4.App.NotificationCompat.Builder(x)
+            .SetAutoCancel(true)
+            .SetContentTitle(CScore.FixdStrings.Messages.MessagesLable())
+            .SetSmallIcon(Resource.Drawable.ic_messages)
+            .SetContentText("You've "+ y.ToString()+" new Messages")//CScore.FixdStrings.Messages.NewMessages())
+            .SetContentIntent(contentIntent);
+
+            notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
+
+            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+
+        }
+
+        public static void newMessagesNotification(Context x)
+        {
+            Intent intent = new Intent(x, typeof(Major));
+
+            PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
+            Android.Support.V4.App.NotificationCompat.Builder builder =
+            new Android.Support.V4.App.NotificationCompat.Builder(x)
+            .SetAutoCancel(true)
+            .SetContentTitle(CScore.FixdStrings.Messages.MessagesLable())
+            .SetSmallIcon(Resource.Drawable.ic_messages)
+            .SetContentText("You've a new Message")//CScore.FixdStrings.Messages.NewMessages())
+            .SetContentIntent(contentIntent);
+
+            notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
+
+            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+
+        }
+
+        public static void newAnnouncementNotification(Context x,int y)
+        {
+            Intent intent = new Intent(x, typeof(Major));
+
+            PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
+            Android.Support.V4.App.NotificationCompat.Builder builder =
+            new Android.Support.V4.App.NotificationCompat.Builder(x)
+            .SetAutoCancel(true)
+            .SetContentTitle(CScore.FixdStrings.Announcements.AnnouncementsLable())
+            .SetSmallIcon(Resource.Drawable.ic_announcement)
+            .SetContentText("You've "+ y.ToString() +" new Announcements")//CScore.FixdStrings.Messages.NewMessages())
+            .SetContentIntent(contentIntent);
+
+            notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
+
+            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+
+        }
+
+        public static void newAnnouncementNotification(Context x)
+        {
+            Intent intent = new Intent(x, typeof(Major));
+
+            PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
+            Android.Support.V4.App.NotificationCompat.Builder builder =
+            new Android.Support.V4.App.NotificationCompat.Builder(x)
+            .SetAutoCancel(true)
+            .SetContentTitle(CScore.FixdStrings.Announcements.AnnouncementsLable())
+            .SetSmallIcon(Resource.Drawable.ic_announcement)
+            .SetContentText("You've a new Announcement")//CScore.FixdStrings.Messages.NewMessages())
+            .SetContentIntent(contentIntent);
+
+            notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
+
+            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+
+        }
+
 
     }
 }

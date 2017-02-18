@@ -57,9 +57,14 @@ namespace UOTCS_android
             if (null != intent2)
             { //Null Checking
               //lecturer_id = intent2.GetLongExtra("lecturer_id",-1);
+                try
+                {
+                    lecturer_id = b.GetInt("lecturer_id");
+                }catch
+                { }
 
-                lecturer_id = b.GetInt("lecturer_id");
-            }
+
+                }
             if (lecturer_id!= 0)
             {
                 bindLecturerData((int)lecturer_id);
