@@ -42,5 +42,6 @@
 
   <string name="total_units">Total units</string>
   <string name="total_credits">Total cerdit</string>
+  <string name="application_name">Companion System</string>
 
 </resources>

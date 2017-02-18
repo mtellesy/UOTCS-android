@@ -56,7 +56,7 @@ namespace UOTCS_android
             Bundle b = Intent.Extras;
 
             Intent intent2 = Intent;
-            if (null != intent2)
+            if (null != b)
             { //Null Checking
               //lecturer_id = intent2.GetLongExtra("lecturer_id",-1);
 
