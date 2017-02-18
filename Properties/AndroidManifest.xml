@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="UOTCS_android.UOTCS_android" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="17" />
 	<application android:label="@string/application_name" android:supportsRtl="true">
-    <activity
-        android:name=".Login"
-        android:label="@string/application_name">
-      
-    </activity>
+		<activity android:name=".Login" android:label="@string/application_name"></activity>
 		<activity android:name=".Announcements" android:windowSoftInputMode="adjustPan" />
 	</application>
 </manifest>

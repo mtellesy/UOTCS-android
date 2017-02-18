@@ -48,10 +48,10 @@ namespace UOTCS_android
             base.OnCreate(bundle);
 
 
-            // var task = Task.Run(async () => {
+            var task = Task.Run(async () => {
             await CScore.BCL.Semester.getCurrentSemester();
-            //});
-            //   task.Wait();
+            });
+              task.Wait();
 
 
             // start the service for notifications

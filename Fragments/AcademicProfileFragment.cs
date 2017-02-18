@@ -217,8 +217,16 @@ namespace UOTCS_android.Fragments
             try
             {
                 //  result = await CScore.BCL.OtherUsers.getOtherUser(course.Tea_id);
-                result = await CScore.BCL.OtherUsers.getOtherUser(000200035);
-                var x = result;
+               var r = await CScore.BCL.Course.getUserCoursesSchedule();
+                foreach(var y in r.statusObject)
+                {
+                    if(y.Cou_id==course.Cou_id)
+                    {
+                        result = await CScore.BCL.OtherUsers.getOtherUser(y.Schedule[0].Tea_id);
+                        var x = result;
+                    }
+                }
+               
             }
             catch (Exception ex)
             {
