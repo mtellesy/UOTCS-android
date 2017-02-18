@@ -281,9 +281,6 @@
     <AndroidResource Include="Resources\layout\SendMessageAnnouncementF.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\SendAnnouncement.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\dropDownList_style.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
