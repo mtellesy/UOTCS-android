@@ -76,13 +76,18 @@ namespace UOTCS_android.Fragments
                     {
                         foreach(CScore.BCL.Announcements x in values.statusObject)
                         {
+                            int count = 0;
                             foreach(Course y in lecturers.statusObject)
                             {
                                 if (x.Ano_sender!= y.Tea_id) // querying generalannouncement for student.
                                 {
-                                    final.Add(x);
+                                    count++;
                                 }
 
+                            }
+                            if(count == lecturers.statusObject.Count)
+                            {
+                                final.Add(x);
                             }
                         }
                         recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
