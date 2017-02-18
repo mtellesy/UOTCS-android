@@ -121,11 +121,11 @@ namespace Services
                 }
                 else
                 {
-                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this);
+                    UOTCS_android.NotificationsRepo.newMessagesNotification(this);
                 }
+            }
             }
 
 
         }
     }
-}
