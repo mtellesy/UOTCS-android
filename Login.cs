@@ -54,7 +54,7 @@ namespace UOTCS_android
             base.OnCreate(savedInstanceState);
 
             // domain 
-            CScore.SAL.AuthenticatorS.domain = "http://192.168.2.8/CStestAPIs";
+            CScore.SAL.AuthenticatorS.domain = "http://192.168.1.8/CStestAPIs";
             SetContentView(Resource.Layout.Login);
             // Create your application here
             userIDEditText = FindViewById<EditText>(Resource.Id.txtUsername);
@@ -142,7 +142,13 @@ namespace UOTCS_android
                 }
                 else
                 {
-                    this.showMessage("Somting went wrong!");
+                    bool netStatus = false;
+                    var netTask = Task.Run(async () => { netStatus = await CScore.BCL.UpdateBox.CheckForInternetConnection(); });
+                    netTask.Wait();
+                    if (!netStatus)
+                    { this.showMessage("No Internet Connection!"); }
+                    else
+                    this.showMessage(LoginStatus.message);
                 }
             }
 
