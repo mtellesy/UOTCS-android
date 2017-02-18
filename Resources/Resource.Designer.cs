@@ -2212,79 +2212,82 @@ namespace UOTCS_android
 			public const int ic_flag_black_24dp = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_it_logo = 2130837603;
+			public const int ic_info_white_24dp = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_location_on_black_24dp = 2130837604;
+			public const int ic_it_logo = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_logout = 2130837605;
+			public const int ic_location_on_black_24dp = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_major = 2130837606;
+			public const int ic_logout = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_menu = 2130837607;
+			public const int ic_major = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_messages = 2130837608;
+			public const int ic_menu = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_mycourses = 2130837609;
+			public const int ic_messages = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_phone_black_24dp = 2130837610;
+			public const int ic_mycourses = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_result = 2130837611;
+			public const int ic_phone_black_24dp = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_save = 2130837612;
+			public const int ic_result = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_schedule = 2130837613;
+			public const int ic_save = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_schedule_fab = 2130837614;
+			public const int ic_schedule = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_send = 2130837615;
+			public const int ic_schedule_fab = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_settings = 2130837616;
+			public const int ic_send = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_timetable = 2130837617;
+			public const int ic_settings = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int Icon = 2130837618;
+			public const int ic_timetable = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int imageButtonAdd = 2130837619;
+			public const int Icon = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int lecturer_pic = 2130837620;
+			public const int imageButtonAdd = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int nav_header_lecturer = 2130837621;
+			public const int lecturer_pic = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int nav_header_student = 2130837622;
+			public const int nav_header_lecturer = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int navigation_empty_icon = 2130837623;
-			
-			// aapt resource value: 0x7f02007b
-			public const int notification_template_icon_bg = 2130837627;
+			public const int nav_header_student = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int student_pic = 2130837624;
+			public const int navigation_empty_icon = 2130837624;
+			
+			// aapt resource value: 0x7f02007c
+			public const int notification_template_icon_bg = 2130837628;
 			
 			// aapt resource value: 0x7f020079
-			public const int textBackground = 2130837625;
+			public const int student_pic = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int uni_logo = 2130837626;
+			public const int textBackground = 2130837626;
+			
+			// aapt resource value: 0x7f02007b
+			public const int uni_logo = 2130837627;
 			
 			static Drawable()
 			{
@@ -3835,6 +3838,9 @@ namespace UOTCS_android
 			
 			// aapt resource value: 0x7f090021
 			public const int appbar_scrolling_view_behavior = 2131296289;
+			
+			// aapt resource value: 0x7f090045
+			public const int application_name = 2131296325;
 			
 			// aapt resource value: 0x7f090036
 			public const int back_profile = 2131296310;

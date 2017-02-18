@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOTCS-android", "UOTCS-android.csproj", "{88137EFF-28F7-4821-AE0D-E74BDD2632C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CScore", "F:\CompanionSystem\CScore\CScore.csproj", "{92B15530-AEEB-43C6-8E94-3A7BE79FD2B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CScore", "..\CompanionSystem\CScore\CScore.csproj", "{92B15530-AEEB-43C6-8E94-3A7BE79FD2B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

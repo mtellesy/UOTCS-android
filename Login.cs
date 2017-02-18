@@ -33,7 +33,7 @@ using Java.Util;
 
 namespace UOTCS_android
 {
-    [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
+    [Activity( MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Login : AppCompatActivity
     {
         private Button login;
