@@ -174,7 +174,10 @@ namespace UOTCS_android
             {
 
             }
-            course = values.statusObject.First();
+            if (values.statusObject != null && values.statusObject.Count > 0)
+                course = values.statusObject.First();
+            else
+                course = new Course();
         }
         private async  Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Course>>> getCourse()
         {

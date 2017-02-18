@@ -71,14 +71,15 @@ namespace UOTCS_android
             }
             else
             {
-                // var task = Task.Run(async () => {
-                await CScore.BCL.Semester.getCurrentSemester();
-                //});
-                //   task.Wait();
+                var task = Task.Run(async () =>
+                {
+                    await CScore.BCL.Semester.getCurrentSemester();
+            });
+            task.Wait();
 
 
-                // start the service for notifications
-                Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            // start the service for notifications
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
                 this.StartService(intent);
 
             }
