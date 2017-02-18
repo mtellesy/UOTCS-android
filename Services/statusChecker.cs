@@ -9,6 +9,8 @@ using Android.Util;
 
 
 using CScore.BCL;
+using Android.Support.V4.App;
+using Android.Graphics;
 
 namespace Services
 {
@@ -68,12 +70,14 @@ namespace Services
         async void HandleTimerCallback(object state)
         {
             TimeSpan runTime = DateTime.UtcNow.Subtract(startTime);
-          if(await CScore.BCL.Enrollment.isEnrollmentEnabled()) 
+         
+            if (await CScore.BCL.Enrollment.isEnrollmentEnabled()) 
             {
                 // when enrollment is available get the current semester
            await CScore.BCL.Semester.getCurrentSemester();
                 if(!UOTCS_android.NotificationsRepo.isEnrollmentNotified)
                 {
+                    
                     UOTCS_android.NotificationsRepo.enrollmentNotification(this);
                     UOTCS_android.NotificationsRepo.isEnrollmentNotified = true;
                 }

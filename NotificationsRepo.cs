@@ -39,7 +39,7 @@ namespace UOTCS_android
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Enrollment.EnrollmentStatusNotification())
-            .SetSmallIcon(Resource.Drawable.Icon)
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
             .SetContentText(CScore.FixdStrings.Enrollment.EnrollmentIsAvailable())
             .SetContentIntent(contentIntent);
            
@@ -59,7 +59,7 @@ namespace UOTCS_android
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Major.MajorStatus())
-            .SetSmallIcon(Resource.Drawable.Icon)
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
             .SetContentText(CScore.FixdStrings.Major.MajormentIsAvailable())
             .SetContentIntent(contentIntent);
 
