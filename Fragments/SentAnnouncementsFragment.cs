@@ -77,7 +77,7 @@ namespace UOTCS_android.Fragments
                         {
                             foreach (Course y in lecturers.statusObject)
                             {
-                                if (x.Ano_sender == y.Tea_id)// queryiong specific announcements for the student.
+                                if (x.Cou_id == y.Cou_id)// queryiong specific announcements for the student.
                                 {
                                     final.Add(x);
                                 }
