@@ -180,6 +180,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
 
         }
