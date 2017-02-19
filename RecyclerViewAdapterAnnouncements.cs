@@ -59,6 +59,7 @@ namespace UOTCS_android
 
                 Sender = await CScore.BCL.OtherUsers.getOtherUser(mValues[position].Ano_sender);
             });
+            task.Wait();
             if (Sender.statusObject != null)
                 vh.sender.Text = Sender.statusObject.use_nameEN;
             vh.time.Text = mValues[position].Ano_time;

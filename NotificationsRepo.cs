@@ -71,15 +71,15 @@ namespace UOTCS_android
 
         public static void newMessagesNotification(Context x,int y)
         {
-            Intent intent = new Intent(x, typeof(Major));
+            Intent intent = new Intent(x, typeof(Messages));
 
             PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Messages.MessagesLable())
-            .SetSmallIcon(Resource.Drawable.ic_messages)
-            .SetContentText("You've "+ y.ToString()+" new Messages")//CScore.FixdStrings.Messages.NewMessages())
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
+            .SetContentText(CScore.FixdStrings.General.Youve()+ y.ToString()+CScore.FixdStrings.Messages.newMessage())//CScore.FixdStrings.Messages.NewMessages())
             .SetContentIntent(contentIntent);
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
@@ -90,15 +90,15 @@ namespace UOTCS_android
 
         public static void newMessagesNotification(Context x)
         {
-            Intent intent = new Intent(x, typeof(Major));
+            Intent intent = new Intent(x, typeof(Messages));
 
             PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Messages.MessagesLable())
-            .SetSmallIcon(Resource.Drawable.ic_messages)
-            .SetContentText("You've a new Message")//CScore.FixdStrings.Messages.NewMessages())
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
+            .SetContentText(CScore.FixdStrings.Messages.YouveNewNotifications())//CScore.FixdStrings.Messages.NewMessages())
             .SetContentIntent(contentIntent);
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
@@ -109,15 +109,15 @@ namespace UOTCS_android
 
         public static void newAnnouncementNotification(Context x,int y)
         {
-            Intent intent = new Intent(x, typeof(Major));
+            Intent intent = new Intent(x, typeof(Announcements));
 
             PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Announcements.AnnouncementsLable())
-            .SetSmallIcon(Resource.Drawable.ic_announcement)
-            .SetContentText("You've "+ y.ToString() +" new Announcements")//CScore.FixdStrings.Messages.NewMessages())
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
+            .SetContentText(CScore.FixdStrings.General.Youve()+ y.ToString() +CScore.FixdStrings.Announcements.newMessage())//CScore.FixdStrings.Messages.NewMessages())
             .SetContentIntent(contentIntent);
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
@@ -128,15 +128,15 @@ namespace UOTCS_android
 
         public static void newAnnouncementNotification(Context x)
         {
-            Intent intent = new Intent(x, typeof(Major));
+            Intent intent = new Intent(x, typeof(Announcements));
 
             PendingIntent contentIntent = PendingIntent.GetActivity(x, 0, intent, PendingIntentFlags.UpdateCurrent);
             Android.Support.V4.App.NotificationCompat.Builder builder =
             new Android.Support.V4.App.NotificationCompat.Builder(x)
             .SetAutoCancel(true)
             .SetContentTitle(CScore.FixdStrings.Announcements.AnnouncementsLable())
-            .SetSmallIcon(Resource.Drawable.ic_announcement)
-            .SetContentText("You've a new Announcement")//CScore.FixdStrings.Messages.NewMessages())
+            .SetSmallIcon(Resource.Drawable.ic_info_white_24dp)
+            .SetContentText(CScore.FixdStrings.Announcements.YouveNewNotifications())//CScore.FixdStrings.Messages.NewMessages())
             .SetContentIntent(contentIntent);
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);

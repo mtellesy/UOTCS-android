@@ -109,46 +109,58 @@ namespace UOTCS_android
             
             if (error == 0)
             {
-                LoginStatus = new Status();
-                var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
-                task.Wait();
-                //  this.showMessage(LoginStatus.message);
-                //Intent intent = new Intent(this, typeof(ProfileStudent));
-                if (LoginStatus.status)
+                bool net = false;
+                var netT = Task.Run(async () => { net = await CScore.BCL.UpdateBox.CheckForInternetConnection(); });
+                netT.Wait();
+                if (net)
                 {
-
-                    StatusWithObject<String> aut = new StatusWithObject<string>();
-                    var task2 = Task.Run(async () => { aut = await CScore.SAL.AuthenticatorS.authenticate(); });
-                    task2.Wait();
-                    string x = CScore.BCL.User.use_type;
-                    await this.buildDB(x);
-                    this.setLanguage();
-
-                    //   this.StartActivity(intent);
-                    if (CScore.BCL.User.use_type=="S"|| CScore.BCL.User.use_type == "s")
+                    LoginStatus = new Status();
+                    var task = Task.Run(async () => { LoginStatus = await CScore.BCL.User.login(userID, password); });
+                    task.Wait();
+                    //  this.showMessage(LoginStatus.message);
+                    //Intent intent = new Intent(this, typeof(ProfileStudent));
+                    if (LoginStatus.status)
                     {
-                        Values.Use_typeID = 1;
+
+                        StatusWithObject<String> aut = new StatusWithObject<string>();
+                        var task2 = Task.Run(async () => { aut = await CScore.SAL.AuthenticatorS.authenticate(); });
+                        task2.Wait();
+                        string x = CScore.BCL.User.use_type;
+
+                        var DBTask = Task.Run(async () => { await this.buildDB(x); });
+                        DBTask.Wait();
+                        this.setLanguage();
+
+                        //   this.StartActivity(intent);
+                        if (CScore.BCL.User.use_type == "S" || CScore.BCL.User.use_type == "s")
+                        {
+                            Values.Use_typeID = 1;
+                        }
+                        else
+                        {
+                            Values.Use_typeID = 34;
+                        }
+
+                        Values.startProfile(this);
+
+
+                        login.Enabled = true;
+
                     }
                     else
                     {
-                        Values.Use_typeID = 34;
+                        bool netStatus = false;
+                        var netTask = Task.Run(async () => { netStatus = await CScore.BCL.UpdateBox.CheckForInternetConnection(); });
+                        netTask.Wait();
+                        if (!netStatus)
+                        { this.showMessage(CScore.FixdStrings.General.CantReachTheServer()); }
+                        else
+                            this.showMessage(LoginStatus.message);
                     }
-
-                    Values.startProfile(this);
-
-
-                    login.Enabled = true;
-
                 }
                 else
                 {
-                    bool netStatus = false;
-                    var netTask = Task.Run(async () => { netStatus = await CScore.BCL.UpdateBox.CheckForInternetConnection(); });
-                    netTask.Wait();
-                    if (!netStatus)
-                    { this.showMessage("No Internet Connection!"); }
-                    else
-                    this.showMessage(LoginStatus.message);
+                    { this.showMessage(CScore.FixdStrings.General.CantReachTheServer()); }
                 }
             }
 

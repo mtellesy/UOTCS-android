@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -50,7 +50,7 @@
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <EnableProguard>False</EnableProguard>
     <DebugSymbols>False</DebugSymbols>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86,x86_64,arm64-v8a</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Android.Ui.TextDrawable, Version=1.0.1.1, Culture=en-us, processorArchitecture=MSIL">
@@ -806,7 +806,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_info_white_24dp.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="F:\CompanionSystem\CScore\CScore.csproj">
+    <ProjectReference Include="..\CompanionSystem\CScore\CScore.csproj">
       <Project>{92b15530-aeeb-43c6-8e94-3a7be79fd2b5}</Project>
       <Name>CScore</Name>
     </ProjectReference>

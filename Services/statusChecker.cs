@@ -66,70 +66,75 @@ namespace Services
            // Log.Debug(TAG, $"Simple Service destroyed at {DateTime.UtcNow} after running for {runtime:c}.");
             base.OnDestroy();
         }
-      
+
         async void HandleTimerCallback(object state)
         {
             TimeSpan runTime = DateTime.UtcNow.Subtract(startTime);
-         
-            if (await CScore.BCL.Enrollment.isEnrollmentEnabled()) 
-            {
-                // when enrollment is available get the current semester
-           await CScore.BCL.Semester.getCurrentSemester();
-                if(!UOTCS_android.NotificationsRepo.isEnrollmentNotified)
-                {
-                    
-                    UOTCS_android.NotificationsRepo.enrollmentNotification(this);
-                    UOTCS_android.NotificationsRepo.isEnrollmentNotified = true;
-                }
-                
-            }
-            else
-            {
-                UOTCS_android.NotificationsRepo.isEnrollmentNotified = false;
-            }
 
-            if (await CScore.BCL.Major.isMajorEnabled())
+            var NotfiTask = Task.Run(async () =>
             {
-                if (!UOTCS_android.NotificationsRepo.isMajorNotified)
+                if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-                    UOTCS_android.NotificationsRepo.majorNotification(this);
-                    UOTCS_android.NotificationsRepo.isMajorNotified = true;
-                    UOTCS_android.Values.majorVisible = true;
-                }
+                    // when enrollment is available get the current semester
+                    await CScore.BCL.Semester.getCurrentSemester();
+                    if (!UOTCS_android.NotificationsRepo.isEnrollmentNotified)
+                    {
 
-            }
-            else
-            {
-                UOTCS_android.NotificationsRepo.isMajorNotified = false;
-                UOTCS_android.Values.majorVisible = false;
-            }
-            var anoNot = await CScore.SAL.AnnouncementsS.getNotifications();
-            if (anoNot.status.status && anoNot.statusObject.Count > 0)
-            {
-                if(anoNot.statusObject.Count > 1)
-                {
-                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this, anoNot.statusObject.Count);
+                        UOTCS_android.NotificationsRepo.enrollmentNotification(this);
+                        UOTCS_android.NotificationsRepo.isEnrollmentNotified = true;
+                    }
+
                 }
                 else
                 {
-                    UOTCS_android.NotificationsRepo.newAnnouncementNotification(this);
+                    UOTCS_android.NotificationsRepo.isEnrollmentNotified = false;
                 }
-            }
 
-            var messNot = await CScore.SAL.MessageS.getNotifications();
-            if (messNot.status.status && messNot.statusObject.Count > 0)
-            {
-                if (messNot.statusObject.Count > 1)
+                if (await CScore.BCL.Major.isMajorEnabled())
                 {
-                    UOTCS_android.NotificationsRepo.newMessagesNotification(this, messNot.statusObject.Count);
+                    if (!UOTCS_android.NotificationsRepo.isMajorNotified)
+                    {
+                        UOTCS_android.NotificationsRepo.majorNotification(this);
+                        UOTCS_android.NotificationsRepo.isMajorNotified = true;
+                        UOTCS_android.Values.majorVisible = true;
+                    }
+
                 }
                 else
                 {
-                    UOTCS_android.NotificationsRepo.newMessagesNotification(this);
+                    UOTCS_android.NotificationsRepo.isMajorNotified = false;
+                    UOTCS_android.Values.majorVisible = false;
+                }
+
+                var anoNot = await CScore.SAL.AnnouncementsS.getNotifications();
+                if (anoNot.status.status && anoNot.statusObject.Count > 0)
+                {
+                    if (anoNot.statusObject.Count > 1)
+                    {
+                        UOTCS_android.NotificationsRepo.newAnnouncementNotification(this, anoNot.statusObject.Count);
+                    }
+                    else
+                    {
+                        UOTCS_android.NotificationsRepo.newAnnouncementNotification(this);
+                    }
+                }
+
+
+                var messNot = await CScore.SAL.MessageS.getNotifications();
+                if (messNot.status.status && messNot.statusObject.Count > 0)
+                {
+                    if (messNot.statusObject.Count > 1)
+                    {
+                        UOTCS_android.NotificationsRepo.newMessagesNotification(this, messNot.statusObject.Count);
+                    }
+                    else
+                    {
+                        UOTCS_android.NotificationsRepo.newMessagesNotification(this);
+                    }
                 }
             }
-            }
-
-
+            );
+            NotfiTask.Wait();
         }
+    }
     }

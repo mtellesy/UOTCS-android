@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Android.Graphics;
 using Android.Support.V4.App;
 using CScore.FixdStrings;
+using Refractored.Controls;
 
 namespace UOTCS_android.Fragments
 {
@@ -33,6 +34,7 @@ namespace UOTCS_android.Fragments
         private TextView nationality;
         private int user_id;
         public OtherUsers lecturer;
+        CircleImageView profileImage;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -56,6 +58,20 @@ namespace UOTCS_android.Fragments
             nationality = view.FindViewById<TextView>(Resource.Id.nationality_textview);
             usernamAR = view.FindViewById<TextView>(Resource.Id.usernameF_nameInAR_lable);
             usernameEN = view.FindViewById<TextView>(Resource.Id.usernameF_nameInEN_lable);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.profile_image2);
+            var theme = CScore.FixdStrings.ThemeSetter.getTheme();
+            Android.Graphics.Drawables.Drawable p;
+
+            if (theme == CScore.FixdStrings.Theme.Teal)
+            {
+               p =  Resources.GetDrawable(Resource.Drawable.lecturer_pic);
+
+            }
+            else
+            {
+                p = Resources.GetDrawable(Resource.Drawable.student_pic);
+            }
+            profileImage.SetImageDrawable(p);
             bingData();
             Language e = LanguageSetter.getLanguage();
             switch (e)
