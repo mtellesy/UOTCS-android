@@ -88,6 +88,7 @@ namespace UOTCS_android.Fragments
             warningsLabel = view.FindViewById<TextView>(Resource.Id.warnings_label);
             gpaLabel = view.FindViewById<TextView>(Resource.Id.gpa_label);
             profile = view.FindViewById<Button>(Resource.Id.profile_btn);
+            profile.Text = CScore.FixdStrings.Profile.ProfileLable();
             transcript = view.FindViewById<Button>(Resource.Id.transcript_btn);
            
             bingData();
@@ -104,8 +105,11 @@ namespace UOTCS_android.Fragments
             Intent intent = new Intent(Activity, typeof(Profile));
             Bundle b = new Bundle();
             //   b.PutInt("lecturer_id", course.Tea_id);
-            intent.PutExtra("lecturer_id",lecturer.use_id);
+            //  intent.PutExtra("lecturer_id",lecturer.use_id);
+            b.PutInt("lecturer_id", lecturer.use_id);
+            intent.PutExtras(b);
             this.StartActivity(intent);
+
         }
 
         private void handleLanguage()

@@ -47,7 +47,7 @@
                     android:id="@+id/send_to_message_announcement_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:textColor="@color/text"
                     android:padding="@dimen/card_padding"
                     android:hint=""

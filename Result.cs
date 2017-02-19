@@ -193,7 +193,8 @@ namespace UOTCS_android
         }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            Values.startProfile(this);
+            Finish();
         }
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
