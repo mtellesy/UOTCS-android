@@ -130,8 +130,8 @@ namespace UOTCS_android
 
         private void SetUpViewPager(ViewPager viewPager)
         {
-             adapter.AddFragment(recievedAnnouncement, "received");
-            adapter.AddFragment(sentAnnouncement, "Sent");
+             adapter.AddFragment(recievedAnnouncement, CScore.FixdStrings.General.recieved());
+            adapter.AddFragment(sentAnnouncement, CScore.FixdStrings.General.sent());
             viewPager.Adapter = adapter;
         }
 
@@ -147,6 +147,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
     
 

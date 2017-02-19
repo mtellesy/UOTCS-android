@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false">
     <include
         layout="@layout/includeListViewpager" />
     <LinearLayout
@@ -22,8 +22,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/borderSet"
             android:id="@+id/linearLayout3">
-            <LinearLayout
-                android:orientation="horizontal"
+          <RelativeLayout
+              android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="75dp">
                 <RelativeLayout
@@ -33,6 +33,7 @@
                     android:padding="25dp"
                     android:layout_width="75dp"
                     android:background="?header"
+                     android:layout_alignParentStart="true"
                     android:layout_height="match_parent">
                     <TextView
                         android:text="TO"
@@ -50,8 +51,9 @@
                     android:textColor="@color/text"
                     android:padding="@dimen/card_padding"
                     android:hint=""
+                     android:layout_alignParentEnd="true"
                     android:background="@android:color/transparent" />
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -65,10 +67,7 @@
                     android:background="@android:color/transparent"
                     android:hint="Subject" />
             </LinearLayout>
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/cards">
+>
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -83,9 +82,9 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
                         android:hint="Compose message"
+                        android:gravity="top"
                         android:singleLine="false" />
                 </LinearLayout>
-            </ScrollView>
         </LinearLayout>
     </LinearLayout>
     <android.support.design.widget.NavigationView
