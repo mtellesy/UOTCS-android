@@ -48,10 +48,11 @@ namespace UOTCS_android
             base.OnCreate(bundle);
 
 
-            // var task = Task.Run(async () => {
-            await CScore.BCL.Semester.getCurrentSemester();
-            //});
-            //   task.Wait();
+            var task = Task.Run(async () =>
+            {
+                await CScore.BCL.Semester.getCurrentSemester();
+        });
+               task.Wait();
 
 
             // start the service for notifications
@@ -160,7 +161,7 @@ namespace UOTCS_android
         {
             //        status.Click += status_btn_Click;
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
-            //       profileImage.Click += ProfileImage_Click;
+                   profileImage.Click += ProfileImage_Click;
             //         transcript.Click += Transcript_Click;
         }
 

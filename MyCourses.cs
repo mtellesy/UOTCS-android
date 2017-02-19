@@ -19,6 +19,7 @@ using Refractored.Controls;
 using System.Collections.Generic;
 using UOTCS_android.Fragments;
 using System.Threading.Tasks;
+using CScore.BCL;
 
 namespace UOTCS_android
 {
@@ -34,6 +35,9 @@ namespace UOTCS_android
         private List<ResultAndroid> myCoursesList;
         private List<ResultAndroid> myCourses;
         private ResultFragment myCoursesfragment;
+        private TextView totallabel;
+        private TextView total;
+        private int credits;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -46,11 +50,12 @@ namespace UOTCS_android
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
             bindData();
+            total.Text = credits.ToString();
             initiateFragments();
             handleEvents();
         }
 
-
+      
 
         private void findViews()
         {
@@ -63,6 +68,9 @@ namespace UOTCS_android
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
             myCoursesList = new List<ResultAndroid>();
             myCoursesfragment = new ResultFragment();
+            totallabel = FindViewById<TextView>(Resource.Id.total_units_label);
+            totallabel.Text = CScore.FixdStrings.Courses.totalUnits();
+            total = FindViewById<TextView>(Resource.Id.total_units_semester_txt);
         }
         private void initiateFragments()
         {
@@ -108,6 +116,7 @@ namespace UOTCS_android
             x = z;
             foreach (CScore.BCL.Course y in x)
             {
+                credits += 3;
                 temp2 = new ResultAndroid(y);
                 myCoursesList.Add(temp2);
             }
@@ -168,7 +177,7 @@ namespace UOTCS_android
             drawerLayout.CloseDrawers();
             if (e.MenuItem.ItemId != getCurrentActvity())
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
-
+            Finish();
         }
         private void ProfileImage_Click(object sender, EventArgs e)
         {

@@ -86,8 +86,8 @@ namespace UOTCS_android
         private void SetUpViewPager(ViewPager viewPager)
         {
             adapter = new TabAdapter(SupportFragmentManager);
-            adapter.AddFragment(recievedMessages, "received");
-            adapter.AddFragment(sentMessages, "Sent");
+            adapter.AddFragment(recievedMessages, CScore.FixdStrings.General.recieved());
+            adapter.AddFragment(sentMessages, CScore.FixdStrings.General.sent());
 
             viewPager.Adapter = adapter;
         }
@@ -146,6 +146,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
 
 
