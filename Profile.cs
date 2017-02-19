@@ -273,6 +273,12 @@ namespace UOTCS_android
             }
             lecturer = values.statusObject;
         }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            this.StopService(intent);
+        }
         private async Task<CScore.BCL.StatusWithObject<OtherUsers>> getLecturer(int lecturer_id)
         {
             CScore.BCL.StatusWithObject<OtherUsers> result = new StatusWithObject<OtherUsers>();

@@ -172,7 +172,12 @@ namespace UOTCS_android
             this.StartActivity(intent);
 
         }
-
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Intent intent = new Intent(this, typeof(Services.StatusChecker));
+            this.StopService(intent);
+        }
         public int getCurrentActvity()
         {
             return Resource.Id.nav_profile;
