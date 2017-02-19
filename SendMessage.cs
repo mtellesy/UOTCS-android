@@ -106,12 +106,12 @@ namespace UOTCS_android
                 switch (e)
                 {
                     case (Language.AR):
-                        SendTo.Text = lecturer.use_nameAR;
+                        SendTo.SetText(lecturer.use_nameAR, true);
                         break;
 
                     case (Language.EN):
                     default:
-                        SendTo.Text = lecturer.use_nameEN;
+                        SendTo.SetText(lecturer.use_nameEN,true);
                         break;
                 }
                 SendTo.DismissDropDown();
@@ -163,7 +163,9 @@ namespace UOTCS_android
             base.OnOptionsItemSelected(item);
             if (item.ItemId == Android.Resource.Id.Home)
             {
-                NavUtils.NavigateUpFromSameTask(this);
+                Intent upIntent = NavUtils.GetParentActivityIntent(this);
+                upIntent.SetFlags(Intent.Flags);
+                NavUtils.NavigateUpTo(this, upIntent);
                 return true;
             }
 
@@ -172,7 +174,7 @@ namespace UOTCS_android
         }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+                NavUtils.NavigateUpFromSameTask(this);
         }
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {

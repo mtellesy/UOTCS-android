@@ -151,7 +151,8 @@ namespace UOTCS_android
         }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            Values.startProfile(this);
+            Finish();
         }
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -191,8 +192,8 @@ namespace UOTCS_android
             alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
             alert.SetMessage(CScore.FixdStrings.Major.SorryMajorisNotAvailable());
             alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this,typeof(Profile));
-                StartActivity(intent);
+                Values.startProfile(this);
+
                 this.Finish();
             });
 
@@ -207,8 +208,7 @@ namespace UOTCS_android
             alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
             alert.SetMessage(CScore.FixdStrings.Major.YouHaveBeenSuccessfullyMajored());
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                StartActivity(intent);
+                Values.startProfile(this);
                 this.Finish();
             });
 

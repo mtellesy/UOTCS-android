@@ -79,7 +79,7 @@ namespace UOTCS_android.Fragments
                 usernamAR.Text = CScore.BCL.User.use_nameAR;
                 usernameEN.Text = CScore.BCL.User.use_nameEN;
                 address.Text = "tripoli,Libya";
-                phone.Text = CScore.BCL.User.use_phone.ToString();
+                phone.Text = "0"+CScore.BCL.User.use_phone.ToString();
                 email.Text = CScore.BCL.User.use_email;
             }
             else 
@@ -87,7 +87,7 @@ namespace UOTCS_android.Fragments
                 usernamAR.Text = lecturer.use_nameAR;
                 usernameEN.Text = lecturer.use_nameEN;
                 address.Text = "tripoli,Libya";
-                phone.Text = lecturer.use_phone.ToString();
+                phone.Text ="0"+ lecturer.use_phone.ToString();
                 email.Text = lecturer.use_email;
             }
          }

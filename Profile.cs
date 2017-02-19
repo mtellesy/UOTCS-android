@@ -37,8 +37,6 @@ namespace UOTCS_android
         private Username username;
         private UserInformationFragment userInformation;
         private UserMoreInfomationFragment userMoreInformation;
-        private Button status;
-        private Button transcript;
         private SupportToolbar toolBar;
         private SupportActionBar actionbar;
         private DrawerLayout drawerLayout;
@@ -56,7 +54,6 @@ namespace UOTCS_android
             Intent intent2 = Intent;
             if (null != intent2)
             { //Null Checking
-              //lecturer_id = intent2.GetLongExtra("lecturer_id",-1);
                 try
                 {
                     lecturer_id = b.GetInt("lecturer_id");
@@ -107,10 +104,6 @@ namespace UOTCS_android
             username = new Username();
             userInformation = new UserInformationFragment();
             userMoreInformation = new UserMoreInfomationFragment();
-       //     status = FindViewById<Button>(Resource.Id.status_btn);
-     //       status.Text = CScore.FixdStrings.General.Status();
-         //   transcript = FindViewById<Button>(Resource.Id.transcript_btn);
-           // transcript.Text = CScore.FixdStrings.Transcript.TranscriptLable();
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             actionbar = SupportActionBar;
@@ -118,20 +111,8 @@ namespace UOTCS_android
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
            view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
-     //       CardView card = FindViewById<CardView>(Resource.Id.UsernameFragmentContainer);
- //           card.GenerateLayoutParams (new LinearLayout.LayoutParams(20, 20));
-            
-            if (Values.Use_typeID > 1)
-            {
-    //            status.Visibility = ViewStates.Gone;
-      //          transcript.Visibility = ViewStates.Gone;
-                //           CardView.LayoutParams layoutParams = (CardView.LayoutParams)
-                //    card.LayoutParameters;
-                //       layoutParams.Height = 300;
-         //       card.LayoutParameters = (new CardView.LayoutParams(
-     //CardView.LayoutParams.MatchParent, CardView.LayoutParams.MatchParent));
-
-            }
+ 
+   
         }
         private void initiateFragments()
         {
@@ -140,13 +121,8 @@ namespace UOTCS_android
                 personal.lecturer = this.lecturer;
             }
             var trans = SupportFragmentManager.BeginTransaction();
-            //      trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
-            //    trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");
-            //  trans.Add(Resource.Id.UserInformationFragmentContainer, userMoreInformation, "User_more_information"); 
-            //        trans.Hide(userMoreInformation);
             trans.Add(Resource.Id.UsernameFragmentContainer, personal, "personal");
-            
-      //      mCurrentFragment = userInformation;
+
             trans.Commit();
         }
         
@@ -183,10 +159,8 @@ namespace UOTCS_android
 
         private void handleEvents()
         {
-        //    status.Click += status_btn_Click;
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
            profileImage.Click += ProfileImage_Click;
-      //      transcript.Click += Transcript_Click;
         }
 
         private void Transcript_Click(object sender, EventArgs e)
@@ -207,7 +181,10 @@ namespace UOTCS_android
                 case Android.Resource.Id.Home:
                     if (lecturer != null)
                     {
-                        NavUtils.NavigateUpFromSameTask(this);
+                        //Intent upIntent = NavUtils.GetParentActivityIntent(this);
+                        //upIntent.SetFlags(Intent.Flags);
+                        //NavUtils.NavigateUpTo(this, upIntent);
+                        Finish();
                     }
                     else
                     {
@@ -222,31 +199,16 @@ namespace UOTCS_android
         }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            if (lecturer != null)
+            {
+                Finish();
+            }
+            else
+            {
+                MoveTaskToBack(true);
+            }
         }
         
-        private void status_btn_Click(object sender, EventArgs e)
-        {
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.SetCustomAnimations(Resource.Animation.FadeIn, Resource.Animation.FadeOut, Resource.Animation.FadeIn, Resource.Animation.FadeOut);
-            if (mCurrentFragment == userInformation)
-            {
-                trans.Hide(userInformation);
-                trans.Show(userMoreInformation);
-                mCurrentFragment = userMoreInformation;
-                trans.Commit();
-                status.Text = CScore.FixdStrings.Buttons.BACK();
-            }
-            else if (mCurrentFragment == userMoreInformation)
-            {
-                trans.Hide(userMoreInformation);
-                trans.Show(userInformation);
-                mCurrentFragment = userInformation;
-                trans.Commit();
-                status.Text = CScore.FixdStrings.General.Status();
-
-            }
-        }
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             drawerLayout.CloseDrawers();

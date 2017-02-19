@@ -130,7 +130,7 @@ namespace UOTCS_android
        
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            NavUtils.NavigateUpFromSameTask(this);
         }
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {

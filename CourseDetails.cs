@@ -51,6 +51,17 @@ namespace UOTCS_android
             if (null != intents)
             { //Null Checking
                 course_id = intents.GetStringExtra("course_id");
+                if (course_id != null)
+                {
+                    this.Title = course_id;
+                }
+                else
+                {
+                    if (course != null)
+                    {
+                        this.Title = course.Cou_id;
+                    }
+                }
             }
             Values.changeTheme(this);
             SetContentView(Resource.Layout.CourseDetails);
@@ -144,7 +155,8 @@ namespace UOTCS_android
         }
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            NavUtils.NavigateUpFromSameTask(this);
+
         }
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {

@@ -54,9 +54,14 @@ namespace UOTCS_android
             handleEvents();
         }
 
+        public override void OnBackPressed()
+        {
+            Values.startProfile(this);
+            Finish();
+        }
 
 
-        private  void findViews()
+        private void findViews()
         {
             toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBarWT);
             SetSupportActionBar(toolBar);
