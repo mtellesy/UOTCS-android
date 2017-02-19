@@ -2260,34 +2260,37 @@ namespace UOTCS_android
 			public const int ic_timetable = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int Icon = 2130837619;
+			public const int ic_uni_logo = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int imageButtonAdd = 2130837620;
+			public const int Icon = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int lecturer_pic = 2130837621;
+			public const int imageButtonAdd = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int nav_header_lecturer = 2130837622;
+			public const int lecturer_pic = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int nav_header_student = 2130837623;
+			public const int nav_header_lecturer = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int navigation_empty_icon = 2130837624;
-			
-			// aapt resource value: 0x7f02007c
-			public const int notification_template_icon_bg = 2130837628;
+			public const int nav_header_student = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int student_pic = 2130837625;
+			public const int navigation_empty_icon = 2130837625;
+			
+			// aapt resource value: 0x7f02007d
+			public const int notification_template_icon_bg = 2130837629;
 			
 			// aapt resource value: 0x7f02007a
-			public const int textBackground = 2130837626;
+			public const int student_pic = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int uni_logo = 2130837627;
+			public const int textBackground = 2130837627;
+			
+			// aapt resource value: 0x7f02007c
+			public const int uni_logo = 2130837628;
 			
 			static Drawable()
 			{

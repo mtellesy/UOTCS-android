@@ -264,6 +264,7 @@ namespace UOTCS_android
                 intent = new Intent(myActivity, typeof(ProfileStudent));
             }
             myActivity.StartActivity(intent);
+           
         }
         public static List<TimetableAndMidmarkAndroid> timetableMaker(CScore.BCL.Semester semester)
         {

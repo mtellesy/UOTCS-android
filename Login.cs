@@ -54,7 +54,7 @@ namespace UOTCS_android
             base.OnCreate(savedInstanceState);
 
             // domain 
-            CScore.SAL.AuthenticatorS.domain = "http://192.168.2.8/CStestAPIs";
+            CScore.SAL.AuthenticatorS.domain = "http://192.168.1.111/CStestAPIs";
             SetContentView(Resource.Layout.Login);
             // Create your application here
             userIDEditText = FindViewById<EditText>(Resource.Id.txtUsername);
@@ -73,7 +73,11 @@ namespace UOTCS_android
         private void mlayout_Click(object sender, EventArgs e)
         {
             InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Activity.InputMethodService);
-            inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.None);
+            try
+                {
+                inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.None);
+            }
+            catch { }
         }
 
         async void login_click(object sender, EventArgs e)

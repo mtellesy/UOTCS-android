@@ -137,7 +137,8 @@ namespace UOTCS_android
 
         public override void OnBackPressed()
         {
-            MoveTaskToBack(true);
+            Values.startProfile(this);
+            Finish();
         }
 
 

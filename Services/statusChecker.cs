@@ -90,7 +90,7 @@ namespace Services
                     UOTCS_android.NotificationsRepo.isEnrollmentNotified = false;
                 }
 
-                if (await CScore.BCL.Major.isMajorEnabled())
+                if (await CScore.BCL.Major.isMajorEnabled() && CScore.BCL.User.dep_id == "1")
                 {
                     if (!UOTCS_android.NotificationsRepo.isMajorNotified)
                     {
