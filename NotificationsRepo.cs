@@ -29,6 +29,10 @@ namespace UOTCS_android
         //start from 1000 and step is +1000
         static readonly int EnrollmentStatusNotificationID = 1000;
         static readonly int MajoringStatusNotificationID = 2000;
+        static readonly int MessagesNotificationID = 3000;
+        static readonly int MessagesNotificationID2 = 4000;
+        static readonly int AnnouncementsNotificationID = 5000;
+        static readonly int AnnouncementsNotificationID2 = 6000;
 
         public static void enrollmentNotification(Context x)
         {
@@ -84,7 +88,7 @@ namespace UOTCS_android
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 
-            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+            notificationManager.Notify(MessagesNotificationID, builder.Build());
 
         }
 
@@ -103,7 +107,7 @@ namespace UOTCS_android
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 
-            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+            notificationManager.Notify(MessagesNotificationID2, builder.Build());
 
         }
 
@@ -122,7 +126,7 @@ namespace UOTCS_android
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 
-            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+            notificationManager.Notify(AnnouncementsNotificationID, builder.Build());
 
         }
 
@@ -141,7 +145,7 @@ namespace UOTCS_android
 
             notificationManager = (NotificationManager)x.GetSystemService(Context.NotificationService);
 
-            notificationManager.Notify(MajoringStatusNotificationID, builder.Build());
+            notificationManager.Notify(AnnouncementsNotificationID2, builder.Build());
 
         }
 

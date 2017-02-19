@@ -62,6 +62,8 @@ namespace UOTCS_android
             task.Wait();
             if (Sender.statusObject != null)
                 vh.sender.Text = Sender.statusObject.use_nameEN;
+            else
+                vh.sender.Text = "User";
             vh.time.Text = mValues[position].Ano_time;
         }
 

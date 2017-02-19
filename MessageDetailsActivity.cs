@@ -34,9 +34,11 @@ namespace UOTCS_android
         private TextView messageSender;
         private TextView messageTitle;
         private TextView messageContent;
+        private TextView messageTime;
         private String sender;
         private String title;
         private String content;
+        private String time;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -49,6 +51,7 @@ namespace UOTCS_android
             sender = b.GetString("sender");
             title = b.GetString("title");
             content = b.GetString("content");
+            time = b.GetString("time");
 
             Values.changeTheme(this);
             SetContentView(Resource.Layout.MessageDetails);
@@ -79,10 +82,11 @@ namespace UOTCS_android
             messageSender = FindViewById<TextView>(Resource.Id.username_messageDetails);
             messageTitle = FindViewById<TextView>(Resource.Id.title_messageDetails);
             messageContent = FindViewById<TextView>(Resource.Id.content_messageDetails);
-
+            messageTime = FindViewById<TextView>(Resource.Id.date_messageDetails);
             messageSender.Text = sender;
             messageTitle.Text = title;
             messageContent.Text = content;
+            messageTime.Text = time;
 
 
         }

@@ -70,6 +70,7 @@ namespace UOTCS_android.Fragments
             intent.PutExtra("sender", RecyclerViewAdapter.names[position]);
             intent.PutExtra("title", messages.statusObject[position].Mes_subject);
             intent.PutExtra("content", messages.statusObject[position].Mes_content);
+            intent.PutExtra("time", messages.statusObject[position].Mes_time);
 
                 context.StartActivity(intent);
 
