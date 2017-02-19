@@ -149,6 +149,7 @@ namespace UOTCS_android
                 case Resource.Id.nav_announcements:
                     intent = new Intent(myActivity, typeof(AnnouncementsLecturer));
                     myActivity.StartActivity(intent);
+
                     break;
                 case Resource.Id.nav_messages:
                     intent = new Intent(myActivity, typeof(Messages));

@@ -42,6 +42,7 @@ namespace UOTCS_android
         private NavigationView navigationView;
         private View view;
         private CircleImageView profileImage;
+        private TextView announcement_to_label;
 
         //the list of users in SendTo drop down list
         List<Course> courses;
@@ -84,8 +85,12 @@ namespace UOTCS_android
             messageSubject = FindViewById<EditText>(Resource.Id.title_message_announcement_fragment);
 
             messageContent = FindViewById<EditText>(Resource.Id.content_message_announcement_fragment);
+            announcement_to_label = FindViewById<TextView>(Resource.Id.textView3);
 
 
+            messageSubject.Hint = CScore.FixdStrings.Messages.messageTitle();
+            messageContent.Hint = CScore.FixdStrings.Announcements.commposeAnnouncement();
+            announcement_to_label.Text = CScore.FixdStrings.Messages.sendTo();
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
@@ -133,6 +138,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
 
         }
@@ -213,7 +219,6 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Messages.MessageStatus());
             alert.SetMessage(message);
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 if (status)

@@ -46,6 +46,8 @@ namespace UOTCS_android
         private CircleImageView profileImage;
         private int lecturer_id;
         private OtherUsers lecturer;
+        private TextView message_to_label;
+
         Language e;
         //the list of users in SendTo drop down list
         List<OtherUsers> users;
@@ -118,8 +120,10 @@ namespace UOTCS_android
             messageSubject = FindViewById<EditText>(Resource.Id.title_message_announcement_fragment);
 
             messageContent = FindViewById<EditText>(Resource.Id.content_message_announcement_fragment);
-
-            
+            message_to_label = FindViewById<TextView>(Resource.Id.textView3);
+            messageSubject.Hint = CScore.FixdStrings.Messages.messageTitle();
+            messageContent.Hint = CScore.FixdStrings.Messages.commposeMessage();
+            message_to_label.Text = CScore.FixdStrings.Messages.sendTo();
             fillDropDownList();
             
         }
@@ -176,6 +180,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
 
         }
@@ -301,9 +306,8 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Messages.MessageStatus());
             alert.SetMessage(message);
-            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+            alert.SetNeutralButton(CScore.FixdStrings.Buttons.OK(), (senderAlert, args) => {
                 if (status)
                     this.Finish();
             });

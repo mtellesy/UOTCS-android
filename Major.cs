@@ -160,6 +160,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
         }
         private void ProfileImage_Click(object sender, EventArgs e)

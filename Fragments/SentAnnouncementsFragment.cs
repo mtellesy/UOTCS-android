@@ -60,32 +60,44 @@ namespace UOTCS_android.Fragments
                 }
                  else
                 {
+
+                    
                     List<CScore.BCL.Announcements> final = new List<CScore.BCL.Announcements>();
-                    StatusWithObject<List<Course>> lecturers = new StatusWithObject<List<Course>>();
-                    try
+                    foreach (CScore.BCL.Announcements x in values.statusObject)
                     {
-                        var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
-                        task2.Wait();
-                    }
-                   catch(Exception e)
-                    {
-
-                    }
-                    if (lecturers.statusObject != null)
-                    {
-                        foreach (CScore.BCL.Announcements x in values.statusObject)
+                        if (x.Cou_id != null)
                         {
-                            foreach (Course y in lecturers.statusObject)
-                            {
-                                if (x.Cou_id == y.Cou_id)// queryiong specific announcements for the student.
-                                {
-                                    final.Add(x);
-                                }
-
-                            }
+                            final.Add(x);
                         }
-                        recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
                     }
+                    recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
+
+                    /* StatusWithObject<List<Course>> lecturers = new StatusWithObject<List<Course>>();
+                     try
+                     {
+                         var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
+                         task2.Wait();
+                     }
+                    catch(Exception e)
+                     {
+
+                     }
+                     if (lecturers.statusObject != null)
+                     {
+                         foreach (CScore.BCL.Announcements x in values.statusObject)
+                         {
+                             foreach (Course y in lecturers.statusObject)
+                             {
+                                 if (x.Cou_id == y.Cou_id)// queryiong specific announcements for the student.
+                                 {
+                                     final.Add(x);
+                                 }
+
+                             }
+                         }
+                         recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
+                     }
+                  */
                 }
 
         }

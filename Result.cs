@@ -34,6 +34,11 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
         private List<ResultAndroid> resultshere;
+        private TextView gpaLabel;
+        private TextView gpa;
+        private float sum_result;
+        private int sum_credits;
+        private float gpa_value;
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -47,6 +52,8 @@ namespace UOTCS_android
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
             bindData();
+            gpa_value = sum_result / sum_credits;
+            gpa.Text = gpa_value.ToString();
             initiateFragments();
             handleEvents();
         }
@@ -80,7 +87,7 @@ namespace UOTCS_android
                 task2.Wait();
                 if (statusOB.statusObject != null)
                     CourseInfo = statusOB.statusObject[0];
-
+                
                 var e = CScore.FixdStrings.LanguageSetter.getLanguage();
                 switch(e)
                 {
@@ -94,7 +101,14 @@ namespace UOTCS_android
                         break;
                 }
                
-               temp2 = new ResultAndroid(y, courseName);
+                temp2 = new ResultAndroid(y, courseName);
+                
+                if (temp2.Result > 1)
+                {
+                    sum_result += temp2.Result;
+                    sum_credits += 1;
+
+                }
                 resultshere.Add(temp2); 
             }
             
@@ -119,6 +133,9 @@ namespace UOTCS_android
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
             resultshere = new List<ResultAndroid>();
+            gpaLabel = FindViewById<TextView>(Resource.Id.gpa_label);
+            gpaLabel.Text = CScore.FixdStrings.Results.semesterGPA();
+            gpa = FindViewById<TextView>(Resource.Id.gpa_text);
         }
 
         private void initiateFragments()
@@ -186,6 +203,7 @@ namespace UOTCS_android
             if (e.MenuItem.ItemId != getCurrentActvity())
             {
                 Values.handleSwitchActivities(this, e.MenuItem.ItemId, navigationView);
+                Finish();
             }
 
             

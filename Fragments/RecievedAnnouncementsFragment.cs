@@ -54,47 +54,22 @@ namespace UOTCS_android.Fragments
             }
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
-            if(values.statusObject!=null)
-                if (Values.Use_typeID > 1)
+            if (values.statusObject != null)
+            {
+                List<CScore.BCL.Announcements> final = new List<CScore.BCL.Announcements>();
+                foreach (CScore.BCL.Announcements x in values.statusObject)
                 {
-                    recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(values.statusObject));
-                }
-                else
-                {
-                    List<CScore.BCL. Announcements> final = new List<CScore.BCL.Announcements>();
-                    StatusWithObject< List<Course>> lecturers = new StatusWithObject<List<Course>>();
-                    try
+                    if (x.Cou_id == null)
                     {
-                        var task2 = Task.Run(async () => { lecturers = await this.getStudentLecturers(); });
-                        task2.Wait();
-                    }
-                    catch(AggregateException ex)
-                    {
-
-                    }
-                    if (lecturers.statusObject != null)
-                    {
-                        foreach(CScore.BCL.Announcements x in values.statusObject)
-                        {
-                            int count = 0;
-                            foreach(Course y in lecturers.statusObject)
-                            {
-                                if (x.Ano_sender!= y.Tea_id) // querying generalannouncement for student.
-                                {
-                                    count++;
-                                }
-
-                            }
-                            if(count == lecturers.statusObject.Count)
-                            {
-                                final.Add(x);
-                            }
-                        }
-                        recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
+                        final.Add(x);
                     }
                 }
+                recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(final));
+            }
+                    
+                }
 
-        }
+        
 
         private async Task<StatusWithObject<List<Course>>> getStudentLecturers()
         {
@@ -116,6 +91,7 @@ namespace UOTCS_android.Fragments
                 results.status.status = false;
                 results.status.message = ex.ToString();
             }
+            int x = 1 + 1;
             return results;
         }
         
