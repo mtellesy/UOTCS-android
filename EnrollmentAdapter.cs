@@ -17,13 +17,17 @@ namespace UOTCS_android
     public class EnrollmentAdapter : BaseAdapter
     {
         List<CourseItem> CoursesItemsList;
+        List<CScore.BCL.Course> _courses;
         Activity _activity;
         int current_posstion = 0;
 
         public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses)
         {
+            _courses = new List<Course>();
+            _courses = courses;
             _activity = activity;
             FillContacts(courses);
+
         }
 
         void FillContacts(List<CScore.BCL.Course> courses)
@@ -86,7 +90,34 @@ namespace UOTCS_android
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
-            EnrollButton.Click += (sender, e) => { this.showMessage(CoursesItemsList[position].CourseID); };
+
+            //  event handler 
+            EnrollButton.Click += (sender, e) =>
+            {
+               Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+
+                List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
+                String l ="";
+               Status status = CScore.BCL.Enrollment.isEnrollable(c);
+             CScore.BCL.Enrollment.creditMax = -9;
+                if (status.status)
+                {
+                    CScore.BCL.Enrollment.addReservedLectureTime(c, s[0].Gro_id);
+                    this.showMessage("Good");
+                }
+                else
+                { 
+                    this.showMessage(status.message);
+                }
+                
+                //foreach (CScore.BCL.Schedule sch in s)
+                //{
+                     
+                //    }
+              
+          
+
+            };
  
 
            //  current_posstion = position;
