@@ -14,42 +14,88 @@ using Android.Provider;
 
 namespace UOTCS_android
 {
+    class ActiveButtons
+    {
+       public String courseCode { get; set; }
+       public bool status { get; set; }
+    }
     public class EnrollmentAdapter : BaseAdapter
     {
         List<CourseItem> CoursesItemsList;
         List<CScore.BCL.Course> _courses;
+
+        /// <summary>
+        /// Is used to keep information about wither the button is active or not
+        /// </summary>
+        static List<ActiveButtons> activeButtons = new List<ActiveButtons>();// { get; set; }
         Activity _activity;
         int current_posstion = 0;
 
         public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses)
         {
+           // activeButtons = new List<ActiveButtons>();
             _courses = new List<Course>();
             _courses = courses;
             _activity = activity;
             FillContacts(courses);
+            //        this.SyncCaller();
+            var task = Task.Run(async () => { await getExistedCourses(); });
+            task.Wait();
+            
+
+        }
+        //public void SyncCaller()
+        //{
+        //    this.getExistedCourses();
+        //}
+      public async Task getExistedCourses()
+        {
+           
+            
+            StatusWithObject<List<CScore.BCL.Course>> courses = 
+                await CScore.BCL.Course.getStudentCourses();
+
+            if (courses.status.status)
+            {
+                foreach(CScore.BCL.Course c in courses.statusObject)
+                {
+                    int count = activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).Count();
+                    if(count > 0)
+                    {
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = true; 
+                    }
+                }
+            }
 
         }
 
-        void FillContacts(List<CScore.BCL.Course> courses)
+         void FillContacts(List<CScore.BCL.Course> courses)
         {
 
-            int id = 0;
+           // int id = 0;
             CoursesItemsList = new List<CourseItem>();
             foreach(CScore.BCL.Course course in courses)
             {
                 CourseItem x = new CourseItem();
                 x.CourseID = course.Cou_id;
                 x.Groups = new List<String>();
-                int i = 0;
+             //   int i = 0;
                 foreach(CScore.BCL.Schedule sch in course.Schedule)
                 {
                     x.Groups.Add(sch.Gro_NameEN);
                 }
                 x.Id++;
                 CoursesItemsList.Add(x);
+
+                // add item to activeButtons List
+                ActiveButtons newButton = new ActiveButtons();
+                newButton.courseCode = course.Cou_id;
+                newButton.status = false;
+                activeButtons.Add(newButton);
             }
-            
-           
+
+
         }
 
         class CourseItem
@@ -78,8 +124,16 @@ namespace UOTCS_android
             return CoursesItemsList[position].Id;
         }
 
+        /// <summary>
+        /// Return the layout view and its content
+        /// </summary>
+        /// <param name="position">the current position of the list</param>
+        /// <param name="convertView"></param>
+        /// <param name="parent"></param>
+        /// <returns></returns>
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
+           
             var view = convertView ?? _activity.LayoutInflater.Inflate(
                 Resource.Layout.EnrollmentItemView, parent, false);
             var CourseCode = view.FindViewById<TextView>(Resource.Id.enrollCourseText);
@@ -90,28 +144,53 @@ namespace UOTCS_android
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
-
-            //  event handler 
-            bool existedCourse = false;
-            
+           ActiveButtons buttonStatus = activeButtons.Where(i => i.courseCode.Equals(CoursesItemsList[position].CourseID)).First();
+            if (buttonStatus.status)
+            {
+                //later change the style
+                EnrollButton.Enabled = false;
+            }
+       
+                
+            //  event handler  
             EnrollButton.Click += (sender, e) =>
             {
-
-               Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+                Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
                 List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
-                
-               Status status = CScore.BCL.Enrollment.isEnrollable(c);
-           
-                if (status.status)
+                c.TemGro_id = s.First().Gro_id;
+
+                if (!buttonStatus.status)
                 {
-                    CScore.BCL.Enrollment.addReservedLectureTime(c, s[0].Gro_id);
-                    this.showMessage("Good");
+                  
+                    Status status = CScore.BCL.Enrollment.isEnrollable(c);
+
+                    if (status.status)
+                    {
+                       
+                        CScore.BCL.Enrollment.addToCourseList(c);
+                        
+                        this.showMessage("Good");
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = true;
+
+                        // later change the style
+                        EnrollButton.Enabled = false;
+                    }
+                    else
+                    {
+                        this.showMessage(status.message);
+                    }
+                   
+                    
                 }
                 else
-                { 
-                    this.showMessage(status.message);
+                {
+                  //  CScore.BCL.Enrollment.removeFromCourseList(c);
+
                 }
+                
+              
                 
                 //foreach (CScore.BCL.Schedule sch in s)
                 //{
@@ -123,16 +202,11 @@ namespace UOTCS_android
             };
  
 
-           //  current_posstion = position;
-
            
             return view;
         }
 
-        private void EnrollButton_Click(object sender, EventArgs e)
-        {
-            this.showMessage(CoursesItemsList[current_posstion].CourseID);
-        }
+     
         private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =

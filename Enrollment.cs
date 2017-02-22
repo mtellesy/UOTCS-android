@@ -28,12 +28,9 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-            String l = CScore.BCL.User.use_type;
+         
 
-            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> CourseS = await CScore.BCL.Course.getStudentCourses();
-            int x =CScore.BCL.Semester.current_term;
-            int z = await CScore.BCL.Enrollment.getCurrentCreditSum();
-           // int x = 0;
+           
 
             if (use_typeID > 0)
             {
@@ -44,22 +41,16 @@ namespace UOTCS_android
 
             CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
              await CScore.BCL.Enrollment.getEnrollableCourses();
-
+            
             var enrollmentAdapter = new EnrollmentAdapter(this,Courses.statusObject);
+           // enrollmentAdapter.getExistedCourses();
             var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
             contactsListView.Adapter = enrollmentAdapter;
 
-            //add Enrollment Item Fragments
-            //UOTCS_android.Fragments.EnrollmentItemFragment EnrollmentItem = new UOTCS_android.Fragments.EnrollmentItemFragment();
-            //var tran = SupportFragmentManager.BeginTransaction();
-            //tran.Add(Resource.Id.EnrollmentFrame, EnrollmentItem , "EnrollmentItemFragmentNo");
-            //tran.Commit();
-            //CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-            //    await CScore.BCL.Enrollment.getEnrollableCourses();
-            //EnrollmentItem.addEnrollmentItem(Courses.statusObject[0]);
-
-
-
+            //for testing
+            var list = CScore.BCL.Enrollment.enrolledCourses;
+            if (list != null)
+                list.ToString();
 
             ////add Schedule Fragment
             //UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
