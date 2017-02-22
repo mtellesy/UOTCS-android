@@ -28,6 +28,12 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
+            String l = CScore.BCL.User.use_type;
+
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> CourseS = await CScore.BCL.Course.getStudentCourses();
+            int x =CScore.BCL.Semester.current_term;
+            int z = await CScore.BCL.Enrollment.getCurrentCreditSum();
+           // int x = 0;
 
             if (use_typeID > 0)
             {

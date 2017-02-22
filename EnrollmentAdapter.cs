@@ -97,9 +97,9 @@ namespace UOTCS_android
                Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
                 List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
-                String l ="";
+                
                Status status = CScore.BCL.Enrollment.isEnrollable(c);
-             CScore.BCL.Enrollment.creditMax = -9;
+           
                 if (status.status)
                 {
                     CScore.BCL.Enrollment.addReservedLectureTime(c, s[0].Gro_id);
