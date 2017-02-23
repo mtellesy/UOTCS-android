@@ -59,13 +59,12 @@ namespace UOTCS_android
 
                     enrollButton.Click += async (sender, e) => {
 
-                        // Droped Coures: message
-                        String DropMessage = CScore.FixdStrings.Enrollment.dropedCourses();
+                        String DropMessage = "\n Droped Courses\n";
                         foreach(var drop in CScore.BCL.Enrollment.dropedCourses)
                         {
                             var dropResults = await CScore.BCL.Enrollment.dropCourse(drop, drop.TemGro_id);
-                            DropMessage += drop.Cou_id +" "+ CScore.FixdStrings.General.Status() + ": " + dropResults.status.status.ToString() +
-                            " " + dropResults.status.message;
+                            DropMessage += drop.Cou_id + " Status: " + dropResults.status.status.ToString() +
+                            " Message : " + dropResults.status.message;
                         }
                      
 
@@ -74,7 +73,7 @@ namespace UOTCS_android
                         String Message = "";
                         if(results.status.status)
                         {
-                            Message += CScore.FixdStrings.Enrollment.enrollmentSucceededMessage();
+                            Message += "«·⁄„·Ì… ‰«ÃÕ…\n ";
                             var Cres = (List<CScore.BCL.Course>)results.statusObject;
                             foreach(var c in Cres)
                             {
@@ -84,11 +83,7 @@ namespace UOTCS_android
                         }
 
                         Message += " " + DropMessage;
-                        if(CScore.BCL.Enrollment.dropedCourses.Count > 0  || CScore.BCL.Enrollment.enrolledCourses.Count > 0)
-                
-                        this.showEnrollmentDoneMessage(CScore.FixdStrings.Enrollment.enrollmentStatus(), Message);
-                        else
-                        this.showEnrollmentDoneMessage(CScore.FixdStrings.Enrollment.enrollmentStatus(), CScore.FixdStrings.Enrollment.nothingIsChangedMessage());
+                        this.showMessage(Message);
                     
                     };
 
@@ -134,7 +129,7 @@ namespace UOTCS_android
                 }
                 else
                 {
-                    showEnrollmentNoAvailable();
+                    showMessage("Sorry Enrollment is not Enabled");
                     // Intent intent = new Intent(this, typeof(Profile));
                     // this.StartActivity(intent);
                 }
@@ -146,7 +141,7 @@ namespace UOTCS_android
                 //tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
                 //tran.Commit();
             }
-            catch(Exception ex) {   this.showMessage("Error",CScore.SAL.FixedResponses.getResponse(0)); }
+            catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
 
 
 
@@ -181,44 +176,15 @@ namespace UOTCS_android
             return Resource.Id.nav_timetable;
         }
 
-        private void showMessage(String title,String message)
+        private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(title);
+            alert.SetTitle("Login Status");
             alert.SetMessage(message);
             //alert.SetPositiveButton("OK", (senderAlert, args) => {
             //    Toast.MakeText(this, "", ToastLength.Short).Show();
             //});
-
-            Dialog x = alert.Create();
-            x.Show();
-        }
-        
-        private void showEnrollmentDoneMessage(String title, String message)
-        {
-            Android.Support.V7.App.AlertDialog.Builder alert =
-          new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(title);
-            alert.SetMessage(message);
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
-             });
-
-            Dialog x = alert.Create();
-             x.Show();
-        }
-        private void showEnrollmentNoAvailable()
-        {
-            Android.Support.V7.App.AlertDialog.Builder alert =
-           new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentStatus());
-            alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-                Intent intent = new Intent(this, typeof(Profile));
-                this.StartActivity(intent);
-            });
 
             Dialog x = alert.Create();
             x.Show();
