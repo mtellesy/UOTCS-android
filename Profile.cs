@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -27,11 +28,18 @@ namespace UOTCS_android
         {
             DrawerLayout mdrawerLayout;
 
+
+            var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            task.Wait();
+
             // start the service for notifications 
             Intent intent = new Intent(this, typeof(Services.StatusChecker));
             this.StartService(intent);
 
-            CScore.BCL.Semester.current_term = 3;
+
+            // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+            //  task.Wait();
+
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
@@ -78,7 +86,7 @@ namespace UOTCS_android
             return x;
         }
 
-        public  int getCurrentActvity()
+        public int getCurrentActvity()
         {
             return Resource.Id.nav_announcements;
         }

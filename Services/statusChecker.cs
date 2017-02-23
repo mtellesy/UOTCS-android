@@ -70,6 +70,8 @@ namespace Services
             TimeSpan runTime = DateTime.UtcNow.Subtract(startTime);
           if(await CScore.BCL.Enrollment.isEnrollmentEnabled()) 
             {
+                // when enrollment is available get the current semester
+           await CScore.BCL.Semester.getCurrentSemester();
                 if(!UOTCS_android.NotificationsRepo.isEnrollmentNotified)
                 {
                     UOTCS_android.NotificationsRepo.enrollmentNotification(this);

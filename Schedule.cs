@@ -31,8 +31,8 @@ namespace UOTCS_android
             base.OnCreate(bundle);
 
             //dont forget to update the current term
-            CScore.BCL.Semester.current_term = 3;
-          
+           // CScore.BCL.Semester.current_term = 3;
+            
          //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)

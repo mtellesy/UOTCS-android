@@ -23,16 +23,25 @@ namespace UOTCS_android
     {
         List<CourseItem> CoursesItemsList;
         List<CScore.BCL.Course> _courses;
+       static bool dropOnly { get; set; }
 
         /// <summary>
         /// Is used to keep information about wither the button is active or not
         /// </summary>
-        static List<ActiveButtons> activeButtons = new List<ActiveButtons>();// { get; set; }
+        List<ActiveButtons> activeButtons;// { get; set; }
         Activity _activity;
      //   int current_posstion = 0;
 
-        public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <param name="courses"></param>
+        /// <param name="dropOnly">If the process is a disEnrollment process set this to true</param>
+        public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses,bool newDropOnly)
         {
+            activeButtons =  new List<ActiveButtons>();
+            dropOnly = newDropOnly;   
             var task1 = Task.Run(async () => { await CScore.BCL.Course.getUserCoursesSchedule(); });
             task1.Wait();
             _courses = new List<Course>();
@@ -146,54 +155,109 @@ namespace UOTCS_android
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
            ActiveButtons buttonStatus = activeButtons.Where(i => i.courseCode.Equals(CoursesItemsList[position].CourseID)).First();
+            var ButtonColor = EnrollButton.CurrentTextColor;
+
+            // is used to know if the course was already enrolled before the start of the process
+            bool alreadyEnrolled = false;
             if (buttonStatus.status)
             {
                 //later change the style
-                EnrollButton.Enabled = false;
+               
+                EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                GroupSpinner.Enabled = false;
+             
+                alreadyEnrolled = true;
             }
-       
-                
-            //  event handler  
-            EnrollButton.Click += (sender, e) =>
+
+            if (!dropOnly)
             {
-                Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
-
-                List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
-                c.TemGro_id = s.First().Gro_id;
-
-                if (!buttonStatus.status)
+                //  event handler  
+                EnrollButton.Click += (sender, e) =>
                 {
-                  
-                    Status status = CScore.BCL.Enrollment.isEnrollable(c);
+                    Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
-                    if (status.status)
+                    List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
+                    c.TemGro_id = s.First().Gro_id;
+
+                    if (!buttonStatus.status)
                     {
-                       
-                        CScore.BCL.Enrollment.addToCourseList(c);
-                        
-                        this.showMessage("Good");
-                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
-                        activeButtons[index].status = true;
 
-                        // later change the style
-                        EnrollButton.Enabled = false;
+                        Status status = CScore.BCL.Enrollment.isEnrollable(c);
+
+                        if (status.status)
+                        {
+
+                            CScore.BCL.Enrollment.addToCourseList(c);
+
+                            this.showMessage("Good");
+                            int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                            activeButtons[index].status = true;
+
+                            // later change the style
+                            EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                            GroupSpinner.Enabled = false;
+                        }
+                        else
+                        {
+                            this.showMessage(status.message);
+                           
+                           
+                        }
+
+
                     }
                     else
                     {
-                        this.showMessage(status.message);
+                        if(!alreadyEnrolled)
+                        {
+                            CScore.BCL.Enrollment.removeFromCourseList(c);
+                        }
+                        else
+                        {
+                            CScore.BCL.Enrollment.removeFromCourseList_Enrolled(c);
+                        }
+                        alreadyEnrolled = false;
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = false;
+                        GroupSpinner.Enabled = true;
+                        EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+
                     }
-                   
-                    
-                }
-                else
+
+                };
+
+            }
+            else
+            {
+                EnrollButton.Click += (sender, e) =>
                 {
-                  //  CScore.BCL.Enrollment.removeFromCourseList(c);
+                    Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
-                }
-                
+                    List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
+                    c.TemGro_id = s.First().Gro_id;
 
+                    if (buttonStatus.status)
+                    {
 
-            };
+                        CScore.BCL.Enrollment.addToDropList(c);
+                        ;
+                        this.showMessage("Good");
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = false;
+
+                        // later change the style
+                        EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                    }
+                    else
+                    {
+                        CScore.BCL.Enrollment.removeFromDropList(c);
+                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = true;
+                        this.showMessage("");
+                    }
+                };
+            }
  
 
            

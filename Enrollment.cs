@@ -23,77 +23,80 @@ namespace UOTCS_android
     [Activity(Label = "Enrollment",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Enrollment : MainActivity
     {
+        Bundle myBundle;
+        protected override void OnPause()
+        {
+            base.OnPause();
+            this.Finish();
+           
+        }
 
         protected async override void OnCreate(Bundle bundle)
         {
-            DrawerLayout mdrawerLayout;
             base.OnCreate(bundle);
-            // Set our view from the "main" layout resource
-         
-           
-
-            if (use_typeID > 0)
-            {
-                SetTheme(Resource.Style.Theme_Lecturer);
-            }
+            myBundle = bundle;
 
             SetContentView(Resource.Layout.Enrollment);
 
-
-
-            if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
+            try
             {
-                CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-                await CScore.BCL.Enrollment.getEnrollableCourses();
-
-                var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject);
-                // enrollmentAdapter.getExistedCourses();
-                var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
-                contactsListView.Adapter = enrollmentAdapter;
-
-                //for testing
-                var list = CScore.BCL.Enrollment.enrolledCourses;
-                if (list != null)
-                    list.ToString();
-            }
-            else if(await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
-            {
-                CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-              await CScore.BCL.Course.getUserCoursesSchedule();
-                List<CScore.BCL.Course> disCourses = new List<CScore.BCL.Course>();
-               var c = Courses.statusObject.Select(i => i.Cou_id).Distinct();
-                foreach(String courseID in c.ToList())
+                if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-                    CScore.BCL.Course CourseWithInfo = new CScore.BCL.Course();
-                    CourseWithInfo =
+                    CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                    await CScore.BCL.Enrollment.getEnrollableCourses();
+
+                    var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject, false);
+
+                    var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
+                    contactsListView.Adapter = enrollmentAdapter;
+
+                }
+                else if (await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
+                {
+                    CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                    await CScore.BCL.Course.getUserCoursesSchedule();
+
+                    // since the courses are repeated we need to remove the repeated courses
+                    List<CScore.BCL.Course> disCourses = new List<CScore.BCL.Course>();
+                    // courses with credit
+                    var CoursesCredit = await CScore.BCL.Course.getStudentCourses();
+
+                    var c = Courses.statusObject.Select(i => i.Cou_id).Distinct();
+
+                    foreach (String courseID in c.ToList())
+                    {
+                        CScore.BCL.Course CourseWithInfo = new CScore.BCL.Course();
+                        CourseWithInfo =
                         Courses.statusObject.Where(i => i.Cou_id.Equals(courseID)).First();
-                    disCourses.Add(CourseWithInfo);
+                        CourseWithInfo.Cou_credits =
+                        CoursesCredit.statusObject.Where(i => i.Cou_id.Equals(courseID)).First().Cou_credits;
+
+                        disCourses.Add(CourseWithInfo);
+                    }
+
+                    Courses.statusObject = disCourses;
+                    var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject, true);
+                    var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
+                    contactsListView.Adapter = enrollmentAdapter;
+
+                }
+                else
+                {
+                    showMessage("Sorry Enrollment is not Enabled");
+                    // Intent intent = new Intent(this, typeof(Profile));
+                    // this.StartActivity(intent);
                 }
 
-                Courses.statusObject = disCourses;
-                var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject);
-                // enrollmentAdapter.getExistedCourses();
-                var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
-                contactsListView.Adapter = enrollmentAdapter;
 
-                //for testing
-                var list = CScore.BCL.Enrollment.enrolledCourses;
-                if (list != null)
-                    list.ToString();
+                ////add Schedule Fragment
+                //UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
+                //var tran = SupportFragmentManager.BeginTransaction();
+                //tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
+                //tran.Commit();
             }
-            else
-            {
-                showMessage("Sorry Enrollment is not Enabled");
-                // Intent intent = new Intent(this, typeof(Profile));
-               // this.StartActivity(intent);
-            }
-            
+            catch { showMessage(CScore.SAL.FixedResponses.getResponse(0)); }
 
-            ////add Schedule Fragment
-            //UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
-            //var tran = SupportFragmentManager.BeginTransaction();
-            //tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
-            //tran.Commit();
+
 
             findViews();
             handleEvents();
