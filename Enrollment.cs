@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Android.App;
+using System.Linq;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
@@ -29,7 +30,6 @@ namespace UOTCS_android
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
          
-
            
 
             if (use_typeID > 0)
@@ -39,18 +39,55 @@ namespace UOTCS_android
 
             SetContentView(Resource.Layout.Enrollment);
 
-            CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-             await CScore.BCL.Enrollment.getEnrollableCourses();
-            
-            var enrollmentAdapter = new EnrollmentAdapter(this,Courses.statusObject);
-           // enrollmentAdapter.getExistedCourses();
-            var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
-            contactsListView.Adapter = enrollmentAdapter;
 
-            //for testing
-            var list = CScore.BCL.Enrollment.enrolledCourses;
-            if (list != null)
-                list.ToString();
+
+            if (!await CScore.BCL.Enrollment.isEnrollmentEnabled())
+            {
+                CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                await CScore.BCL.Enrollment.getEnrollableCourses();
+
+                var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject);
+                // enrollmentAdapter.getExistedCourses();
+                var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
+                contactsListView.Adapter = enrollmentAdapter;
+
+                //for testing
+                var list = CScore.BCL.Enrollment.enrolledCourses;
+                if (list != null)
+                    list.ToString();
+            }
+            else if(await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
+            {
+                CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+              await CScore.BCL.Course.getUserCoursesSchedule();
+                List<CScore.BCL.Course> disCourses = new List<CScore.BCL.Course>();
+               var c = Courses.statusObject.Select(i => i.Cou_id).Distinct();
+                foreach(String courseID in c.ToList())
+                {
+                    CScore.BCL.Course CourseWithInfo = new CScore.BCL.Course();
+                    CourseWithInfo =
+                        Courses.statusObject.Where(i => i.Cou_id.Equals(courseID)).First();
+                    disCourses.Add(CourseWithInfo);
+                }
+
+                Courses.statusObject = disCourses;
+                var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject);
+                // enrollmentAdapter.getExistedCourses();
+                var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
+                contactsListView.Adapter = enrollmentAdapter;
+
+                //for testing
+                var list = CScore.BCL.Enrollment.enrolledCourses;
+                if (list != null)
+                    list.ToString();
+            }
+            else
+            {
+                showMessage("Sorry Enrollment is not Enabled");
+                // Intent intent = new Intent(this, typeof(Profile));
+               // this.StartActivity(intent);
+            }
+            
 
             ////add Schedule Fragment
             //UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
@@ -89,7 +126,19 @@ namespace UOTCS_android
             return Resource.Id.nav_timetable;
         }
 
+        private void showMessage(String message)
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+           new Android.Support.V7.App.AlertDialog.Builder(this);
+            alert.SetTitle("Login Status");
+            alert.SetMessage(message);
+            //alert.SetPositiveButton("OK", (senderAlert, args) => {
+            //    Toast.MakeText(this, "", ToastLength.Short).Show();
+            //});
 
+            Dialog x = alert.Create();
+            x.Show();
+        }
 
     }
 }

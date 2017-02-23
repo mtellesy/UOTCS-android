@@ -29,31 +29,31 @@ namespace UOTCS_android
         /// </summary>
         static List<ActiveButtons> activeButtons = new List<ActiveButtons>();// { get; set; }
         Activity _activity;
-        int current_posstion = 0;
+     //   int current_posstion = 0;
 
         public EnrollmentAdapter(Activity activity,List<CScore.BCL.Course> courses)
         {
-           // activeButtons = new List<ActiveButtons>();
+            var task1 = Task.Run(async () => { await CScore.BCL.Course.getUserCoursesSchedule(); });
+            task1.Wait();
             _courses = new List<Course>();
             _courses = courses;
             _activity = activity;
             FillContacts(courses);
-            //        this.SyncCaller();
+           
             var task = Task.Run(async () => { await getExistedCourses(); });
             task.Wait();
             
 
         }
-        //public void SyncCaller()
-        //{
-        //    this.getExistedCourses();
-        //}
+     
       public async Task getExistedCourses()
         {
            
-            
+            await CScore.BCL.Enrollment.StartEnrollmentAndGetCurrentCreditSum();
+
             StatusWithObject<List<CScore.BCL.Course>> courses = 
                 await CScore.BCL.Course.getStudentCourses();
+
 
             if (courses.status.status)
             {
@@ -64,6 +64,7 @@ namespace UOTCS_android
                     {
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = true; 
+                        
                     }
                 }
             }
@@ -190,14 +191,7 @@ namespace UOTCS_android
 
                 }
                 
-              
-                
-                //foreach (CScore.BCL.Schedule sch in s)
-                //{
-                     
-                //    }
-              
-          
+
 
             };
  
