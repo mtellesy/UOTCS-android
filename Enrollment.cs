@@ -41,7 +41,7 @@ namespace UOTCS_android
 
 
 
-            if (!await CScore.BCL.Enrollment.isEnrollmentEnabled())
+            if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
             {
                 CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
                 await CScore.BCL.Enrollment.getEnrollableCourses();

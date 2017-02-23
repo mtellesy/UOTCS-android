@@ -31,7 +31,7 @@ namespace UOTCS_android
             Intent intent = new Intent(this, typeof(Services.StatusChecker));
             this.StartService(intent);
 
-
+            CScore.BCL.Semester.current_term = 3;
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             if (use_typeID > 0)
