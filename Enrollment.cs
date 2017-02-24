@@ -38,9 +38,9 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            
+         
             SetContentView(Resource.Layout.Enrollment);
+            
             var enrollButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             enrollButton.Visibility = ViewStates.Visible;
             try

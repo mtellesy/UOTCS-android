@@ -15,126 +15,68 @@ using Android.Provider;
 
 namespace UOTCS_android
 {
-    class ActiveDepartments
-    {
-       public String courseCode { get; set; }
-        public int groupID { get; set; }
-       public bool status { get; set; }
-    }
+   
     public class MajorAdapter : BaseAdapter
     {
-        List<CourseItem> CoursesItemsList;
-        List<CScore.BCL.Course> _courses;
-       static bool dropOnly { get; set; }
+        List<DepartmentItem> DepartmentItemList;
+        List<CScore.BCL.Department> _departments;
+        List<Button> majorButtons;
+
+        //this is the department id that we are going to send
+        public int FinalDepID;
 
         /// <summary>
         /// Is used to keep information about wither the button is active or not
         /// </summary>
-        List<ActiveDepartments> activeButtons;// { get; set; }
+      
         Activity _activity;
-     //   int current_posstion = 0;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="activity"></param>
-        /// <param name="courses"></param>
+        /// <param name="departments"></param>
         /// <param name="dropOnly">If the process is a disEnrollment process set this to true</param>
-        public MajorAdapter(Activity activity,List<CScore.BCL.Course> courses,bool newDropOnly)
+        public MajorAdapter(Activity activity,List<CScore.BCL.Department> departments,bool newDropOnly)
         {
-            activeButtons =  new List<ActiveDepartments>();
-            dropOnly = newDropOnly;   
-            var task1 = Task.Run(async () => { await CScore.BCL.Course.getUserCoursesSchedule(); });
-            task1.Wait();
-            _courses = new List<Course>();
-            _courses = courses;
+            
+            _departments = new List<Department>();
+            _departments = departments;
             _activity = activity;
-            FillContacts(courses);
-
-            var task = Task.Run(async () => { await getExistedCourses(); });
-            task.Wait();
-            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
-
-
+            FillContacts(departments);
+            majorButtons = new List<Button>();
         }
 
-        public async Task getExistedCourses()
-        {
-           
-            await CScore.BCL.Enrollment.StartEnrollmentAndGetCurrentCreditSum();
+    
 
-            StatusWithObject<List<CScore.BCL.Course>> courses = 
-                await CScore.BCL.Course.getStudentCourses();
-            var coursesWithSchedule = await CScore.BCL.Course.getUserCoursesSchedule();
-
-            if (courses.status.status)
-            {
-                foreach(CScore.BCL.Course c in courses.statusObject)
-                {
-                    int count = activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).Count();
-                    if(count > 0)
-                    {
-                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
-                        activeButtons[index].status = true;
-                       
-                        activeButtons[index].groupID = c.TemGro_id;
-                        foreach(var sch in coursesWithSchedule.statusObject)
-                        {
-                            if (c.Cou_id == sch.Cou_id)
-                                activeButtons[index].groupID = sch.Schedule[0].Gro_id;
-                        }
-                       
-                        
-                    }
-                }
-            }
-
-        }
-
-         void FillContacts(List<CScore.BCL.Course> courses)
+         void FillContacts(List<CScore.BCL.Department> departments)
         {
 
            // int id = 0;
-            CoursesItemsList = new List<CourseItem>();
-            foreach(CScore.BCL.Course course in courses)
+            DepartmentItemList = new List<DepartmentItem>();
+            foreach(var department in departments)
             {
-                CourseItem x = new CourseItem();
-                x.CourseID = course.Cou_id;
-                x.Groups = new List<String>();
-
-                var disCourseSchedule = course.Schedule.GroupBy(test => test.Gro_id)
-                   .Select(grp => grp.First())
-                   .ToList();
-             //   int i = 0;
-                foreach(CScore.BCL.Schedule sch in disCourseSchedule)
-                {
-                    x.Groups.Add(sch.Gro_NameEN);
-                }
-                x.Id++;
-                CoursesItemsList.Add(x);
-
-                // add item to activeButtons List
-                ActiveButtons newButton = new ActiveButtons();
-                newButton.courseCode = course.Cou_id;
-                newButton.status = false;
-                activeButtons.Add(newButton);
+                DepartmentItem x = new DepartmentItem();
+                x.DepartmentID = department.Dep_id;
+                x.DepartmentNameAR = department.DepNameAR;
+                x.DepartmentNameEN = department.Dep_nameEN;
+                DepartmentItemList.Add(x);
             }
 
 
         }
 
-        class CourseItem
+        class DepartmentItem
         {
             public long Id { get; set; }
-            public String CourseID { get; set; }
-            public List<string> Groups { get; set; }
-            
-           
+            public int DepartmentID { get; set; }
+            public String DepartmentNameAR { get; set; }
+            public String DepartmentNameEN { get; set; } 
         }
 
         public override int Count
         {
-            get { return CoursesItemsList.Count; }
+            get { return DepartmentItemList.Count; }
         }
 
         public override Java.Lang.Object GetItem(int position)
@@ -146,7 +88,7 @@ namespace UOTCS_android
 
         public override long GetItemId(int position)
         {
-            return CoursesItemsList[position].Id;
+            return DepartmentItemList[position].Id;
         }
 
         /// <summary>
@@ -161,58 +103,67 @@ namespace UOTCS_android
            //declaration of the views
             var view = convertView ?? _activity.LayoutInflater.Inflate(
                 Resource.Layout.MajorItemView, parent, false);
-            var CourseCode = view.FindViewById<TextView>(Resource.Id.enrollCourseText);
-            var GroupSpinner = view.FindViewById<Spinner>(Resource.Id.enrollGroupsList);
-            var EnrollButton = view.FindViewById<Button>(Resource.Id.enrollButton);
-            CourseCode.Text = CoursesItemsList[position].CourseID;
-            var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
-            GroupSpinner.Adapter = adapter;
-            GroupSpinner.SetSelection(0);
-            //end of it
+            var DepartmentName = view.FindViewById<TextView>(Resource.Id.majorDepartment);
+          
+            var MajorButton = view.FindViewById<Button>(Resource.Id.majorButton);
+            majorButtons.Add(MajorButton);
 
-            // current course Status
-         
-
-            // because the course objects in _courses are references and 
-            // playing with it is going to change the whole structure 
-            // we need to clone _courses
-           
-            var OriCourses =new Course() ;
-            OriCourses = _courses[position].getACopy();
-            
-           
-
-            // to know  it's in the droping list 
-            bool inDropList = false;
-            // is used to know if the course was already enrolled before the start of the process
-            bool inEnrollList = false;
-
-            // to know that the course and its group are already enrolled
-            // and if the user remove it and then add it again with same group
-            // there will be no need to put in enrollment list
-            bool startedEnrolled = false;
-            if (CourseStatus.status)
+            // to know wither the button has been activated or not
+            bool isClicked = false;
+            switch(CScore.FixdStrings.LanguageSetter.getLanguage())
             {
-                //later change the style
-                EnrollButton.SetTextColor(Android.Graphics.Color.Red);
-           
-                GroupSpinner.Enabled = false;
-                GroupSpinner.SetSelection(CourseStatus.groupID-1);
-                inEnrollList = true;
-                startedEnrolled = true;
-              
+                case (CScore.FixdStrings.Language.AR):
+                    DepartmentName.Text = DepartmentItemList[position].DepartmentNameAR;
+                    break;
+                case (CScore.FixdStrings.Language.EN):
+                default:
+                    DepartmentName.Text = DepartmentItemList[position].DepartmentNameEN;
+                    break;
             }
+
+
+            majorButtons[position].Click += (object s, EventArgs e) => 
+            {
+                if(!isClicked)
+                {
+                    //first turn off all the other buttons 
+                    for (int i = 0; i < majorButtons.Count; i++)
+                        majorButtons[i].Enabled = false;
+
+                    // turn this buttom again 
+                    majorButtons[position].Enabled = true;
+
+                    FinalDepID = DepartmentItemList[position].DepartmentID;
+
+                    //now because it has been clicked
+                    isClicked = true;
+                }
+                //if it's has been Clicked before
+                else
+                {
+                    //here means the user deleted the department and want to choose another
+
+
+                    //first turn on all the buttons 
+                    for (int i = 0; i < majorButtons.Count; i++)
+                        majorButtons[i].Enabled = true;
+
+                    //delete the finalDepID by making it equels -1 
+                    //-1 means no depatment has been choosen
+                    FinalDepID = -1;
+
+                    isClicked = false;
+                }
+            };
+
+          
+            
             
 
             return view;
         }
 
-        private CScore.BCL.Course getMyCourse(int position)
-        {
-           Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
-            return c;
-        }
-       
+     
         private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =

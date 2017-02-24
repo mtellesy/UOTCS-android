@@ -38,13 +38,14 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            
+           
+          
             SetContentView(Resource.Layout.Major);
             var MajorButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             MajorButton.Visibility = ViewStates.Visible;
-            try
-            {
+            //try
+            //{ 
+            if (Int32.Parse(CScore.BCL.User.dep_id) <= 1)
                 if (await CScore.BCL.Major.isMajorEnabled())
                 {
                     CScore.BCL.StatusWithObject<List<CScore.BCL.Department>> Deparments =
@@ -54,7 +55,22 @@ namespace UOTCS_android
                     contactsListView.Adapter = majorAdapter;
 
                     MajorButton.Click += async (sender, e) => {
-                    
+                        if (majorAdapter.FinalDepID == -1 || majorAdapter.FinalDepID == 0)
+                        {
+                            //the user didn't choose any department
+                            showMessage("Please choose a depatment first");
+                        }
+                        else
+                        {
+                            var myDep = Deparments.statusObject.Where(i => i.Dep_id.Equals(majorAdapter.FinalDepID)).First();
+                            CScore.BCL.StatusWithObject<String> result;
+                            if (myDep != null)
+                                result = await CScore.BCL.Major.major(myDep);
+                            showMajorSucceededMessage();
+
+
+                        }
+
                     };
 
 
@@ -63,9 +79,10 @@ namespace UOTCS_android
                 {
                     showMajorNoAvailable();
                 }
+            else showMajorNoAvailable();
 
-            }
-            catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
+            //}
+            //  catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
 
 
 
@@ -122,6 +139,22 @@ namespace UOTCS_android
             alert.SetMessage("Sorry Major is Not Available");
             alert.SetPositiveButton("OK", (senderAlert, args) => {
                 Intent intent = new Intent(this,typeof(Profile));
+                StartActivity(intent);
+                this.Finish();
+            });
+
+            Dialog x = alert.Create();
+            x.Show();
+        }
+
+        private void showMajorSucceededMessage()
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+            new Android.Support.V7.App.AlertDialog.Builder(this);
+            alert.SetTitle("Major Status");
+            alert.SetMessage("Good");
+            alert.SetPositiveButton("Done", (senderAlert, args) => {
+                Intent intent = new Intent(this, typeof(Profile));
                 StartActivity(intent);
                 this.Finish();
             });
