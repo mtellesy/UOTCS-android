@@ -38,10 +38,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
-          <ScrollView
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:fillViewport="true">
             <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -60,13 +56,13 @@
                   android:layout_height="fill_parent"
                   android:layout_gravity="center" />
             </RelativeLayout>
-            <Button android:text="Send"
-                    android:layout_width="fill_parent"
-                    android:layout_height="30dp"
-                   
-                    android:id="@+id/enrollmentSendButton"/>
+            <Button   android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" 
+            android:id="@+id/enrollmentSendButton"/>
             </LinearLayout>  
-          </ScrollView>
+         
         </LinearLayout>
         <include
             layout="@layout/includeListViewpager" />
