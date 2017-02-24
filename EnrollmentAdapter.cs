@@ -51,11 +51,12 @@ namespace UOTCS_android
            
             var task = Task.Run(async () => { await getExistedCourses(); });
             task.Wait();
-            
+            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
 
         }
-     
-      public async Task getExistedCourses()
+
+        public async Task getExistedCourses()
         {
            
             await CScore.BCL.Enrollment.StartEnrollmentAndGetCurrentCreditSum();
@@ -157,6 +158,8 @@ namespace UOTCS_android
            ActiveButtons buttonStatus = activeButtons.Where(i => i.courseCode.Equals(CoursesItemsList[position].CourseID)).First();
             var ButtonColor = EnrollButton.CurrentTextColor;
 
+            // to it's in the droping list 
+            bool inDropList = false;
             // is used to know if the course was already enrolled before the start of the process
             bool alreadyEnrolled = false;
             if (buttonStatus.status)
@@ -174,6 +177,7 @@ namespace UOTCS_android
                 //  event handler  
                 EnrollButton.Click += (sender, e) =>
                 {
+                    Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString() ;
                     Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
                     List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
@@ -184,11 +188,16 @@ namespace UOTCS_android
 
                         Status status = CScore.BCL.Enrollment.isEnrollable(c);
 
+          
                         if (status.status)
                         {
 
                             CScore.BCL.Enrollment.addToCourseList(c);
-
+                            if (inDropList)
+                            {
+                                CScore.BCL.Enrollment.removeFromDropList_Enrolled(c);
+                                inDropList = false;
+                            }
                             this.showMessage("Good");
                             int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                             activeButtons[index].status = true;
@@ -196,6 +205,8 @@ namespace UOTCS_android
                             // later change the style
                             EnrollButton.SetTextColor(Android.Graphics.Color.Red);
                             GroupSpinner.Enabled = false;
+                            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
                         }
                         else
                         {
@@ -211,16 +222,34 @@ namespace UOTCS_android
                         if(!alreadyEnrolled)
                         {
                             CScore.BCL.Enrollment.removeFromCourseList(c);
+                            if(inDropList)
+                            {
+                                CScore.BCL.Enrollment.removeFromDropList_Enrolled(c);
+                                inDropList = false;
+                            }
+
+                            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                         }
                         else
                         {
                             CScore.BCL.Enrollment.removeFromCourseList_Enrolled(c);
+                            if(!inDropList)
+                            {
+                                CScore.BCL.Enrollment.addToDropList_Enrolled(c);
+                                inDropList = true;
+                            }
+                          
+                            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
                         }
+
                         alreadyEnrolled = false;
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = false;
                         GroupSpinner.Enabled = true;
                         EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
 
                     }
 
@@ -231,6 +260,7 @@ namespace UOTCS_android
             {
                 EnrollButton.Click += (sender, e) =>
                 {
+                    Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                     Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
 
                     List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
@@ -244,6 +274,7 @@ namespace UOTCS_android
                         this.showMessage("Good");
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = false;
+                        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
 
                         // later change the style
                         EnrollButton.SetTextColor(Android.Graphics.Color.Black);
@@ -254,6 +285,8 @@ namespace UOTCS_android
                         EnrollButton.SetTextColor(Android.Graphics.Color.Red);
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = true;
+                        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
                         this.showMessage("");
                     }
                 };

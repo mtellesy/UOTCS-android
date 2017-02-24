@@ -18,12 +18,14 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 
+
 namespace UOTCS_android
 {
     [Activity(Label = "Enrollment",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
     public class Enrollment : MainActivity
     {
-        Bundle myBundle;
+        public static TextView total_credit;
+        
         protected override void OnPause()
         {
             base.OnPause();
@@ -34,21 +36,26 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            myBundle = bundle;
 
+            
             SetContentView(Resource.Layout.Enrollment);
-
+            var enrollButton = FindViewById<Button>(Resource.Id.enrollmentSendButton);
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
                     CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
                     await CScore.BCL.Enrollment.getEnrollableCourses();
-
+                    var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
+                    total_credit = FindViewById<TextView>(Resource.Id.enrollmentCurrentTotalCredits);
+                    availableCredit.Text = CScore.BCL.Enrollment.creditMax.ToString();
+                    total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                     var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject, false);
-
                     var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                     contactsListView.Adapter = enrollmentAdapter;
+
+                    enrollButton.Click += (sender, e) => { this.showMessage(CScore.BCL.Enrollment.enrolledCourses.Count.ToString()); };
+
 
                 }
                 else if (await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
@@ -75,7 +82,16 @@ namespace UOTCS_android
                     }
 
                     Courses.statusObject = disCourses;
+                    var titleForAvailableCredits = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
+                    titleForAvailableCredits.Text = "Available Credits to drop:";
+                    var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
+                    total_credit = FindViewById<TextView>(Resource.Id.enrollmentCurrentTotalCredits);
+                    total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+                    availableCredit.Text = CScore.BCL.Enrollment.creditMin.ToString();
+                   
+
                     var enrollmentAdapter = new EnrollmentAdapter(this, Courses.statusObject, true);
+
                     var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                     contactsListView.Adapter = enrollmentAdapter;
 
