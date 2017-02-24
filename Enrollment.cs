@@ -59,7 +59,8 @@ namespace UOTCS_android
 
                     enrollButton.Click += async (sender, e) => {
 
-                        String DropMessage = "\n Droped Courses\n";
+                       
+                      String DropMessage = CScore.FixdStrings.Enrollment.dropedCoursesHeader();
                         foreach(var drop in CScore.BCL.Enrollment.dropedCourses)
                         {
                             var dropResults = await CScore.BCL.Enrollment.dropCourse(drop, drop.TemGro_id);

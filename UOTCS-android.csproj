@@ -43,6 +43,10 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CScore, Version=0.9.9.9, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CScore\CScore.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -123,6 +127,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MajorAdapter.cs" />
+    <Compile Include="Major.cs" />
     <Compile Include="EnrollmentAdapter.cs" />
     <Compile Include="Fragments\EnrollmentItemFragment.cs" />
     <Compile Include="Fragments\RecievedMessagesFragment.cs" />
@@ -200,6 +206,12 @@
     <AndroidResource Include="Resources\layout\SentMessagesF.axml" />
     <AndroidResource Include="Resources\layout\UserInfomationsF.axml" />
     <AndroidResource Include="Resources\layout\UserMoreInformationF.axml" />
+    <AndroidResource Include="Resources\layout\Major.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MajorItemView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -427,12 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\uni_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CompanionSystem\CScore\CScore.csproj">
-      <Project>{92b15530-aeeb-43c6-8e94-3a7be79fd2b5}</Project>
-      <Name>CScore</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_it_logo.png" />
