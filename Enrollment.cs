@@ -39,7 +39,8 @@ namespace UOTCS_android
 
             
             SetContentView(Resource.Layout.Enrollment);
-            var enrollButton = FindViewById<Button>(Resource.Id.enrollmentSendButton);
+            var enrollButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            enrollButton.Visibility = ViewStates.Visible;
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
@@ -54,7 +55,8 @@ namespace UOTCS_android
                     var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                     contactsListView.Adapter = enrollmentAdapter;
 
-                    enrollButton.Click += (sender, e) => { this.showMessage(CScore.BCL.Enrollment.enrolledCourses.Count.ToString()); };
+                    enrollButton.Click += (sender, e) => { this.showMessage(CScore.BCL.Enrollment.enrolledCourses.Count.ToString()
+                         + CScore.BCL.Enrollment.dropedCourses.Count.ToString()); };
 
 
                 }

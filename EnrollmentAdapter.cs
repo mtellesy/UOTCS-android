@@ -17,6 +17,7 @@ namespace UOTCS_android
     class ActiveButtons
     {
        public String courseCode { get; set; }
+        public int groupID { get; set; }
        public bool status { get; set; }
     }
     public class EnrollmentAdapter : BaseAdapter
@@ -63,7 +64,7 @@ namespace UOTCS_android
 
             StatusWithObject<List<CScore.BCL.Course>> courses = 
                 await CScore.BCL.Course.getStudentCourses();
-
+            var coursesWithSchedule = await CScore.BCL.Course.getUserCoursesSchedule();
 
             if (courses.status.status)
             {
@@ -73,7 +74,15 @@ namespace UOTCS_android
                     if(count > 0)
                     {
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
-                        activeButtons[index].status = true; 
+                        activeButtons[index].status = true;
+                       
+                        activeButtons[index].groupID = c.TemGro_id;
+                        foreach(var sch in coursesWithSchedule.statusObject)
+                        {
+                            if (c.Cou_id == sch.Cou_id)
+                                activeButtons[index].groupID = sch.Schedule[0].Gro_id;
+                        }
+                       
                         
                     }
                 }
@@ -91,8 +100,12 @@ namespace UOTCS_android
                 CourseItem x = new CourseItem();
                 x.CourseID = course.Cou_id;
                 x.Groups = new List<String>();
+
+                var disCourseSchedule = course.Schedule.GroupBy(test => test.Gro_id)
+                   .Select(grp => grp.First())
+                   .ToList();
              //   int i = 0;
-                foreach(CScore.BCL.Schedule sch in course.Schedule)
+                foreach(CScore.BCL.Schedule sch in disCourseSchedule)
                 {
                     x.Groups.Add(sch.Gro_NameEN);
                 }
@@ -151,6 +164,7 @@ namespace UOTCS_android
             var GroupSpinner = view.FindViewById<Spinner>(Resource.Id.enrollGroupsList);
             var EnrollButton = view.FindViewById<Button>(Resource.Id.enrollButton);
             CourseCode.Text = CoursesItemsList[position].CourseID;
+            
 
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
@@ -162,14 +176,19 @@ namespace UOTCS_android
             bool inDropList = false;
             // is used to know if the course was already enrolled before the start of the process
             bool alreadyEnrolled = false;
+            int alreadyEnrolledGroupID;
+            bool startedEnrolled = false;
             if (buttonStatus.status)
             {
                 //later change the style
                
                 EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+               // GroupSpinner.get
                 GroupSpinner.Enabled = false;
-             
+                GroupSpinner.SetSelection(buttonStatus.groupID-1);
                 alreadyEnrolled = true;
+                startedEnrolled = true;
+                alreadyEnrolledGroupID = 0;
             }
 
             if (!dropOnly)
@@ -193,7 +212,7 @@ namespace UOTCS_android
                         {
 
                             CScore.BCL.Enrollment.addToCourseList(c);
-                            if (inDropList)
+                            if (inDropList && buttonStatus.groupID == c.TemGro_id)
                             {
                                 CScore.BCL.Enrollment.removeFromDropList_Enrolled(c);
                                 inDropList = false;
@@ -221,8 +240,9 @@ namespace UOTCS_android
                     {
                         if(!alreadyEnrolled)
                         {
+                           
                             CScore.BCL.Enrollment.removeFromCourseList(c);
-                            if(inDropList)
+                            if(inDropList && buttonStatus.groupID == c.TemGro_id)
                             {
                                 CScore.BCL.Enrollment.removeFromDropList_Enrolled(c);
                                 inDropList = false;
@@ -233,7 +253,7 @@ namespace UOTCS_android
                         else
                         {
                             CScore.BCL.Enrollment.removeFromCourseList_Enrolled(c);
-                            if(!inDropList)
+                            if(!inDropList || (buttonStatus.groupID == c.TemGro_id && startedEnrolled))
                             {
                                 CScore.BCL.Enrollment.addToDropList_Enrolled(c);
                                 inDropList = true;
@@ -243,7 +263,8 @@ namespace UOTCS_android
 
                         }
 
-                        alreadyEnrolled = false;
+                        
+                         alreadyEnrolled = false;
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = false;
                         GroupSpinner.Enabled = true;
