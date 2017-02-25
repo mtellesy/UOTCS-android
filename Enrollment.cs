@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Android.App;
 using System.Linq;
 using Android.Content;
@@ -7,6 +8,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportActionBar = Android.Support.V7.App.ActionBar;
 
@@ -55,10 +57,34 @@ namespace UOTCS_android
                     var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                     contactsListView.Adapter = enrollmentAdapter;
 
-                    enrollButton.Click += (sender, e) => { this.showMessage(CScore.BCL.Enrollment.enrolledCourses.Count.ToString()
-                         + CScore.BCL.Enrollment.dropedCourses.Count.ToString());
-                       var x = CScore.BCL.Enrollment.getReservedTime();
-                        x.ToList(); ;
+                    enrollButton.Click += async (sender, e) => {
+
+                        String DropMessage = "\n Droped Courses\n";
+                        foreach(var drop in CScore.BCL.Enrollment.dropedCourses)
+                        {
+                            var dropResults = await CScore.BCL.Enrollment.dropCourse(drop, drop.TemGro_id);
+                            DropMessage += drop.Cou_id + " Status: " + dropResults.status.status.ToString() +
+                            " Message : " + dropResults.status.message;
+                        }
+                     
+
+                         var results =   await CScore.BCL.Enrollment
+                            .enrollCourse(CScore.BCL.Enrollment.enrolledCourses,"true");
+                        String Message = "";
+                        if(results.status.status)
+                        {
+                            Message += "«·⁄„·Ì… ‰«ÃÕ…\n ";
+                            var Cres = (List<CScore.BCL.Course>)results.statusObject;
+                            foreach(var c in Cres)
+                            {
+                                Message += "Course Code : " + c.Cou_id + " Status " +
+                                c.Flag + "\n";
+                            }
+                        }
+
+                        Message += " " + DropMessage;
+                        this.showMessage(Message);
+                    
                     };
 
 
@@ -115,7 +141,7 @@ namespace UOTCS_android
                 //tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
                 //tran.Commit();
             }
-            catch { showMessage(CScore.SAL.FixedResponses.getResponse(0)); }
+            catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
 
 
 

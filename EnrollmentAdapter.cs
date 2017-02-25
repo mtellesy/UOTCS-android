@@ -50,9 +50,9 @@ namespace UOTCS_android
             _activity = activity;
             FillContacts(courses);
            
-            var task = Task.Run(async () => { await getExistedCourses(); });
-            task.Wait();
-            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+            //var task = Task.Run(async () => { await getExistedCourses(); });
+            //task.Wait();
+            //Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
 
 
         }
@@ -364,6 +364,7 @@ namespace UOTCS_android
                                 EnrollButton.SetTextColor(Android.Graphics.Color.Black);
                                 GroupSpinner.Enabled = true;
                                 CourseStatus.status = false;
+                                
                             }
                         }
                     }
@@ -537,7 +538,40 @@ namespace UOTCS_android
                     else
                     {
 
+                EnrollButton.Click += (sender, e) =>
+                {
+                    Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+                    Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+
+                    List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
+                    c.TemGro_id = s.First().Gro_id;
+
+                    if (CourseStatus.status)
+                    {
+
+                        CScore.BCL.Enrollment.addToDropList(c);
+                        ;
+                        this.showMessage("Good");
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = false;
+                        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
+                        // later change the style
+                        EnrollButton.SetTextColor(Android.Graphics.Color.Black);
                     }
+                    else
+                    {
+                        CScore.BCL.Enrollment.removeFromDropList(c);
+                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                        int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
+                        activeButtons[index].status = true;
+                        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
+                        this.showMessage("");
+                    }
+                };
+
+            }
 
             //if (!dropOnly)
             //{
@@ -587,8 +621,8 @@ namespace UOTCS_android
             //            else
             //            {
             //                this.showMessage(status.message);
-                           
-                           
+
+
             //            }
 
 
@@ -597,7 +631,7 @@ namespace UOTCS_android
             //        {
             //            if(!inEnrollList && startedEnrolled)
             //            {
-                           
+
             //                if (startedEnrolled && c.TemGro_id == CourseStatus.groupID)
             //                {
             //                    CScore.BCL.Enrollment.removeFromCourseList_Enrolled(c);
@@ -606,7 +640,7 @@ namespace UOTCS_android
             //                }
             //                else
             //                    CScore.BCL.Enrollment.removeFromCourseList(c);
-                          
+
             //                if (inDropList && CourseStatus.groupID == c.TemGro_id)
             //                {
             //                    CScore.BCL.Enrollment.removeFromDropList_Enrolled(c);
@@ -633,12 +667,12 @@ namespace UOTCS_android
             //                    CScore.BCL.Enrollment.addToDropList_Enrolled(c);
             //                    inDropList = true;
             //                }
-                          
+
             //                Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
 
             //            }
 
-                        
+
             //             inEnrollList = false;
             //            int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
             //            activeButtons[index].status = false;
@@ -654,42 +688,11 @@ namespace UOTCS_android
             //}
             //else
             //{
-            //    EnrollButton.Click += (sender, e) =>
-            //    {
-            //        Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
-            //        Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
-
-            //        List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
-            //        c.TemGro_id = s.First().Gro_id;
-
-            //        if (CourseStatus.status)
-            //        {
-
-            //            CScore.BCL.Enrollment.addToDropList(c);
-            //            ;
-            //            this.showMessage("Good");
-            //            int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
-            //            activeButtons[index].status = false;
-            //            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
-
-            //            // later change the style
-            //            EnrollButton.SetTextColor(Android.Graphics.Color.Black);
-            //        }
-            //        else
-            //        {
-            //            CScore.BCL.Enrollment.removeFromDropList(c);
-            //            EnrollButton.SetTextColor(Android.Graphics.Color.Red);
-            //            int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
-            //            activeButtons[index].status = true;
-            //            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
-
-            //            this.showMessage("");
-            //        }
-            //    };
+            //   
             //}
- 
 
-           
+
+
             return view;
         }
 
