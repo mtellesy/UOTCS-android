@@ -56,7 +56,10 @@ namespace UOTCS_android
                     contactsListView.Adapter = enrollmentAdapter;
 
                     enrollButton.Click += (sender, e) => { this.showMessage(CScore.BCL.Enrollment.enrolledCourses.Count.ToString()
-                         + CScore.BCL.Enrollment.dropedCourses.Count.ToString()); };
+                         + CScore.BCL.Enrollment.dropedCourses.Count.ToString());
+                       var x = CScore.BCL.Enrollment.getReservedTime();
+                        x.ToList(); ;
+                    };
 
 
                 }
