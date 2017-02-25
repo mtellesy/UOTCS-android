@@ -64,7 +64,6 @@ namespace UOTCS_android
             {
                 SetUpDrawerContent(navigationView);
             }
-           
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
           
 

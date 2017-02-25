@@ -57,7 +57,7 @@ namespace UOTCS_android
                         if (majorAdapter.FinalDepID == -1 || majorAdapter.FinalDepID == 0)
                         {
                             //the user didn't choose any department
-                            showMessage("Please choose a department first");
+                            showMessage(CScore.FixdStrings.Major.PleaseChooseAdepartmentFirst());
                         }
                         else
                         {
@@ -77,7 +77,7 @@ namespace UOTCS_android
             else showMajorNoAvailable();
 
             }
-             catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
+             catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0)); }
 
 
 
@@ -116,7 +116,7 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle("Major Status");
+            alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
             alert.SetMessage(message);
             //alert.SetPositiveButton("OK", (senderAlert, args) => {
             //    Toast.MakeText(this, "", ToastLength.Short).Show();
@@ -130,9 +130,9 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
             new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle("Major Status");
-            alert.SetMessage("Sorry Major is Not Available");
-            alert.SetPositiveButton("OK", (senderAlert, args) => {
+            alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
+            alert.SetMessage(CScore.FixdStrings.Major.SorryMajorisNotAvailable());
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 Intent intent = new Intent(this,typeof(Profile));
                 StartActivity(intent);
                 this.Finish();
@@ -146,9 +146,9 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
             new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle("Major Status");
-            alert.SetMessage("Good");
-            alert.SetPositiveButton("Done", (senderAlert, args) => {
+            alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
+            alert.SetMessage(CScore.FixdStrings.Major.YouHaveBeenSuccessfullyMajored());
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 Intent intent = new Intent(this, typeof(Profile));
                 StartActivity(intent);
                 this.Finish();
