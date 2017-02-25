@@ -32,7 +32,6 @@ namespace UOTCS_android
         {
             base.OnPause();
             this.Finish();
-           
         }
 
         protected async override void OnCreate(Bundle bundle)
@@ -43,8 +42,8 @@ namespace UOTCS_android
             SetContentView(Resource.Layout.Major);
             var MajorButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             MajorButton.Visibility = ViewStates.Visible;
-            //try
-            //{ 
+            try
+            { 
             if (Int32.Parse(CScore.BCL.User.dep_id) <= 1)
                 if (await CScore.BCL.Major.isMajorEnabled())
                 {
@@ -58,7 +57,7 @@ namespace UOTCS_android
                         if (majorAdapter.FinalDepID == -1 || majorAdapter.FinalDepID == 0)
                         {
                             //the user didn't choose any department
-                            showMessage("Please choose a depatment first");
+                            showMessage("Please choose a department first");
                         }
                         else
                         {
@@ -67,13 +66,9 @@ namespace UOTCS_android
                             if (myDep != null)
                                 result = await CScore.BCL.Major.major(myDep);
                             showMajorSucceededMessage();
-
-
                         }
 
                     };
-
-
                 }
                 else
                 {
@@ -81,8 +76,8 @@ namespace UOTCS_android
                 }
             else showMajorNoAvailable();
 
-            //}
-            //  catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
+            }
+             catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0) + ex.Message); }
 
 
 
