@@ -35,7 +35,7 @@ namespace UOTCS_android
         {
             DrawerLayout mdrawerLayout;
 
-
+            CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);
             var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
             task.Wait();
 
