@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout1"
+    android:padding="10dp"
+    android:weightSum="3">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:layout_weight="1"
+        android:weightSum="4">
+        <TextView
+            android:text="Units completed"
+            android:textColor="@color/secondary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unitsTV"
+            android:layout_weight="3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textBackground"
+            android:text="000"
+            android:textColor="@color/primary_text"
+            android:id="@+id/unitsTVB"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:translationY="10dp"
+            android:layout_gravity="right" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:layout_weight="1"
+        android:weightSum="4"
+        android:gravity="right">
+        <TextView
+            android:text="GPA"
+            android:textColor="@color/secondary_text"
+            android:id="@+id/GPATV"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textBackground"
+            android:text="00"
+            android:textColor="@color/primary_text"
+            android:id="@+id/GPATVB"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:translationY="10dp"
+            android:layout_width="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:layout_weight="1"
+        android:weightSum="4">
+        <TextView
+            android:text="Number of notices"
+            android:textColor="@color/secondary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:id="@+id/noticesTV" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textBackground"
+            android:text="0"
+            android:textColor="@color/primary_text"
+            android:id="@+id/noticesTVB"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:translationY="10dp"
+            android:layout_width="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

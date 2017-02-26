@@ -125,7 +125,11 @@
   <ItemGroup>
     <Compile Include="EnrollmentAdapter.cs" />
     <Compile Include="Fragments\EnrollmentItemFragment.cs" />
+    <Compile Include="Fragments\RecievedMessagesFragment.cs" />
     <Compile Include="Fragments\ScheduleFragment.cs" />
+    <Compile Include="Fragments\SentMessagesFragment.cs" />
+    <Compile Include="Fragments\UserInformationFragment.cs" />
+    <Compile Include="Fragments\UserMoreInfomationFragment.cs" />
     <Compile Include="NotificationsRepo.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
@@ -135,11 +139,13 @@
     <Compile Include="Messages.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Enrollment.cs" />
+    <Compile Include="TabAdapter.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
     <Compile Include="MyCourses.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Values.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\drawer_view.axml">
@@ -190,6 +196,10 @@
     <AndroidResource Include="Resources\layout\Enrollment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecievedMessagesF.axml" />
+    <AndroidResource Include="Resources\layout\SentMessagesF.axml" />
+    <AndroidResource Include="Resources\layout\UserInfomationsF.axml" />
+    <AndroidResource Include="Resources\layout\UserMoreInformationF.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -423,6 +433,30 @@
       <Project>{92b15530-aeeb-43c6-8e94-3a7be79fd2b5}</Project>
       <Name>CScore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_it_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_it_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lecturer_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\student_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\FadeIn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\FadeOut.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\buttonBackground.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\textBackground.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

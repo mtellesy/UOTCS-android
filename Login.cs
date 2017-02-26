@@ -90,7 +90,7 @@ namespace UOTCS_android
             }
             else 
             userID = Convert.ToInt32(userIDEditText.Text);
-
+            Values.Use_typeID = userID;
             object IntObject = userID;
             int error = 0;
 

@@ -35,7 +35,7 @@ namespace UOTCS_android
             
          //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
             // Set our view from the "main" layout resource
-            if (use_typeID > 0)
+            if (Values.Use_typeID > 1)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }

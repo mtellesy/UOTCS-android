@@ -30,7 +30,7 @@ namespace UOTCS_android
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
 
-            if (use_typeID > 0)
+            if (Values.Use_typeID > 0)
             {
                 SetTheme(Resource.Style.Theme_Lecturer);
             }
