@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -49,10 +50,10 @@ namespace UOTCS_android
             _courses = courses;
             _activity = activity;
             FillContacts(courses);
-           
-            //var task = Task.Run(async () => { await getExistedCourses(); });
-            //task.Wait();
-            //Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+
+            var task = Task.Run(async () => { await getExistedCourses(); });
+            task.Wait();
+            Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
 
 
         }
@@ -172,7 +173,14 @@ namespace UOTCS_android
             // current course Status
             ActiveButtons CourseStatus = activeButtons.Where(i => i.courseCode.Equals(CoursesItemsList[position].CourseID)).First();
 
-
+            // because the course objects in _courses are references and 
+            // playing with it is going to change the whole structure 
+            // we need to clone _courses
+           
+            var OriCourses =new Course() ;
+            OriCourses = _courses[position].getACopy();
+            
+           
 
             // to know  it's in the droping list 
             bool inDropList = false;
@@ -194,6 +202,7 @@ namespace UOTCS_android
                 startedEnrolled = true;
               
             }
+            
 
             // case Enrollment
             if (!dropOnly)
@@ -204,11 +213,20 @@ namespace UOTCS_android
 
                     //get the current credit to display it to the user
                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
+                    Course c = new Course();
+                  
+                    //########################
 
+
+                    //#####################
+                    List<CScore.BCL.Schedule> s = new List<CScore.BCL.Schedule>();
                     //fetch the current course 
-                    Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+                    // Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+                    c = OriCourses.getACopy();
+                    var testTest = _courses;
                     //fetch it's group ID the eques the selected group in the (group spinner GUI)
-                    List<CScore.BCL.Schedule> s = c.Schedule.Where(i => i.Gro_NameEN.Equals(GroupSpinner.SelectedItem.ToString())).ToList();
+                    String selectedGroup = GroupSpinner.SelectedItem.ToString();
+                    s = c.Schedule.Where(i => i.Gro_NameEN.Equals(selectedGroup)).ToList();
                     c.TemGro_id = s.First().Gro_id;
 
                     //first see the course current status (active or not active)
@@ -696,7 +714,12 @@ namespace UOTCS_android
             return view;
         }
 
-     
+        private CScore.BCL.Course getMyCourse(int position)
+        {
+           Course c = _courses.Where(i => i.Cou_id.Equals(CoursesItemsList[position].CourseID)).First();
+            return c;
+        }
+       
         private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
