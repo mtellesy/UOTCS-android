@@ -103,6 +103,13 @@ namespace UOTCS_android
                 case Resource.Id.nav_major:
                     Intent intent7 = new Intent(this, typeof(Major));
                     this.StartActivity(intent7); break;
+                case Resource.Id.nav_settings:
+                    Intent intent8 = new Intent(this, typeof(Settings));
+                    this.StartActivity(intent8); break;
+                case Resource.Id.nav_logout:
+                    this.logout();
+                    break;
+
             }
         }
 
@@ -149,6 +156,26 @@ namespace UOTCS_android
         {
             Intent intent = new Intent(this, typeof(Profile));
             this.StartActivity(intent);
+        }
+
+        public void logout()
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+           new Android.Support.V7.App.AlertDialog.Builder(this);
+            alert.SetTitle(CScore.FixdStrings.Logout.LogutMessageTitle());
+            alert.SetMessage(CScore.FixdStrings.Logout.LogutMessageContent());
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.YES(), (senderAlert, args) => {
+                Intent intent = new Intent(this, typeof(Login));
+                CScore.DataLayer.DBDestroyer.destroyDB();
+                StartActivity(intent);
+                this.Finish();
+            });
+            alert.SetNegativeButton(CScore.FixdStrings.Buttons.NO(),(senderAlert,args)=> { });
+            
+
+            Dialog x = alert.Create();
+            x.SetCancelable(false);
+            x.Show();
         }
     }
 }

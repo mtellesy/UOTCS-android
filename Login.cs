@@ -117,6 +117,7 @@ namespace UOTCS_android
 
                     string x = CScore.BCL.User.use_type;
                   await this.buildDB(x);
+                     CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.LanguageSetter.getLanguage());
                     this.StartActivity(intent);
 
 

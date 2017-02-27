@@ -233,7 +233,7 @@ namespace UOTCS_android
           new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(title);
             alert.SetMessage(message);
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 Intent intent = new Intent(this, typeof(Profile));
                 this.StartActivity(intent);
             });
@@ -248,7 +248,7 @@ namespace UOTCS_android
            new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
             alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
-            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
                 Intent intent = new Intent(this, typeof(Profile));
                 this.StartActivity(intent);
             });

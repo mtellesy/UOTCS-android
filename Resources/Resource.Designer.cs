@@ -2162,11 +2162,14 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060097
 			public const int FacultyLogo = 2131099799;
 			
-			// aapt resource value: 0x7f0600e1
-			public const int GPATV = 2131099873;
-			
 			// aapt resource value: 0x7f0600e2
-			public const int GPATVB = 2131099874;
+			public const int GPATV = 2131099874;
+			
+			// aapt resource value: 0x7f0600e3
+			public const int GPATVB = 2131099875;
+			
+			// aapt resource value: 0x7f0600d9
+			public const int LanguageSpinner = 2131099865;
 			
 			// aapt resource value: 0x7f0600be
 			public const int MO1 = 2131099838;
@@ -2438,11 +2441,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060060
 			public const int edit_query = 2131099744;
 			
-			// aapt resource value: 0x7f0600da
-			public const int emailTV = 2131099866;
-			
 			// aapt resource value: 0x7f0600db
-			public const int emailTVB = 2131099867;
+			public const int emailTV = 2131099867;
+			
+			// aapt resource value: 0x7f0600dc
+			public const int emailTVB = 2131099868;
 			
 			// aapt resource value: 0x7f06001d
 			public const int end = 2131099677;
@@ -2552,8 +2555,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600a1
 			public const int line3 = 2131099809;
 			
-			// aapt resource value: 0x7f0600d9
-			public const int linearLayout1 = 2131099865;
+			// aapt resource value: 0x7f0600da
+			public const int linearLayout1 = 2131099866;
 			
 			// aapt resource value: 0x7f06000b
 			public const int listMode = 2131099659;
@@ -2588,29 +2591,35 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060093
 			public const int myMajorListView = 2131099795;
 			
-			// aapt resource value: 0x7f0600e8
-			public const int nav_announcements = 2131099880;
+			// aapt resource value: 0x7f0600e9
+			public const int nav_announcements = 2131099881;
 			
-			// aapt resource value: 0x7f0600ed
-			public const int nav_enrollment = 2131099885;
+			// aapt resource value: 0x7f0600ee
+			public const int nav_enrollment = 2131099886;
 			
 			// aapt resource value: 0x7f060096
 			public const int nav_header = 2131099798;
 			
-			// aapt resource value: 0x7f0600ee
-			public const int nav_major = 2131099886;
+			// aapt resource value: 0x7f0600f1
+			public const int nav_logout = 2131099889;
 			
-			// aapt resource value: 0x7f0600e9
-			public const int nav_messages = 2131099881;
+			// aapt resource value: 0x7f0600ef
+			public const int nav_major = 2131099887;
 			
 			// aapt resource value: 0x7f0600ea
-			public const int nav_myCourses = 2131099882;
+			public const int nav_messages = 2131099882;
 			
 			// aapt resource value: 0x7f0600eb
-			public const int nav_schedule = 2131099883;
+			public const int nav_myCourses = 2131099883;
 			
 			// aapt resource value: 0x7f0600ec
-			public const int nav_timetable = 2131099884;
+			public const int nav_schedule = 2131099884;
+			
+			// aapt resource value: 0x7f0600f0
+			public const int nav_settings = 2131099888;
+			
+			// aapt resource value: 0x7f0600ed
+			public const int nav_timetable = 2131099885;
 			
 			// aapt resource value: 0x7f06006e
 			public const int nav_view = 2131099758;
@@ -2627,11 +2636,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06000c
 			public const int normal = 2131099660;
 			
-			// aapt resource value: 0x7f0600e3
-			public const int noticesTV = 2131099875;
-			
 			// aapt resource value: 0x7f0600e4
-			public const int noticesTVB = 2131099876;
+			public const int noticesTV = 2131099876;
+			
+			// aapt resource value: 0x7f0600e5
+			public const int noticesTVB = 2131099877;
 			
 			// aapt resource value: 0x7f060033
 			public const int parallax = 2131099699;
@@ -2639,17 +2648,17 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060049
 			public const int parentPanel = 2131099721;
 			
-			// aapt resource value: 0x7f0600dc
-			public const int phoneTV = 2131099868;
-			
 			// aapt resource value: 0x7f0600dd
-			public const int phoneTVB = 2131099869;
+			public const int phoneTV = 2131099869;
+			
+			// aapt resource value: 0x7f0600de
+			public const int phoneTVB = 2131099870;
 			
 			// aapt resource value: 0x7f060034
 			public const int pin = 2131099700;
 			
-			// aapt resource value: 0x7f0600e7
-			public const int profile_image2 = 2131099879;
+			// aapt resource value: 0x7f0600e8
+			public const int profile_image2 = 2131099880;
 			
 			// aapt resource value: 0x7f060006
 			public const int progress_circular = 2131099654;
@@ -2660,8 +2669,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060057
 			public const int radio = 2131099735;
 			
-			// aapt resource value: 0x7f0600e5
-			public const int relativeLayout1 = 2131099877;
+			// aapt resource value: 0x7f0600e6
+			public const int relativeLayout1 = 2131099878;
 			
 			// aapt resource value: 0x7f060031
 			public const int right = 2131099697;
@@ -2756,8 +2765,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f060032
 			public const int start = 2131099698;
 			
-			// aapt resource value: 0x7f0600de
-			public const int statusTV = 2131099870;
+			// aapt resource value: 0x7f0600df
+			public const int statusTV = 2131099871;
 			
 			// aapt resource value: 0x7f06009a
 			public const int status_bar_latest_event_content = 2131099802;
@@ -2813,8 +2822,8 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600ae
 			public const int textView1 = 2131099822;
 			
-			// aapt resource value: 0x7f0600e6
-			public const int textView2 = 2131099878;
+			// aapt resource value: 0x7f0600e7
+			public const int textView2 = 2131099879;
 			
 			// aapt resource value: 0x7f060078
 			public const int text_input_password_toggle = 2131099768;
@@ -2852,11 +2861,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f06008d
 			public const int txtUsername = 2131099789;
 			
-			// aapt resource value: 0x7f0600df
-			public const int unitsTV = 2131099871;
-			
 			// aapt resource value: 0x7f0600e0
-			public const int unitsTVB = 2131099872;
+			public const int unitsTV = 2131099872;
+			
+			// aapt resource value: 0x7f0600e1
+			public const int unitsTVB = 2131099873;
 			
 			// aapt resource value: 0x7f060009
 			public const int up = 2131099657;
@@ -3122,19 +3131,22 @@ namespace UOTCS_android
 			public const int SentMessagesF = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int support_simple_spinner_dropdown_item = 2130903106;
+			public const int Settings = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int Timetable = 2130903107;
+			public const int support_simple_spinner_dropdown_item = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int UserInfomationsF = 2130903108;
+			public const int Timetable = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int UserMoreInformationF = 2130903109;
+			public const int UserInfomationsF = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int usernameF = 2130903110;
+			public const int UserMoreInformationF = 2130903110;
+			
+			// aapt resource value: 0x7f030047
+			public const int usernameF = 2130903111;
 			
 			static Layout()
 			{

@@ -141,6 +141,7 @@
     <Compile Include="Messages.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Enrollment.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TabAdapter.cs" />
     <Compile Include="Timetable.cs" />
     <Compile Include="Announcements.cs" />
@@ -206,6 +207,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MajorItemView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
