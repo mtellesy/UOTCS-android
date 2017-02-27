@@ -37,9 +37,13 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+          
 
             SetContentView(Resource.Layout.Settings);
+            
+            var SaveSettingsButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            SaveSettingsButton.Visibility = ViewStates.Visible;
+
             var LanguageSpinner = FindViewById<Spinner>(Resource.Id.LanguageSpinner);
 
             List<String> languages = new List<String>();
@@ -48,8 +52,21 @@ namespace UOTCS_android
 
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, languages);
             LanguageSpinner.Adapter = adapter;
-            LanguageSpinner.SetSelection(0);
-            LanguageSpinner.Click += (sender, args) => 
+            // set the spinner selected item to the current language setting
+            var Currentlanuage = CScore.FixdStrings.LanguageSetter.getLanguage();
+            int id =0; // id of Language spinner
+            switch(Currentlanuage)
+            {
+                case CScore.FixdStrings.Language.EN:
+                    id = 1;
+                    break;
+                case CScore.FixdStrings.Language.AR:
+                    id = 0;
+                    break;
+
+            }
+            LanguageSpinner.SetSelection(id);
+            SaveSettingsButton.Click += (sender, args) => 
             {
                 if(LanguageSpinner.SelectedItemPosition == 0)
                      CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);
