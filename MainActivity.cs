@@ -28,12 +28,8 @@ namespace UOTCS_android
         {
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
-           
-            if (Values.Use_typeID>1)
-            {
-                SetTheme(Resource.Style.Theme_Lecturer);
-            }
 
+            Values.changeTheme(this);
             SetContentView(Resource.Layout.Main);
 
 
@@ -82,9 +78,8 @@ namespace UOTCS_android
             switch (itemId)
             {
                 case Resource.Id.nav_announcements:
-                    Intent intent = new Intent(this, typeof(Announcements));
-                    this.StartActivity(intent); break;
-
+                    Values.startAnnouncement(this);
+                    break;
                 case Resource.Id.nav_messages:
                     Intent intent2 = new Intent(this, typeof(Messages));
                     this.StartActivity(intent2); break;
@@ -106,9 +101,13 @@ namespace UOTCS_android
                 case Resource.Id.nav_settings:
                     Intent intent8 = new Intent(this, typeof(Settings));
                     this.StartActivity(intent8); break;
+   	        case Resource.Id.nav_result:
+                    Intent intent9 = new Intent(this, typeof(Result));
+                    this.StartActivity(intent9); break;
                 case Resource.Id.nav_logout:
                     this.logout();
                     break;
+            
 
             }
         }

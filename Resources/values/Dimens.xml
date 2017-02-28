@@ -4,4 +4,10 @@
   <dimen name="card_margin">16dp</dimen>
   <dimen name="fab_margin">16dp</dimen>
   <dimen name="list_item_avatar_size">40dp</dimen>
+  <dimen name="app_bar_height">56dp</dimen>
+  <dimen name="font_size">16sp</dimen>
+  <dimen name="background_padding">16dp</dimen>
+  <dimen name="card_padding">16dp</dimen>
+  <dimen name="card_corner_raduis">2dp</dimen>
+
 </resources>

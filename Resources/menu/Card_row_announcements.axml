@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+       <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"        
+        app:contentPadding="@dimen/card_padding"
+        app:cardCornerRadius="@dimen/card_corner_raduis"
+        >
+      <LinearLayout
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:orientation="vertical"
+       
+      >
+        
+          <TextView
+                android:text="Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/announcement_sender_card"
+                android:layout_gravity="top"
+                android:paddingTop="8dp"
+                android:textColor="?textColor"
+                     android:textSize="24sp"
+                 /><TextView
+                android:text="Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/announcement_time_card"
+                android:layout_gravity="top"
+                android:paddingTop="4dp"
+                android:textColor="@color/secondary_text"
+                     android:textSize="14sp" 
+                 />
+          
+            <TextView
+                android:text="Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/announcement_content_card"
+                android:layout_gravity="top"
+                android:paddingTop="8dp"
+                android:textColor="@color/primary_text"
+                 android:textSize="14sp"
+                
+      />
+      </LinearLayout>
+        
+    </android.support.v7.widget.CardView>

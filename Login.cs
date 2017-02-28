@@ -137,7 +137,7 @@ namespace UOTCS_android
         private async Task buildDB(String userType)
         {
             // DBname 
-            string dbname = "BCLV88.db";
+            string dbname = "BCLV8800.db";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Path.Combine(documentsPath, dbname);
             await CScore.DataLayer.DBuilder.InitializeAsync(path, new SQLitePlatformAndroid(), userType);

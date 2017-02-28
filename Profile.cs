@@ -36,13 +36,13 @@ namespace UOTCS_android
             DrawerLayout mdrawerLayout;
 
 
-            var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
-            task.Wait();
+     //       var task = Task.Run(async () => { await CScore.BCL.Semester.getCurrentSemester(); });
+       //     task.Wait();
 
 
             // start the service for notifications
-            Intent intent = new Intent(this, typeof(Services.StatusChecker));
-            this.StartService(intent);
+      //      Intent intent = new Intent(this, typeof(Services.StatusChecker));
+        //    this.StartService(intent);
 
 
             // var task = Task.Run( async () => { await CScore.BCL.Semester.getCurrentSemester(); });
@@ -91,7 +91,7 @@ namespace UOTCS_android
              userInformation = new UserInformationFragment();
 
              userMoreInformation = new UserMoreInfomationFragment();
-            var trans = SupportFragmentManager.BeginTransaction();
+            var trans =SupportFragmentManager.BeginTransaction();
          //   var trans2 = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.UsernameFragmentContainer, username, "Username");
             trans.Add(Resource.Id.UserInformationFragmentContainer, userInformation, "User_information");

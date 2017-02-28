@@ -43,6 +43,10 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Android.Ui.TextDrawable, Version=1.0.1.1, Culture=en-us, processorArchitecture=MSIL">
+      <HintPath>packages\Android.Ui.TextDrawable.1.0.3\lib\Android.Ui.TextDrawable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -113,6 +117,10 @@
       <HintPath>packages\Xamarin.Android.Support.v7.AppCompat.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Android.Support.v7.CardView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Xamarin.Android.Support.v7.RecyclerView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +131,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementsLecturer.cs" />
+    <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
+    <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
+    <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="MajorAdapter.cs" />
     <Compile Include="Major.cs" />
     <Compile Include="EnrollmentAdapter.cs" />
@@ -132,13 +145,21 @@
     <Compile Include="Fragments\SentMessagesFragment.cs" />
     <Compile Include="Fragments\UserInformationFragment.cs" />
     <Compile Include="Fragments\UserMoreInfomationFragment.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\MessagesConverter.cs" />
+    <Compile Include="MessageDetailsActivity.cs" />
     <Compile Include="NotificationsRepo.cs" />
+    <Compile Include="RecyclerViewAdapter.cs" />
+    <Compile Include="RecyclerViewAdapterAnnouncements.cs" />
     <Compile Include="Resources\Fragments\Username.cs" />
     <Compile Include="Profile.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="SendAnnouncement.cs" />
+    <Compile Include="SendMessage.cs" />
     <Compile Include="Services\StatusChecker.cs" />
     <Compile Include="Enrollment.cs" />
     <Compile Include="Settings.cs" />
@@ -212,6 +233,45 @@
     <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\sendMessage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\List_row_messages.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\borderSet.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\IncludeListViewPagerWithTabs.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MessageDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AnnouncementsLecturer.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\Card_row_announcements.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AnnouncementsF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Results.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ResultF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SendMessageAnnouncementF.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SendAnnouncement.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\drawer_view - Copy.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -219,7 +279,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -233,7 +295,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Dimens.xml" />
+    <AndroidResource Include="Resources\values\Dimens.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml">
@@ -431,9 +495,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_timetablemenu.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\layout\Fragments\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\TrollFace.png" />
   </ItemGroup>
@@ -465,6 +527,9 @@
     <AndroidResource Include="Resources\drawable\textBackground.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\values-ar\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CompanionSystem\CScore\CScore.csproj">
       <Project>{92b15530-aeeb-43c6-8e94-3a7be79fd2b5}</Project>
       <Name>CScore</Name>
@@ -478,7 +543,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
      Other similar extension points exist, see Microsoft.Common.targets.
 		<Target Name="BeforeBuild">
 		</Target>

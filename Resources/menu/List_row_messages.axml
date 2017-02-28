@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+       android:background="@drawable/borderSet"   
+>
+  <LinearLayout
+      android:orientation="vertical"
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="75dp"
+      android:layout_height="75dp"
+      android:id="@+id/linearLayout1"
+      android:padding="15dp">
+    <Refractored.Controls.CircleImageView
+        android:id="@+id/profile_pic_row"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+  </LinearLayout>
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="75dp"
+      android:id="@+id/linearLayout2"
+    
+      android:weightSum="3"
+      android:padding="10dp">
+    <TextView
+        android:text="UserName"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:id="@+id/user_name_row"
+        android:layout_weight="1"
+        android:capitalize="characters"
+        android:singleLine="true" />
+    <TextView
+        android:text="Message title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/message_title_row"
+        android:layout_weight="1"
+        android:singleLine="true" />
+    <TextView
+        android:text="message content."
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/message_conent_row"
+        android:layout_weight="1"
+        android:singleLine="true" />
+  </LinearLayout>
+</LinearLayout>
