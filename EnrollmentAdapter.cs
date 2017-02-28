@@ -67,7 +67,7 @@ namespace UOTCS_android
                 await CScore.BCL.Course.getStudentCourses();
             var coursesWithSchedule = await CScore.BCL.Course.getUserCoursesSchedule();
 
-            if (courses.status.status)
+            if (courses.status.status && courses.statusObject !=null)
             {
                 foreach(CScore.BCL.Course c in courses.statusObject)
                 {
