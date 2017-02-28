@@ -605,7 +605,7 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(_activity);
-            alert.SetTitle("Login Status");
+            alert.SetTitle(CScore.FixdStrings.Enrollment.CourseStatus());
             alert.SetMessage(message);
             //alert.SetPositiveButton("OK", (senderAlert, args) => {
             //    Toast.MakeText(this, "", ToastLength.Short).Show();
