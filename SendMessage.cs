@@ -13,15 +13,19 @@ using Android.Support.Design.Widget;
 using Android.Support.V7;
 using Android.Support.V4.App;
 using UOTCS_android.Fragments;
+using System.Threading.Tasks;
+using System.Threading;
+
 namespace UOTCS_android
 {
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
     public class SendMessage : MainActivity
     {
+
         SendMessageAnnouncementFragment sendMessage;
         internal bool fabShouldBeShown;
         FloatingActionButton fab;
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override  void OnCreate(Bundle savedInstanceState)
         {
             
             base.OnCreate(savedInstanceState);
@@ -30,9 +34,12 @@ namespace UOTCS_android
             SetContentView(Resource.Layout.sendMessage);
 
             findViews();
+          
             handleEvents();
+           
         }
 
+        
 
 
         private void findViews()
@@ -45,14 +52,29 @@ namespace UOTCS_android
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             methodWhereFabIsHidden();
+            var lecturersNames = new String[] { "fuck", "you" };
+
+            var myAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, lecturersNames);
 
             sendMessage = new SendMessageAnnouncementFragment("Message");
 
             var trans = SupportFragmentManager.BeginTransaction();
             trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
             trans.Commit();
-        }
+          
 
+            
+
+
+
+            //var task = Task.Factory.StartNew(async () => { await sendMessage.setTextViewMessages(this);
+            //   // Thread.Sleep(2000);
+            //});
+            
+            //task.Wait();
+
+        
+        }
         internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();
 
         private class OnVisibilityChangedListenerAnonymousInnerClass : FloatingActionButton.OnVisibilityChangedListener
@@ -122,7 +144,7 @@ namespace UOTCS_android
             return Resource.Id.nav_announcements;
         }
 
-
+     
 
     }
 }

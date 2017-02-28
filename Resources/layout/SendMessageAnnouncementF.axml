@@ -34,7 +34,7 @@
             android:id="@+id/textView3"
             android:layout_centerInParent="true" />
       </RelativeLayout>
-      <EditText
+      <AutoCompleteTextView
           android:id="@+id/send_to_message_announcement_fragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
