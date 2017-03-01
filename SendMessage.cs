@@ -63,6 +63,7 @@ namespace UOTCS_android
 
              var sendButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
             sendButton.Visibility = ViewStates.Visible;
+            sendButton.Click += SendButton_Click;
             SetSupportActionBar(toolBar);
 
             SupportActionBar.SetHomeButtonEnabled(true);
@@ -79,6 +80,26 @@ namespace UOTCS_android
             //var trans = SupportFragmentManager.BeginTransaction();
             //trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
             //trans.Commit();
+        }
+
+        private void SendButton_Click(object sender, EventArgs e)
+        {
+            showMessage();
+        }
+
+        private void showMessage()
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+           new Android.Support.V7.App.AlertDialog.Builder(this);
+            alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
+            alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
+            alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+               
+            });
+
+            Dialog x = alert.Create();
+            x.SetCancelable(false);
+            x.Show();
         }
 
         internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();

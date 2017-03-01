@@ -18,9 +18,12 @@
             app:layout_scrollFlags="scroll|enterAlways">
           <ImageButton android:src="@drawable/ic_done"
                        android:id="@+id/sendMessageButton"
-                       android:visibility="gone"
+                       android:visibility="visible"
                        android:background="?attr/colorPrimary"
-                        android:layout_width="10dp"
+                        android:layout_width="30dp"
+                        android:contextClickable="true"
+                       
+                        android:layout_margin="@dimen/fab_margin"
                 android:layout_height="wrap_content"
                        android:layout_gravity="right"/>
        
