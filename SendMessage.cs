@@ -15,14 +15,26 @@ using Android.Support.V4.App;
 using UOTCS_android.Fragments;
 using System.Threading.Tasks;
 using System.Threading;
+using Android.Support.V7.App;
+
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using SupportActionBar = Android.Support.V7.App.ActionBar;
+
+using Android.Support.V4.Widget;
+using SupportFragment = Android.Support.V4.App.Fragment;
+using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
+
+using Android.Support.V4.View;
 
 namespace UOTCS_android
 {
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
+         
     public class SendMessage : MainActivity
     {
 
         SendMessageAnnouncementFragment sendMessage;
+        AutoCompleteTextView SendTo;
         internal bool fabShouldBeShown;
         FloatingActionButton fab;
         protected override  void OnCreate(Bundle savedInstanceState)
@@ -47,34 +59,28 @@ namespace UOTCS_android
             Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
             fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.SetVisibility(ViewStates.Visible);
+            //fab.Visibility = ViewStates.Visible;
+
+             var sendButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
+            sendButton.Visibility = ViewStates.Visible;
             SetSupportActionBar(toolBar);
+
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            methodWhereFabIsHidden();
-            var lecturersNames = new String[] { "fuck", "you" };
+            //SupportActionBar ab = SupportActionBar;
+            //ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            //ab.SetDisplayHomeAsUpEnabled(true);
+            //SendTo = FindViewById<AutoCompleteTextView>(Resource.Id.send_to_message_announcement_fragment);
+            //  methodWhereFabIsHidden();
 
-            var myAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, lecturersNames);
+            //sendMessage = new SendMessageAnnouncementFragment("Message");
 
-            sendMessage = new SendMessageAnnouncementFragment("Message");
-
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
-            trans.Commit();
-          
-
-            
-
-
-
-            //var task = Task.Factory.StartNew(async () => { await sendMessage.setTextViewMessages(this);
-            //   // Thread.Sleep(2000);
-            //});
-            
-            //task.Wait();
-
-        
+            //var trans = SupportFragmentManager.BeginTransaction();
+            //trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
+            //trans.Commit();
         }
+
         internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();
 
         private class OnVisibilityChangedListenerAnonymousInnerClass : FloatingActionButton.OnVisibilityChangedListener

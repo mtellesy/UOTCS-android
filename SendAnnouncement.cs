@@ -40,17 +40,18 @@ namespace UOTCS_android
             Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
             fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.SetVisibility(ViewStates.Visible);
+            fab.Visibility = ViewStates.Visible;
             SetSupportActionBar(toolBar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             methodWhereFabIsHidden();
 
-            sendAnnouncement = new SendMessageAnnouncementFragment("Announcement");
+            //sendAnnouncement = new SendMessageAnnouncementFragment("Announcement");
 
-            var trans = SupportFragmentManager.BeginTransaction();
-            trans.Add(Resource.Id.send_message_fragment_container, sendAnnouncement, "sendAnnouncement");
-            trans.Commit();
+            //var trans = SupportFragmentManager.BeginTransaction();
+            //trans.Add(Resource.Id.send_message_fragment_container, sendAnnouncement, "sendAnnouncement");
+            //trans.Commit();
         }
 
         internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();

@@ -39,6 +39,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:gravity="center_vertical"
+          android:textColor="@color/text"
           android:padding="@dimen/card_padding"
           android:hint=""
           android:background="@android:color/transparent" />
@@ -77,5 +78,6 @@
             android:singleLine="false" />
       </LinearLayout>
     </ScrollView>
+
   </LinearLayout>
 </LinearLayout>
