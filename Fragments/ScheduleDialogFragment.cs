@@ -27,8 +27,9 @@ namespace UOTCS_android.Fragments
 {
     public class ScheduleDialogFragment : DialogFragment
     {
-        UOTCS_android.Fragments.ScheduleFragment scheduleFragment;
+       static UOTCS_android.Fragments.ScheduleFragment scheduleFragment;
         SupportFragmentManager supportFragmentManager;
+        
         
 
         public static ScheduleDialogFragment newInstance()
@@ -38,15 +39,17 @@ namespace UOTCS_android.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-           
+            scheduleFragment = this;
             // Create your fragment here
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.ScheduleDialogFragment, container, false);
-            scheduleFragment = new UOTCS_android.Fragments.ScheduleFragment();
-            initiateFragments();
+            this.Dialog.SetTitle("dd");
+            scheduleFragment = this;
+            // scheduleFragment = new UOTCS_android.Fragments.ScheduleFragment();
+            //  initiateFragments();
             return view;
         }
       
@@ -64,8 +67,12 @@ namespace UOTCS_android.Fragments
         }
         public static void showSchedule()
         {
-            var newFragment = UOTCS_android.Fragments.ScheduleDialogFragment.newInstance();
-            newFragment.Show(this.FragmentManager, "Fragment");
+            FragmentManager fm = scheduleFragment.FragmentManager;
+          var dialogFragment =new ScheduleDialogFragment();
+            dialogFragment.Show(fm, "Sample Fragment");
+           // var fragment = new UOTCS_android.Fragments.ScheduleDialogFragment();
+            //var newFragment = UOTCS_android.Fragments.ScheduleDialogFragment.newInstance();
+           // newFragment.Show(newFragment.FragmentManager, "Fragment");
         }
        
     }
