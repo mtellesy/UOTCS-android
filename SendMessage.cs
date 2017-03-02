@@ -37,14 +37,14 @@ namespace UOTCS_android
     {
         ImageButton sendButton;
         AutoCompleteTextView SendTo;
+        EditText messageSubject;
+        EditText messageContent;
         ArrayAdapter<String> usersNames;
 
         //the list of users in SendTo drop down list
         List<OtherUsers> users;
-        //SendMessageAnnouncementFragment sendMessage;
 
-        //internal bool fabShouldBeShown;
-        FloatingActionButton fab;
+
         protected override  void OnCreate(Bundle savedInstanceState)
         {
             
@@ -70,8 +70,12 @@ namespace UOTCS_android
 
             SendTo = FindViewById<AutoCompleteTextView>(Resource.Id.send_to_message_announcement_fragment);
 
-            SetSupportActionBar(toolBar);
+            messageSubject = FindViewById<EditText>(Resource.Id.title_message_announcement_fragment);
 
+            messageContent = FindViewById<EditText>(Resource.Id.content_message_announcement_fragment);
+
+
+            SetSupportActionBar(toolBar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
@@ -132,7 +136,11 @@ namespace UOTCS_android
                 if (Students.status.status && Students.statusObject != null)
                     foreach (var stu in Students.statusObject)
                     {
-                        studentNames.Add(stu.use_nameEN);
+                        if (stu != null && !isExited(stu.use_id))
+                        {
+                            studentNames.Add(stu.use_nameEN);
+                            users.Add(stu);
+                        }
                     }
                 usersNames = new ArrayAdapter<String>(this, Resource.Layout.dropDownList_style, studentNames);
                 SendTo.Adapter = usersNames;
@@ -149,16 +157,35 @@ namespace UOTCS_android
 
         private async void SendButton_Click(object sender, EventArgs e)
         {
-            CScore.BCL.Messages message = new CScore.BCL.Messages();
-            message.Mes_content = "fff";
-            message.Mes_reciever = users[0].use_id;
-            message.Mes_subject = "FFF";
-
             StatusWithObject<CScore.BCL.Messages> reMessage = new StatusWithObject<CScore.BCL.Messages>();
-         
-               reMessage = await CScore.SAL.MessageS.sendMessage(message);
+            CScore.BCL.Messages message = new CScore.BCL.Messages();
+            message.Mes_content = messageContent.Text;
+            message.Mes_subject = messageSubject.Text;
+
+            int userid = 0;
+            if(SendTo.Text != null || SendTo.Text != "" || SendTo.Text == " ")
+            {
+             userid = getUserIDByName(SendTo.Text);
+                if(userid!=0)
+                {
+                    message.Mes_reciever = userid;
+                    bool status = await CScore.BCL.Messages.sendMessage(message);
+                    if(status)
+                        showMessage(CScore.FixdStrings.Messages.MessageHasSuccessfullySent());
+                    else
+                        showMessage(CScore.FixdStrings.Messages.MessageSendFaild());
+                }
+                else
+                {
+                    showMessage(CScore.FixdStrings.Users.UserDoesNotExist());
+                }
+
+            }
+            else
+            {
+                showMessage(CScore.FixdStrings.Users.PleaseTypeUsername());
+            }
            
-            showMessage(reMessage.status.message);
         }
 
         private void SendTo_Touch(object sender, TouchEventArgs e)
@@ -170,7 +197,7 @@ namespace UOTCS_android
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
+            alert.SetTitle(CScore.FixdStrings.Messages.MessageStatus());
             alert.SetMessage(message);
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
 
@@ -191,6 +218,15 @@ namespace UOTCS_android
             return false;
         }
 
+        private int getUserIDByName(String name)
+        {
+            foreach (var u in users)
+            {
+                if (u.use_nameEN == name)
+                    return u.use_id;
+            }
+            return 0;
+        }
 
         private void SetUpDrawerContent(NavigationView navigationView)
         {
