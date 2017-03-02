@@ -26,28 +26,30 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 
 using Android.Support.V4.View;
 
+using CScore.BCL;
+using static Android.Views.View;
+
 namespace UOTCS_android
 {
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
          
     public class SendMessage : MainActivity
     {
-
-        SendMessageAnnouncementFragment sendMessage;
+        ImageButton sendButton;
         AutoCompleteTextView SendTo;
-        internal bool fabShouldBeShown;
+        ArrayAdapter<String> usersNames;
+        //SendMessageAnnouncementFragment sendMessage;
+
+        //internal bool fabShouldBeShown;
         FloatingActionButton fab;
         protected override  void OnCreate(Bundle savedInstanceState)
         {
             
             base.OnCreate(savedInstanceState);
-
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
-
-            findViews();
-          
-            handleEvents();
+            this.findViews();
+            this.handleEvents();
            
         }
 
@@ -57,36 +59,79 @@ namespace UOTCS_android
         private void findViews()
         {
             Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
-            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.SetVisibility(ViewStates.Visible);
-            //fab.Visibility = ViewStates.Visible;
+            
 
-             var sendButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
+
+            sendButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
             sendButton.Visibility = ViewStates.Visible;
-            sendButton.Click += SendButton_Click;
+
+            SendTo = FindViewById<AutoCompleteTextView>(Resource.Id.send_to_message_announcement_fragment);
+
             SetSupportActionBar(toolBar);
 
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            //SupportActionBar ab = SupportActionBar;
-            //ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
-            //ab.SetDisplayHomeAsUpEnabled(true);
-            //SendTo = FindViewById<AutoCompleteTextView>(Resource.Id.send_to_message_announcement_fragment);
-            //  methodWhereFabIsHidden();
+            fillDropDownList();
 
-            //sendMessage = new SendMessageAnnouncementFragment("Message");
-
-            //var trans = SupportFragmentManager.BeginTransaction();
-            //trans.Add(Resource.Id.send_message_fragment_container, sendMessage, "sendmessage");
-            //trans.Commit();
         }
 
-        private void SendButton_Click(object sender, EventArgs e)
+        private void fillDropDownList()
         {
-            showMessage();
-        }
+            if (CScore.BCL.User.use_type == "S")
+            {
+                List<String> lecturersNames = new List<string>();
+                StatusWithObject<List<Course>> Courses = new StatusWithObject<List<Course>>();
+                var task = Task.Run(async () => { Courses = await CScore.BCL.Course.getUserCoursesSchedule(); });
+                task.Wait();
+                if (Courses.status.status && Courses.statusObject != null)
+                    foreach (var cou in Courses.statusObject)
+                    {
+                        if (cou.Schedule != null)
+                        {
+                            OtherUsers lecturer = new OtherUsers();
+                            var task1 =
+                            Task.Run(async () => { StatusWithObject<OtherUsers> x 
+                                = await OtherUsers.getOtherUser(cou.Schedule[0].Tea_id);
+                                lecturer = x.statusObject;
+                            });
+                            task1.Wait();
+                            lecturersNames.Add(cou.Schedule[0].Tea_id.ToString());
+                            if(lecturer != null)
+                            lecturersNames.Add(lecturer.use_nameEN);
+                        }
+                          
+                    }
 
+                usersNames = new ArrayAdapter<String>(Android.App.Application.Context, Resource.Layout.dropDownList_style, lecturersNames);
+
+
+                SendTo.Adapter = usersNames;
+                SendTo.Touch += SendTo_Touch;
+
+                usersNames.NotifyDataSetChanged();
+
+
+            }
+            // case he was a Lecturer
+            else if (CScore.BCL.User.use_type == "L")
+            {
+                List<String> studentNames = new List<string>();
+                StatusWithObject<List<OtherUsers>> Students = new StatusWithObject<List<OtherUsers>>();
+                var task = Task.Run(async () => { Students = await CScore.BCL.OtherUsers.getLecturerStudents(); });
+                task.Wait();
+                if (Students.status.status && Students.statusObject != null)
+                    foreach (var stu in Students.statusObject)
+                    {
+                        studentNames.Add(stu.use_nameEN);
+                    }
+                usersNames = new ArrayAdapter<String>(this, Resource.Layout.dropDownList_style, studentNames);
+                SendTo.Adapter = usersNames;
+                SendTo.Touch += SendTo_Touch;
+                usersNames.NotifyDataSetChanged();
+
+            }
+        }
         private void showMessage()
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
@@ -102,50 +147,20 @@ namespace UOTCS_android
             x.Show();
         }
 
-        internal FloatingActionButton.OnVisibilityChangedListener fabListener = new OnVisibilityChangedListenerAnonymousInnerClass();
-
-        private class OnVisibilityChangedListenerAnonymousInnerClass : FloatingActionButton.OnVisibilityChangedListener
-        {
-            internal bool fabShouldBeShown;
-            public OnVisibilityChangedListenerAnonymousInnerClass()
-            {
-            }
-
-            public override void OnShown(FloatingActionButton fab)
-            {
-                base.OnShown(fab);
-                if (!fabShouldBeShown)
-                {
-                    fab.Hide();
-                }
-            }
-            public override void OnHidden(FloatingActionButton fab)
-            {
-                base.OnHidden(fab);
-                if (fabShouldBeShown)
-                {
-                    fab.Show();
-                }
-            }
-        }
-        public  void methodWhereFabIsHidden()
-        {
-            fabShouldBeShown = false;
-            fab.Hide(fabListener);
-        }
-        public  void methodWhereFabIsShown()
-        {
-            fabShouldBeShown = true;
-            fab.Show(fabListener);
-        }
-    
-            
-
-
-
         private void handleEvents()
         {
+            sendButton.Click += SendButton_Click;
+        }
 
+        private void SendButton_Click(object sender, EventArgs e)
+        {
+
+            showMessage();
+        }
+
+        private void SendTo_Touch(object sender, TouchEventArgs e)
+        {
+            SendTo.ShowDropDown();
         }
 
         private void SetUpDrawerContent(NavigationView navigationView)
@@ -168,7 +183,7 @@ namespace UOTCS_android
 
         public int getCurrentActvity()
         {
-            return Resource.Id.nav_announcements;
+            return Resource.Id.nav_messages;
         }
 
      
