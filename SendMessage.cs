@@ -38,6 +38,9 @@ namespace UOTCS_android
         ImageButton sendButton;
         AutoCompleteTextView SendTo;
         ArrayAdapter<String> usersNames;
+
+        //the list of users in SendTo drop down list
+        List<OtherUsers> users;
         //SendMessageAnnouncementFragment sendMessage;
 
         //internal bool fabShouldBeShown;
@@ -78,9 +81,11 @@ namespace UOTCS_android
 
         private void fillDropDownList()
         {
+            users = new List<OtherUsers>();
             if (CScore.BCL.User.use_type == "S")
             {
                 List<String> lecturersNames = new List<string>();
+                
                 StatusWithObject<List<Course>> Courses = new StatusWithObject<List<Course>>();
                 var task = Task.Run(async () => { Courses = await CScore.BCL.Course.getUserCoursesSchedule(); });
                 task.Wait();
@@ -96,9 +101,13 @@ namespace UOTCS_android
                                 lecturer = x.statusObject;
                             });
                             task1.Wait();
-                            lecturersNames.Add(cou.Schedule[0].Tea_id.ToString());
-                            if(lecturer != null)
-                            lecturersNames.Add(lecturer.use_nameEN);
+                            //make sure that the lecturer does not exist in the list
+                            if(lecturer != null && !isExited(lecturer.use_id))
+                            {
+                                users.Add(lecturer);
+                               lecturersNames.Add(lecturer.use_nameEN);
+                            }
+                           
                         }
                           
                     }
@@ -132,14 +141,39 @@ namespace UOTCS_android
 
             }
         }
-        private void showMessage()
+      
+        private void handleEvents()
+        {
+            sendButton.Click += SendButton_Click;
+        }
+
+        private async void SendButton_Click(object sender, EventArgs e)
+        {
+            CScore.BCL.Messages message = new CScore.BCL.Messages();
+            message.Mes_content = "fff";
+            message.Mes_reciever = users[0].use_id;
+            message.Mes_subject = "FFF";
+
+            StatusWithObject<CScore.BCL.Messages> reMessage = new StatusWithObject<CScore.BCL.Messages>();
+         
+               reMessage = await CScore.SAL.MessageS.sendMessage(message);
+           
+            showMessage(reMessage.status.message);
+        }
+
+        private void SendTo_Touch(object sender, TouchEventArgs e)
+        {
+            SendTo.ShowDropDown();
+        }
+
+        private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
-            alert.SetMessage(CScore.FixdStrings.Enrollment.enrollmentNotAvailable());
+            alert.SetMessage(message);
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-               
+
             });
 
             Dialog x = alert.Create();
@@ -147,21 +181,16 @@ namespace UOTCS_android
             x.Show();
         }
 
-        private void handleEvents()
+        private bool isExited(int id)
         {
-            sendButton.Click += SendButton_Click;
+            foreach(var u in users)
+            {
+                if (u.use_id == id)
+                    return true;
+            }
+            return false;
         }
 
-        private void SendButton_Click(object sender, EventArgs e)
-        {
-
-            showMessage();
-        }
-
-        private void SendTo_Touch(object sender, TouchEventArgs e)
-        {
-            SendTo.ShowDropDown();
-        }
 
         private void SetUpDrawerContent(NavigationView navigationView)
         {
@@ -185,6 +214,7 @@ namespace UOTCS_android
         {
             return Resource.Id.nav_messages;
         }
+
 
      
 
