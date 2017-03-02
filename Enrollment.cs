@@ -49,10 +49,13 @@ namespace UOTCS_android
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Enrollment);
 
-            
 
-            var enrollButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            // FindViewById<FloatingActionButton>(Resource.Id.fab);
+            var enrollButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
+            var scheduleButton= FindViewById<FloatingActionButton>(Resource.Id.fab);
+            scheduleButton.Visibility = ViewStates.Visible;
             enrollButton.Visibility = ViewStates.Visible;
+            
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
@@ -73,7 +76,7 @@ namespace UOTCS_android
                         var contactsListView = FindViewById<ListView>(Resource.Id.myEnrollmentListView);
                         contactsListView.Adapter = enrollmentAdapter;
 
-                    enrollButton.Click += async (sender, e) => {
+                        enrollButton.Click += async (sender, e) => {
 
                         // Droped Coures: message
                         String DropMessage = CScore.FixdStrings.Enrollment.dropedCourses();
@@ -108,6 +111,9 @@ namespace UOTCS_android
 
                     };
 
+                    scheduleButton.Click += async (sender, e) => {
+                      UOTCS_android.Fragments.ScheduleDialogFragment.showSchedule();
+                    };
 
                 }
                 else if (await CScore.BCL.Enrollment.isDisEnrollmentEnabled())

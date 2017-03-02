@@ -37,7 +37,7 @@ namespace UOTCS_android
             set
             {
 
-                if (Values.use_typeID > 1)
+                if(Values.use_typeID > 1)
                 {
                     use_color = new Color(0, 150, 136);
                 }
@@ -131,6 +131,12 @@ namespace UOTCS_android
                 case Resource.Id.nav_result:
                     intent = new Intent(myActivity, typeof(Result));
                     myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_settings:
+                    intent = new Intent(myActivity, typeof(Settings));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_logout:
+                    logout(myActivity);
+                    break;
             }
         }
         public static void switchActivitiesLecturer(Context myActivity, int itemId)
@@ -155,6 +161,12 @@ namespace UOTCS_android
                 case Resource.Id.nav_timetable:
                     intent = new Intent(myActivity, typeof(Timetable));
                     myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_settings:
+                    intent = new Intent(myActivity, typeof(Settings));
+                    myActivity.StartActivity(intent); break;
+                case Resource.Id.nav_logout:
+                    logout(myActivity);
+                    break;
             }
         }
         public static void changeNavigationItems(NavigationView nav_view, Context myActivity)
@@ -206,6 +218,24 @@ namespace UOTCS_android
                 drawerLayout.CloseDrawers();
             };
         }
+        public static void logout(Context myActivity)
+        {
+            Android.Support.V7.App.AlertDialog.Builder alert =
+           new Android.Support.V7.App.AlertDialog.Builder(myActivity);
+            alert.SetTitle(CScore.FixdStrings.Logout.LogutMessageTitle());
+            alert.SetMessage(CScore.FixdStrings.Logout.LogutMessageContent());
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.YES(), (senderAlert, args) => {
+                Intent intent = new Intent(myActivity, typeof(Login));
+                CScore.DataLayer.DBDestroyer.destroyDB();
+                myActivity.StartActivity(intent);
+              
+            });
+            alert.SetNegativeButton(CScore.FixdStrings.Buttons.NO(), (senderAlert, args) => { });
 
+
+            Dialog x = alert.Create();
+            x.SetCancelable(false);
+            x.Show();
+        }
     }
 }

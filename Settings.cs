@@ -24,6 +24,7 @@ using Java.Util;
 
 namespace UOTCS_android
 {
+    
     [Activity(Label = "Settings", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = typeof(Profile))]
     public class Settings : MainActivity
     {
@@ -38,8 +39,8 @@ namespace UOTCS_android
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-          
 
+            this.Title = CScore.FixdStrings.Settings.SettingsLable();
             SetContentView(Resource.Layout.Settings);
             
             var SaveSettingsButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
@@ -71,8 +72,7 @@ namespace UOTCS_android
             {
                 if(LanguageSpinner.SelectedItemPosition == 0)
                 {
-                    CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);
-
+                    CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);            
                     Configuration configuration = this.Resources.Configuration;
                     configuration.SetLayoutDirection(new Locale("ar"));//= LayoutDirection.Locale;
                     this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
@@ -84,7 +84,8 @@ namespace UOTCS_android
                     configuration.SetLayoutDirection(Locale.English);//= LayoutDirection.Locale;
                     this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
                 }
-
+                this.showMessage();
+                
             };
 
             findViews();
@@ -118,17 +119,20 @@ namespace UOTCS_android
             return Resource.Id.nav_timetable;
         }
 
-        private void showMessage(String message)
+        private void showMessage()
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
-            alert.SetTitle(CScore.FixdStrings.Major.MajorStatus());
-            alert.SetMessage(message);
-            //alert.SetPositiveButton("OK", (senderAlert, args) => {
-            //    Toast.MakeText(this, "", ToastLength.Short).Show();
-            //});
+            alert.SetTitle(CScore.FixdStrings.Settings.SettingsStatus());
+            alert.SetMessage(CScore.FixdStrings.Settings.SettingsSaved());
+            alert.SetPositiveButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
+            Intent intent = new Intent(this, typeof(Profile));
+            StartActivity(intent);
+            this.Finish();
+            });
 
             Dialog x = alert.Create();
+            x.OnWindowFocusChanged(true);
             x.Show();
         }
 

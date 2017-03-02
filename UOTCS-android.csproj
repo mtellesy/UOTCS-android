@@ -134,6 +134,7 @@
     <Compile Include="AnnouncementsLecturer.cs" />
     <Compile Include="Fragments\RecievedAnnouncementsFragment.cs" />
     <Compile Include="Fragments\ResultFragment.cs" />
+    <Compile Include="Fragments\ScheduleDialogFragment.cs" />
     <Compile Include="Fragments\SendMessageAnnouncementFragment.cs" />
     <Compile Include="Fragments\SentAnnouncementsFragment.cs" />
     <Compile Include="MajorAdapter.cs" />
@@ -276,6 +277,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml" />
+    <AndroidResource Include="Resources\layout\ScheduleDialogFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
