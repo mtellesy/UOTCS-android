@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
+
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -16,15 +14,6 @@ using UOTCS_android.Fragments;
 using System.Threading.Tasks;
 using System.Threading;
 using Android.Support.V7.App;
-
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using SupportActionBar = Android.Support.V7.App.ActionBar;
-
-using Android.Support.V4.Widget;
-using SupportFragment = Android.Support.V4.App.Fragment;
-using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
-
-using Android.Support.V4.View;
 
 using CScore.BCL;
 using static Android.Views.View;
