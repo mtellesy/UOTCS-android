@@ -116,19 +116,19 @@ namespace UOTCS_android
                     newAnnouncement.Cou_id = SendTo.Text;
                     ReAnnouncement = await CScore.BCL.Announcements.sendAnnouncement(newAnnouncement);
                     if (ReAnnouncement.status.status)
-                        showMessage(CScore.FixdStrings.Messages.MessageHasSuccessfullySent());
+                        showMessage(CScore.FixdStrings.Announcements.AnnouncementHasSuccessfullySent());
                     else
-                        showMessage(CScore.FixdStrings.Messages.MessageSendFaild());
+                        showMessage(CScore.FixdStrings.Announcements.AnnouncementSendFaild());
                 }
                 else
                 {
-                    showMessage(CScore.FixdStrings.Users.UserDoesNotExist());
+                    showMessage(CScore.FixdStrings.Courses.CourseDoesNotExist());
                 }
 
             }
             else
             {
-                showMessage(CScore.FixdStrings.Users.PleaseTypeUsername());
+                showMessage(CScore.FixdStrings.Courses.PleaseTypeCourseCode());
             }
 
         }
