@@ -72,7 +72,7 @@ namespace UOTCS_android
 
         }
 
-        private void fillDropDownList()
+        private async void fillDropDownList()
         {
             users = new List<OtherUsers>();
             if (CScore.BCL.User.use_type == "S")
@@ -120,7 +120,10 @@ namespace UOTCS_android
             {
                 List<String> studentNames = new List<string>();
                 StatusWithObject<List<OtherUsers>> Students = new StatusWithObject<List<OtherUsers>>();
-                var task = Task.Run(async () => { Students = await CScore.BCL.OtherUsers.getLecturerStudents(); });
+                var task = Task.Run(async () =>
+                {
+                    Students = await CScore.BCL.OtherUsers.getLecturerStudents();
+                });
                 task.Wait();
                 if (Students.status.status && Students.statusObject != null)
                     foreach (var stu in Students.statusObject)
