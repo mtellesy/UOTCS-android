@@ -14,21 +14,35 @@ using UOTCS_android.Fragments;
 using System.Threading.Tasks;
 using System.Threading;
 using Android.Support.V7.App;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using SupportActionBar = Android.Support.V7.App.ActionBar;
+
+using Android.Support.V4.Widget;
+using SupportFragment = Android.Support.V4.App.Fragment;
+using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 
 using CScore.BCL;
 using static Android.Views.View;
+using Refractored.Controls;
+using Android.Content;
 
 namespace UOTCS_android
 {
     [Activity(Label = "Send Message", Icon = "@drawable/icon", Theme = "@style/Theme.Student", ParentActivity = (typeof(Messages)))]
          
-    public class SendMessage : MainActivity
+    public class SendMessage : AppCompatActivity
     {
         ImageButton sendButton;
         AutoCompleteTextView SendTo;
         EditText messageSubject;
         EditText messageContent;
         ArrayAdapter<String> usersNames;
+        private SupportToolbar toolBar;
+        private SupportActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
 
         //the list of users in SendTo drop down list
         List<OtherUsers> users;
@@ -41,17 +55,26 @@ namespace UOTCS_android
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
             this.findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
             this.handleEvents();
-           
+
         }
 
-        
+
 
 
         private void findViews()
         {
-            Android.Support.V7.Widget.Toolbar toolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolBar);
-            
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+
 
 
             sendButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
@@ -63,13 +86,72 @@ namespace UOTCS_android
 
             messageContent = FindViewById<EditText>(Resource.Id.content_message_announcement_fragment);
 
-
-            SetSupportActionBar(toolBar);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
+            
             fillDropDownList();
+            
+        }
 
+        private void setUpActionBar(SupportActionBar actionBar)
+        {
+            actionBar.SetHomeButtonEnabled(true);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
+            }
+            navigationView.SetCheckedItem(Resource.Id.nav_messages);
+        }
+        private void SetUpDrawerContent(NavigationView navigationView)
+        {
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
+        }
+        private void handleEvents()
+        {
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
+            sendButton.Click += SendButton_Click;
+
+        }
+        public int getCurrentActvity()
+        {
+            return Resource.Id.nav_messages;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            base.OnOptionsItemSelected(item);
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                NavUtils.NavigateUpFromSameTask(this);
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
+
+        }
+        public override void OnBackPressed()
+        {
+            MoveTaskToBack(true);
+        }
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            if (e.MenuItem.ItemId != getCurrentActvity())
+            {
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
+
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
         }
 
         private async void fillDropDownList()
@@ -142,10 +224,7 @@ namespace UOTCS_android
             }
         }
       
-        private void handleEvents()
-        {
-            sendButton.Click += SendButton_Click;
-        }
+       
 
         private async void SendButton_Click(object sender, EventArgs e)
         {
@@ -220,29 +299,9 @@ namespace UOTCS_android
             return 0;
         }
 
-        private void SetUpDrawerContent(NavigationView navigationView)
-        {
-            base.SetUpDrawerContent(navigationView);
-        }
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            base.OnOptionsItemSelected(item);
-          if(item.ItemId == Android.Resource.Id.Home)
-           {
-                NavUtils.NavigateUpFromSameTask(this);
-                return true;
-            }
 
-            return base.OnOptionsItemSelected(item);
-
-        }
-
-        public int getCurrentActvity()
-        {
-            return Resource.Id.nav_messages;
-        }
-
+       
 
      
 
