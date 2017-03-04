@@ -114,7 +114,7 @@ namespace UOTCS_android
                 if (LoginStatus.status)
                 {
                    
-         //               StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
+                        StatusWithObject<String> aut = await CScore.SAL.AuthenticatorS.authenticate();
 
                           string x = CScore.BCL.User.use_type;
                           await this.buildDB(x);
@@ -140,7 +140,7 @@ namespace UOTCS_android
         private async Task buildDB(String userType)
         {
             // DBname 
-            string dbname = "BCLV8800.db";
+            string dbname = "BCLV88001.db";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Path.Combine(documentsPath, dbname);
             await CScore.DataLayer.DBuilder.InitializeAsync(path, new SQLitePlatformAndroid(), userType);

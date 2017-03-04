@@ -51,14 +51,15 @@ namespace UOTCS_android
 
             base.OnCreate(savedInstanceState);
             Values.changeTheme(this);
-            SetContentView(Resource.Layout.SendAnnouncement);
+            SetContentView(Resource.Layout.sendMessage);
             this.findViews();
+            this.handleEvents();
 
-            findViews();
+           
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
-            this.handleEvents();
+           
         }
 
 
