@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
+                        android:gravity="top|center"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
@@ -134,25 +134,25 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
+                        android:gravity="top|center"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA3"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
-                        android:layout_gravity="center"
+                        android:gravity="top|center_horizontal"
+                        android:layout_gravity="top"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
                         android:id="@+id/SA4"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
+                        android:gravity="top|center_horizontal"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -161,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
+                        android:gravity="top|center_horizontal"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -170,7 +170,7 @@
                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="center"
+                        android:gravity="top|center_horizontal"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>

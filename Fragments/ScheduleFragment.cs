@@ -74,7 +74,7 @@ namespace UOTCS_android.Fragments
             // Use this to return your custom view for this Fragment
            
             View view = inflater.Inflate(Resource.Layout.ScheduleFragment, container, false);
-          view =  this.getViews(view);
+            view =  this.getViews(view);
             return view;
 
            // return base.OnCreateView(inflater, container, savedInstanceState);

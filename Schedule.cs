@@ -46,25 +46,13 @@ namespace UOTCS_android
 
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Schedule);
-
             findViews();
+            initiateFragments();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
             setUpNavigationView(navigationView);
 
-            initiateFragments();
-            handleEvents();
-
-
-
-            //add Schedule Fragment
-           
-         
             
-            
-
-
-            findViews();
             handleEvents();
         }
 
