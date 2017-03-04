@@ -7,56 +7,51 @@
     android:fitsSystemWindows="true">
     <include
         layout="@layout/includeListViewpager" />
-  <ScrollView
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_marginTop="?attr/actionBarSize"
-      android:minWidth="25px"
-      android:minHeight="25px"
-      android:padding="@dimen/background_padding">
-    <LinearLayout
+    <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         android:minWidth="25px"
         android:minHeight="25px"
-            >
-      <android.support.v7.widget.CardView
-            android:id="@+id/UsernameFragmentContainer"
+        android:padding="@dimen/background_padding">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="175dp"       
-            android:layout_margin="@dimen/card_margin"
-            app:contentPadding="@dimen/card_padding"
-            app:cardCornerRadius="@dimen/card_corner_raduis"
-            />
-
-      <android.support.v7.widget.CardView
-          android:id="@+id/UserInformationFragmentContainer"
+            android:layout_height="match_parent"
             android:minWidth="25px"
-            android:minHeight="25px"            
-            android:layout_margin="@dimen/card_margin"    
-            android:layout_width="match_parent"
-            android:layout_height="175dp"    
-            app:contentPadding="@dimen/card_padding"
-            app:cardCornerRadius="@dimen/card_corner_raduis"
-             />
-      <Button
-          android:text="STATUS"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"          
-          android:gravity="center"
-          android:id="@+id/status_btn"
-          android:layout_gravity="center" />
-    </LinearLayout>
-  </ScrollView>
+            android:minHeight="25px">
+            <android.support.v7.widget.CardView
+                android:id="@+id/UsernameFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_margin="@dimen/card_margin"
+                app:contentPadding="@dimen/card_padding"
+                app:cardCornerRadius="@dimen/card_corner_raduis" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/UserInformationFragmentContainer"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_margin="@dimen/card_margin"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                app:contentPadding="@dimen/card_padding"
+                app:cardCornerRadius="@dimen/card_corner_raduis" />
+            <Button
+                android:text="STATUS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/status_btn"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </ScrollView>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
-        android:layout_width="225dp"
+        android:layout_width="@dimen/nav_width"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:itemTextColor="?textColor"
         app:menu="@menu/drawer_view" />
 </android.support.v4.widget.DrawerLayout>

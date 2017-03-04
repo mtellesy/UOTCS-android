@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace UOTCS_android.Fragments
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
             recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(values));
 
-           
+
         }
 
 
@@ -64,6 +65,6 @@ namespace UOTCS_android.Fragments
             }
             return results;
         }
-   
+
     }
 }

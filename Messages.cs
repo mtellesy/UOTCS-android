@@ -55,7 +55,7 @@ namespace UOTCS_android
              ab = SupportActionBar;
             //
 
-            ab.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            ab.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
   //          SupportActionBar.SetHomeButtonEnabled(true);
 
             ab.SetDisplayHomeAsUpEnabled(true);
