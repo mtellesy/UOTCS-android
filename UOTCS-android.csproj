@@ -275,6 +275,7 @@
     <AndroidResource Include="Resources\layout\sendToolBar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\menu\drawer_view_lecturer.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
