@@ -32,7 +32,7 @@ namespace UOTCS_android.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            recyclerView = inflater.Inflate(Resource.Layout.RecievedMessagesF, container, false) as RecyclerView;
+            recyclerView = inflater.Inflate(Resource.Layout.AnnouncementsF, container, false) as RecyclerView;
 
 
 

@@ -18,52 +18,49 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 
 using CScore.BCL;
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
     [Activity(Label = "Schedule",Icon = "@drawable/icon", Theme = "@style/Theme.Student")]
-    public class Schedule : MainActivity
+    public class Schedule : AppCompatActivity
     {
+        private SupportToolbar toolBar;
+        private SupportActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
+        UOTCS_android.Fragments.ScheduleFragment myFragment;
+        StatusWithObject<List<CScore.BCL.Course>> returndValue;
+        List<CScore.BCL.Course> userCourses;
 
         protected override async void OnCreate(Bundle bundle)
         {
-            DrawerLayout mdrawerLayout;
+            //dont forget to update the current term
+            // CScore.BCL.Semester.current_term = 3;
+
+            //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
+            // Set our view from the "main" layout resource
             base.OnCreate(bundle);
 
-            //dont forget to update the current term
-           // CScore.BCL.Semester.current_term = 3;
-            
-         //   RequestWindowFeature(Window.FEATURE_NO_TITLE);
-            // Set our view from the "main" layout resource
-            if (Values.Use_typeID > 1)
-            {
-                SetTheme(Resource.Style.Theme_Lecturer);
-            }
-
-            
-           
+            Values.changeTheme(this);
             SetContentView(Resource.Layout.Schedule);
 
-            //add Schedule Fragment
-            UOTCS_android.Fragments.ScheduleFragment myFragment = new UOTCS_android.Fragments.ScheduleFragment();
-            var tran = SupportFragmentManager.BeginTransaction();
-            tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
-            tran.Commit();
+            findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
 
-            List<CScore.BCL.Course> userCourses = new List<CScore.BCL.Course>();
+            initiateFragments();
+            handleEvents();
+
+
+
+            //add Schedule Fragment
+           
          
-            StatusWithObject<List<CScore.BCL.Course>> returndValue = await CScore.BCL.Course.getUserCoursesSchedule();
-            if(returndValue.status.status)
-            {
-                userCourses = returndValue.statusObject;
-                if(userCourses != null)
-                foreach(CScore.BCL.Course c in userCourses)
-                {
-                    if(c != null)
-                    myFragment.setCourseDayAndTime(c);
-                }
-                
-            }
+            
             
 
 
@@ -73,32 +70,103 @@ namespace UOTCS_android
 
 
 
-        private void findViews()
+        private async void findViews()
         {
-            base.findViews();
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
+            myFragment = new UOTCS_android.Fragments.ScheduleFragment();
+            userCourses = new List<CScore.BCL.Course>();
+            returndValue = await CScore.BCL.Course.getUserCoursesSchedule();
+            if (returndValue.status.status)
+            {
+                userCourses = returndValue.statusObject;
+                if (userCourses != null)
+                    foreach (CScore.BCL.Course c in userCourses)
+                    {
+                        if (c != null)
+                            myFragment.setCourseDayAndTime(c);
+                    }
+
+            }
         }
 
+
+        private void initiateFragments()
+        {
+            var tran = SupportFragmentManager.BeginTransaction();
+            tran.Add(Resource.Id.ScheduleFrame, myFragment, "newFragment");
+            tran.Commit();
+        }
+        private void setUpActionBar(SupportActionBar actionBar)
+        {
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
+            }
+            navigationView.SetCheckedItem(Resource.Id.nav_schedule);
+        }
         private void handleEvents()
         {
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
 
         }
-
-        private  void SetUpDrawerContent(NavigationView navigationView)
+        private void SetUpDrawerContent(NavigationView navigationView)
         {
-            base.SetUpDrawerContent(navigationView);
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            bool x =base.OnOptionsItemSelected(item);
-            return x;
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    return true;
+
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
 
         public  int getCurrentActvity()
         {
             return Resource.Id.nav_schedule;
         }
+             
+        public override void OnBackPressed()
+        {
+            MoveTaskToBack(true);
+        }
 
 
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            if (e.MenuItem.ItemId != getCurrentActvity())
+            {
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
+
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
+        }
     }
 }

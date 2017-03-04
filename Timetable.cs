@@ -64,9 +64,6 @@ namespace UOTCS_android
         private void initiateFragments()
         {
 
-            var trans = SupportFragmentManager.BeginTransaction();
-
-            trans.Commit();
         }
 
         private void setUpActionBar(SupportActionBar actionBar)

@@ -19,13 +19,20 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
-
+using Refractored.Controls;
 
 namespace UOTCS_android
 {
     [Activity(Label = "Major",Icon = "@drawable/icon", Theme = "@style/Theme.Student",ParentActivity = typeof(Profile))]
-    public class Major : MainActivity
+    public class Major : AppCompatActivity
     {
+        private SupportToolbar toolBar;
+        private SupportActionBar actionbar;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View view;
+        private CircleImageView profileImage;
+
         public static TextView total_credit;
         
         protected override void OnPause()
@@ -79,9 +86,10 @@ namespace UOTCS_android
             }
              catch(Exception ex) {   showMessage(CScore.SAL.FixedResponses.getResponse(0)); }
 
-
-
             findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
             handleEvents();
         }
 
@@ -89,29 +97,79 @@ namespace UOTCS_android
 
         private void findViews()
         {
-            base.findViews();
+            toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            actionbar = SupportActionBar;
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            view = navigationView.GetHeaderView(0);
+            profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
         }
 
+      
+        private void setUpActionBar(SupportActionBar actionBar)
+        {
+            actionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            actionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+        private void setUpNavigationView(NavigationView navigationView)
+        {
+            Values.changeNavigationItems(navigationView, this);
+            if (navigationView != null)
+            {
+                SetUpDrawerContent(navigationView);
+            }
+            navigationView.SetCheckedItem(Resource.Id.nav_major);
+        }
+        private void SetUpDrawerContent(NavigationView navigationView)
+        {
+            Values.handleSetUpDrawerContent(navigationView, drawerLayout);
+        }
         private void handleEvents()
         {
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            profileImage.Click += ProfileImage_Click;
 
         }
-
-        private  void SetUpDrawerContent(NavigationView navigationView)
+        public int getCurrentActvity()
         {
-            base.SetUpDrawerContent(navigationView);
+            return Resource.Id.nav_major;
         }
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            bool x =base.OnOptionsItemSelected(item);
-            return x;
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    return true;
+
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
-        public  int getCurrentActvity()
+        public override void OnBackPressed()
         {
-            return Resource.Id.nav_timetable;
+            MoveTaskToBack(true);
         }
 
+        private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            if (e.MenuItem.ItemId != getCurrentActvity())
+            {
+                Values.handleSwitchActivities(this, e.MenuItem.ItemId);
+            }
+
+        }
+        private void ProfileImage_Click(object sender, EventArgs e)
+        {
+            drawerLayout.CloseDrawers();
+            Intent intent = new Intent(this, typeof(Profile));
+            this.StartActivity(intent);
+            Finish();
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void showMessage(String message)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
