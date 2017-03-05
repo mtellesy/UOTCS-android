@@ -2611,11 +2611,11 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f0600bc
 			public const int end_padder = 2131099836;
 			
-			// aapt resource value: 0x7f060087
-			public const int enrollButton = 2131099783;
-			
 			// aapt resource value: 0x7f060089
-			public const int enrollCourseText = 2131099785;
+			public const int enrollButton = 2131099785;
+			
+			// aapt resource value: 0x7f060087
+			public const int enrollCourseText = 2131099783;
 			
 			// aapt resource value: 0x7f060088
 			public const int enrollGroupsList = 2131099784;

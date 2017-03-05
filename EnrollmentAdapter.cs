@@ -163,7 +163,7 @@ namespace UOTCS_android
                 Resource.Layout.EnrollmentItemView, parent, false);
             var CourseCode = view.FindViewById<TextView>(Resource.Id.enrollCourseText);
             var GroupSpinner = view.FindViewById<Spinner>(Resource.Id.enrollGroupsList);
-            var EnrollButton = view.FindViewById<Button>(Resource.Id.enrollButton);
+            var EnrollButton = view.FindViewById<ImageButton>(Resource.Id.enrollButton);
             CourseCode.Text = CoursesItemsList[position].CourseID;
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
@@ -194,8 +194,9 @@ namespace UOTCS_android
             if (CourseStatus.status)
             {
                 //later change the style
-                EnrollButton.SetTextColor(Android.Graphics.Color.Red);
-           
+                //EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
+
                 GroupSpinner.Enabled = false;
                 GroupSpinner.SetSelection(CourseStatus.groupID-1);
                 inEnrollList = true;
@@ -258,7 +259,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                     GroupSpinner.Enabled = true;
                                     CourseStatus.status = false;
 
@@ -278,7 +280,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                     GroupSpinner.Enabled = true;
                                     CourseStatus.status = false;
                                 }
@@ -317,7 +320,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                     GroupSpinner.Enabled = true;
                                     CourseStatus.status = false;
                                 }
@@ -335,7 +339,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                     GroupSpinner.Enabled = true;
                                     CourseStatus.status = false;
                                 }
@@ -360,7 +365,8 @@ namespace UOTCS_android
                                 this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                 Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                 //change it later 
-                                EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                 GroupSpinner.Enabled = true;
                                 CourseStatus.status = false;
                             }
@@ -379,7 +385,8 @@ namespace UOTCS_android
                                 this.showMessage(CScore.FixdStrings.Enrollment.disenrollmentSucceededMessage());
                                 Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                 //change it later 
-                                EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                // EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                                EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                                 GroupSpinner.Enabled = true;
                                 CourseStatus.status = false;
                                 
@@ -418,7 +425,8 @@ namespace UOTCS_android
                                         this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                         //change it later 
-                                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                       // EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                         EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                         GroupSpinner.Enabled = false;
                                         CourseStatus.status = true;
 
@@ -440,7 +448,8 @@ namespace UOTCS_android
                                         this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                         //change it later 
-                                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        //EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                         GroupSpinner.Enabled = false;
                                         CourseStatus.status = true;
                                     }
@@ -474,7 +483,8 @@ namespace UOTCS_android
                                         this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                         //change it later 
-                                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        //EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                         GroupSpinner.Enabled = false;
                                         CourseStatus.status = true;
 
@@ -490,7 +500,8 @@ namespace UOTCS_android
                                         this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                         //change it later 
-                                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        // EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                        EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                         GroupSpinner.Enabled = false;
                                         CourseStatus.status = true;
                                     }
@@ -520,7 +531,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                     GroupSpinner.Enabled = false;
                                     CourseStatus.status = true;
                                 }
@@ -536,7 +548,8 @@ namespace UOTCS_android
                                     this.showMessage(CScore.FixdStrings.Enrollment.enrollmentSucceededMessage());
                                     Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
                                     //change it later 
-                                    EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                    // EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                                    EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                                     GroupSpinner.Enabled = false;
                                     CourseStatus.status = true;
 
@@ -575,12 +588,14 @@ namespace UOTCS_android
                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
 
                         // later change the style
-                        EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                        //EnrollButton.SetTextColor(Android.Graphics.Color.Black);
+                        EnrollButton.SetImageResource(Resource.Drawable.ic_content_add_circle);
                     }
                     else
                     {
                         CScore.BCL.Enrollment.removeFromDropList(c);
-                        EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                        //EnrollButton.SetTextColor(Android.Graphics.Color.Red);
+                        EnrollButton.SetImageResource(Resource.Drawable.ic_content_remove_circle);
                         int index = activeButtons.IndexOf(activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).First());
                         activeButtons[index].status = true;
                         Enrollment.total_credit.Text = CScore.BCL.Enrollment.getCreditSum().ToString();
