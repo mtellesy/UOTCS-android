@@ -20,6 +20,8 @@ using UOTCS_android.Fragments;
 using Android.Graphics;
 using Fragment = Android.Support.V4.App.Fragment;
 using Refractored.Controls;
+using Android.Content.Res;
+using Java.Util;
 
 namespace UOTCS_android
 {
@@ -69,6 +71,9 @@ namespace UOTCS_android
 
             initiateFragments();
             handleEvents();
+
+            
+            
         }
 
 
@@ -137,7 +142,7 @@ namespace UOTCS_android
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer((int)GravityFlags.Left);
+                    drawerLayout.OpenDrawer((int)GravityFlags.Start);
                     return true;
 
 

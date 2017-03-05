@@ -28,7 +28,8 @@ using Android.Views.InputMethods;
 
 // CScore 
 using CScore.BCL;
-
+using Android.Content.Res;
+using Java.Util;
 
 namespace UOTCS_android
 {
@@ -118,8 +119,7 @@ namespace UOTCS_android
 
                           string x = CScore.BCL.User.use_type;
                           await this.buildDB(x);
-                          CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.LanguageSetter.getLanguage());
-
+                    this.setLanguage();
                
                     this.StartActivity(intent);
 
@@ -161,5 +161,28 @@ namespace UOTCS_android
             x.Show();
         }
 
+        private void setLanguage()
+        {
+
+            CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.LanguageSetter.getLanguage());
+            CScore.FixdStrings.Language current = CScore.FixdStrings.LanguageSetter.getLanguage();
+            Configuration configuration = this.Resources.Configuration;
+            switch (current)
+            {
+
+                case (CScore.FixdStrings.Language.EN):
+
+                    configuration.SetLayoutDirection(Locale.English);//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                    break;
+                case (CScore.FixdStrings.Language.AR):
+                default:
+
+                    configuration.SetLayoutDirection(new Locale("ar"));//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                    break;
+
+            }
+        }
     } 
 }

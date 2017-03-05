@@ -13,12 +13,18 @@ using Android.Widget;
 using Fragment = Android.Support.V4.App.Fragment;
 using Android.Support.V7.Widget;
 using UOTCS_android.Helpers;
+using CScore.BCL;
+using System.Threading.Tasks;
 
 namespace UOTCS_android.Fragments
 {
     public class SentMessagesFragment : Fragment
     {
         RecyclerView recyclerView;
+        int startFrom;
+        int NumberOfMessages;
+        int currentIndex;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,9 +34,6 @@ namespace UOTCS_android.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-
             recyclerView = inflater.Inflate(Resource.Layout.RecievedMessagesF, container, false) as RecyclerView;
 
             SetUpRecyclerView(recyclerView);
@@ -39,31 +42,38 @@ namespace UOTCS_android.Fragments
 
         private void SetUpRecyclerView(RecyclerView recyclerView)
         {
-            String[] x = { "i ", "am", "amira", "and", "this", "should", "work", "well", "plz", ":(" };
-            List<string> y = new List<string>(x);
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> messages =
+               new StatusWithObject<List<CScore.BCL.Messages>>();
+            startFrom = 0;
+            NumberOfMessages = 100;
+            RecyclerViewAdapter.names = new List<string>();
+            var task = Task.Run(async () => { // await this.getRecievedMessages();
+                messages = await CScore.BCL.Messages.getMessages(NumberOfMessages,startFrom, "S");
 
-            var values = y;
-            //           var values = GetRandomSubList(y, x.Length);
+            });
+            task.Wait();
+
+            if (!messages.status.status)
+                messages.statusObject = new List<CScore.BCL.Messages>();
+
+            currentIndex = messages.statusObject.Count();
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
-            recyclerView.SetAdapter(new RecyclerViewAdapter(values));
+            recyclerView.SetAdapter(new RecyclerViewAdapter(messages.statusObject));
 
             recyclerView.SetItemClickListener((rv, position, view) =>
             {
-                //An item has been clicked
-                Context context = view.Context;
-                String mes_id = "stuped";
-                Intent intent = new Intent(context, typeof(MessageDetailsActivity));
-                intent.PutExtra(mes_id, values[position]);
+            //An item has been clicked
+            Context context = view.Context;
+
+            Intent intent = new Intent(context, typeof(MessageDetailsActivity));
+            intent.PutExtra("sender", RecyclerViewAdapter.names[position]);
+            intent.PutExtra("title", messages.statusObject[position].Mes_subject);
+            intent.PutExtra("content", messages.statusObject[position].Mes_content);
 
                 context.StartActivity(intent);
 
-                /*        MessageDetailsFragment nextFrag = new MessageDetailsFragment();
-                        this.FragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.Fragment_messageContainer, nextFrag, null)
-                        .AddToBackStack(null)
-                        .Hide(this)
-                        .Commit();*/
+              
             });
         }
         /*

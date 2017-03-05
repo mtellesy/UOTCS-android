@@ -19,7 +19,8 @@ using SupportFragmentManager = Android.Support.V4.App.FragmentManager;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
-
+using Android.Content.Res;
+using Java.Util;
 
 namespace UOTCS_android
 {
@@ -69,9 +70,20 @@ namespace UOTCS_android
             SaveSettingsButton.Click += (sender, args) => 
             {
                 if(LanguageSpinner.SelectedItemPosition == 0)
-                     CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);
+                {
+                    CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.AR);
+
+                    Configuration configuration = this.Resources.Configuration;
+                    configuration.SetLayoutDirection(new Locale("ar"));//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                }
                 else
-                     CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.EN);
+                {
+                    CScore.FixdStrings.LanguageSetter.setLanguage(CScore.FixdStrings.Language.EN);
+                    Configuration configuration = this.Resources.Configuration;
+                    configuration.SetLayoutDirection(Locale.English);//= LayoutDirection.Locale;
+                    this.Resources.UpdateConfiguration(configuration, this.Resources.DisplayMetrics);
+                }
 
             };
 
