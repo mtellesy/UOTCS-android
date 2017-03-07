@@ -22,41 +22,62 @@ using Android.Support.V4.View;
 
 using CScore.BCL;
 using Refractored.Controls;
+using Android.Support.V4.App;
 
 namespace UOTCS_android.Fragments
 {
-    public class ScheduleDialogFragment : DialogFragment
+    public class ScheduleDialogFragment :Android.Support.V4.App.DialogFragment
     {
-       static UOTCS_android.Fragments.ScheduleFragment scheduleFragment;
+      
         SupportFragmentManager supportFragmentManager;
-        
-        
+        FrameLayout myFrame;
+        private FragmentActivity myContext;
+        UOTCS_android.Fragments.ScheduleFragment scheduleFragment;
+        public List<CScore.BCL.Course> courses;
+        public Activity activity;
+        View view;
 
-        public static ScheduleDialogFragment newInstance()
-        {
-            return new ScheduleDialogFragment();
-        }
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            scheduleFragment = this;
+            
+           
             // Create your fragment here
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.ScheduleDialogFragment, container, false);
-            this.Dialog.SetTitle("dd");
-            scheduleFragment = this;
-            // scheduleFragment = new UOTCS_android.Fragments.ScheduleFragment();
-            //  initiateFragments();
+             view = inflater.Inflate(Resource.Layout.ScheduleDialogFragment, container, false);
+            //this.Dialog.SetTitle("dd");
+
+            getActivity(activity);
+            initiateFragments(courses);
             return view;
         }
-      
-        private void initiateFragments()
+
+        public void onAttach(Activity activity)
         {
-            var tran = supportFragmentManager.BeginTransaction(); 
-            tran.Add(Resource.Id.ScheduleFrame, scheduleFragment, "newFragment");
+            myContext = (FragmentActivity)activity;
+            base.OnAttach(activity);
+          
+
+        }
+        public void getActivity(Activity activity)
+        {
+            myContext = (FragmentActivity)activity;
+
+        }
+        public void initiateFragments(List<CScore.BCL.Course> courses)
+        {
+            var fm = myContext.SupportFragmentManager;
+        
+            var tran = fm.BeginTransaction();
+            scheduleFragment = new ScheduleFragment();
+            var k = scheduleFragment;
+            foreach (var c in courses)
+                scheduleFragment.setCourseDayAndTime(c);
+            tran.Add(Resource.Id.fragmentLayout, scheduleFragment, "newFragment");
             tran.Commit();
         }
         public  void setScheduleTimeAndDate(List<CScore.BCL.Course> courses)
@@ -65,15 +86,12 @@ namespace UOTCS_android.Fragments
                 scheduleFragment.setCourseDayAndTime(c);
           
         }
-        public static void showSchedule()
+        public void ShowDialog(List<CScore.BCL.Course> courses, SupportFragmentManager scheduleMangage )
         {
-            FragmentManager fm = scheduleFragment.FragmentManager;
-          var dialogFragment =new ScheduleDialogFragment();
-            dialogFragment.Show(fm, "Sample Fragment");
-           // var fragment = new UOTCS_android.Fragments.ScheduleDialogFragment();
-            //var newFragment = UOTCS_android.Fragments.ScheduleDialogFragment.newInstance();
-           // newFragment.Show(newFragment.FragmentManager, "Fragment");
+            this.initiateFragments(courses);
+            this.Show(scheduleMangage, "Schedule");
         }
-       
+
+
     }
 }

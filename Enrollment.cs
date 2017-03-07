@@ -34,6 +34,8 @@ namespace UOTCS_android
         private View view;
         private CircleImageView profileImage;
         public static TextView total_credit;
+        private SupportFragmentManager scheduleMangage;
+        private UOTCS_android.Fragments.ScheduleDialogFragment scheduoleDialogFragment;
 
         protected override void OnPause()
         {
@@ -111,9 +113,7 @@ namespace UOTCS_android
 
                     };
 
-                    scheduleButton.Click += async (sender, e) => {
-                      UOTCS_android.Fragments.ScheduleDialogFragment.showSchedule();
-                    };
+                    scheduleButton.Click += ScheduleButton_Click;
 
                 }
                 else if (await CScore.BCL.Enrollment.isDisEnrollmentEnabled())
@@ -204,7 +204,14 @@ namespace UOTCS_android
             handleEvents();
         }
 
-
+        private void ScheduleButton_Click(object sender, EventArgs e)
+        {
+            // scheduoleDialogFragment.getActivity(this);
+            scheduoleDialogFragment.activity = this;
+            scheduoleDialogFragment.courses = CScore.BCL.Enrollment.enrolledCourses;
+           // scheduoleDialogFragment.initiateFragments(CScore.BCL.Enrollment.enrolledCourses);
+            scheduoleDialogFragment.Show(scheduleMangage, "Schedule");
+        }
 
         private void findViews()
         {
@@ -216,6 +223,10 @@ namespace UOTCS_android
             view = navigationView.GetHeaderView(0);
             profileImage = view.FindViewById<CircleImageView>(Resource.Id.nav_profile);
 
+            // added for Enrollment schedule
+            scheduleMangage = this.SupportFragmentManager;
+            scheduoleDialogFragment = new Fragments.ScheduleDialogFragment();
+            
         }
         private void setUpActionBar(SupportActionBar actionBar)
         {
