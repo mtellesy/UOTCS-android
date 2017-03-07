@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center">
     <ScrollView
         android:id="@+id/layout"
@@ -26,14 +26,14 @@
             <!--Hours-->
                 <TableRow
                     android:id="@+id/tableRow1"
-                    android:layout_width="match_parent"
+                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/header"
                     android:minHeight="@dimen/row_min_height">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
                         android:text="D\\H"
                         android:gravity="center"
@@ -106,13 +106,14 @@
                 <TableRow
                     android:id="@+id/tableRowSAT"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
+                    android:layout_height="80dp"
+                   
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                         android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="SAT"
                         android:gravity="center"
@@ -131,7 +132,7 @@
                     <TextView
                         android:id="@+id/SA2"
                         android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center"
@@ -152,7 +153,7 @@
                         android:layout_height="match_parent"
                         android:padding="2dp"
                         android:text=""
-                        android:gravity="top|center_horizontal"
+                        android:gravity="top|center"
                         android:layout_gravity="center"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <TextView
@@ -179,12 +180,13 @@
                     android:id="@+id/tableRowSUN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
+                    
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
+                        android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="SUN"
                         android:gravity="center"
@@ -194,7 +196,7 @@
                     <TextView
                         android:id="@+id/SU1"
                         android:layout_width="80dp"
-                       android:layout_height="match_parent"
+                       android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -203,7 +205,7 @@
                     <TextView
                         android:id="@+id/SU2"
                         android:layout_width="80dp"
-                         android:layout_height="match_parent"
+                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -212,7 +214,7 @@
                     <TextView
                         android:id="@+id/SU3"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -221,7 +223,7 @@
                     <TextView
                         android:id="@+id/SU4"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -230,7 +232,7 @@
                     <TextView
                         android:id="@+id/SU5"
                         android:layout_width="80dp"
-                         android:layout_height="match_parent"
+                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -239,7 +241,7 @@
                     <TextView
                         android:id="@+id/SU6"
                         android:layout_width="80dp"
-                         android:layout_height="match_parent"
+                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -250,13 +252,13 @@
                 <TableRow
                     android:id="@+id/tableRowMON"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/row_min_height"
+                    android:layout_height="wrap_content"                   
                     android:background="@drawable/borderSet">
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        
                         android:padding="2dp"
                         android:text="MON"
                         android:gravity="center"
@@ -266,7 +268,7 @@
                     <TextView
                         android:id="@+id/MO1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -275,7 +277,7 @@
                     <TextView
                         android:id="@+id/MO2"
                         android:layout_width="80dp"
-                         android:layout_height="match_parent"
+                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -284,7 +286,7 @@
                     <TextView
                         android:id="@+id/MO3"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -293,7 +295,7 @@
                     <TextView
                         android:id="@+id/MO4"
                         android:layout_width="80dp"
-                         android:layout_height="match_parent"
+                         android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -302,7 +304,7 @@
                     <TextView
                         android:id="@+id/MO5"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -311,7 +313,7 @@
                     <TextView
                         android:id="@+id/MO6"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="2dp"
                         android:text=""
                         android:gravity="top|center_horizontal"
@@ -328,7 +330,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
                         android:text="TUE"
                         android:gravity="center"
@@ -400,7 +402,7 @@
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
                         android:text="WED"
                         android:gravity="center"
@@ -472,7 +474,7 @@
                     <TextView
                         android:id="@+id/THText"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
                         android:text="THU"
                         android:gravity="center"

@@ -1892,6 +1892,9 @@ namespace UOTCS_android
 			// aapt resource value: 0x7f050084
 			public const int row_padding = 2131034244;
 			
+			// aapt resource value: 0x7f050086
+			public const int schedule_row_height = 2131034246;
+			
 			static Dimension()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
