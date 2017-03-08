@@ -41,6 +41,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(bundle);
+            this.Title = CScore.FixdStrings.Messages.MessagesLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Messages);
             findViews();

@@ -43,27 +43,25 @@ namespace UOTCS_android.Fragments
             String[] x = { "i ", "am", "amira", "and", "this", "should", "work", "well", "plz", ":(" };
             List<string> y = new List<string>(x);
 
-            var values = y;
+            var values = new CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>>();
             //           var values = GetRandomSubList(y, x.Length);
-            //  var task = Task.Run(async () => { await this.getRecievedMessages(); });
-            //    task.Wait();
+            var task = Task.Run(async () => { values = await this.getRecievedAnnouncements(); });
+            task.Wait();
             recyclerView.SetLayoutManager(new LinearLayoutManager(recyclerView.Context));
-            recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(values));
+            if (values.statusObject != null)
+                recyclerView.SetAdapter(new RecyclerViewAdapterAnnouncements(values.statusObject));
 
 
         }
 
 
-        private async Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>>> getRecievedMessages()
+
+        private async Task<CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>>> getRecievedAnnouncements()
         {
-            CScore.BCL.StatusWithObject<List<CScore.BCL.Messages>> results = new StatusWithObject<List<CScore.BCL.Messages>>();
-            results = await CScore.BCL.Messages.getMessages(10, 1, null);
-            if (results.status.status == true)
-            {
-                return results;
-            }
+            CScore.BCL.StatusWithObject<List<CScore.BCL.Announcements>> results = new StatusWithObject<List<CScore.BCL.Announcements>>();
+            results = await CScore.BCL.Announcements.getSentAnnouncements(100, 1, "S", null);
+
             return results;
         }
-
     }
 }

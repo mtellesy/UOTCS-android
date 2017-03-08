@@ -71,9 +71,6 @@ namespace UOTCS_android
 
             initiateFragments();
             handleEvents();
-
-            
-            
         }
 
 

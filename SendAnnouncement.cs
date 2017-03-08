@@ -50,6 +50,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(savedInstanceState);
+            this.Title = CScore.FixdStrings.Announcements.SendAnnouncementLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
             this.findViews();
@@ -177,8 +178,9 @@ namespace UOTCS_android
             newAnnouncement.Ano_content = messageContent.Text;
             newAnnouncement.Ter_id = CScore.BCL.Semester.current_term; //messageSubject.Text;
 
-         
-            if (SendTo.Text != null || SendTo.Text != "" || SendTo.Text == " ")
+            string name = SendTo.Text;
+
+            if (name != "")
             {
                
                 if (isExited(SendTo.Text))
@@ -186,19 +188,19 @@ namespace UOTCS_android
                     newAnnouncement.Cou_id = SendTo.Text;
                     ReAnnouncement = await CScore.BCL.Announcements.sendAnnouncement(newAnnouncement);
                     if (ReAnnouncement.status.status)
-                        showMessage(CScore.FixdStrings.Announcements.AnnouncementHasSuccessfullySent());
+                        showMessage(CScore.FixdStrings.Announcements.AnnouncementHasSuccessfullySent(),true);
                     else
-                        showMessage(CScore.FixdStrings.Announcements.AnnouncementSendFaild());
+                        showMessage(CScore.FixdStrings.Announcements.AnnouncementSendFaild(),false);
                 }
                 else
                 {
-                    showMessage(CScore.FixdStrings.Courses.CourseDoesNotExist());
+                    showMessage(CScore.FixdStrings.Courses.CourseDoesNotExist(),false);
                 }
 
             }
             else
             {
-                showMessage(CScore.FixdStrings.Courses.PleaseTypeCourseCode());
+                showMessage(CScore.FixdStrings.Courses.PleaseTypeCourseCode(),false);
             }
 
         }
@@ -208,14 +210,15 @@ namespace UOTCS_android
             SendTo.ShowDropDown();
         }
 
-        private void showMessage(String message)
+        private void showMessage(String message,bool status)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(CScore.FixdStrings.Messages.MessageStatus());
             alert.SetMessage(message);
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-
+                if (status)
+                    this.Finish();
             });
 
             Dialog x = alert.Create();

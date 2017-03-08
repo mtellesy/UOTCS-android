@@ -42,6 +42,7 @@ namespace UOTCS_android
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            this.Title = CScore.FixdStrings.Announcements.AnnouncementsLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.AnnouncementsLecturer);
             findViews();

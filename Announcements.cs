@@ -36,6 +36,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(bundle);
+            this.Title = CScore.FixdStrings.Announcements.AnnouncementsLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Announcements);
 

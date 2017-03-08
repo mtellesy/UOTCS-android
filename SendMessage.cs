@@ -52,6 +52,7 @@ namespace UOTCS_android
         {
             
             base.OnCreate(savedInstanceState);
+            this.Title = CScore.FixdStrings.Messages.SendMessageLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.sendMessage);
             this.findViews();
@@ -234,27 +235,28 @@ namespace UOTCS_android
             message.Mes_subject = messageSubject.Text;
 
             int userid = 0;
-            if(SendTo.Text != null || SendTo.Text != "" || SendTo.Text == " ")
+            string name = SendTo.Text;
+            if (name != "" || name != "''" || name != null)
             {
-             userid = getUserIDByName(SendTo.Text);
+                userid = getUserIDByName(SendTo.Text);
                 if(userid!=0)
                 {
                     message.Mes_reciever = userid;
                     bool status = await CScore.BCL.Messages.sendMessage(message);
                     if(status)
-                        showMessage(CScore.FixdStrings.Messages.MessageHasSuccessfullySent());
+                        showMessage(CScore.FixdStrings.Messages.MessageHasSuccessfullySent(),true);
                     else
-                        showMessage(CScore.FixdStrings.Messages.MessageSendFaild());
+                        showMessage(CScore.FixdStrings.Messages.MessageSendFaild(),false);
                 }
                 else
                 {
-                    showMessage(CScore.FixdStrings.Users.UserDoesNotExist());
+                    showMessage(CScore.FixdStrings.Users.UserDoesNotExist(), false);
                 }
 
             }
             else
             {
-                showMessage(CScore.FixdStrings.Users.PleaseTypeUsername());
+                showMessage(CScore.FixdStrings.Users.PleaseTypeUsername(), false);
             }
            
         }
@@ -264,14 +266,15 @@ namespace UOTCS_android
             SendTo.ShowDropDown();
         }
 
-        private void showMessage(String message)
+        private void showMessage(String message,bool status)
         {
             Android.Support.V7.App.AlertDialog.Builder alert =
            new Android.Support.V7.App.AlertDialog.Builder(this);
             alert.SetTitle(CScore.FixdStrings.Messages.MessageStatus());
             alert.SetMessage(message);
             alert.SetNeutralButton(CScore.FixdStrings.Buttons.DONE(), (senderAlert, args) => {
-
+                if (status)
+                    this.Finish();
             });
 
             Dialog x = alert.Create();

@@ -58,13 +58,13 @@ namespace UOTCS_android
             var scheduleButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
            
             enrollButton.Visibility = ViewStates.Visible;
-            
+
+            this.Title = CScore.FixdStrings.Enrollment.EnrollmentLable();
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-                       
-                      
+
                         scheduleButton.Visibility = ViewStates.Visible;
                         var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
                         allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
@@ -210,7 +210,7 @@ namespace UOTCS_android
         private void ScheduleButton_Click(object sender, EventArgs e)
         {
             scheduoleDialogFragment.Courses = CScore.BCL.Enrollment.enrolledCourses;
-             
+         
             scheduoleDialogFragment.Show(scheduleMangage, "Schedule");
         }
 

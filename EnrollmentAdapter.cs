@@ -66,9 +66,10 @@ namespace UOTCS_android
             StatusWithObject<List<CScore.BCL.Course>> courses = 
                 await CScore.BCL.Course.getStudentCourses();
             var coursesWithSchedule = await CScore.BCL.Course.getUserCoursesSchedule();
-
+            CScore.BCL.Enrollment.alreadyEnrolledCourses = new List<Course>();
             if (courses.status.status && courses.statusObject !=null)
             {
+
                 foreach(CScore.BCL.Course c in courses.statusObject)
                 {
                     int count = activeButtons.Where(i => i.courseCode.Equals(c.Cou_id)).Count();
@@ -78,6 +79,8 @@ namespace UOTCS_android
                         activeButtons[index].status = true;
                        
                         activeButtons[index].groupID = c.TemGro_id;
+
+                        CScore.BCL.Enrollment.alreadyEnrolledCourses.Add(c);
                         foreach(var sch in coursesWithSchedule.statusObject)
                         {
                             if (c.Cou_id == sch.Cou_id)

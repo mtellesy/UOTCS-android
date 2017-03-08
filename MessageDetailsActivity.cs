@@ -42,6 +42,7 @@ namespace UOTCS_android
         {
             
             base.OnCreate(bundle);
+            this.title = CScore.FixdStrings.Messages.MessagesLable();
             Intent intent = this.Intent;
             Bundle b = this.Intent.Extras;
            
