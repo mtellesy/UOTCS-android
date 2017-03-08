@@ -31,7 +31,7 @@
                     android:background="?attr/header"
                     android:minHeight="@dimen/row_min_height">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/DandH"
                         android:layout_width="80dp"
                         android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
@@ -106,11 +106,10 @@
                 <TableRow
                     android:id="@+id/tableRowSAT"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                   
+                    android:layout_height="80dp"    
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/Sat_day"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                          android:minHeight="@dimen/row_min_height"
@@ -179,13 +178,12 @@
                 <TableRow
                     android:id="@+id/tableRowSUN"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    
+                    android:layout_height="80dp" 
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/Sun_day"
                         android:layout_width="80dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:minHeight="@dimen/row_min_height"
                         android:padding="2dp"
                         android:text="SUN"
@@ -252,13 +250,13 @@
                 <TableRow
                     android:id="@+id/tableRowMON"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"                   
+                    android:layout_height="80dp"      
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        
+                        android:minHeight="@dimen/row_min_height"
+                        android:id="@+id/Mon_day"
                         android:padding="2dp"
                         android:text="MON"
                         android:gravity="center"
@@ -328,7 +326,7 @@
                     android:minHeight="@dimen/row_min_height"
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/Tue_day"
                         android:layout_width="80dp"
                         android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
@@ -400,7 +398,7 @@
                     android:minHeight="@dimen/row_min_height"
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/Wed_day"
                         android:layout_width="80dp"
                         android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"
@@ -472,7 +470,7 @@
                     android:minHeight="@dimen/row_min_height"
                     android:background="@drawable/borderSet">
                     <TextView
-                        android:id="@+id/THText"
+                        android:id="@+id/Thu_day"
                         android:layout_width="80dp"
                         android:layout_height="@dimen/schedule_row_height"
                         android:padding="2dp"

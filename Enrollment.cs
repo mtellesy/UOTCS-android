@@ -20,6 +20,7 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Refractored.Controls;
+using Android.Graphics.Drawables;
 
 namespace UOTCS_android
 {
@@ -54,15 +55,17 @@ namespace UOTCS_android
 
             // FindViewById<FloatingActionButton>(Resource.Id.fab);
             var enrollButton = FindViewById<ImageButton>(Resource.Id.sendMessageButton);
-            var scheduleButton= FindViewById<FloatingActionButton>(Resource.Id.fab);
-            scheduleButton.Visibility = ViewStates.Visible;
+            var scheduleButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+           
             enrollButton.Visibility = ViewStates.Visible;
             
             try
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-
+                       
+                      
+                        scheduleButton.Visibility = ViewStates.Visible;
                         var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
                         allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
                         var totalTitle = FindViewById<TextView>(Resource.Id.enrollmentTotalCreditsTitle);

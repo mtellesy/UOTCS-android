@@ -33,7 +33,7 @@
                 <TextView
                     android:text="Total Credits:"
                     android:id="@+id/enrollmentTotalCreditsTitle"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView

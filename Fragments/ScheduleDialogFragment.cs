@@ -59,6 +59,14 @@ namespace UOTCS_android.Fragments
         TextView TH5;
         TextView TH6;
 
+        TextView DH;
+        TextView SATDAY;
+        TextView SUNDAY;
+        TextView MONDAY;
+        TextView TUEDAY;
+        TextView WEDDAY;
+        TextView THUDAY;
+
         // for dialog fragment only 
         public List<CScore.BCL.Course> Courses { get; set; }
         public override void OnCreate(Bundle savedInstanceState)
@@ -377,6 +385,22 @@ namespace UOTCS_android.Fragments
         //set the views
         View getViews(View view)
         {
+            // Change the view based on system language
+            SATDAY = view.FindViewById<TextView>(Resource.Id.Sat_day);
+            SATDAY.Text = CScore.FixdStrings.Days.SAT();
+            SUNDAY = view.FindViewById<TextView>(Resource.Id.Sun_day);
+            SUNDAY.Text = CScore.FixdStrings.Days.SUN();
+            MONDAY = view.FindViewById<TextView>(Resource.Id.Mon_day);
+            MONDAY.Text = CScore.FixdStrings.Days.MON();
+            TUEDAY = view.FindViewById<TextView>(Resource.Id.Tue_day);
+            TUEDAY.Text = CScore.FixdStrings.Days.TUE();
+            WEDDAY = view.FindViewById<TextView>(Resource.Id.Wed_day);
+            WEDDAY.Text = CScore.FixdStrings.Days.WED();
+            THUDAY = view.FindViewById<TextView>(Resource.Id.Thu_day);
+            THUDAY.Text = CScore.FixdStrings.Days.THU();
+            DH = view.FindViewById<TextView>(Resource.Id.DandH);
+            DH.Text = CScore.FixdStrings.Days.DandH();
+
             // saturday
             SA1 = view.FindViewById<TextView>(Resource.Id.SA1);
             SA2 = view.FindViewById<TextView>(Resource.Id.SA2);
