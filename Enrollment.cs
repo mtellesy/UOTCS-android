@@ -21,6 +21,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Refractored.Controls;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
 
 namespace UOTCS_android
 {
@@ -45,10 +46,11 @@ namespace UOTCS_android
 
         }
 
+       
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Enrollment);
 
@@ -64,15 +66,15 @@ namespace UOTCS_android
             {
                 if (await CScore.BCL.Enrollment.isEnrollmentEnabled())
                 {
-
-                        scheduleButton.Visibility = ViewStates.Visible;
-                        var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
-                        allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
-                        var totalTitle = FindViewById<TextView>(Resource.Id.enrollmentTotalCreditsTitle);
-                        totalTitle.Text = CScore.FixdStrings.Enrollment.TotalCredits();
-                        CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
-                        await CScore.BCL.Enrollment.getEnrollableCourses();
-                        var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
+                    scheduleButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_schedule_fab));
+                    scheduleButton.Visibility = ViewStates.Visible;
+                    var allowedCreditTitle = FindViewById<TextView>(Resource.Id.enrollmentAllowedCreditsTitle);
+                    allowedCreditTitle.Text = CScore.FixdStrings.Enrollment.AvaialabeCreditToEnroll();
+                    var totalTitle = FindViewById<TextView>(Resource.Id.enrollmentTotalCreditsTitle);
+                    totalTitle.Text = CScore.FixdStrings.Enrollment.TotalCredits();
+                    CScore.BCL.StatusWithObject<List<CScore.BCL.Course>> Courses =
+                    await CScore.BCL.Enrollment.getEnrollableCourses();
+                    var availableCredit = FindViewById<TextView>(Resource.Id.enrollmentAllowedCredits);
       
                         total_credit = FindViewById<TextView>(Resource.Id.enrollmentCurrentTotalCredits);
                         availableCredit.Text = CScore.BCL.Enrollment.creditMax.ToString();

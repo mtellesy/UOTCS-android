@@ -165,9 +165,11 @@ namespace UOTCS_android
             var view = convertView ?? _activity.LayoutInflater.Inflate(
                 Resource.Layout.EnrollmentItemView, parent, false);
             var CourseCode = view.FindViewById<TextView>(Resource.Id.enrollCourseText);
+            var CourseCredit = view.FindViewById<TextView>(Resource.Id.CourseGroupText);
             var GroupSpinner = view.FindViewById<Spinner>(Resource.Id.enrollGroupsList);
             var EnrollButton = view.FindViewById<ImageButton>(Resource.Id.enrollButton);
             CourseCode.Text = CoursesItemsList[position].CourseID;
+            
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
@@ -182,8 +184,8 @@ namespace UOTCS_android
            
             var OriCourses =new Course() ;
             OriCourses = _courses[position].getACopy();
-            
-           
+            CourseCredit.Text = OriCourses.Cou_credits.ToString() ;
+
 
             // to know  it's in the droping list 
             bool inDropList = false;
