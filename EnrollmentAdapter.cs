@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using CScore.BCL;
 using Android.Provider;
+using Java.Util;
 
 namespace UOTCS_android
 {
@@ -169,7 +170,10 @@ namespace UOTCS_android
             var GroupSpinner = view.FindViewById<Spinner>(Resource.Id.enrollGroupsList);
             var EnrollButton = view.FindViewById<ImageButton>(Resource.Id.enrollButton);
             CourseCode.Text = CoursesItemsList[position].CourseID;
-            
+
+            // set the textAlignment in group spinners based on the language
+            GroupSpinner.TextAlignment = getTextAlignment(view);
+
             var adapter = new ArrayAdapter<String>(_activity, Android.Resource.Layout.SimpleSpinnerItem, CoursesItemsList[position].Groups);
             GroupSpinner.Adapter = adapter;
             GroupSpinner.SetSelection(0);
@@ -183,6 +187,7 @@ namespace UOTCS_android
             // we need to clone _courses
            
             var OriCourses =new Course() ;
+            // get course copy and get its credits
             OriCourses = _courses[position].getACopy();
             CourseCredit.Text = OriCourses.Cou_credits.ToString() ;
 
@@ -613,6 +618,25 @@ namespace UOTCS_android
 
           
             return view;
+        }
+
+        private TextAlignment getTextAlignment(View view)
+        {
+           CScore.FixdStrings.Language e =
+                CScore.FixdStrings.LanguageSetter.getLanguage();
+            switch(e)
+            {
+                case (CScore.FixdStrings.Language.EN):
+                    return TextAlignment.TextEnd;
+                case (CScore.FixdStrings.Language.AR):
+                default:
+                    return TextAlignment.TextStart;
+            }
+        }
+
+        private object getResources()
+        {
+            throw new NotImplementedException();
         }
 
         private CScore.BCL.Course getMyCourse(int position)
