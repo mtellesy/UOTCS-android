@@ -26,8 +26,24 @@ namespace UOTCS_android.Fragments
         {
             // Use this to return your custom view for this Fragment
             View view = inflater.Inflate(Resource.Layout.UserMoreInformationF, container, false);
-          //  Button butt = (Button)view.FindViewById(Resource.Id.);
-           // butt.Click += butt_Click;
+            //  Button butt = (Button)view.FindViewById(Resource.Id.);
+            // butt.Click += butt_Click;
+            TextView unitsLable = view.FindViewById<TextView>(Resource.Id.unitsTV);
+            unitsLable.Text = CScore.FixdStrings.Profile.UserUnits();
+
+            TextView units = view.FindViewById<TextView>(Resource.Id.unitsTVB);
+            // unitsLable.Text = 
+
+            TextView GPALable = view.FindViewById<TextView>(Resource.Id.GPATV);
+            GPALable.Text = CScore.FixdStrings.Profile.UserGPA();
+            TextView GPA = view.FindViewById<TextView>(Resource.Id.GPATVB);
+            //GPA.Text =
+
+            TextView NoticesLable = view.FindViewById<TextView>(Resource.Id.noticesTV);
+            NoticesLable.Text = CScore.FixdStrings.Profile.UserNotices();
+            TextView Notices = view.FindViewById<TextView>(Resource.Id.noticesTVB);
+           // Notices.Text = 
+
             return view;
         }
 

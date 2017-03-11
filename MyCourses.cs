@@ -36,7 +36,7 @@ namespace UOTCS_android
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            //start the enrollment status checker           
+            this.Title = CScore.FixdStrings.Courses.MyCoursesLable();           
             Values.changeTheme(this);
             SetContentView(Resource.Layout.MyCourses);
 
