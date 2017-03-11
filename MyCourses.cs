@@ -18,6 +18,7 @@ using Android.Support.V4.View;
 using Refractored.Controls;
 using System.Collections.Generic;
 using UOTCS_android.Fragments;
+using System.Threading.Tasks;
 
 namespace UOTCS_android
 {
@@ -73,19 +74,52 @@ namespace UOTCS_android
         private void bindData()
         {
             List<CScore.BCL.Course> x = new List<CScore.BCL.Course>();
-            CScore.BCL.Course  temp = new CScore.BCL.Course();
-            CScore.BCL.Schedule tempSchedule = new CScore.BCL.Schedule();
-            tempSchedule.Gro_NameEN = "A";
+
+            var coursesStatus = new CScore.BCL.StatusWithObject<List<CScore.BCL.Course>>();
+
             ResultAndroid temp2;
-            for (int i = 0; i < 10; i++)
+
+            var task = Task.Run(async () =>
             {
-                temp =  new CScore.BCL.Course();
-                temp.Cou_nameEN = "course name" + i;
-                temp.Cou_id = "ITGS10" + i;
-                temp.Schedule = new List<CScore.BCL.Schedule>();
-                temp.Schedule.Add(tempSchedule);
-                x.Add(temp);
+                coursesStatus = await CScore.BCL.Course.getUserCoursesSchedule();
             }
+                );
+            task.Wait();
+            if (coursesStatus.statusObject != null)
+                x = coursesStatus.statusObject;
+
+            //CScore.BCL.Course  temp = new CScore.BCL.Course();
+            //CScore.BCL.Schedule tempSchedule = new CScore.BCL.Schedule();
+            //tempSchedule.Gro_NameEN = "A";
+            //ResultAndroid temp2;
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    temp =  new CScore.BCL.Course();
+            //    temp.Cou_nameEN = "course name" + i;
+            //    temp.Cou_id = "ITGS10" + i;
+            //    temp.Schedule = new List<CScore.BCL.Schedule>();
+            //    temp.Schedule.Add(tempSchedule);
+            //    x.Add(temp);
+            //}
+
+            //to remove any repeated courses
+            var z = new List<CScore.BCL.Course>();
+            foreach (CScore.BCL.Course y in x)
+            {
+                int r = 0;
+                if (z.Count != 0)
+                {
+                    foreach (var i in z)
+                    {
+
+                        if (y.Cou_id == i.Cou_id && y.Schedule[0].Gro_id == i.Schedule[0].Gro_id)
+                            r++;
+                    }
+                    if (r == 0) z.Add(y);
+                }
+                else z.Add(y);
+            }
+            x = z;
             foreach (CScore.BCL.Course y in x)
             {
                 temp2 = new ResultAndroid(y);
