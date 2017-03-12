@@ -2218,46 +2218,49 @@ namespace UOTCS_android
 			public const int ic_result = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_schedule = 2130837607;
+			public const int ic_save = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_schedule_fab = 2130837608;
+			public const int ic_schedule = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_send = 2130837609;
+			public const int ic_schedule_fab = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_settings = 2130837610;
+			public const int ic_send = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_timetable = 2130837611;
+			public const int ic_settings = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int Icon = 2130837612;
+			public const int ic_timetable = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int lecturer_pic = 2130837613;
+			public const int Icon = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int nav_header_lecturer = 2130837614;
+			public const int lecturer_pic = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int nav_header_student = 2130837615;
+			public const int nav_header_lecturer = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int navigation_empty_icon = 2130837616;
-			
-			// aapt resource value: 0x7f020074
-			public const int notification_template_icon_bg = 2130837620;
+			public const int nav_header_student = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int student_pic = 2130837617;
+			public const int navigation_empty_icon = 2130837617;
+			
+			// aapt resource value: 0x7f020075
+			public const int notification_template_icon_bg = 2130837621;
 			
 			// aapt resource value: 0x7f020072
-			public const int textBackground = 2130837618;
+			public const int student_pic = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int uni_logo = 2130837619;
+			public const int textBackground = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int uni_logo = 2130837620;
 			
 			static Drawable()
 			{

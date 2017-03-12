@@ -212,7 +212,7 @@ namespace UOTCS_android
         private void ScheduleButton_Click(object sender, EventArgs e)
         {
             scheduoleDialogFragment.Courses = CScore.BCL.Enrollment.enrolledCourses;
-         
+           
             scheduoleDialogFragment.Show(scheduleMangage, "Schedule");
         }
 

@@ -39,7 +39,7 @@ namespace UOTCS_android
         {
 
             base.OnCreate(bundle);
-
+            this.Title = CScore.FixdStrings.Timetable.TimetableLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Timetable);
 

@@ -21,6 +21,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Content.Res;
 using Java.Util;
+using Android.Support.V4.Content;
 
 namespace UOTCS_android
 {
@@ -44,6 +45,7 @@ namespace UOTCS_android
             SetContentView(Resource.Layout.Settings);
             
             var SaveSettingsButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            SaveSettingsButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_save));
             SaveSettingsButton.Visibility = ViewStates.Visible;
 
             var LanguageSpinner = FindViewById<Spinner>(Resource.Id.LanguageSpinner);
@@ -136,6 +138,6 @@ namespace UOTCS_android
             x.Show();
         }
 
-      
+        
     }
 }
