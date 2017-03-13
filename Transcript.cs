@@ -69,7 +69,7 @@ namespace UOTCS_android
         private void findViews()
         {
             courseCodeLable = FindViewById<TextView>(Resource.Id.course_code_transcriptLayout);
-            courseNameLable = FindViewById<TextView>(Resource.Id.course_code_transcriptLayout);
+            courseNameLable = FindViewById<TextView>(Resource.Id.course_name_transcriptLayout);
             resultLable = FindViewById<TextView>(Resource.Id.result_transcriptLayout);
 
             courseCodeLable.Text = CScore.FixdStrings.Courses.CourseCode();
