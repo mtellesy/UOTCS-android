@@ -51,7 +51,11 @@ namespace UOTCS_android
 
             this.Title = CScore.FixdStrings.Settings.SettingsLable();
             SetContentView(Resource.Layout.Settings);
-            
+            findViews();
+            SetSupportActionBar(toolBar);
+            setUpActionBar(actionbar);
+            setUpNavigationView(navigationView);
+
             var SaveSettingsButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             SaveSettingsButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.ic_save));
             SaveSettingsButton.Visibility = ViewStates.Visible;
@@ -99,11 +103,7 @@ namespace UOTCS_android
             };
            
 
-            findViews();
-            SetSupportActionBar(toolBar);
-            setUpActionBar(actionbar);
-            setUpNavigationView(navigationView);
-
+            
             handleEvents();
         }
 

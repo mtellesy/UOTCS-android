@@ -33,6 +33,7 @@
           android:layout_height="match_parent">
         <TextView
             android:text="@string/course_code"
+            android:id="@+id/course_code_resltsLayout"
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -42,6 +43,7 @@
             android:singleLine="true" />
         <TextView
             android:text="@string/course_name"
+            android:id="@+id/course_name_resltsLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -50,6 +52,7 @@
             android:singleLine="true" />
         <TextView
             android:text="@string/result"
+            android:id="@+id/course_result_resltsLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

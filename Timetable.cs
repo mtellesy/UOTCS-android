@@ -35,6 +35,8 @@ namespace UOTCS_android
         private CircleImageView profileImage;
         private List<TimetableAndMidmarkAndroid> timetableList;
         private TimetableAndMidmarkFragment timetableFrament;
+        private TextView eventName;
+        private TextView date;
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -42,7 +44,10 @@ namespace UOTCS_android
             this.Title = CScore.FixdStrings.Timetable.TimetableLable();
             Values.changeTheme(this);
             SetContentView(Resource.Layout.Timetable);
-
+            eventName = FindViewById<TextView>(Resource.Id.firstHeader);
+            date = FindViewById<TextView>(Resource.Id.secondHeader);
+            eventName.Text = CScore.FixdStrings.General.Name();
+            date.Text = CScore.FixdStrings.Timetable.Date();
             findViews();
             SetSupportActionBar(toolBar);
             setUpActionBar(actionbar);
