@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    android:padding="@dimen/background_padding">
+    <TextView
+        android:text="Course name EN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/course_name_en_text"
+        android:background="@drawable/borderSet"
+        android:gravity="center"
+        android:layout_weight="1" />
+    <TextView
+        android:text="Course name AR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/course_name_en_txt"
+        android:gravity="center"
+        android:background="@drawable/borderSet"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:weightSum="4"
+        android:background="@drawable/borderSet"
+        android:layout_weight="1">
+        <TextView
+            android:text="Course units"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/units"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="start" />
+        <TextView
+            android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/units_txt"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:layout_gravity="end" />
+    </LinearLayout>
+    <TextView
+        android:text="Lecturer name EN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lecturer_name_en_txt"
+        android:gravity="center"
+        android:background="@drawable/borderSet"
+        android:layout_weight="1" />
+    <TextView
+        android:text="Lecturer name AR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lecturer_name_ar_txt"
+        android:gravity="center"
+        android:background="@drawable/borderSet"
+        android:layout_weight="1" />
+</LinearLayout>

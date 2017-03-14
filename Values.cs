@@ -223,36 +223,24 @@ namespace UOTCS_android
         {
             List<TimetableAndMidmarkAndroid> result = new List<TimetableAndMidmarkAndroid>();
             TimetableAndMidmarkAndroid temp;
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.TermName(), semester.Ter_nameAR);
+            temp = new TimetableAndMidmarkAndroid("Term name", semester.Ter_nameAR);
             result.Add(temp);
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.TermNameEN(), semester.Ter_nameEN);
+            temp = new TimetableAndMidmarkAndroid("Term name EN", semester.Ter_nameEN);
             result.Add(temp);
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.Year(), semester.Year);
+            temp = new TimetableAndMidmarkAndroid("year", semester.Year);
             result.Add(temp);
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.TermStart(), semester.Ter_start);
+            temp = new TimetableAndMidmarkAndroid("Term start", semester.Ter_start);
             result.Add(temp);
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.EnrollmentStart(), semester.Ter_enrollment);
+            temp = new TimetableAndMidmarkAndroid("Term enrollment", semester.Ter_enrollment);
             result.Add(temp);
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.DropStart(), semester.Ter_dropCourses);
+            temp = new TimetableAndMidmarkAndroid("Drop Courses", semester.Ter_dropCourses);
             result.Add(temp); 
             foreach(CScore.BCL.Exams x in semester.Exam)
             {
-                String examTypeName;
-                switch(CScore.FixdStrings.LanguageSetter.getLanguage())
-                {
-                    case (CScore.FixdStrings.Language.AR):
-                        examTypeName = x.ExamTypeAR;
-                      
-                        break;
-                    case (CScore.FixdStrings.Language.EN):
-                    default:
-                        examTypeName = x.ExamTypeEN;
-                        break;
-                }
-                temp = new TimetableAndMidmarkAndroid(examTypeName, x.StartDate);
+                temp = new TimetableAndMidmarkAndroid(x.ExamTypeEN, x.StartDate);
                 result.Add(temp);
             }
-            temp = new TimetableAndMidmarkAndroid(CScore.FixdStrings.Timetable.LastStudyDate(), semester.Ter_lastStudyDate);
+            temp = new TimetableAndMidmarkAndroid("last study date", semester.Ter_lastStudyDate);
             result.Add(temp);
             return result;
         }

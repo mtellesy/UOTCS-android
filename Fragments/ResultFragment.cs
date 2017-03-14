@@ -16,6 +16,7 @@ using Android.Support.V7.Widget;
 using UOTCS_android.Helpers;
 using CScore.BCL;
 using System.Threading.Tasks;
+using Android.Graphics;
 
 namespace UOTCS_android.Fragments
 {
@@ -60,9 +61,11 @@ namespace UOTCS_android.Fragments
             else if (activityName == "MyCourses")
             {
                 view = inflater.Inflate(Resource.Layout.ResultF, container, false);
+
                 ListView listView = view.FindViewById<ListView>(Resource.Id.ResultListView);
                 adapter = new ListViewAdapterResults(results, Activity);
                 listView.Adapter = adapter;
+                listView.ItemClick += ListView_ItemClick;
 
             }
             return view;
@@ -71,9 +74,24 @@ namespace UOTCS_android.Fragments
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var item = this.adapter.results[e.Position];
-            Intent intent = new Intent(Activity, typeof(ResultDetails));
-            intent.PutExtra("course_id", results[e.Position].Code);
-            this.StartActivity(intent);
+            
+            if (IsAdded)
+            {
+                activityName = Activity.Class.SimpleName;
+            }
+            if (activityName == "Result")
+            { 
+
+                Intent intent = new Intent(Activity, typeof(ResultDetails));
+                this.StartActivity(intent);
+
+           }
+            else if (activityName == "MyCourses")
+            {
+                Intent intent = new Intent(Activity, typeof(CourseDetails));
+                this.StartActivity(intent);
+
+            }
         }
     }
 }
